@@ -1,0 +1,71 @@
+@font-face {
+    font-family: Manrope;
+    src: url("../resources/font/Manrope/Manrope-VariableFont_wght.ttf");
+   }
+html{
+    font-family: Manrope;
+}
+h1{
+    border: 1px solid teal;
+    font-size: large;
+}
+.widget{
+    /* bloc du widget */
+    border: 1px solid purple;
+    background-color: red;
+    width: 175px;
+    height: 175px;
+    margin: 2px;
+    min-width: 150px;
+    flex: 1 1 auto;
+ 
+    /* titre du widget */
+    text-align: center;
+    color: white;
+
+}
+.widgets{
+    /* bloc total*/
+    border: 1px solid purple;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    padding: 5px;
+    width: 60%;   
+}
+.icon{
+    margin: 10px;
+    margin-bottom: 30px;
+}
+.meteo_widget{
+    margin: 2px;
+    background-color: teal;
+    height: 175px;
+    width: 100%;
+}
+.temps{
+    border: 1px solid blue;
+}
+.icon_type_temps{
+    float: left;
+    width: 20px;
+    margin: 2px;
+}
+.meteo_widget{
+    display: flex;
+    justify-content: space-between;
+}
+.meteo , .time{
+    border: 1px solid white;
+    margin: 10px;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.temperature , .heure{
+    font-size: 3rem;
+    font-weight: bold;
+}
+.meteo_widget{
+    color: white;
+}

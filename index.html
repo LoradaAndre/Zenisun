@@ -7,42 +7,80 @@
         <div class="header">
             <div class="connexion"></div>
             <div class="accueil"></div>
+            <link rel="stylesheet" href="styles/style.css">
+            <script src="libs/jquery/jquery-3.5.1.js"></script>
         </div>
+
+        <div id="navbar">
+
+        </div>
+
+        <!-- <script>
+            console.log("coucou");
+            $(function(){
+                $("#navbar").load("nav.html");
+            });
+        </script> -->
+
         <div class="widgets">
+
+            <!-- widget meteo -->
             <div class="meteo_widget">
+
                 <div class="meteo">
-                    <div class="temps"></div>
-                    <div class="temperature"></div>
+                    <div class="type_temps"><img src="resources/icons/test.png" class="icon_type_temps" alt="icone temps"> Nuageux</div>
+                    <div class="temperature">20°C</div>
                 </div>
-                <div>
-                    <div class="heure"></div>
-                    <div class="jour"></div>
+
+                <div class="time">
+                    <div class="heure">22:00</div>
+                    <div class="jour">Mardi 10 Mars</div>
                 </div>
             </div>
-            <div class="eclairage_widget">
-                <div class="icon"></div>
-                <div class="nom_widget">Éclairage</div>
+            
+            <!-- widget 1 -->
+            <div class="eclairage_widget widget">
+                <div class="icon">
+                    <img src="resources/icons/test.png" alt="image de test">
+                </div>
+                <h1 class="nom_widget">Éclairage</h1>
             </div>
-            <div class="lames-orientable_widget">
-                <div class="icon"></div>
-                <div class="nom_widget">Lames orientables</div>
+
+            <div class="lames-orientable_widget widget">
+                <div class="icon">
+                    <img src="resources/icons/test.png" alt="image de test">
+                </div>
+                <h1 class="nom_widget">Lames orientables</h1>
             </div>
-            <div class="config_wifi_widget">
-                <div class="icon"></div>
-                <div class="nom_widget">Configuration wifi</div>
+
+            <div class="config_wifi_widget widget">
+                <div class="icon">
+                    <img src="resources/icons/test.png" alt="image de test">
+                </div>
+                <h1 class="nom_widget">Configuration wifi</h1>
             </div>
-            <div class="parametres_widget">
-                <div class="icon"></div>
-                <div class="nom_widget">Paramètres</div>
+
+            <div class="parametres_widget widget">
+                <div class="icon">
+                    <img src="resources/icons/test.png" alt="image de test">
+                </div>
+                <h1 class="nom_widget">Paramètres</h1>
             </div>
-            <div class="guide_utilisation_widget">
-                <div class="icon"></div>
-                <div class="nom_widget">Guide d'utilisation</div>
+
+            <div class="guide_utilisation_widget widget">
+                <div class="icon">
+                    <img src="resources/icons/test.png" alt="image de test">
+                </div>
+                <h1 class="nom_widget">Guide d'utilisation</h1>
             </div>
-            <div class="station_meteo_widget">
-                <div class="icon"></div>
-                <div class="nom_widget">Station météo</div>
+
+            <div class="station_meteo_widget widget">
+                <div class="icon">
+                     <img src="resources/icons/test.png" alt="image de test">
+                </div>
+                <h1 class="nom_widget">Station météo</h1>
             </div>
+
         </div>
     </body>
 </html>
