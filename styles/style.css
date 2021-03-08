@@ -14,7 +14,15 @@ h1{
     font-size: large;
     text-align: center;
 }
+h2{
+    font-size: 1em;
+}
 
+.settings_main p{
+    font-size: 0.8rem;
+    font-weight: lighter;
+    padding-left: 10px;
+}
 main{
     width: 60%;
     margin: auto;
@@ -30,8 +38,9 @@ main{
     margin-bottom: 10px;
     border-radius: 3px;
     padding: 10px;
-
-    background: linear-gradient(to bottom right, #7692B5, #8090C1);
+    
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.10);
+    background: linear-gradient(to bottom right,rgba(118, 146, 181, 0.7), rgba(128, 144, 193, 0.7));
 
 }
 
@@ -41,6 +50,14 @@ main{
 
 hr{
     width: 90%;
+    background-color: white;
+    border: none;
+    height: 1px;
+
+}
+
+.container{
+    margin-left: 3%;
 }
 
 
@@ -89,3 +106,141 @@ aside p {
     padding-right: 10px;
     padding-left: 10px;
 }
+
+/* ========================== BOUTONS ========================== */
+.bouton{
+    color: white;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.bouton p{
+    border-radius: 3px;
+    background-color: #52808B;
+    margin: 1px;
+    padding: 5px;
+    display: inline-block;
+}
+
+/* Geo items */
+.geo_item{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    
+}
+.geo_item input{
+    height: 20px;
+    width: 70px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.line-check{
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+}
+.form-check{
+    margin-bottom: auto;
+    margin-top: auto;
+}
+/* ========================== SWITCHER (ON/OFF) ========================== */
+
+.ui-switcher {
+    background-color: #bdc1c2;
+    display: inline-block;
+    height: 20px;
+    width: 48px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    vertical-align: middle;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    margin: -2px 4px 0 0;
+    box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.15);
+  }
+  
+  .ui-switcher:before {
+    font-family: sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1;
+    display: inline-block;
+    position: absolute;
+    top: 6px;
+    height: 12px;
+    width: 20px;
+    text-align: center;
+  }
+  
+  .ui-switcher:after {
+    background-color: #ffffff;
+    content: '\0020';
+    display: inline-block;
+    position: absolute;
+    top: 2px;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    transition: left 0.25s;
+  }
+
+ 
+  /* ========================== RANGE SLIDER ========================== */
+  .range-wrap {
+    position: relative;
+    margin: auto;
+    width: 80%;
+    padding: 1.5em 0; /*  Giving more room for hover  */
+    max-width: 400px;
+  }
+  
+  .range-wrap::before {
+    content: "";
+    background: linear-gradient(to right, #ffffff, #F7CB80);
+    width: 100%;
+    height: 8px;
+    display: block;
+    position: absolute;
+    border-radius: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: height 100ms ease;
+  }
+  
+  .range-wrap:hover::before {
+    height: 10px;
+  }
+  
+  /*  Hide Original */
+  .range {
+    width: 100%;
+    cursor: pointer;
+    opacity: 0;
+  }
+  
+  .bubble {
+    background: #52808B;
+    /* border: 3px solid #52808B; */
+    position: absolute;
+    border-radius: 3px;
+    width: 1.5rem;
+    height: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Remove pointer events on Bubble so user can click on the actual thumb beaneath it!  */
+    color: transparent;
+    display: grid;
+    place-items: center; /*  Place the number on the center  */
+    font-weight: bold;
+    transition: color 100ms ease, transform 100ms ease;
+    user-select: none; /*  Prevent Accidentally highlighting the number while sliding the cursor  */
+  }
+  
+  .range-wrap:hover .bubble,
+  .range-wrap:focus .bubble {
+    color: white;
+    transform: translateY(-50%) scale(1.5);
+    padding: 0.1em;
+  }

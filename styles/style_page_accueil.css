@@ -123,3 +123,8 @@ a{
 .widget, .meteo_widget, aside{
     border-radius: 3px;
 }
+
+.connexion_icon{
+    float: left;
+    width: 20px;
+}

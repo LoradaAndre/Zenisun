@@ -2,8 +2,100 @@
     <head>
         <meta charset="utf-8">
         <title>Zenisun</title>
+        <link rel="stylesheet" href="../styles/style.css">
+        <script src="../libs/jquery/jquery-3.5.1.js"></script>
+        <link href="../libs/onoff/css/switcher.css" rel="stylesheet">
+        <script src="../libs/onoff/js/jquery.switcher.js"></script>
+        <link rel="stylesheet" href="../libs/rangeslider/css/rSlider.min.css">
+        <script src="../libs/rangeslider/js/rSlider.min.js"></script>
+
+
     </head>
     <body>
-        <p>page paramètres!!!!</p>
+
+        <main class="settings_main">
+            <div class="flex-left">
+                <div class="parametres_generaux test">
+                    <h1>Paramètres généraux</h1>
+                    <hr>
+                    <div class="container">
+                        <h2>Date</h2>
+                        <p>01/03/2021</p>
+                        <h2>Heure</h2>
+                        <p>13:28:32</p>
+                        <h2>Homming manuel</h2>
+                        <div class="bouton"> 
+                            <p>Effectuer un homing</p>
+                        </div>
+                        <h2>Géolocalisation</h2>
+                        <div>
+                            <div class="geo_item">
+                                <p>Latitude</p>
+                                <input type="number" id="name" name="name" required minlength="1" maxlength="3" size="3">
+                                <input type="number" id="name" name="name" required minlength="1" maxlength="3" size="3">
+                            </div>
+                            <div class="geo_item">
+                                <p>Longitude</p>
+                                <input type="number" id="name" name="name" required minlength="1" maxlength="3" size="3">
+                                <input type="number" id="name" name="name" required minlength="1" maxlength="3" size="3">
+                            </div>
+                        </div>
+                        <h2>Orientation</h2>
+                        <select>
+                            <option valeur="N">Nord</option>
+                            <option valeur="S">Sud</option>
+                            <option valeur="E">Est</option>
+                            <option valeur="O">Ouest</option>
+                        </select>
+    
+                    </div>
+                </div>
+                <div class="environnement"></div>
+            </div>
+
+            <div class="flex-right">
+                <div class="parametres_generaux test">
+                    <h1>Environnement</h1>
+                    <hr>
+                    <div class="container">
+                        <div class="line-check">
+                            <h2>Hivernage</h2>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
+                            </div>
+                        </div>
+                        <div class="line-check">
+                            <h2>Fermeture en cas de pluie</h2>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
+                            </div>
+                        </div>
+                        <div class="line-check">
+                            <h2>Suivi solaire</h2>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
+                            </div>
+                        </div>
+                        <div class="line-check">
+                            <h2>Mode ombrage minimum</h2>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
+                            </div>
+                        </div>
+                        <div class="">
+                            <h2>Seul de fermeture nuit (degré élévation solaire)</h2>
+                            <div class="range-wrap">
+                                <input type="range" class="range" min="0" max="45">
+                                <output class="bubble"></output>
+                            </div>
+                        </div>
+                          
+                         
+                        
+                    </div>
+                    <script src="../scripts/script.js"></script>
+                </div>
+            </div>
+        </main>
     </body>
 </html>
