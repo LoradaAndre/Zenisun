@@ -2,18 +2,13 @@
     <head>
         <meta charset="utf-8">
         <title>Zenisun</title>
+        <link rel="stylesheet" href="styles/style.css">
     </head>
     <body>
-        <div class="header">
-            <div class="connexion"></div>
-            <div class="accueil"></div>
-            <link rel="stylesheet" href="styles/style.css">
-            <script src="libs/jquery/jquery-3.5.1.js"></script>
-        </div>
 
-        <div id="navbar">
+        <header id="navbar">
             <!-- <?php include('composants/nav.php'); ?> -->
-        </div>
+        </header>
 
         <!-- <script>
             console.log("coucou");
@@ -21,6 +16,18 @@
                 $("#navbar").load("nav.html");
             });
         </script> -->
+
+        <aside>
+            <div class="connexion">
+                <div><img class="aside_icon connexion_icon" src="resources/icons/connected.png" alt=""><p>Connecté</p></div> 
+            </div>
+            <div class="heure_nav">
+                <p>22:00</p>
+            </div>
+            <div class="home">
+                <img class="aside_icon home_icon" src="resources/icons/widgets_light/home.png" alt="">
+            </div>
+        </aside>
 
         <div class="widgets">
 
@@ -95,5 +102,7 @@
             </div>
 
         </div>
+
+        <script src="libs/jquery/jquery-3.5.1.js"></script>
     </body>
 </html>

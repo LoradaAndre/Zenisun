@@ -98,7 +98,7 @@ h1{
 }
 
 .station_meteo_widget{
-    background-image: url(../resources/background/widgets/fond_eclairage.png);
+    background-image: url(../resources/background/widgets/fond_station_meteo.png);
     background-size: cover;
 }
 
@@ -107,11 +107,56 @@ h1{
     background-size: cover;
 }
 
+/* ========================== ASIDE ========================== */
+
+aside{
+    color: white;
+    display: flex;
+    background-color: #7093AE;
+    /* width: 15%; */
+    /* justify-content: space-around; */
+    position: fixed;
+    right: 10px;
+    width: 225px;
+}
+
+.connexion_icon{
+    float: left;
+    width: 20px;
+}
+
+.home_icon{
+    width: 25px;
+    margin: auto;
+}
+
+.home, .connexion{
+    margin: auto;
+}
+
+.connexion{
+    text-align: center;
+    width: 115px;
+}
+
+aside p {
+    margin: auto;
+}
+
+.heure_nav{
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+    margin-bottom: auto;
+    margin-top: auto;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
 /* ========================== AUTRE ========================== */
 a{
     text-decoration: none;
 }
 
-.widget, .meteo_widget{
+.widget, .meteo_widget, aside{
     border-radius: 3px;
 }
