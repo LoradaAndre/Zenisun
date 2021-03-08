@@ -1,0 +1,125 @@
+@font-face {
+    font-family: Manrope;
+    src: url("../resources/font/Manrope/Manrope-VariableFont_wght.ttf");
+   }
+html{
+    font-family: Manrope;
+}
+h1{
+    font-size: large;
+}
+
+/* ========================== GESTION DES BLOCS - WIDGETS ========================== */
+
+/* Le bloc contenant tout les widgets */
+.widgets{
+    margin: auto;
+    width: 60%;
+    margin-top: 50px;
+}
+
+/* Bloc contenant les petits widgets*/
+.sous_widgets{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+/* Les petits widgets */
+.widget{
+    margin: 3px;
+    height: 95%;
+    /* titre du widget */
+    text-align: center;
+    color: white;
+
+}
+
+.widget:hover{
+    box-shadow: 3px 3px 3px grey;
+}
+
+/* ========================== GESTION DU BLOC METEO ========================== */
+
+.meteo_widget{
+    display: flex;
+    justify-content: space-between;
+    margin: 3px;
+    margin-bottom: -3px;
+    height: 175px;
+    color: white;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.icon_type_temps{
+    float: left;
+    width: 20px;
+    margin: 2px;
+}
+
+.meteo , .time{
+    margin: 10px;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.temperature , .heure{
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.icon{
+    margin: 10px;
+    margin-bottom: 20px;
+}
+
+.connexion_meteo_widget{
+    width: 100px;
+}
+/* ========================== GESTION DES WIDGETS INDIVIDUELS========================== */
+
+.eclairage_widget{
+    background-image: url(../resources/background/widgets/fond_eclairage.png);
+    background-size: cover;
+}
+
+.lames-orientable_widget{
+    background-image: url(../resources/background/widgets/fond_lames_orientables.png);
+    background-size: cover;
+}
+
+.wifi_widget{
+    background-image: url(../resources/background/widgets/fond_wifi.png);
+    background-size: cover;
+}
+
+
+.parametres_widget{
+    background-image: url(../resources/background/widgets/fond_settings.png);
+    background-size: cover;
+}
+
+.guide_utilisation_widget{
+    background-image: url(../resources/background/widgets/fond_guide_utilisation.png);
+    background-size: cover;
+}
+
+.station_meteo_widget{
+    background-image: url(../resources/background/widgets/fond_station_meteo.png);
+    background-size: cover;
+}
+
+.meteo_widget{
+    background-image: url(../resources/background/widget_météo/beau.png);
+    background-size: cover;
+}
+
+
+/* ========================== AUTRE ========================== */
+a{
+    text-decoration: none;
+}
+
+.widget, .meteo_widget, aside{
+    border-radius: 3px;
+}

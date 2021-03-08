@@ -3,116 +3,46 @@
     src: url("../resources/font/Manrope/Manrope-VariableFont_wght.ttf");
    }
 html{
-    font-family: Manrope;
+    font-family: Roboto;
+    font-size: thin;
 }
+
+/* ========================== LES DIFFERENTS COMPOSANTS ========================== */
+
 h1{
+    font-family: Manrope;
     font-size: large;
+    text-align: center;
 }
 
-/* ========================== GESTION DES BLOCS - WIDGETS ========================== */
-
-/* Le bloc contenant tout les widgets */
-.widgets{
-    margin: auto;
+main{
     width: 60%;
-    margin-top: 50px;
-}
-
-/* Bloc contenant les petits widgets*/
-.sous_widgets{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
-/* Les petits widgets */
-.widget{
-    margin: 3px;
-    height: 95%;
-    /* titre du widget */
-    text-align: center;
-    color: white;
-
-}
-
-.widget:hover{
-    box-shadow: 3px 3px 3px grey;
-}
-
-/* ========================== GESTION DU BLOC METEO ========================== */
-
-.meteo_widget{
+    margin: auto;
     display: flex;
-    justify-content: space-between;
-    margin: 3px;
-    margin-bottom: -3px;
-    height: 175px;
+    flex-direction: row;
+    /* grid-template-columns: 1fr 1fr; */
+    /* grid-template-rows: */
     color: white;
-    padding-right: 20px;
-    padding-left: 20px;
 }
 
-.icon_type_temps{
-    float: left;
-    width: 20px;
-    margin: 2px;
+.test{
+    margin: 5px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    padding: 10px;
+
+    background: linear-gradient(to bottom right, #7692B5, #8090C1);
+
 }
 
-.meteo , .time{
-    margin: 10px;
-    text-align: center;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-.temperature , .heure{
-    font-size: 3rem;
-    font-weight: bold;
+.flex-right , .flex-left{
+    width: 50%;
 }
 
-.icon{
-    margin: 10px;
-    margin-bottom: 20px;
+hr{
+    width: 90%;
 }
 
-.connexion_meteo_widget{
-    width: 100px;
-}
-/* ========================== GESTION DES WIDGETS INDIVIDUELS========================== */
-
-.eclairage_widget{
-    background-image: url(../resources/background/widgets/fond_eclairage.png);
-    background-size: cover;
-}
-
-.lames-orientable_widget{
-    background-image: url(../resources/background/widgets/fond_lames_orientables.png);
-    background-size: cover;
-}
-
-.wifi_widget{
-    background-image: url(../resources/background/widgets/fond_wifi.png);
-    background-size: cover;
-}
-
-
-.parametres_widget{
-    background-image: url(../resources/background/widgets/fond_settings.png);
-    background-size: cover;
-}
-
-.guide_utilisation_widget{
-    background-image: url(../resources/background/widgets/fond_guide_utilisation.png);
-    background-size: cover;
-}
-
-.station_meteo_widget{
-    background-image: url(../resources/background/widgets/fond_station_meteo.png);
-    background-size: cover;
-}
-
-.meteo_widget{
-    background-image: url(../resources/background/widget_météo/beau.png);
-    background-size: cover;
-}
 
 /* ========================== ASIDE ========================== */
 
@@ -125,6 +55,7 @@ aside{
     position: fixed;
     right: 10px;
     width: 225px;
+    border-radius: 3px;
 }
 
 .connexion_icon{
@@ -157,13 +88,4 @@ aside p {
     margin-top: auto;
     padding-right: 10px;
     padding-left: 10px;
-}
-
-/* ========================== AUTRE ========================== */
-a{
-    text-decoration: none;
-}
-
-.widget, .meteo_widget, aside{
-    border-radius: 3px;
 }
