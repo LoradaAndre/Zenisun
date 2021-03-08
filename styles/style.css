@@ -8,37 +8,44 @@ html{
 h1{
     font-size: large;
 }
+
+/* ========================== GESTION DES BLOCS - WIDGETS ========================== */
+
+/* Le bloc contenant tout les widgets */
+.widgets{
+    margin: auto;
+    width: 60%;
+}
+
+/* Bloc contenant les petits widgets*/
 .sous_widgets{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    /* border: 3px solid yellow; */
 }
+
+/* Les petits widgets */
 .widget{
-    /* bloc du widget */
     margin: 3px;
     height: 95%;
-
-
     /* titre du widget */
     text-align: center;
     color: white;
 
 }
-.widgets{
-    /* bloc total*/
-    margin: auto;
-    width: 60%;
+
+.widget:hover{
+    box-shadow: 3px 3px 3px grey;
 }
-.icon{
-    margin: 10px;
-    margin-bottom: 20px;
-}
+
+/* ========================== GESTION DU BLOC METEO ========================== */
+
 .meteo_widget{
+    display: flex;
+    justify-content: space-between;
     margin: 3px;
     margin-bottom: -3px;
     height: 175px;
-}
-.temps{
+    color: white;
 }
 
 .icon_type_temps{
@@ -46,10 +53,7 @@ h1{
     width: 20px;
     margin: 2px;
 }
-.meteo_widget{
-    display: flex;
-    justify-content: space-between;
-}
+
 .meteo , .time{
     margin: 10px;
     text-align: center;
@@ -60,11 +64,12 @@ h1{
     font-size: 3rem;
     font-weight: bold;
 }
-.meteo_widget{
-    color: white;
-}
 
-/* Widgets individuels */
+.icon{
+    margin: 10px;
+    margin-bottom: 20px;
+}
+/* ========================== GESTION DES WIDGETS INDIVIDUELS========================== */
 
 .eclairage_widget{
     background-image: url(../resources/background/widgets/fond_eclairage.png);
@@ -102,13 +107,9 @@ h1{
     background-size: cover;
 }
 
-/* autres */
+/* ========================== AUTRE ========================== */
 a{
     text-decoration: none;
-}
-
-.widget:hover{
-    box-shadow: 3px 3px 3px grey;
 }
 
 .widget, .meteo_widget{
