@@ -6,19 +6,19 @@ html{
     font-family: Manrope;
 }
 h1{
-    border: 1px solid teal;
     font-size: large;
+}
+.sous_widgets{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* border: 3px solid yellow; */
 }
 .widget{
     /* bloc du widget */
-    border: 1px solid purple;
-    background-color: red;
-    width: 175px;
-    height: 175px;
-    margin: 2px;
-    min-width: 150px;
-    flex: 1 1 auto;
- 
+    margin: 3px;
+    height: 95%;
+
+
     /* titre du widget */
     text-align: center;
     color: white;
@@ -26,26 +26,21 @@ h1{
 }
 .widgets{
     /* bloc total*/
-    border: 1px solid purple;
-    display: flex;
-    flex-wrap: wrap;
     margin: auto;
-    padding: 5px;
-    width: 60%;   
+    width: 60%;
 }
 .icon{
     margin: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 .meteo_widget{
-    margin: 2px;
-    background-color: teal;
+    margin: 3px;
+    margin-bottom: -3px;
     height: 175px;
-    width: 100%;
 }
 .temps{
-    border: 1px solid blue;
 }
+
 .icon_type_temps{
     float: left;
     width: 20px;
@@ -56,7 +51,6 @@ h1{
     justify-content: space-between;
 }
 .meteo , .time{
-    border: 1px solid white;
     margin: 10px;
     text-align: center;
     margin-top: auto;
@@ -68,4 +62,55 @@ h1{
 }
 .meteo_widget{
     color: white;
+}
+
+/* Widgets individuels */
+
+.eclairage_widget{
+    background-image: url(../resources/background/widgets/fond_eclairage.png);
+    background-size: cover;
+}
+
+.lames-orientable_widget{
+    background-image: url(../resources/background/widgets/fond_lames_orientables.png);
+    background-size: cover;
+}
+
+.wifi_widget{
+    background-image: url(../resources/background/widgets/fond_wifi.png);
+    background-size: cover;
+}
+
+
+.parametres_widget{
+    background-image: url(../resources/background/widgets/fond_settings.png);
+    background-size: cover;
+}
+
+.guide_utilisation_widget{
+    background-image: url(../resources/background/widgets/fond_guide_utilisation.png);
+    background-size: cover;
+}
+
+.station_meteo_widget{
+    background-image: url(../resources/background/widgets/fond_eclairage.png);
+    background-size: cover;
+}
+
+.meteo_widget{
+    background-image: url(../resources/background/widget_météo/beau.png);
+    background-size: cover;
+}
+
+/* autres */
+a{
+    text-decoration: none;
+}
+
+.widget:hover{
+    box-shadow: 3px 3px 3px grey;
+}
+
+.widget, .meteo_widget{
+    border-radius: 3px;
 }
