@@ -35,26 +35,48 @@ function setBubble(range, bubble) {
 
 /* ========================== Boutons actualisation suivi solaire ========================== */
 
-// Récupération de chaque boutons et stockage des id
-let allButtonsSuiviSolaire = [];
 
-$(".list_of_buttons h3").each(function(){
-  allButtonsSuiviSolaire.push($(this).attr("id"));
-});
+function permutationBoutonGradateurLed(){
+  permutationBouton(".list_of_buttons_grad_LED h3");
+}
 
-// En cas de clic sur un bouton
-$(".list_of_buttons h3").click(function(){
-  // Sur le bouton cliqué
-  $(this).css("background-color","#52808B");
-  $(this).css("color","white");
-  let actuel = $(this).attr("id");
+function permutationBoutonSuiviSolaire(){
+  permutationBouton(".list_of_buttons_suivi_sol h3");
+}
 
-  // Sur tout les autres boutons
-  for(let i = 0; i < allButtonsSuiviSolaire.length; i++){
-    if(allButtonsSuiviSolaire[i] != actuel){
-      $("#" + allButtonsSuiviSolaire[i]).css("background-color","white");
-      $("#" + allButtonsSuiviSolaire[i]).css("color","black");
+function permutationBouton(boutons){
+  // Récupération de chaque boutons et stockage des id
+  let tabAllButtons = [];
+
+  $(boutons).each(function(){
+    tabAllButtons.push($(this).attr("id"));
+  });
+
+  // En cas de clic sur un bouton
+  $(boutons).click(function(){
+    // Sur le bouton cliqué
+    $(this).css("background-color","#52808B");
+    $(this).css("color","white");
+    let actuel = $(this).attr("id");
+
+    // Sur tout les autres boutons
+    for(let i = 0; i < tabAllButtons.length; i++){
+      if(tabAllButtons[i] != actuel){
+        $("#" + tabAllButtons[i]).css("background-color","white");
+        $("#" + tabAllButtons[i]).css("color","black");
+      }
     }
-  }
-});
+  });
+}
 
+ // Using Date() method 
+ var d = Date(); 
+    
+ // Converting the number value to string 
+ a = d.toString()  
+   
+ // Printing the current date 
+ console.log("The current date is: " + a) 
+
+permutationBoutonSuiviSolaire();
+permutationBoutonGradateurLed()
