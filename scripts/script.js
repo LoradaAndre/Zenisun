@@ -1,7 +1,7 @@
 /* ========================== FOR SWITCHER ========================== */
 $(function(){
 
-    $.switcher();
+  $.switcher();
 });
 
  /* ========================== FOR RANGE SLIDER ========================== */
@@ -46,7 +46,7 @@ function permutationBoutonSuiviSolaire(){
 
 function permutationBouton(boutons){
   // Récupération de chaque boutons et stockage des id
-  let tabAllButtons = [];
+let tabAllButtons = [];
 
   $(boutons).each(function(){
     tabAllButtons.push($(this).attr("id"));
