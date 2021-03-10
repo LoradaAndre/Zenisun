@@ -67,7 +67,7 @@ let tabAllButtons = [];
 }
 
  // Using Date() method 
- var d = Date(); 
+ let d = Date(); 
     
  // Converting the number value to string 
  a = d.toString()  
