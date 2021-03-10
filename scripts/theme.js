@@ -1,3 +1,7 @@
+/* ========================== FOR SWITCHER ========================== */
+
+$.switcher();
+
 let themeSombreActif = false;
 
 // ====== Couleurs thème clair ======
@@ -59,21 +63,42 @@ function themeSombre(){
     $(".station_meteo_widget").css('background-image', "url(resources/background/widgets/fond_station_meteo_sombre.png)");
 }
 
-// Par défaut
-if(themeSombreActif){
-    themeSombre();
-}else{
-    themeClair();
+function sauvegardeDonnees(){
+    localStorage.setItem("modeSombre", themeSombreActif);
 }
 
-// En cas de clic
-$('#switcher_theme').click(function() {
-    if($("#switcher_theme").is(':checked')){
-        themeSombreActif = true;
+function getThemeEnregistre(){
+    return JSON.parse(localStorage.getItem("modeSombre"));
+}
+
+$(document).ready(function(){
+    //Récupération du theme enregistré s'il est existant
+    if(localStorage.getItem("modeSombre") != undefined){
+        themeSombreActif = getThemeEnregistre();
+    }
+    //Dans l'autre cas, on enregistre le theme par défaut
+    else{
+        sauvegardeDonnees();
+    }
+
+    $('.checkIci .ui-switcher').attr('aria-checked', themeSombreActif)
+
+    //On affiche le theme qui est défini
+    if(themeSombreActif == true){
         themeSombre();
     }else{
-        themeSombreActif = false;
         themeClair();
     }
-});
 
+    // En cas de clic
+    $('#switcher_theme').click(function() {
+        if($("#switcher_theme").is(':checked')){
+            themeSombreActif = true;
+            themeSombre();
+        }else{
+            themeSombreActif = false;
+            themeClair();
+        }
+        sauvegardeDonnees();
+    });
+});

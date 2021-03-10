@@ -1,4 +1,3 @@
-;(function ($) {
 
     $.switcher = function (filter) {
 
@@ -39,4 +38,3 @@
 
     };
 
-})(jQuery);
