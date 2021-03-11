@@ -64,11 +64,11 @@ function themeSombre(){
     $(".station_meteo_widget").css('background-image', "url(resources/background/widgets/fond_station_meteo_sombre.png)");
 }
 
-refreshAffichage()
+refreshAffichage("not ok")
 
 $('#switcher_theme').click(function(){
     console.log("t'as cliqué")
-    refreshAffichage();
+    refreshAffichage("ok");
 });
 
 function getThemeEnregistre(){
@@ -81,7 +81,7 @@ function enregistrer(){
     
 }
 
-function refreshAffichage(){
+function refreshAffichage(stringue){
     let onofftheme = ($('.checkIci .ui-switcher').attr('aria-checked'))
     // let valeurCurseur = $('.checkIci .ui-switcher').attr('aria-checked');
     console.log("val curs au moment de refresh : " + $('.checkIci .ui-switcher').attr('aria-checked'))
@@ -102,9 +102,14 @@ function refreshAffichage(){
     //     console.log("et oui y'a ce cas la aussi...")
     //     $('.checkIci .ui-switcher').attr('aria-checked', getThemeEnregistre())
     // }
-    else{
-        console.log("c")
+    if(stringue === "ok"){
+        console.log("sisisisisi");
         afficheTheme(onofftheme);
+    }
+    else{
+        console.log("nope")
+        afficheTheme(getThemeEnregistre());
+        $('.checkIci .ui-switcher').attr('aria-checked', getThemeEnregistre())
     }
     
     console.log("=============================================")
@@ -132,7 +137,7 @@ function afficheTheme(themeSombreAc){
 }
 
 $(".coucou").click(function(){
-    refreshAffichage();
+    refreshAffichage("not ok");
 });
 
 
