@@ -5,6 +5,8 @@
         <link rel="stylesheet" href="styles/style_page_accueil.css">
         <script src="libs/jquery/jquery-3.5.1.js"></script>
         <script src="libs/onoff/js/jquery.switcher.js"></script>
+        
+        <link rel="stylesheet" href="libs/circleCanvas/styleCircleCanvas.css">
     </head>
     <body>
 
@@ -56,7 +58,9 @@
                 <a href="pages/eclairage.html">
                     <div class="eclairage_widget widget">
                         <div class="icon">
-                            <img src="resources/icons/widgets_light/lamp.png" alt="image de test">
+                            <div id="score" class="flex-container">
+                                <canvas class="round1" data-percent="11" data-color="#F9AD3C"></canvas>
+                            </div>
                         </div>
                         <h1>Éclairage</h1>
                     </div>  
@@ -65,7 +69,9 @@
                 <a href="pages/lames_orientabes.html">
                     <div class="lames-orientable_widget widget">
                         <div class="icon">
-                            <img src="resources/icons/widgets_light/lames_prov.png" alt="image de test">
+                            <div id="score" class="flex-container">
+                                <canvas class="round2" data-percent="90" data-color="#4795D5"></canvas>
+                            </div>
                         </div>
                         <h1>Lames orientables</h1>
                     </div>
@@ -112,5 +118,6 @@
 
         <script src="scripts/theme.js"></script>
         <script src="scripts/heure.js"></script>
+        <script src="libs/circleCanvas/scriptCircleCanvas.js"></script>
     </body>
 </html>
