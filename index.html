@@ -5,22 +5,18 @@
         <link rel="stylesheet" href="styles/style_page_accueil.css">
         <script src="libs/jquery/jquery-3.5.1.js"></script>
         <script src="libs/onoff/js/jquery.switcher.js"></script>
-        
+        <!-- <script src="composants/nav.js"></script> -->
         <link rel="stylesheet" href="libs/circleCanvas/styleCircleCanvas.css">
+        <link rel="stylesheet" href="styles/navbar.css">
     </head>
     <body>
 
-        <header id="navbar">
-            <!-- <?php include('composants/nav.php'); ?> -->
-        </header>
-
+      
         <!-- <script>
-            console.log("coucou");
-            $(function(){
-                $("#navbar").load("nav.html");
+            $.get("nav.html", function(data){
+                $("#navbar").replaceWith(data);
             });
-        </script> -->
-
+            </script> -->
         <!-- Sur les autres pages, sauf l'accueil
         <aside>
             <div class="connexion">
@@ -34,90 +30,92 @@
             </div>
         </aside> -->
 
-        <div class="widgets">
+            <div class="widgets">
 
-            <!-- widget meteo -->
-            <div class="meteo_widget">
-
-                <div class="meteo">
-                    <div class="type_temps"><img src="resources/icons/widgets_light/nuage.png" class="icon_type_temps" alt="icone temps"> Nuageux</div>
-                    <div class="temperature">20°C</div>
-                </div>
-
-                <div class="connexion_meteo_widget">
-                    <div><img class="aside_icon connexion_icon" src="resources/icons/connected.png" alt=""><p>Connecté</p></div> 
-                </div>
-
-                <div class="time">
-                    <div class="heure">22:00</div>
-                    <div class="jour">Mardi 10 Mars</div>
-                </div>
-            </div>
-            <div class="sous_widgets">
-                <!-- widget 1 -->
-                <a href="pages/eclairage.html">
-                    <div class="eclairage_widget widget">
-                        <div class="icon">
-                            <div id="score" class="flex-container">
-                                <canvas class="round1" data-percent="11" data-color="#F9AD3C"></canvas>
-                            </div>
-                        </div>
-                        <h1>Éclairage</h1>
-                    </div>  
-                </a>
-
-                <a href="pages/lames_orientabes.html">
-                    <div class="lames-orientable_widget widget">
-                        <div class="icon">
-                            <div id="score" class="flex-container">
-                                <canvas class="round2" data-percent="90" data-color="#4795D5"></canvas>
-                            </div>
-                        </div>
-                        <h1>Lames orientables</h1>
+                <!-- widget meteo -->
+                <div class="meteo_widget">
+    
+                    <div class="meteo">
+                        <div class="type_temps"><img src="resources/icons/widgets_light/nuage.png" class="icon_type_temps" alt="icone temps"> Nuageux</div>
+                        <div class="temperature">20°C</div>
                     </div>
-                </a>
+    
+                    <div class="connexion_meteo_widget">
+                        <div><img class="aside_icon connexion_icon" src="resources/icons/connected.png" alt=""><p>Connecté</p></div> 
+                    </div>
+    
+                    <div class="time">
+                        <div class="heure">22:00</div>
+                        <div class="jour">Mardi 10 Mars</div>
+                    </div>
+                </div>
+                <div class="sous_widgets">
+                    <!-- widget 1 -->
+                    <a href="pages/eclairage.html">
+                        <div class="eclairage_widget widget">
+                            <div class="icon">
+                                <div id="score" class="flex-container">
+                                    <canvas class="round1" data-percent="11" data-color="#F9AD3C"></canvas>
+                                </div>
+                            </div>
+                            <h1>Éclairage</h1>
+                        </div>  
+                    </a>
+    
+                    <a href="pages/lames_orientabes.html">
+                        <div class="lames-orientable_widget widget">
+                            <div class="icon">
+                                <div id="score" class="flex-container">
+                                    <canvas class="round2" data-percent="90" data-color="#4795D5"></canvas>
+                                </div>
+                            </div>
+                            <h1>Lames orientables</h1>
+                        </div>
+                    </a>
+                        
+                    <a href="pages/config_wifi.html">
+                        <div class="wifi_widget widget">
+                            <div class="icon">
+                                <img src="resources/icons/widgets_light/wifi.png" alt="image de test">
+                            </div>
+                            <h1>Configuration wifi</h1>
+                        </div>
+                    </a>
+    
+                    <a href="pages/parametres.html">
+                        <div class="parametres_widget widget">
+                            <div class="icon">
+                                <img src="resources/icons/widgets_light/settings.png" alt="image de test">
+                            </div>
+                            <h1>Paramètres</h1>
+                        </div>
+                    </a>
                     
-                <a href="pages/config_wifi.html">
-                    <div class="wifi_widget widget">
-                        <div class="icon">
-                            <img src="resources/icons/widgets_light/wifi.png" alt="image de test">
+                    <a href="pages/guide_utilisation.html">
+                        <div class="guide_utilisation_widget widget">
+                            <div class="icon">
+                                <img src="resources/icons/widgets_light/book.png" alt="image de test">
+                            </div>
+                            <h1>Guide d'utilisation</h1>
                         </div>
-                        <h1>Configuration wifi</h1>
-                    </div>
-                </a>
-
-                <a href="pages/parametres.html">
-                    <div class="parametres_widget widget">
-                        <div class="icon">
-                            <img src="resources/icons/widgets_light/settings.png" alt="image de test">
+                    </a>
+                    
+                    <a href="pages/station_meteo.html">
+                        <div class="station_meteo_widget widget">
+                            <div class="icon">
+                                <img src="resources/icons/widgets_light/lamp.png" alt="image de test">
+                            </div>
+                            <h1>Station météo</h1>
                         </div>
-                        <h1>Paramètres</h1>
-                    </div>
-                </a>
-                
-                <a href="pages/guide_utilisation.html">
-                    <div class="guide_utilisation_widget widget">
-                        <div class="icon">
-                            <img src="resources/icons/widgets_light/book.png" alt="image de test">
-                        </div>
-                        <h1>Guide d'utilisation</h1>
-                    </div>
-                </a>
-                
-                <a href="pages/station_meteo.html">
-                    <div class="station_meteo_widget widget">
-                        <div class="icon">
-                            <img src="resources/icons/widgets_light/lamp.png" alt="image de test">
-                        </div>
-                        <h1>Station météo</h1>
-                    </div>
-                </a>
+                    </a>
+                </div>
+    
             </div>
-
-        </div>
+       
 
         <script src="scripts/theme.js"></script>
         <script src="scripts/heure.js"></script>
+        <script src="scripts/navbar.js"></script>
         <script src="libs/circleCanvas/scriptCircleCanvas.js"></script>
     </body>
 </html>

@@ -9,7 +9,9 @@ let themeSombreActif = 'false';
 let test = "green"
 let colorMain = "#52808B";
 
-// let colorNavBarC = ["#7093AE","#868FC9"];
+let colorNavBarC = ["#7093AE","#868FC9"];
+let colorCategorieNavBarC = "#50627B"
+
 let colorBackgroundC = "white";
 let colorH2C = "white";
 let colorMenuBarC = "#7093AE";
@@ -17,7 +19,9 @@ let colorMenuTitle = "white";
 
 // ====== Couleurs thème Sombre ======
 
-// let colorNavBarS = ["#455B6C","#40445F"]; //#455B6C à #40445F
+let colorNavBarS = ["#455B6C","#40445F"]; //#455B6C à #40445F
+let colorCategorieNavBarS = "#2E363F"
+
 let colorBackgroundS = "#343D47"; //tester le #121212
 let colorH2S = "#A1C3CB";
 let colorMenuBarS = "#455B6C";
@@ -30,6 +34,10 @@ let colorGuideTitreS = "#858FC8"; //#858FC8
 let colorStationMeteoTitleS = "#85C8C4"; //#85C8C4
 
 function themeClair(){
+    $('.navbar').css({
+        background: "-webkit-gradient(linear, right top, left bottom, from("+ colorNavBarC[0] +"), to("+ colorNavBarC[1] +"))" 
+    });
+    $(".icon_true").css('background-color', colorCategorieNavBarC);
     $('.test').css({
         background: "-webkit-gradient(linear, right top, left bottom, from(rgba(118, 146, 181, 0.7)), to(rgba(128, 144, 193, 0.7)))" 
     });
@@ -41,6 +49,10 @@ function themeClair(){
     $(".widget").css('color', "white");
 }
 function themeSombre(){
+    $('.navbar').css({
+        background: "-webkit-gradient(linear, right top, left bottom, from("+ colorNavBarS[0] +"), to("+ colorNavBarS[1] +"))" 
+    });
+    $(".icon_true").css('background-color', colorCategorieNavBarS);
     $('.test').css({
         background: "-webkit-gradient(linear, right top, left bottom, from(rgba(67, 79, 95, 0.7)), to(rgba(64, 68, 95, 0.7)))" 
     });

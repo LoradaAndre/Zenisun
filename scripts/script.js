@@ -77,3 +77,4 @@ let tabAllButtons = [];
 
 permutationBoutonSuiviSolaire();
 permutationBoutonGradateurLed()
+

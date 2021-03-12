@@ -1,0 +1,28 @@
+.navbar{
+    text-align: center;
+    background-color: teal;
+    position: fixed;
+    top: 0; left: 0;
+    width: 10%;
+
+}
+.icon_navbar img{
+    width: 60px;
+    height: auto;
+}
+
+.categorie{
+    padding: 6px;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: white;
+}
+
+.navbar .categorie{
+   margin: 0%;
+}
+/* si la souris scroll sur la barre de menu: 
+- alors le container -> position fixe
+- la barre -> plus en fixed */

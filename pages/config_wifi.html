@@ -1,9 +1,88 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <script src="../libs/jquery/jquery-3.5.1.js"></script>
+        <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/navbar.css">
+        <link href="../libs/onoff/css/switcher.css" rel="stylesheet">
+        <script src="../libs/onoff/js/jquery.switcher.js"></script>
         <title>Zenisun</title>
     </head>
     <body>
-        <p>page config wifi!!!!</p>
+        <!-- A faire en sorte de ne pas le répéter sur toute les pages -->
+        <div class="navbar">
+            <div class="categorie categorie_eclairage">
+                <a href="eclairage.html">
+                    <div class="icon_navbar">
+                        <img src="../resources/icons/widgets_light/lamp.png" alt="image de test">
+                    </div>
+                    <div class="nom_widget">Éclairage</div>
+                </a>
+            </div>
+        
+            <div class="categorie categorie_lames_orientables">
+                <a href="lames_orientabes.html">
+                    <div class="icon_navbar">
+                        <img src="../resources/icons/widgets_light/lames_prov.png" alt="image de test">
+                    </div>
+                    <div class="nom_widget">Lames orientables</div>
+                </a>
+            </div>
+        
+            <div class="categorie categorie_config_wifi icon_true">
+                <a href="config_wifi.html">
+                    <div class="icon_navbar">
+                        <img src="../resources/icons/widgets_light/wifi.png" alt="image de test">
+                    </div>
+                    <div class="nom_widget">Configuration wifi</div>
+                </a>
+            </div>
+        
+            <div class="categorie categorie_station_meteo">
+                <a href="station_meteo.html">
+                    <div class="icon_navbar">
+                        <img src="../resources/icons/widgets_light/nuage.png" alt="image de test">
+                    </div>
+                    <div class="nom_widget">Station météo</div>
+                </a>
+            </div>
+        
+            <div class="categorie categorie_guide_utilisation">
+                <a href="guide_utilisation.html">
+                    <div class="icon_navbar">
+                        <img src="../resources/icons/widgets_light/book.png" alt="image de test">
+                    </div>
+                    <div class="nom_widget">Guide d'utilisation</div>
+                </a>
+            </div>
+        
+            <div class="categorie categorie_parametres">
+                <a href="parametres.html">
+                    <div class="icon_navbar">
+                        <img src="../resources/icons/widgets_light/settings.png" alt="image de test">
+                    </div>
+                    <div class="nom_widget">Paramètres</div>
+                </a>
+            </div>
+        </div>
+        <!-- A faire en sorte de ne pas le répéter sur toute les pages -->
+        <aside>
+            <div class="connexion">
+                <div><img class="aside_icon connexion_icon" src="../resources/icons/connected.png" alt=""><p>Connecté</p></div> 
+            </div>
+            <div class="heure_nav">
+                <p>22:00</p>
+            </div>
+            <div class="home">
+                <a class="coucou" href="../index.html"><img class="aside_icon home_icon" src="../resources/icons/widgets_light/home.png" alt=""></a>
+            </div>
+        </aside>
+        <!-- =================== container =================== -->
+        <main>
+            <p>page config wifi!!!!</p>
+        </main>
+      
+        <script src="../scripts/theme.js"></script>
+        <script src="../scripts/heure.js"></script>
     </body>
 </html>
