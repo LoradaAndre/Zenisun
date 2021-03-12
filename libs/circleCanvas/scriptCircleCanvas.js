@@ -7,9 +7,19 @@ let min=0;
 **	@param target : elt HTML - l'élément canvas cible
 */
 function circle(i, target){
+
+  // console.log("test: " + ($("canvas").attr("id") == 'sombre'))
+  // if(($("canvas").attr("id") == 'sombre')){
+
+  // }
+
+  
 	let data = i;
  	//var data = document.querySelector('canvas.round1').dataset.percent;
-  let color = target.dataset.color;
+  
+  let color = "red";
+  
+  // let color = target.dataset.color;
   let canvas = target;
   canvas.width= "100";
   canvas.height= "100";
@@ -20,14 +30,26 @@ function circle(i, target){
 
 
   context.font = "20px Manrope";
-  context.fillStyle = target.dataset.color;
+  context.fillStyle = "red"
+  // context.fillStyle = target.dataset.color;
+ 
+  if(($(target).attr("id") == 'sombre')){
+    color = target.dataset.color;
+    context.fillStyle = target.dataset.color;
+    context.strokeStyle = '#39424E';
+  }
+  if(($(target).attr("id") == 'clair')){
+    color = "white";
+    context.fillStyle = "white"
+    context.strokeStyle = $(target).attr("colorBar");
+  }
   context.textAlign = "center";
   context.fillText(data+"%",53, 57);
   //console.log(perimetre)
   context.beginPath();
   context.arc(50, 50, 45, Math.PI/2, 3*Math.PI);
   context.lineWidth="9";
-  context.strokeStyle = '#39424E'
+  
 //  context.shadowOffsetX = 2;
   //context.shadowBlur= 10;
   /* context.shadowColor= 'rgba(0,0,0,0.1)' */
@@ -42,6 +64,8 @@ function circle(i, target){
 //  context.shadowColor= 'rgba(0,0,0,0.1)'
   //console.log(data)
   context.stroke();
+
+  
 
 
 }

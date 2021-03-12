@@ -34,6 +34,7 @@ let colorGuideTitreS = "#858FC8"; //#858FC8
 let colorStationMeteoTitleS = "#85C8C4"; //#85C8C4
 
 function themeClair(){
+    $('canvas').attr("id", "clair");
     $('.navbar').css({
         background: "-webkit-gradient(linear, right top, left bottom, from("+ colorNavBarC[0] +"), to("+ colorNavBarC[1] +"))" 
     });
@@ -49,6 +50,7 @@ function themeClair(){
     $(".widget").css('color', "white");
 }
 function themeSombre(){
+    $('canvas').attr("id", "sombre");
     $('.navbar').css({
         background: "-webkit-gradient(linear, right top, left bottom, from("+ colorNavBarS[0] +"), to("+ colorNavBarS[1] +"))" 
     });
