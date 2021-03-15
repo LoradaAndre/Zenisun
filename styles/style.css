@@ -109,6 +109,7 @@ aside p {
 
 /* ========================== BOUTONS ========================== */
 /* Boutons simples */
+
 .bouton{
     color: white;
     font-weight: bold;
@@ -120,6 +121,7 @@ aside p {
     margin: 1px;
     padding: 5px;
     display: inline-block;
+    cursor: pointer;
 }
 
 /* Geo items */
@@ -156,25 +158,21 @@ aside p {
 .list_of_buttons_suivi_sol h3 , .list_of_buttons_grad_LED h3, .boutons_colorisation h3{
     background-color: white;
     color: black;
-    border-radius: 3px;
+    cursor: pointer;
     font-weight: normal;
     margin: 5px;
     padding: 2px;
     text-align: center;
 }
+
+.list_of_buttons_suivi_sol h3 , .list_of_buttons_grad_LED h3{
+    border-radius: 3px;
+}
 .list_of_buttons_suivi_sol h3:hover, .list_of_buttons_grad_LED h3:hover{
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.10);
 }
 
-.boutons_colorisation{
-    display: flex;
-    justify-content: center;
-}
-.boutons_colorisation h3{
-    margin: 10px;
-    padding: 5px;
-    border-radius: 3px;
-}
+
 /* ========================== SWITCHER (ON/OFF) ========================== */
 
 .ui-switcher {
@@ -308,6 +306,27 @@ aside p {
     visibility: hidden;
 }
 
+.boutons_colorisation{
+    display: flex;
+    justify-content: center;
+}
+.boutons_colorisation h3{
+    margin: 10px;
+    padding: 5px;
+}
+
+.boutons_colorisation #R1{
+    background-color: #52808B;
+    color: white;
+}
+#R1{
+    margin-right: 0;
+    border-radius: 3px 0px 0px 3px;
+}
+#R2{
+    margin-left: 0;
+    border-radius: 0px 3px 3px 0px;
+}
   /* ========================== AUTRE ========================== */
   .h-grid{
       display: flex;
