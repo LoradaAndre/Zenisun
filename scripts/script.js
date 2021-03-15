@@ -1,22 +1,25 @@
-
+    /* ========================== FARBTASTIC  ========================== */
+   
 
 
  /* ========================== FOR RANGE SLIDER ========================== */
 
-const allRanges = document.querySelectorAll(".range-wrap");
+const allRanges = document.querySelectorAll(".zone-range-wrap");
 allRanges.forEach((wrap) => {
   const range = wrap.querySelector(".range");
   const bubble = wrap.querySelector(".bubble");
+  const contenuVal = wrap.querySelector(".value-range-wrap");
 
   range.addEventListener("input", () => {
-    setBubble(range, bubble);
+    setBubble(range, bubble, contenuVal);
   });
 
   // setting bubble on DOM load
-  setBubble(range, bubble);
+  setBubble(range, bubble, contenuVal);
 });
  
-function setBubble(range, bubble) {
+function setBubble(range, bubble, contenuVal) {
+
   const val = range.value;
 
   const min = range.min || 0;
@@ -25,6 +28,14 @@ function setBubble(range, bubble) {
   const offset = Number(((val - min) * 100) / (max - min));
 
   bubble.textContent = val;
+  console.log("coucou")
+  
+  
+  
+  if((contenuVal != null) && (contenuVal.textContent != null)){
+    contenuVal.textContent = val + " W";
+  }
+  
 
   // yes, 14px is a magic number
   bubble.style.left = `calc(${offset}% - 14px)`;
@@ -39,6 +50,10 @@ function permutationBoutonGradateurLed(){
 
 function permutationBoutonSuiviSolaire(){
   permutationBouton(".list_of_buttons_suivi_sol h3");
+}
+
+function permutationBoutonA(){
+  permutationBouton(".boutons_colorisation h3");
 }
 
 function permutationBouton(boutons){
@@ -66,15 +81,22 @@ let tabAllButtons = [];
   });
 }
 
- // Using Date() method 
- let d = Date(); 
-    
- // Converting the number value to string 
- a = d.toString()  
-   
- // Printing the current date 
- console.log("The current date is: " + a) 
-
 permutationBoutonSuiviSolaire();
-permutationBoutonGradateurLed()
+permutationBoutonGradateurLed();
+permutationBoutonA();
 
+/* ========================== Boutons changement coloriastion ========================== */
+
+
+$("#R1").click(function(){
+  $(".roue_chroma").hide();
+  $(".reglages_rvb").show();
+});
+
+$("#R2").click(function(){
+  $(".roue_chroma").show();
+  $(".reglages_rvb").hide();
+});
+
+$(".roue_chroma").hide();
+$(".reglages_rvb").show();

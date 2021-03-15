@@ -153,7 +153,7 @@ aside p {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
-.list_of_buttons_suivi_sol h3 , .list_of_buttons_grad_LED h3{
+.list_of_buttons_suivi_sol h3 , .list_of_buttons_grad_LED h3, .boutons_colorisation h3{
     background-color: white;
     color: black;
     border-radius: 3px;
@@ -164,6 +164,16 @@ aside p {
 }
 .list_of_buttons_suivi_sol h3:hover, .list_of_buttons_grad_LED h3:hover{
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.10);
+}
+
+.boutons_colorisation{
+    display: flex;
+    justify-content: center;
+}
+.boutons_colorisation h3{
+    margin: 10px;
+    padding: 5px;
+    border-radius: 3px;
 }
 /* ========================== SWITCHER (ON/OFF) ========================== */
 
@@ -210,17 +220,31 @@ aside p {
 
  
   /* ========================== RANGE SLIDER ========================== */
+  .value-range-wrap{
+    text-align: center;
+    display: block;
+  }
+  
+  .range-wrap-settings {
+    width: 70%;
+  }
+
+  .range-wrap-other {
+    width: 90%;
+  }
+  
+
   .range-wrap {
     position: relative;
     margin: auto;
-    width: 70%;
     padding: 1.5em 0; /*  Giving more room for hover  */
     max-width: 400px;
   }
   
   .range-wrap::before {
     content: "";
-    background: linear-gradient(to right, #ffffff, #F7CB80);
+    /* background: linear-gradient(to right, #ffffff, #F7CB80); */
+    background-color: #ffffff;
     width: 100%;
     height: 8px;
     display: block;
@@ -246,7 +270,7 @@ aside p {
     /* background: #52808B; */
     position: absolute;
     border-radius: 3px;
-    width: 1.5rem;
+    width: 1.8rem;
     height: 1.5rem;
     top: 50%;
     transform: translateY(-50%);
@@ -259,22 +283,31 @@ aside p {
     user-select: none; /*  Prevent Accidentally highlighting the number while sliding the cursor  */
   }
   
-  .range-wrap:hover .bubble,
-  .range-wrap:focus .bubble {
+  .range-wrap-settings:hover .bubble,
+  .range-wrap-settings:focus .bubble {
     color: white;
     transform: translateY(-50%) scale(1.5);
     padding: 0.1em;
   }
   /* Perso */
-  .zone-range-wrap{
+  .zone-range-wrap-settings{
       display: flex;
   }
 
-  .zone-range-wrap p{
+  .zone-range-wrap-settings p{
       margin: auto;
       padding: 0;
   }
-   
+  /* ========================== FARBTASTIC ========================== */
+
+#zoneColor{
+    width: min-content;
+    margin: auto;
+}
+.form-item{
+    visibility: hidden;
+}
+
   /* ========================== AUTRE ========================== */
   .h-grid{
       display: flex;

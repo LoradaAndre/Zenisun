@@ -6,6 +6,10 @@
         <link rel="stylesheet" href="../styles/navbar.css">
         <link href="../libs/onoff/css/switcher.css" rel="stylesheet">
         <script src="../libs/onoff/js/jquery.switcher.js"></script>
+
+        <script type="text/javascript" src="../libs/farbtastic/farbtastic.js"></script>
+        <link rel="stylesheet" href="../libs/farbtastic/farbtastic.css" type="text/css" />
+
         <title>Zenisun</title>
     </head>
     <body>
@@ -79,9 +83,136 @@
         </aside>
         <!-- =================== container =================== -->
         <main>
-            <p>page éclairage!!!!</p>
+          
+            <div class="flex-left">
+                <div class="test">
+                    <div class="container">
+                        <div class="line-check">
+                            <h1>Bandeau blanc n°1</h1>
+                            <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
+                            </div>
+                        </div>
+                        <div class="zone-range-wrap">
+                            <div class="range-wrap range-wrap-other">
+                                <input type="range" class="range" min="0" max="100">
+                                <output class="bubble"></output>
+                            </div>
+                            <div class="value-range-wrap">coucou</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="test">
+                    <div class="container">
+                        <div class="line-check">
+                            <h1>Bandeau RVB n°1</h1>
+                            <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
+                            </div>
+                        </div>
+                        <div class="zone-range-wrap">
+                            <div class="range-wrap range-wrap-other">
+                                <input type="range" class="range" min="0" max="100">
+                                <output class="bubble"></output>
+                            </div>
+                            <div class="value-range-wrap">coucou</div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="test">
+                    <div class="container">
+                        <div class="line-check">
+                            <h1>Bandeau RVB n°2</h1>
+                            <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
+                            </div>
+                        </div>
+                        <div class="zone-range-wrap">
+                            <div class="range-wrap range-wrap-other">
+                                <input type="range" class="range" min="0" max="100">
+                                <output class="bubble"></output>
+                            </div>
+                            <div class="value-range-wrap">coucou</div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="flex-right">
+                <div class="test">
+                    <div class="container">
+                        <div class="line-check">
+                            <h1>Bandeau blanc n°2</h1>
+                            <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
+                            </div>
+                        </div>
+                        <div class="zone-range-wrap">
+                            <div class="range-wrap range-wrap-other">
+                                <input type="range" class="range" min="0" max="100">
+                                <output class="bubble"></output>
+                            </div>
+                            <div class="value-range-wrap">coucou</div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="test">
+                    <h1>Colorisation</h1>
+                    <div class="hr"></div>
+                    <div class="container">
+                        <div class="boutons_colorisation">
+                            <h3 id=R1>Réglages RVB</h3>
+                            <h3 id=R2>Roue chromatique</h3>
+                        </div>
+                        <div class="reglages_rvb">
+                            <div class="zone-range-wrap-settings zone-range-wrap">
+                                <p>Rouge</p>
+                                <div class="range-wrap range-wrap-settings ">
+                                    <input type="range" class="range" min="0" max="255">
+                                    <output class="bubble"></output>
+                                </div>
+                            </div>
+                            <div class="zone-range-wrap-settings zone-range-wrap">
+                                <p>Vert</p>
+                                <div class="range-wrap range-wrap-settings ">
+                                    <input type="range" class="range" min="0" max="255">
+                                    <output class="bubble"></output>
+                                </div>
+                            </div>
+                            <div class="zone-range-wrap-settings zone-range-wrap">
+                                <p>Bleu</p>
+                                <div class="range-wrap range-wrap-settings ">
+                                    <input type="range" class="range" min="0" max="255">
+                                    <output class="bubble"></output>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="roue_chroma">
+                                    
+                        <script type="text/javascript" charset="utf-8">
+                            $(document).ready(function() {
+                            $('#zoneColor').farbtastic('#color');
+                            });
+                        </script>
+                        </head>
+                        <body>
+                        
+                        <form action="">
+                            <div class="form-item"><label for="color">Color:</label><input type="text" id="color" name="color" value="#123456" /></div><div id="zoneColor"></div>
+                        </form>
+        
+                          
+                            <!-- <img src="../resources/images/color_wheel_7301.png" width="50px" alt="" > -->
+                        </div>
+                       
+                        
+                    </div>
+                </div>
+            </div>
         </main>
-      
+        <script src="../scripts/script.js"></script>
         <script src="../scripts/theme.js"></script>
         <script src="../scripts/heure.js"></script>
     </body>
