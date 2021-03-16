@@ -37,8 +37,9 @@ h1{
 }
 
 .widget:hover{
-    box-shadow: 3px 3px 3px grey;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
 }
+
 
 /* ========================== GESTION DU BLOC METEO ========================== */
 

@@ -23,6 +23,10 @@
 .navbar .categorie{
    margin: 0%;
 }
+
+.categorie:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
 /* si la souris scroll sur la barre de menu: 
 - alors le container -> position fixe
 - la barre -> plus en fixed */

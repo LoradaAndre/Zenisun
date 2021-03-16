@@ -81,7 +81,6 @@ function themeSombre(){
 refreshAffichage("not ok")
 
 $('#switcher_theme').click(function(){
-    console.log("t'as cliqué")
     refreshAffichage("ok");
 });
 
@@ -97,51 +96,36 @@ function enregistrer(){
 
 function refreshAffichage(stringue){
     let onofftheme = ($('.checkIci .ui-switcher').attr('aria-checked'))
-    // let valeurCurseur = $('.checkIci .ui-switcher').attr('aria-checked');
-    console.log("val curs au moment de refresh : " + $('.checkIci .ui-switcher').attr('aria-checked'))
-    console.log("variable sauvegardée: " + themeSombreActif)
+   
     //On récupère la valeur par défaut si le local storag est inexistant
     if(localStorage.getItem("modeSombre") == 'undefined'){
-        console.log("a")
         localStorage.setItem("modeSombre",themeSombreActif)
         afficheTheme(getThemeEnregistre());
     }
    
     else if(onofftheme === undefined){
-        console.log("b: curseur value -> " + onofftheme)
         afficheTheme(getThemeEnregistre());
         
     }
-    // else if((onofftheme != undefined) && (onofftheme != getThemeEnregistre())){
-    //     console.log("et oui y'a ce cas la aussi...")
-    //     $('.checkIci .ui-switcher').attr('aria-checked', getThemeEnregistre())
-    // }
     if(stringue === "ok"){
-        console.log("sisisisisi");
         afficheTheme(onofftheme);
     }
     else{
-        console.log("nope")
         afficheTheme(getThemeEnregistre());
         $('.checkIci .ui-switcher').attr('aria-checked', getThemeEnregistre())
     }
-    
-    console.log("=============================================")
 }
 
 function afficheTheme(themeSombreAc){
     themeSombreAc = themeSombreAc.toString();
-    console.log(themeSombreAc + "- type: " + typeof themeSombreAc)
 
     if(themeSombreAc == 'true'){
         themeSombreActif = 'true';
-        console.log("ahah!")
         themeSombre();
         enregistrer();
     }
     else if(themeSombreAc == 'false'){
         themeSombreActif = 'false';
-        console.log("bbbbbhbhhhh!")
         themeClair();
         enregistrer();
     }
@@ -153,65 +137,3 @@ function afficheTheme(themeSombreAc){
 $(".coucou").click(function(){
     refreshAffichage("not ok");
 });
-
-
-// function sauvegardeDonnees(){
-//     //Sur les autres pages que les paramètres
-//     console.log("=======================================")
-//     console.log( "valcurseur :" + ($('.checkIci .ui-switcher').attr('aria-checked')) +"localstorage :" +(localStorage.getItem("modeSombre")))
-//     if( ($('.checkIci .ui-switcher').attr('aria-checked') == undefined) && (localStorage.getItem("modeSombre") == 'undefined')){
-//         console.log("local storage undefined et curseur inexistant -> on lui fout la default")
-//         localStorage.setItem("modeSombre", themeSombreActif);
-//     }
-//     else if(localStorage.getItem("modeSombre") == 'undefined'){
-//         console.log("local storage undefined -> on lui fout la default")
-//         localStorage.setItem("modeSombre", themeSombreActif);
-//     }
-//     //Sur la page de paramètre
-//     else{
-//         console.log("curseur existant -> on lui fout la valeur du courseur")
-//         console.log( "valcurseur indefini:" + ($('.checkIci .ui-switcher').attr('aria-checked') == undefined) +"localstorage vide:" +(localStorage.getItem("modeSombre") == 'undefined'))
-//         localStorage.setItem("modeSombre", $('.checkIci .ui-switcher').attr('aria-checked'));
-
-//     }
-// }
-
-// //Récupère le thème enregistré
-// function getThemeEnregistre(){
-//        return localStorage.getItem("modeSombre");
-// }
-
-// //Met à jour le thème
-// function refreshTheme(){
-//     let valCurseur = $('.checkIci .ui-switcher').attr('aria-checked')
-//      //dans le cas où le curseur est à true ou que le thème enregitré est sombre
-//      if(valCurseur == 'true' || localStorage.getItem("modeSombre") == 'true'){
-//         themeSombreActif = true;
-//     console.log("val curseur: " + valCurseur + " (un des deux est à true) et val local:" + localStorage.getItem("modeSombre") )
-//         console.log("refresh theme sombre activé");
-//         themeSombre();
-//     }else if(valCurseur == 'false' || localStorage.getItem("modeSombre") == 'false'){
-//         themeSombreActif = false;
-//         console.log("val curseur: " + valCurseur + "(un des deux est à false) et val local:" + localStorage.getItem("modeSombre") )
-//         console.log("refresh theme clair activé");
-//         themeClair();
-//     }else{
-//         console.log("on est dans les autres cas")
-//     }
-//     sauvegardeDonnees()
-    
-// }
-
-// $(document).ready(function(){
-//     refreshTheme();
-
-//     // En cas de clic
-//     $('#switcher_theme').click(function() {
-//         console.log("t'as cliqué")
-//         refreshTheme();
-//     });
-// });
-
-// $(".coucou").click(function(){
-//     refreshTheme();
-// });

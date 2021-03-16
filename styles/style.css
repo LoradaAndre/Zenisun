@@ -151,11 +151,11 @@ aside p {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 /* Boutons choix unique suivi solaire */
-.list_of_buttons_suivi_sol{
+.list_of_buttons_suivi_sol, .list_of_buttons_lames{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
-.list_of_buttons_suivi_sol h3 , .list_of_buttons_grad_LED h3, .boutons_colorisation h3{
+.list_of_buttons h3{
     background-color: white;
     color: black;
     cursor: pointer;
@@ -165,11 +165,15 @@ aside p {
     text-align: center;
 }
 
-.list_of_buttons_suivi_sol h3 , .list_of_buttons_grad_LED h3{
+.list_of_buttons_suivi_sol h3 , .list_of_buttons_grad_LED h3, .list_of_buttons_lames h3{
     border-radius: 3px;
 }
 .list_of_buttons_suivi_sol h3:hover, .list_of_buttons_grad_LED h3:hover{
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.10);
+}
+
+.list_of_buttons_lames{
+    margin-top: 10px;
 }
 
 
