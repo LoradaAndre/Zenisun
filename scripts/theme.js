@@ -98,8 +98,10 @@ function refreshAffichage(stringue){
     let onofftheme = ($('.checkIci .ui-switcher').attr('aria-checked'))
    
     //On récupère la valeur par défaut si le local storag est inexistant
-    if(localStorage.getItem("modeSombre") == 'undefined'){
+    console.log("pas défini: " + localStorage.getItem("modeSombre"))
+    if(localStorage.getItem("modeSombre") == null){
         localStorage.setItem("modeSombre",themeSombreActif)
+        console.log("et la si défini: " + localStorage.getItem("modeSombre"))
         afficheTheme(getThemeEnregistre());
     }
    
