@@ -15,7 +15,7 @@ allRanges.forEach((wrap) => {
   });
 
   // setting bubble on DOM load
-  setBubble(range, bubble, contenuVal);
+  // setBubble(range, bubble, contenuVal);
 });
  
 function setBubble(range, bubble, contenuVal) {
@@ -42,6 +42,7 @@ function setBubble(range, bubble, contenuVal) {
 }
 
 function setOffsetBubble(bubble, contenuVal, number) {
+  console.log("coucou")
   const offset = number;
 
   bubble.textContent = number;

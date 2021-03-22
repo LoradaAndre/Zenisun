@@ -1,14 +1,4 @@
-﻿/* ********************************************************************
- * Zenisun pergola script
- *
- * Author               Date        Comment
- *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * JMP                 2015/05/19	Initial version
- *
- ******************************************************************* */
-
- 
-	/** to convert error code to human readable strings */
+﻿/** to convert error code to human readable strings */
 var minor_default_string = {
 	200	: "ok",
 	404	: "Unknow command",
@@ -16,7 +6,7 @@ var minor_default_string = {
 	602	: "Homing not completed",
 	666	: "Error",
 };
-					
+	
 	// globals monitoring vars
 var monitoring_VDC1, monitoring_VDC2, monitoring_temp;	// power supply voltage (mV) and board temperature(1/10 degree)
 var monitoring_GPO_I = new Array();						// current General Purpose Outputs (GPO) current (mA)
@@ -60,6 +50,12 @@ var slider_light_inited = 0;							// toggle to 1 when callback added
 	// global configuration for manufacturer
 var motor_configuration = new Array();					// motors settings.
 
+
+$(document ).ready(function(){
+	 startup_main(); 
+}); 
+
+
 	// extract simple xml key content
 function getXMLValue(xmlData, field, child) 
 {
@@ -88,247 +84,6 @@ function toggle_led_connected( connected )
 	}
 }
 
-// 	// parse 'zns.cgi?cmd=d&p=iso' request result, update gui
-// function parse_general_status(data)
-// {
-	
-// 	if ( data == null )
-// 	{
-// 		toggle_led_connected(false);
-// 		return;
-// 	}
-// 	var ret_code = getXMLValue( data, 'retcode' );
-// 	if ( ret_code == '500' )
-// 		return;
-
-// 	var ans_ID = getXMLValue( data, 'ID' );
-// 	if ( ans_ID != my_current_automatum_idx ) // answer from old request before automatum switch
-// 		return;
-		
-// 	my_automatum_raw_data_array[my_current_automatum_idx] = data; // status cache for automatum change acceleration
-
-// 	toggle_led_connected(true);
-	
-// 		// extract main monitoring data
-// 	monitoring_temp = getXMLValue( data, 'Temp' );
-// 	monitoring_VDC1 = getXMLValue( data, 'VDC1' );
-// 	monitoring_VDC2 = getXMLValue( data, 'VDC2' );
-// 	monitoring_sun = getXMLValue( data, 's_elev' );
-// 	monitoring_date = getXMLValue( data, 'date' );
-// 	monitoring_user_config = getXMLValue( data, 'user' );
-// 	monitoring_sun_track_period = getXMLValue( data, 'sun_delay' );
-// 	monitoring_tmos = getXMLValue( data, 'tmos' );
-// 	monitoring_status = getXMLValue( data, 'status' );
-
-// 	$('#page_light').removeClass('ui-disabled');
-// 		// page motor enable handled on  monitoring_user_config&8
-// 	$('#page_wifi').removeClass('ui-disabled');
-// 	$('#page_settings').removeClass('ui-disabled');
-	
-// 		// extract General Purpose Outputs data
-// 	for ( i = 0 ; i < 12 ; i++ )
-// 	{
-// 		var gpo = getXMLValue( data, 'gpo'+i );
-// 		gpo = gpo.split(";");	// PWM ; current(mA)
-// 		monitoring_GPO_PWM[i] = gpo[0];
-// 		monitoring_GPO_I[i] = gpo[1];
-// 	}
-// 		// extract General Purpose Inputs data
-// 	for ( i = 0 ; i < 6 ; i++ )
-// 	{
-// 		monitoring_GPI_V[i] = getXMLValue( data, 'gpi'+i );
-// 	}
-// 		// extract motors position and max count
-// 	for ( i = 0 ; i < 2 ; i++ )
-// 	{
-// 		var pack = getXMLValue( data, 'Mot'+i );
-// 		pack = pack.split(";");	// current count ; max count
-// 		raw_motor_position[i] = pack[0];
-// 		raw_motor_max_count[i] = pack[1];
-// 		if ( pack.length >= 2 )
-// 			raw_motor_flag[i] = pack[2];
-// 	}
-
-// 		// light memory #1 ( only one mem slot supported )
-// 	var mem0pack = getXMLValue( data, 'mem0' );
-// 	mem0pack = mem0pack.split(";");	// split 8 mem values
-// 	for ( i = 0 ; i < 8 ; i++ )
-// 	mem0_pwm[i] = mem0pack[i];
-		
-	
-// 		// update header bar, visible in all pages
-// 	$("#sun").html( 'Elévation solaire : ' + monitoring_sun + ' &deg;' );
-// 	if ( monitoring_status & 2 ) // rain detected
-// 		$("#sun").removeClass('ui-icon-sun').removeClass('ui-icon-night').addClass('ui-icon-rain');
-// 	else
-// 	{
-// 		if ( monitoring_status & 32 ) // sun elevation below threshold
-// 			$("#sun").removeClass('ui-icon-rain').removeClass('ui-icon-sun').addClass('ui-icon-night');
-// 		else
-// 			$("#sun").removeClass('ui-icon-rain').removeClass('ui-icon-night').addClass('ui-icon-sun');
-// 	}
-
-// 	var d_pergola = new Date( parseInt(monitoring_date)*1000 );	
-// 	var d_pergola_h = d_pergola.getHours();
-// 	d_pergola_h = (d_pergola_h < 10) ? ("0" + d_pergola_h) : d_pergola_h;
-// 	var d_pergola_m = d_pergola.getMinutes();
-// 	d_pergola_m = (d_pergola_m < 10) ? ("0" + d_pergola_m) : d_pergola_m;
-// 	$("#clock").html( d_pergola_h + ":"+d_pergola_m );
-
-// 		// update gui according current active page
-// 	var activePage = $.mobile.activePage.attr("id");
-
-// 		// on motors page ... update sliders position
-// 	if ( slider_auto_update && activePage == "page_motors")
-// 	{
-// 			// convert count to percent
-// 		var position_mot0 = 100*raw_motor_position[0]/raw_motor_max_count[0];	
-// 		var position_mot1 = 100*raw_motor_position[1]/raw_motor_max_count[1];
-// 			// update sliders
-// 		$( '#slider-motor-0' ).val( position_mot0 ).slider("refresh");
-// 		$( '#slider-motor-1' ).val( position_mot1 ).slider("refresh");
-// 	}	
-	
-	
-// 		// on light page ... update leds power and sliders position
-// 	if ( slider_auto_update && activePage == "page_light")
-// 	{
-// 		for ( i = 4 ; i < 8 ; i++ )
-// 		{
-// 			var monit_v, monit_i, monit_p, text_led;
-// 			if ( i < 4 )
-// 				monit_v = monitoring_VDC1/1000;
-// 			else
-// 				monit_v = monitoring_VDC2/1000;
-// 			monit_i = monitoring_GPO_I[i] / 1000;
-// 				// compute power for this leds
-// 			monit_p = monit_v * monit_i;
-// 			if (i == 6)
-// 				text_led = led6;
-// 			if (i == 7)
-// 				text_led = led7;
-// 			text_led
-// 			if ( monit_p < 10)
-// 				$( "#pwr"+i ).text( text_led + monit_p.toFixed(1) + 'W' );
-// 			else
-// 				$( "#pwr"+i ).text( text_led + monit_p.toFixed(0) + 'W' );
-// 		}
-// 			// RVB power : 2 channels grouped.
-// 		{
-// 			var monit_v, monit_i, monit_p;
-// 			monit_v = monitoring_VDC2/1000;
-// 			monit_i = monitoring_GPO_I[4]/1000 + monitoring_GPO_I[5]/1000;
-// 			monit_p = monit_v * monit_i;
-// 			if ( monit_p < 10)
-// 				$( "#pwr11" ).text( led11 + monit_p.toFixed(1) + 'W' );
-// 			else
-// 				$( "#pwr11" ).text( led11 + monit_p.toFixed(0) + 'W' );
-// 		}
-			
-// 			// then update sliders
-// 		$( '#slider-light-4' ).val( monitoring_GPO_PWM[4]*100/255 ).slider("refresh");
-// 		$( '#slider-light-5' ).val( monitoring_GPO_PWM[5]*100/255 ).slider("refresh");
-// 		$( '#slider-light-6' ).val( monitoring_GPO_PWM[6]*100/255 ).slider("refresh");
-// 		$( '#slider-light-7' ).val( monitoring_GPO_PWM[7]*100/255 ).slider("refresh");
-		
-// 		$( '#slider-light-8' ).val( monitoring_GPO_PWM[8]*100/255 ).slider("refresh");
-// 		$( '#slider-light-9' ).val( monitoring_GPO_PWM[9]*100/255 ).slider("refresh");
-// 		$( '#slider-light-10' ).val( monitoring_GPO_PWM[10]*100/255 ).slider("refresh");
-// 		$( '#slider-light-11' ).val( monitoring_GPO_PWM[11]*100/255 ).slider("refresh");
-		
-// 		if ( monitoring_GPO_PWM[4] == 0 )
-// 			$("#checkbox-d4").prop('checked', false).checkboxradio('refresh');
-// 		else
-// 			$("#checkbox-d4").prop('checked', true).checkboxradio('refresh');
-
-// 		if ( monitoring_GPO_PWM[5] == 0 )
-// 			$("#checkbox-d5").prop('checked', false).checkboxradio('refresh');
-// 		else
-// 			$("#checkbox-d5").prop('checked', true).checkboxradio('refresh');
-
-// 		if ( monitoring_GPO_PWM[6] == 0 )
-// 			$("#checkbox-d6").prop('checked', false).checkboxradio('refresh');
-// 		else
-// 			$("#checkbox-d6").prop('checked', true).checkboxradio('refresh');
-
-// 		if ( monitoring_GPO_PWM[7] == 0 )
-// 			$("#checkbox-d7").prop('checked', false).checkboxradio('refresh');
-// 		else
-// 			$("#checkbox-d7").prop('checked', true).checkboxradio('refresh');
-
-// 	}
-	
-// 		// on settings page ... update pergola date and modes.
-// 	if ( activePage == "page_settings" )
-// 	{
-// 			// convert pergola date (seconds) to JS date (milliseconds), and format string
-// 		var d_pergola = new Date( parseInt(monitoring_date)*1000 );	
-// 		$("#date_entry").val( d_pergola.toLocaleString() );
-		
-// 			// update toggle switch options
-// 		$("#rain_mode").val( monitoring_user_config&1?1:0 ).flipswitch('refresh');
-// 		$("#sun_track_en").val( monitoring_user_config&2?1:0 ).flipswitch('refresh');
-// 		$("#sun_track_mode").val( monitoring_user_config&4?1:0 ).flipswitch('refresh');
-// 		$("#wintering_en").val( monitoring_user_config&8?1:0 ).flipswitch('refresh');
-// 		$("#auto_power_light").val( monitoring_user_config&16?1:0 ).flipswitch('refresh');
-// 		$("#sun_update").val( monitoring_sun_track_period ).selectmenu("refresh", true);
-// 		$("#pairing_en").val( monitoring_user_config&32?1:0 ).flipswitch('refresh');
-// 		$("#pmw_period").val( light_opt&3 ).selectmenu("refresh", true);
-// 		$("#synchrone_shaders").val( monitoring_user_config&128?1:0 ).flipswitch('refresh');
-		
-// 	}
-
-// 	if ( activePage == "page_motors" )
-// 	{
-// 		if ( monitoring_user_config&(8|2) ) // V1.17 : disable manual motoir control if wintering OR sun tracking enabled.
-// 			$('#page_motors').addClass('ui-disabled');
-// 		else
-// 			$('#page_motors').removeClass('ui-disabled');
-// 	}	
-	
-// 		// on settings page ... display all data ( summary )
-// 	if ( activePage == "page_manuf" )
-// 	{
-// 		var raw_data = '';
-// 		raw_data += '<li>VIN #1      = ' + (monitoring_VDC1/1000) + ' V</li>';
-// 		raw_data += '<li>VIN #2      = ' + (monitoring_VDC2/1000) + ' V</li>';
-// 		raw_data += '<li>Board temp = ' + (monitoring_temp/10) + ' &deg;C</li>';
-// 		raw_data += '<li>MOS temp = ' + (monitoring_tmos/10) + ' &deg;C</li>';
-// 		for ( i = 0; i < 6 ; i++ )
-// 			raw_data += '<li>GPI#' + i + ' = ' + (monitoring_GPI_V[i]/1000) + ' V</li>';
-// 		for ( i = 0; i < 8 ; i++ )
-// 			raw_data += '<li>GPO#' + i + ' = ' + (monitoring_GPO_I[i]/1000) + ' A / PWM = ' + monitoring_GPO_PWM[i] + '</li>';
-// 		raw_data += '<li>GPO#R' + ' =  PWM = ' + monitoring_GPO_PWM[8] + '</li>';
-// 		raw_data += '<li>GPO#G' + ' =  PWM = ' + monitoring_GPO_PWM[9] + '</li>';
-// 		raw_data += '<li>GPO#B' + ' =  PWM = ' + monitoring_GPO_PWM[10] + '</li>';
-		
-// 		for ( i = 0; i < 2 ; i++ )
-// 		{
-// 			raw_data += '<li>Moteur #' + i + ' = ' + raw_motor_position[i] + ' / ' + raw_motor_max_count[i] + ' count';
-// 			if ( raw_motor_flag[i] & 1 )
-// 				raw_data += ' [HOME_SET]';
-// 			if ( raw_motor_flag[i] & 2 )
-// 				raw_data += ' [CURRENT_STOP]';
-// 			if ( raw_motor_flag[i] & 4 )
-// 				raw_data += ' [RAIN_FLAG]';
-// 			if ( raw_motor_flag[i] & 16 )
-// 				raw_data += ' [PID_UNLOCK_ERR]';
-// 			if ( raw_motor_flag[i] & 32 )
-// 				raw_data += ' [TIMEOUT_ERR]';
-// 			raw_data += '</li>';
-// 		}
-
-// 		raw_data += '<li>Pergola orientation = ' + pergola_orient + ' &deg;</li>';
-// 		raw_data += '<li>Pergola location : lon=' + pergola_longitude + ' / lat=' + pergola_latitude +'</li>';
-		
-// 		raw_data += '<li>Sun elevation = ' + getXMLValue( data, 's_elev' ) + ' &deg;</li>';
-// 		raw_data += '<li>Sun   azimut  = ' + getXMLValue( data, 's_azi' ) + ' &deg;</li>';
-// 		raw_data += '<li>Sun projection on shaders= ' + getXMLValue( data, 's_prj' ) + ' &deg;</li>';
-		
-// //		$("#unpairing_en").val( monitoring_user_config&64?1:0 ).flipswitch('refresh');
-// 		$('#manuf_raw_data').html(raw_data);
-// 	}
-// }
 
 	/** periodic status request, and update gui */
 function periodic_update_1s()
@@ -346,11 +101,6 @@ function periodic_update_1s()
 		parse_periodic_update_error(jqXHR, textStatus, errorThrown);
 	});		
 }
-
-
-
-
-
 
 	/** handle user slide event on sliders <slider_id> */
 function slider_handle_led( slider_id, new_value )
@@ -507,23 +257,6 @@ function set_wintering( en )
 	else
 		set_user_config ( monitoring_user_config & ~8 );	// clr wintering  bit
 }
-/*
-obsolete
-function set_pairing( en )
-{
-	if ( en != 0 )
-		set_user_config ( monitoring_user_config | 32 );		// set pairing bit
-	else
-		set_user_config ( monitoring_user_config & ~32 );	// clr pairing bit
-}
-function set_unpairing( en )
-{
-	if ( en != 0 )
-		set_user_config ( monitoring_user_config | 64 );		// set pairing bit
-	else
-		set_user_config ( monitoring_user_config & ~64 );	// clr pairing bit
-}
-*/
 
 function set_winter_mode( en )
 {
@@ -559,7 +292,6 @@ function rvb_callback(color)
 	slider_handle_led( 512, 0.7*(green*100/255) );			// Green LED light better than green and blue.
 	slider_handle_led( 1024, blue*100/255 );			
 //	alert( red + " " +  green + " " + blue );
-
 
 }
 		
@@ -634,34 +366,6 @@ function apply_pergola_location()
 
 }
 
-
-
-
-
-
-	// local hour in string "08:00" to GMT minutes count since January 1st, 1970
-function localHourToGMTHour(str)
-{
-		var h_pergola = (new Date( 1970, 0, 1, str.substr(0,2), str.substr(3))).getTime();	 // in milliseconds
-//		alert (new Date( h_pergola ).toLocaleString());
-//		alert ( h_pergola/1000/60 );
-		return h_pergola/1000/60;
-}		
-function TwoDigit(v)		
-{
-	if (v < 10 )
-		return "0" + v;
-	return "" + v;
-}
-	// GMT minutes count since January 1st, 1970 to local hour in string "08:00"
-function GMTHourTolocalHour(minutes)
-{
-		var h_local = new Date(Date.UTC( 1970, 0, 1, parseInt(minutes/60), minutes%60 ));	
-		var str = TwoDigit(parseInt(h_local.getHours())) + ":"  + TwoDigit(parseInt(h_local.getMinutes() ));
-//		alert ( str );
-		return str;
-}		
-
 function apply_ligt_off_h() 
 {
 	ligt_off_h = $('#ligt_off_h').val()
@@ -705,7 +409,6 @@ function apply_ligt_on_h()
 	parse_command_error(jqXHR, textStatus, errorThrown);
 	});
 }
-
 
 function customize_user_interface(hwconfig)
 {
@@ -832,36 +535,13 @@ function change_automatum()
 		my_automatum_raw_configuration_array[my_current_automatum_idx] = data;
 		parse_configuration(data);
 		customize_user_interface(hwcfg);
-		// fw v1.8+
-		// fw1.20+ : move gui refresh on page show
-//		$('#shader_close_treshold').val( shader_close_treshold );
 		pergola_orient = Math.floor(((parseInt(pergola_orient,10)*4)+45)/90); // to index 0..15 ( of 22.5 deg step )
 		pergola_orient = Math.floor(pergola_orient * 45 / 2) ;					// index to degree
-//		$("#pergola_orient_usr").val( pergola_orient ).selectmenu("refresh", true);
-
-//		$('#loc_lat_angle').val( Math.abs(pergola_latitude) );
-//		if ( pergola_latitude < 0 )
-//			$("#loc_lat_ns").val( 1 ).selectmenu("refresh", true); // south
-//		else
-//			$("#loc_lat_ns").val( 0 ).selectmenu("refresh", true);	// north
-
-//		$('#loc_long_angle').val( Math.abs(pergola_longitude) );
-//		if ( pergola_longitude < 0 )
-//			$("#loc_lon_eo").val( 1 ).selectmenu("refresh", true); // West
-//		else
-//			$("#loc_lon_eo").val( 0 ).selectmenu("refresh", true);	// East
-
-
 		ligt_on_h = getXMLValue( data, 'ligt_on_h' );	// auto light on at this time
 		ligt_off_h = getXMLValue( data, 'ligt_off_h' );	// auto light on at this time
-//		$('#ligt_on_h').val( GMTHourTolocalHour(ligt_on_h) );
-//		$('#ligt_off_h').val( GMTHourTolocalHour(ligt_off_h) );
-	
 	}).error(  function( jqXHR, textStatus, errorThrown ) {
 		parse_command_error(jqXHR, textStatus, errorThrown);
 	});
-
-		
 }
 
 	/** pergola.html javascript entry point */
@@ -869,11 +549,14 @@ function startup_main()
 {
 	slider_auto_update = 1;
 	
+
 		// get legnet from HTML to enqueue power on label
+		// => sur la page éclairage
 	led6 = document.getElementById("pwr6").innerHTML;
 	led7 = document.getElementById("pwr7").innerHTML;
 	led11 = document.getElementById("pwr11").innerHTML;
 	
+	//=> si on change de "baie X"
 	$("#automatum_sel").change(function() {
 		my_current_automatum_idx = $("#automatum_sel :radio:checked").val();
 		my_current_automatum_cmd = '&ID='+my_current_automatum_idx;
@@ -1271,12 +954,7 @@ function parse_command_ret(data)
 	}
 }
 
-function parse_command_error(jqXHR, textStatus, errorThrown)
-{
-	$( "#messagebox_msg").html('<br/>' + "Déconnecté" + '<br/>');
-	$( "#messagebox" ).popup( "open" );
-	return;
-}
+
 function parse_periodic_update_error(jqXHR, textStatus, errorThrown)
 {
 	toggle_led_connected(false);
@@ -1382,3 +1060,10 @@ function firmware_wait_restart_usr()
 }
 
 // =============================== Answer command ajax ===============================
+
+function parse_command_error(jqXHR, textStatus, errorThrown)
+{
+	$( "#messagebox_msg").html('<br/>' + "Déconnecté" + '<br/>');
+	$( "#messagebox" ).popup( "open" );
+	return;
+}

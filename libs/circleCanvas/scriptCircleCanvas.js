@@ -15,11 +15,9 @@ function circle(i, target){
 
   
 	let data = i;
- 	//var data = document.querySelector('canvas.round1').dataset.percent;
   
   let color = "red";
   
-  // let color = target.dataset.color;
   let canvas = target;
   canvas.width= "100";
   canvas.height= "100";
@@ -28,10 +26,8 @@ function circle(i, target){
   var perimetre= 2*(2*Math.PI - 1/2 *Math.PI) * data
   const context = canvas.getContext("2d");
 
-
   context.font = "20px Manrope";
   context.fillStyle = "red"
-  // context.fillStyle = target.dataset.color;
  
   if(($(target).attr("id") == 'sombre')){
     color = target.dataset.color;
@@ -45,24 +41,21 @@ function circle(i, target){
   }
   context.textAlign = "center";
   context.fillText(data+"%",53, 57);
-  //console.log(perimetre)
   context.beginPath();
+
+  //Cercle de fond
   context.arc(50, 50, 45, Math.PI/2, 3*Math.PI);
   context.lineWidth="9";
-  
-//  context.shadowOffsetX = 2;
-  //context.shadowBlur= 10;
-  /* context.shadowColor= 'rgba(0,0,0,0.1)' */
-
   context.stroke();
   context.beginPath();
-  context.arc(50, 50, 45, -1/2*Math.PI, ((data/100)*2*Math.PI-(1/2*Math.PI)));
+
+  //Cercle de valeur
+  if(data > 0){
+    context.arc(50, 50, 45, -1/2*Math.PI, ((data/100)*2*Math.PI-(1/2*Math.PI)));
+  }
+  
   context.lineWidth="10";
   context.strokeStyle = color;
-//  context.shadowOffsetX = 1;
-  //context.shadowBlur= 10;
-//  context.shadowColor= 'rgba(0,0,0,0.1)'
-  //console.log(data)
   context.stroke();
 
   
@@ -76,8 +69,12 @@ function circle(i, target){
 **	@param target : elt HTML - la balise canvas cible
 **	@param setIntId : int - id du setInterval
 */
-function increment(max, target, setIntId) {
-  if (min > max-1) {
+function increment(max, target) {
+  if(max == 0){
+    circle(min, target);
+    return;
+  }
+  if (min > max-1 ) {
     // stop à max
     window.clearInterval(myIntervals.setIntId);
     return;
@@ -89,9 +86,12 @@ function increment(max, target, setIntId) {
 
 for(let i=0; i<allCanvas.length; i++) {
 	let targetElt = allCanvas[i];
-  let percentMax = targetElt.dataset.percent;
-
-	myIntervals[i] = window.setInterval(increment.bind(this, percentMax, targetElt, i), 15);
+  // let percentMax = targetElt.dataset.percent;
+  let percentMax = targetElt.getAttribute("value");
+  
+  console.log("mmmmmmmmmmmmmmmmmmmmmm")
+  console.log("prout")
+	myIntervals[i] = window.setInterval(increment.bind(this, percentMax, targetElt), 15);
   // console.log(myIntervals);
 }
 

@@ -1,4 +1,5 @@
 
+
 	/** to convert error code to human readable strings */
     var minor_default_string = {
         200	: "ok",
@@ -177,7 +178,7 @@ function periodic_update_1s()
 function parse_configuration(data)
 {
     if ( data == null )
-    {
+    {   console.log("oui data est null")
         toggle_led_connected(false);
         return;
     }
@@ -190,6 +191,7 @@ function parse_configuration(data)
     {
         motor_pack = getXMLValue( data, 'Mot'+idx );
         motor_cfg = motor_pack.split(";");
+        console.log(motor_cfg)
         if ( motor_cfg.length > 0)
         {
             motor_configuration[idx] = {
@@ -330,13 +332,13 @@ function toggle_led_connected( connected )
 {
     if ( connected == true )
     {
-        document.getElementById('sta_connected').innerHTML = "Connecté";
+        document.querySelector('.connexion p').innerHTML = "Connecté";
         $('#sta_connected').addClass('ui-icon-green').removeClass('ui-icon-red');
     }
     else
     {
-        document.getElementById('sta_connected').innerHTML = "Déconnecté";
-        $('#sta_connected').addClass('ui-icon-red').removeClass('ui-icon-green');
+        document.querySelector('.connexion p').innerHTML = "Déconnecté";
+        // $('#sta_connected').addClass('ui-icon-red').removeClass('ui-icon-green');
     }
 }
 
@@ -419,142 +421,154 @@ function getXMLValue(xmlData, field, child)
         for ( i = 0 ; i < 8 ; i++ )
         mem0_pwm[i] = mem0pack[i];
             
+        // ====================> partie élévation solaire sur la mini bar
         
-            // update header bar, visible in all pages
-        $("#sun").html( 'Elévation solaire : ' + monitoring_sun + ' &deg;' );
-        if ( monitoring_status & 2 ) // rain detected
-            $("#sun").removeClass('ui-icon-sun').removeClass('ui-icon-night').addClass('ui-icon-rain');
-        else
-        {
-            if ( monitoring_status & 32 ) // sun elevation below threshold
-                $("#sun").removeClass('ui-icon-rain').removeClass('ui-icon-sun').addClass('ui-icon-night');
-            else
-                $("#sun").removeClass('ui-icon-rain').removeClass('ui-icon-night').addClass('ui-icon-sun');
-        }
+        //     // update header bar, visible in all pages
+        // $("#sun").html( 'Elévation solaire : ' + monitoring_sun + ' &deg;' );
+        // if ( monitoring_status & 2 ) // rain detected
+        //     $("#sun").removeClass('ui-icon-sun').removeClass('ui-icon-night').addClass('ui-icon-rain');
+        // else
+        // {
+        //     if ( monitoring_status & 32 ) // sun elevation below threshold
+        //         $("#sun").removeClass('ui-icon-rain').removeClass('ui-icon-sun').addClass('ui-icon-night');
+        //     else
+        //         $("#sun").removeClass('ui-icon-rain').removeClass('ui-icon-night').addClass('ui-icon-sun');
+        // }
     
-        var d_pergola = new Date( parseInt(monitoring_date)*1000 );	
-        var d_pergola_h = d_pergola.getHours();
-        d_pergola_h = (d_pergola_h < 10) ? ("0" + d_pergola_h) : d_pergola_h;
-        var d_pergola_m = d_pergola.getMinutes();
-        d_pergola_m = (d_pergola_m < 10) ? ("0" + d_pergola_m) : d_pergola_m;
-        $("#clock").html( d_pergola_h + ":"+d_pergola_m );
+        // ====================> partie heire sur la mini barre
+        // var d_pergola = new Date( parseInt(monitoring_date)*1000 );	
+        // var d_pergola_h = d_pergola.getHours();
+        // d_pergola_h = (d_pergola_h < 10) ? ("0" + d_pergola_h) : d_pergola_h;
+        // var d_pergola_m = d_pergola.getMinutes();
+        // d_pergola_m = (d_pergola_m < 10) ? ("0" + d_pergola_m) : d_pergola_m;
+        // $("#clock").html( d_pergola_h + ":"+d_pergola_m );
         
         // update gui according current active page
         let urlPageActuelle = location.href;
         let parties = urlPageActuelle.split("/");
         let activePage = parties[parties.length-1]
     
-            // on motors page ... update sliders position
-        if ( slider_auto_update && activePage == "lames_orientables.html")
-        {
-                // convert count to percent
-            var position_mot0 = 100*raw_motor_position[0]/raw_motor_max_count[0];	
-            var position_mot1 = 100*raw_motor_position[1]/raw_motor_max_count[1];
-                // update sliders
-                //=> ici remplacer par mes sliders de lames
-            // $( '#slider-motor-0' ).val( position_mot0 ).slider("refresh");
-            // $( '#slider-motor-1' ).val( position_mot1 ).slider("refresh");
-        }	
+        // ====================> sur la page de moteurs (lames orientables)
+        //     // on motors page ... update sliders position
+        // if ( slider_auto_update && activePage == "lames_orientables.html")
+        // {
+        //         // convert count to percent
+        //     var position_mot0 = 100*raw_motor_position[0]/raw_motor_max_count[0];	
+        //     var position_mot1 = 100*raw_motor_position[1]/raw_motor_max_count[1];
+        //         // update sliders
+        //         //=> ici remplacer par mes sliders de lames
+        //         let bbbbuble = document.querySelector(".bubble")
+        //         let contVal = document.querySelectorAll(".value-range-wrap")
+        //         setOffsetBubble(bbbbuble[0], contVal[0], position_mot0)
+        //         setOffsetBubble(bbbbuble[1], contVal[1], position_mot1)
+            
+        //     // $( '#slider-motor-0' ).val( position_mot0 ).slider("refresh");
+        //     // $( '#slider-motor-1' ).val( position_mot1 ).slider("refresh");
+        // }	
+
         
-        
+        // ====================> sur la page de l'éclairage
             // on light page ... update leds power and sliders position
-        if ( slider_auto_update && activePage == "eclairage.html")
-        {
-            for ( i = 4 ; i < 8 ; i++ )
-            {
-                var monit_v, monit_i, monit_p, text_led;
-                if ( i < 4 )
-                    monit_v = monitoring_VDC1/1000;
-                else
-                    monit_v = monitoring_VDC2/1000;
-                monit_i = monitoring_GPO_I[i] / 1000;
-                    // compute power for this leds
-                monit_p = monit_v * monit_i;
-                if (i == 6)
-                    text_led = led6;
-                if (i == 7)
-                    text_led = led7;
-                text_led
-                if ( monit_p < 10)
-                    $( "#pwr"+i ).text( text_led + monit_p.toFixed(1) + 'W' );
-                else
-                    $( "#pwr"+i ).text( text_led + monit_p.toFixed(0) + 'W' );
-            }
-                // RVB power : 2 channels grouped.
-            {
-                var monit_v, monit_i, monit_p;
-                monit_v = monitoring_VDC2/1000;
-                monit_i = monitoring_GPO_I[4]/1000 + monitoring_GPO_I[5]/1000;
-                monit_p = monit_v * monit_i;
-                if ( monit_p < 10)
-                    $( "#pwr11" ).text( led11 + monit_p.toFixed(1) + 'W' );
-                else
-                    $( "#pwr11" ).text( led11 + monit_p.toFixed(0) + 'W' );
-            }
+        // if ( slider_auto_update && activePage == "eclairage.html")
+        // {
+        //     for ( i = 4 ; i < 8 ; i++ )
+        //     {
+        //         var monit_v, monit_i, monit_p, text_led;
+        //         if ( i < 4 )
+        //             monit_v = monitoring_VDC1/1000;
+        //         else
+        //             monit_v = monitoring_VDC2/1000;
+        //         monit_i = monitoring_GPO_I[i] / 1000;
+        //             // compute power for this leds
+        //         monit_p = monit_v * monit_i;
+        //         if (i == 6)
+        //             text_led = led6;
+        //         if (i == 7)
+        //             text_led = led7;
+        //         text_led
+        //         if ( monit_p < 10)
+        //             $( "#pwr"+i ).text( text_led + monit_p.toFixed(1) + 'W' );
+        //         else
+        //             $( "#pwr"+i ).text( text_led + monit_p.toFixed(0) + 'W' );
+        //     }
+        //         // RVB power : 2 channels grouped.
+        //     {
+        //         var monit_v, monit_i, monit_p;
+        //         monit_v = monitoring_VDC2/1000;
+        //         monit_i = monitoring_GPO_I[4]/1000 + monitoring_GPO_I[5]/1000;
+        //         monit_p = monit_v * monit_i;
+        //         if ( monit_p < 10)
+        //             $( "#pwr11" ).text( led11 + monit_p.toFixed(1) + 'W' );
+        //         else
+        //             $( "#pwr11" ).text( led11 + monit_p.toFixed(0) + 'W' );
+        //     }
                 
-                // then update sliders
-            $( '#slider-light-4' ).val( monitoring_GPO_PWM[4]*100/255 ).slider("refresh");
-            $( '#slider-light-5' ).val( monitoring_GPO_PWM[5]*100/255 ).slider("refresh");
-            $( '#slider-light-6' ).val( monitoring_GPO_PWM[6]*100/255 ).slider("refresh");
-            $( '#slider-light-7' ).val( monitoring_GPO_PWM[7]*100/255 ).slider("refresh");
+        //         // then update sliders
+        //     $( '#slider-light-4' ).val( monitoring_GPO_PWM[4]*100/255 ).slider("refresh");
+        //     $( '#slider-light-5' ).val( monitoring_GPO_PWM[5]*100/255 ).slider("refresh");
+        //     $( '#slider-light-6' ).val( monitoring_GPO_PWM[6]*100/255 ).slider("refresh");
+        //     $( '#slider-light-7' ).val( monitoring_GPO_PWM[7]*100/255 ).slider("refresh");
             
-            $( '#slider-light-8' ).val( monitoring_GPO_PWM[8]*100/255 ).slider("refresh");
-            $( '#slider-light-9' ).val( monitoring_GPO_PWM[9]*100/255 ).slider("refresh");
-            $( '#slider-light-10' ).val( monitoring_GPO_PWM[10]*100/255 ).slider("refresh");
-            $( '#slider-light-11' ).val( monitoring_GPO_PWM[11]*100/255 ).slider("refresh");
+        //     $( '#slider-light-8' ).val( monitoring_GPO_PWM[8]*100/255 ).slider("refresh");
+        //     $( '#slider-light-9' ).val( monitoring_GPO_PWM[9]*100/255 ).slider("refresh");
+        //     $( '#slider-light-10' ).val( monitoring_GPO_PWM[10]*100/255 ).slider("refresh");
+        //     $( '#slider-light-11' ).val( monitoring_GPO_PWM[11]*100/255 ).slider("refresh");
             
-            if ( monitoring_GPO_PWM[4] == 0 )
-                $("#checkbox-d4").prop('checked', false).checkboxradio('refresh');
-            else
-                $("#checkbox-d4").prop('checked', true).checkboxradio('refresh');
+        //     if ( monitoring_GPO_PWM[4] == 0 )
+        //         $("#checkbox-d4").prop('checked', false).checkboxradio('refresh');
+        //     else
+        //         $("#checkbox-d4").prop('checked', true).checkboxradio('refresh');
     
-            if ( monitoring_GPO_PWM[5] == 0 )
-                $("#checkbox-d5").prop('checked', false).checkboxradio('refresh');
-            else
-                $("#checkbox-d5").prop('checked', true).checkboxradio('refresh');
+        //     if ( monitoring_GPO_PWM[5] == 0 )
+        //         $("#checkbox-d5").prop('checked', false).checkboxradio('refresh');
+        //     else
+        //         $("#checkbox-d5").prop('checked', true).checkboxradio('refresh');
     
-            if ( monitoring_GPO_PWM[6] == 0 )
-                $("#checkbox-d6").prop('checked', false).checkboxradio('refresh');
-            else
-                $("#checkbox-d6").prop('checked', true).checkboxradio('refresh');
+        //     if ( monitoring_GPO_PWM[6] == 0 )
+        //         $("#checkbox-d6").prop('checked', false).checkboxradio('refresh');
+        //     else
+        //         $("#checkbox-d6").prop('checked', true).checkboxradio('refresh');
     
-            if ( monitoring_GPO_PWM[7] == 0 )
-                $("#checkbox-d7").prop('checked', false).checkboxradio('refresh');
-            else
-                $("#checkbox-d7").prop('checked', true).checkboxradio('refresh');
+        //     if ( monitoring_GPO_PWM[7] == 0 )
+        //         $("#checkbox-d7").prop('checked', false).checkboxradio('refresh');
+        //     else
+        //         $("#checkbox-d7").prop('checked', true).checkboxradio('refresh');
     
-        }
+        // }
         
-            // on settings page ... update pergola date and modes.
-        if ( activePage == "page_settings" )
-        {
-                // convert pergola date (seconds) to JS date (milliseconds), and format string
-            var d_pergola = new Date( parseInt(monitoring_date)*1000 );	
-            $("#date_entry").val( d_pergola.toLocaleString() );
+        // ====================> sur la page de settings
+        //     // on settings page ... update pergola date and modes.
+        // if ( activePage == "page_settings" )
+        // {
+        //         // convert pergola date (seconds) to JS date (milliseconds), and format string
+        //     var d_pergola = new Date( parseInt(monitoring_date)*1000 );	
+        //     $("#date_entry").val( d_pergola.toLocaleString() );
             
-                // update toggle switch options
-            $("#rain_mode").val( monitoring_user_config&1?1:0 ).flipswitch('refresh');
-            $("#sun_track_en").val( monitoring_user_config&2?1:0 ).flipswitch('refresh');
-            $("#sun_track_mode").val( monitoring_user_config&4?1:0 ).flipswitch('refresh');
-            $("#wintering_en").val( monitoring_user_config&8?1:0 ).flipswitch('refresh');
-            $("#auto_power_light").val( monitoring_user_config&16?1:0 ).flipswitch('refresh');
-            $("#sun_update").val( monitoring_sun_track_period ).selectmenu("refresh", true);
-            $("#pairing_en").val( monitoring_user_config&32?1:0 ).flipswitch('refresh');
-            $("#pmw_period").val( light_opt&3 ).selectmenu("refresh", true);
-            $("#synchrone_shaders").val( monitoring_user_config&128?1:0 ).flipswitch('refresh');
+        //         // update toggle switch options
+        //     $("#rain_mode").val( monitoring_user_config&1?1:0 ).flipswitch('refresh');
+        //     $("#sun_track_en").val( monitoring_user_config&2?1:0 ).flipswitch('refresh');
+        //     $("#sun_track_mode").val( monitoring_user_config&4?1:0 ).flipswitch('refresh');
+        //     $("#wintering_en").val( monitoring_user_config&8?1:0 ).flipswitch('refresh');
+        //     $("#auto_power_light").val( monitoring_user_config&16?1:0 ).flipswitch('refresh');
+        //     $("#sun_update").val( monitoring_sun_track_period ).selectmenu("refresh", true);
+        //     $("#pairing_en").val( monitoring_user_config&32?1:0 ).flipswitch('refresh');
+        //     $("#pmw_period").val( light_opt&3 ).selectmenu("refresh", true);
+        //     $("#synchrone_shaders").val( monitoring_user_config&128?1:0 ).flipswitch('refresh');
             
-        }
+        // }
     
-        if ( activePage == "page_motors" )
-        {
-            if ( monitoring_user_config&(8|2) ) // V1.17 : disable manual motoir control if wintering OR sun tracking enabled.
-                $('#page_motors').addClass('ui-disabled');
-            else
-                $('#page_motors').removeClass('ui-disabled');
-        }	
+        // ====================> sur la page des lames orientables
+        // if ( activePage == "lames_orientables.html" )
+        // {
+        //     if ( monitoring_user_config&(8|2) ) // V1.17 : disable manual motoir control if wintering OR sun tracking enabled.
+        //         $('#page_motors').addClass('ui-disabled');
+        //     else
+        //         $('#page_motors').removeClass('ui-disabled');
+        // }	
         
+        // ====================> sur la page du setup
             // on settings page ... display all data ( summary )
-        if ( activePage == "page_manuf" )
+        if ( activePage == "setup.html" )
         {
             var raw_data = '';
             raw_data += '<li>VIN #1      = ' + (monitoring_VDC1/1000) + ' V</li>';

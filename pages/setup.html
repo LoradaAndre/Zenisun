@@ -9,11 +9,6 @@
 		<!-- <link rel="apple-touch-icon" href="images/zenisun.png" />  -->
 		<!-- <link rel="preload" href="images/red.png" as="image"> -->
 		<script src="../libs/jquery/jquery-3.5.1.js"></script>
-		<!-- <script src="../libs/jquery_mobile/jquery.mobile-1.4.5.min.js"></script>
-		<link rel="stylesheet" href="../libs/jquery_mobile/jquery.mobile.structure-1.4.5.min.css" />
-		<link rel="stylesheet" href="../libs/jquery_mobile/jquery.mobile.theme-1.4.5.min.css" />
-		<link rel="stylesheet" href="../libs/jquery_mobile/jquery.mobile.external-png-1.4.5.min.css" />
-		 -->
 		<link rel="stylesheet" href="../styles/setup.css" />
 		<script src="../scripts/setup.js"></script>
 		<!-- <script src="Chart.min.js"></script> -->
@@ -335,32 +330,13 @@
 
 					<div id="misc_cfg" data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> 
 						<h4>Miscellaneous</h4>
-<!--
-						<div data-role="fieldcontain">
-							<label for="pergola_orientation">Pergola orientation (Degree)</label>
-							<input type="number" name="pergola_orientation" id="cal_manuf_23" data-wrapper-class="ui-btn-inline" value="">
-							<a href="#" onclick="javascript:apply_manuf_config(23); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
-						</div>
--->						
+				
 						<div data-role="fieldcontain">
 							<label for="pergola_drying">Shader drying(Degree)</label>
 							<input type="number" name="pergola_drying" id="cal_manuf_24" data-wrapper-class="ui-btn-inline" value="">
 							<a href="#" onclick="javascript:apply_manuf_config(24); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
 						</div>
-<!--						
-						<div class="ui-field-contain">
-							<label for="longitude">Longitude : </label>
-							<input type="number" name="longitude" id="longitude_entry"> 
-						</div>
-						<div class="ui-field-contain">
-							<label for="latitude">Latitude : </label>
-							<input type="number" name="latitude" id="latitude_entry"> 
-						</div>
--->						
-						
-<!--						<a href="#" onclick="javascript:auto_gps(); return false;" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a">Autodetect position</a> -->
-<!--						<a href="#" onclick="javascript:apply_gps(); return false;" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a">Apply</a> -->
-						
+				
 						<form class="ui-grid-b">
 							<div class="ui-block-a">
 								<label for="hwcfg_b0">Motor 1</label>
@@ -385,25 +361,9 @@
 							<div class="ui-block-c">
 								<label for="hwcfg_b5">RGB 2</label>
 								<input type="checkbox" id="hwcfg_b5" name="hwcfg_b5" data-mini="true">
-							</div>
-<!-- v1.20							
-							<div class="ui-block-a">
-								<label for="hwcfg_b6">Moteur syncrhos</label>
-								<input type="checkbox" id="hwcfg_b6" name="hwcfg_b6" data-mini="true">
-							</div>
--->							
+							</div>		
 						</form>
-<!--					
-						<form>
-							<div class="ui-field-contain">
-								<label for="unpairing_en">Désapairage de télécommande :</label>
-								<select name="unpairing_en" id="unpairing_en" data-role="flipswitch">
-									<option value="0">Non</option>
-									<option value="1">Oui</option>
-								</select>
-							</div>
-						</form>
--->
+
 
 						<form>
 							<div class="ui-field-contain">
@@ -476,35 +436,17 @@
 					</ul>
 				</div>
 			</div>
-			
-
-		
 	
-		
-			
 			<div>
 				<a href="../cgi/data.cgi" rel="external" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a">Download raw flash data</a>
 				<a href="#" onclick="javascript:download_hystory(); return false;" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a">Display motors curves</a>
 			</div>
 			<canvas id="myChart" width="400" height="100"></canvas>
-<!--			<div id="chartContainer" style="height: 370px; width: 100%;"></div> -->
-
 			<div data-role="fieldcontain">
 				<label style="width: 5%;">Firmware update</label>
 				<input type="file" name="i" id="firmware_file" size="40" data-wrapper-class="ui-btn-inline" value="">
 				<a href="#" onclick="javascript:firmware_upload(); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">GO</a>
 			</div>
-
-			
-			
-<!--			
-			<form method="post" id="upload_webapp" action="/upload" enctype="multipart/form-data" data-ajax="false">
-				<span>Quick update : WebApp only</span>
-			
-			<input type="file" name="i" size="40"/>
-				<input type="submit" value="Fast upload WebApp" class="ui-btn ui-shadow ui-corner-all ui-btn-a" />
-			</form>
--->		
 		
 		</div><!-- /content -->
 		
@@ -515,7 +457,11 @@
 
 	</div><!-- /page -->
 
-	<script>$( document ).ready(function() { startup_setup(); }); </script>
+	<script>
+		$( document ).ready(function(){
+		 	startup_setup(); 
+		}); 
+	</script>
 
 	<div class="ui-loader ui-corner-all ui-body-a ui-loader-default"><span class="ui-icon-loading"></span><h1>loading</h1></div>
 </body>
