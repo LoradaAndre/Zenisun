@@ -34,7 +34,7 @@ function lectureCarte(){
           valueMotor1 = parseInt(getMotorValue(data, 25));
           valueMaxMotor0 = parseInt(getMotorMaxValue(data, 25));
       }).fail(function() {
-          alert("Lecture de la carte échouée")
+        //   alert("Lecture de la carte échouée")
       });	
 }
 

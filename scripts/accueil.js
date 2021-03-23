@@ -20,7 +20,7 @@ function lectureCarte(){
           valueMotor = parseInt(getMotorValue(data, 24));
           console.log(valueMotor)
       }).fail(function() {
-          alert("Lecture de la carte échouée")
+        //   alert("Lecture de la carte échouée")
       });	
 }
 

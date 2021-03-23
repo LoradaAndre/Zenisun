@@ -23,7 +23,7 @@
                     <div class="nom_widget">Éclairage</div>
                 </a>
             </div>
-        
+
             <div class="categorie categorie_lames_orientables">
                 <a href="lames_orientabes.html">
                     <div class="icon_navbar">
@@ -32,7 +32,7 @@
                     <div class="nom_widget">Lames orientables</div>
                 </a>
             </div>
-        
+
             <div class="categorie categorie_config_wifi">
                 <a href="config_wifi.html">
                     <div class="icon_navbar">
@@ -41,7 +41,7 @@
                     <div class="nom_widget">Configuration wifi</div>
                 </a>
             </div>
-        
+
             <div class="categorie categorie_station_meteo">
                 <a href="station_meteo.html">
                     <div class="icon_navbar">
@@ -50,7 +50,7 @@
                     <div class="nom_widget">Station météo</div>
                 </a>
             </div>
-        
+
             <div class="categorie categorie_guide_utilisation">
                 <a href="guide_utilisation.html">
                     <div class="icon_navbar">
@@ -59,7 +59,7 @@
                     <div class="nom_widget">Guide d'utilisation</div>
                 </a>
             </div>
-        
+
             <div class="categorie categorie_parametres">
                 <a href="parametres.html">
                     <div class="icon_navbar">
@@ -72,7 +72,7 @@
         <!-- A faire en sorte de ne pas le répéter sur toute les pages -->
         <aside>
             <div class="connexion">
-                <div><img class="aside_icon connexion_icon" src="../resources/icons/connected.png" alt=""><p>Connecté</p></div> 
+                <div><img class="aside_icon connexion_icon" src="../resources/icons/connected.png" alt=""><p>Connecté</p></div>
             </div>
             <div class="heure_nav">
                 <p>22:00</p>
@@ -83,7 +83,7 @@
         </aside>
         <!-- =================== container =================== -->
         <main>
-          
+
             <div class="flex-left">
                 <div class="test">
                     <div class="container">
@@ -93,7 +93,7 @@
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
                             </div>
                         </div>
-                        <div class="zone-range-wrap">
+                        <div class="zone-range-wrap  wrap-BB-1 wrap-bandeau">
                             <div class="range-wrap range-wrap-other">
                                 <input type="range" class="range" min="0" max="100">
                                 <output class="bubble"></output>
@@ -110,14 +110,14 @@
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
                             </div>
                         </div>
-                        <div class="zone-range-wrap">
+                        <div class="zone-range-wrap wrap-RGB-1 wrap-bandeau">
                             <div class="range-wrap range-wrap-other">
                                 <input type="range" class="range" min="0" max="100">
                                 <output class="bubble"></output>
                             </div>
                             <div class="value-range-wrap">coucou</div>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="test">
@@ -128,14 +128,14 @@
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
                             </div>
                         </div>
-                        <div class="zone-range-wrap">
+                        <div class="zone-range-wrap wrap-RGB-2 wrap-bandeau">
                             <div class="range-wrap range-wrap-other">
                                 <input type="range" class="range" min="0" max="100">
                                 <output class="bubble"></output>
                             </div>
                             <div class="value-range-wrap">coucou</div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -148,14 +148,14 @@
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
                             </div>
                         </div>
-                        <div class="zone-range-wrap">
+                        <div class="zone-range-wrap wrap-BB-2 wrap-bandeau">
                             <div class="range-wrap range-wrap-other">
                                 <input type="range" class="range" min="0" max="100">
                                 <output class="bubble"></output>
                             </div>
                             <div class="value-range-wrap">coucou</div>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="test">
@@ -167,53 +167,49 @@
                             <h3 id=R2>Roue chromatique</h3>
                         </div>
                         <div class="reglages_rvb">
-                            <div class="zone-range-wrap-settings zone-range-wrap">
+                            <div class="zone-range-wrap R zone-range-wrap-settings">
                                 <p>Rouge</p>
-                                <div class="range-wrap range-wrap-settings ">
+                                <div class="range-wrap range-wrap-settings">
                                     <input type="range" class="range" min="0" max="255">
                                     <output class="bubble"></output>
                                 </div>
                             </div>
-                            <div class="zone-range-wrap-settings zone-range-wrap">
+                            <div class="zone-range-wrap G zone-range-wrap-settings">
                                 <p>Vert</p>
-                                <div class="range-wrap range-wrap-settings ">
+                                <div class="range-wrap range-wrap-settings">
                                     <input type="range" class="range" min="0" max="255">
                                     <output class="bubble"></output>
                                 </div>
                             </div>
-                            <div class="zone-range-wrap-settings zone-range-wrap">
+                            <div class="zone-range-wrap B zone-range-wrap-settings">
                                 <p>Bleu</p>
-                                <div class="range-wrap range-wrap-settings ">
+                                <div class="range-wrap range-wrap-settings">
                                     <input type="range" class="range" min="0" max="255">
                                     <output class="bubble"></output>
                                 </div>
                             </div>
                         </div>
                         <div class="roue_chroma">
-                                    
-                        <script type="text/javascript" charset="utf-8">
-                            $(document).ready(function() {
-                            $('#zoneColor').farbtastic('#color');
-                            });
-                        </script>
+
                         </head>
                         <body>
-                        
+
                         <form action="">
                             <div class="form-item"><label for="color">Color:</label><input type="text" id="color" name="color" value="#123456" /></div><div id="zoneColor"></div>
                         </form>
-        
-                          
+
+
                             <!-- <img src="../resources/images/color_wheel_7301.png" width="50px" alt="" > -->
                         </div>
-                       
-                        
+
+
                     </div>
                 </div>
             </div>
         </main>
-        <script src="../scripts/setup.js"></script>
+        <!-- <script src="../scripts/setup.js"></script> -->
         <script src="../scripts/script.js"></script>
+        <script src="../scripts/eclairage.js"></script>
         <script src="../scripts/theme.js"></script>
         <script src="../scripts/heure.js"></script>
     </body>

@@ -19,13 +19,13 @@
  });
   
  function setBubble(range, bubble, contenuVal) {
- 
+    console.log("lo")
    const val = range.value;
  
    const min = range.min || 0;
    const max =  range.max || 100;
  
-   const offset = Number(((val - min) * 100) / (max - min));
+   offset = Number(((val - min) * 100) / (max - min));
  
    bubble.textContent = val;
  
@@ -34,18 +34,32 @@
  }
  
  function setOffsetBubble(bubble, contenuVal, number) {
-    const offset = number;
-    bubble.textContent = number;
+
+    // let a = bubble.parentNode.parentNode.classList
+    // if(a.contains("R") || a.contains("G") || a.contains("B")){
+    //     offset = offset*100/255
+    // }
+    // else{
+        offset = number;
+    // }
     
+    bubble.textContent = number;
+
     if((contenuVal != null) && (contenuVal.textContent != null)){
         if(contenuVal.parentNode.classList.contains("wrap-lames")){
             contenuVal.textContent = number + "%";
         }
-   }
- 
- 
-   // yes, 14px is a magic number
-   bubble.style.left = `calc(${offset}% - 14px)`;
+        if(contenuVal.parentNode.classList.contains("wrap-bandeau")){
+            contenuVal.textContent = number + "W";
+        }
+    }
+
+    let a = bubble.parentNode.parentNode.classList
+    if(a.contains("R") || a.contains("G") || a.contains("B")){
+        offset = offset*100/255
+    }
+    // yes, 14px is a magic number
+    bubble.style.left = `calc(${offset}% - 14px)`;
  }
  
  
@@ -126,4 +140,3 @@
  
  $(".roue_chroma").hide();
  $(".reglages_rvb").show();
- 

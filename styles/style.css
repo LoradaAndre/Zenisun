@@ -352,3 +352,7 @@ aside p {
       grid-template-columns: 80% 25%;
       margin-top: 10px;
   }
+
+  .bandeColor{
+      display: flex;
+  }
