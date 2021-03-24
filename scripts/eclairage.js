@@ -86,26 +86,24 @@ let zone = document.querySelector(".wrap-BB-1 .range");
 
 $(document).ready(function() {
     lectureCarte();
-    // $(zone).change(function(){
-    //     let val = parseInt(zone.value*255/100);
-    //     changerIntensite(64, val)
-    // });
     updateInputRange();
     //Actualisation des informations, refresh
     setInterval(function(){ 
         lectureCarte();
         updateOutputRange();
-        // if(bb1Intensite != undefined){
-        //     refreshBarre();
-        // }
-    }, 500);
-    // $('#zoneColor').farbtastic(function(color){
-    //     changeColor(color);
-    // });
+    }, 1000);
 
-        // setInterval(function(){ 
-         
-        // }, 100);
+    // $('#zoneColor').farbtastic('#color');
+
+    $('#zoneColor').farbtastic(function(color){
+        changeColor(color);
+        updateOutputRange()
+        console.log(this)
+        // $('#zoneColor').mouseup(function(){
+        //     changeColor(color)
+        //     console.log("relaché")
+        // });
+    });
 });
 
 //Récupère et converti l'intensité (0 à 255) en pourcentage
@@ -142,18 +140,6 @@ function refreshBarre(classRange, input){
         let contenuVal = range.querySelector(".value-range-wrap");
 
         setOffsetBubble(bubble, contenuVal, input);
-
-    //     let contenuVal = barre[i].querySelector(".value-range-wrap");
-    // let barre = document.querySelectorAll(".wrap-bb-1");
-    
-    // for(let i = 0; i< barre.length; i++){
-    //     let bubble = barre[i].querySelector(".bubble");
-    //     let contenuVal = barre[i].querySelector(".value-range-wrap");
-    //     if(config == 1){
-    //         setOffsetBubble(bubble, contenuVal, bb1Intensite);
-    //     }
-        
-    // }
 }
 
 //Requète qui change l'intensité d'un ruban
@@ -162,10 +148,26 @@ function changerIntensite(ruban, valeur){
         url: '../cgi/zns.cgi?cmd=l&o='+ ruban +'&p=' + valeur,
         context: document.body
       }).done(function(data) {
-         alert('done')
+        //  alert('done')
       }).fail(function() {
           alert("changement d'intensité échoué")
       });
 }
 
-// function changeColor();
+function changeColor(color){
+    console.log(color)
+    let hexR = color.substring(1,3);
+    let hexG = color.substring(3,5);
+    let hexB = color.substring(5,7);
+
+    
+    console.log("==============================")
+    console.log(hexR +" => "+ parseInt(hexR,16))
+    console.log(hexG +" => "+ parseInt(hexG,16))
+    console.log(hexB +" => "+ parseInt(hexB,16))
+    changerIntensite(256, parseInt(hexR,16))
+    changerIntensite(512, parseInt(hexG,16))
+    changerIntensite(1024, parseInt(hexB,16))
+    console.log("envoyé: (" + hexR + "," + hexG + "," + hexB + ")");
+    // console.log("test:" + hexR + " =>" + parseInt(hexR,16))
+}
