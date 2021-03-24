@@ -85,10 +85,10 @@ function updateInputRange(){
 
 //Met à jour les barres selon les données de la carte
 function updateOutputRange(){
-    refreshBarre(".wrap-RGB-1", RGBIntensite1);
-    refreshBarre(".wrap-RGB-2", RGBIntensite2);
-    refreshBarre(".wrap-BB-1", bb1Intensite);
-    refreshBarre(".wrap-BB-2", bb2Intensite);
+    refreshBarre(".wrap-RGB-1", RGBIntensite1, RGBWatt1);
+    refreshBarre(".wrap-RGB-2", RGBIntensite2, RGBWatt2);
+    refreshBarre(".wrap-BB-1", bb1Intensite, bb1Watt);
+    refreshBarre(".wrap-BB-2", bb2Intensite, bb2Watt);
     refreshBarre(".R", RColor);
     refreshBarre(".G", GColor);
     refreshBarre(".B", BColor);
@@ -99,12 +99,12 @@ function updateOutputRange(){
 $(document).ready(function() {
     lectureCarte();
     updateInputRange();
-    
+
     //Actualisation des informations, refresh
     setInterval(function(){ 
         lectureCarte();
         updateOutputRange();
-    }, 500);
+    }, 1000);
 
     // $('#zoneColor').farbtastic('#color');
 
@@ -160,13 +160,17 @@ function parseFirstDecimal(number){
 }
 
 //Actualisation des barres selon les données de la carte
-function refreshBarre(classRange, input){
+function refreshBarre(classRange, input, inputSpe){
+
+        if(typeof inputSpe == 'undefined'){
+            inputSpe = "";
+        }
 
         let range = document.querySelector(classRange)
         let bubble = range.querySelector(".bubble");
         let contenuVal = range.querySelector(".value-range-wrap");
 
-        setOffsetBubble(bubble, contenuVal, input);
+        setOffsetBubble(bubble, contenuVal, input, inputSpe);
 }
 
 //Requète qui change l'intensité d'un ruban

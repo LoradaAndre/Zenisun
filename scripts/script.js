@@ -19,7 +19,6 @@
  });
   
  function setBubble(range, bubble, contenuVal) {
-    console.log("lo")
    const val = range.value;
  
    const min = range.min || 0;
@@ -33,8 +32,11 @@
    bubble.style.left = `calc(${offset}% - 14px)`;
  }
  
- function setOffsetBubble(bubble, contenuVal, number) {
+function setOffsetBubble(bubble, contenuVal, number, numberSpe) {
 
+  if(typeof numberSpe == 'undefined'){
+    numberSpe = "";
+  }
     // let a = bubble.parentNode.parentNode.classList
     // if(a.contains("R") || a.contains("G") || a.contains("B")){
     //     offset = offset*100/255
@@ -50,7 +52,8 @@
             contenuVal.textContent = number + "%";
         }
         if(contenuVal.parentNode.classList.contains("wrap-bandeau")){
-            contenuVal.textContent = number + "W";
+            console.log(numberSpe)
+          contenuVal.textContent = numberSpe + "W";
         }
     }
 
