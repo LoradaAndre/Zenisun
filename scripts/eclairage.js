@@ -39,7 +39,6 @@ function lectureCarte(){
             RColor = getColor(data, 16); //16: <GPO 8>
             GColor = getColor(data, 17); //17: <GPO 9>
             BColor = getColor(data, 18); //18: <GPO 10>
-            console.log("("+RColor+","+GColor+","+BColor+")")
       }).fail(function() {
         //   alert("Lecture de la carte échouée")
           
@@ -49,6 +48,18 @@ function lectureCarte(){
 function changeValueWithRange(classRange, input){
     let range = document.querySelector(classRange + " .range");
     $(range).change(function(){
+
+        //Lorsque l'on touche à la barre, automatiquement on active le curseur on/off
+        if(classRange == ".wrap-BB-1"){
+            $(".BB1-check .ui-switcher").attr("aria-checked", "true");
+        }else if(classRange == ".wrap-BB-2"){
+            $(".BB2-check .ui-switcher").attr("aria-checked", "true");
+        }else if(classRange == ".wrap-RGB-1"){
+            $(".RGB1-check .ui-switcher").attr("aria-checked", "true");
+        }else if(classRange == ".wrap-RGB-2"){
+            $(".RGB2-check .ui-switcher").attr("aria-checked", "true");
+        }
+
         let val;
         if(classRange == ".R" || classRange == ".G" || classRange == ".B"){
             val = range.value;
@@ -57,11 +68,11 @@ function changeValueWithRange(classRange, input){
             //transformer la valeur en pourcentage, en intensité/couleur (0 à 255)
             val = parseInt(range.value*255/100);
         }
-        console.log("mettre la val: " + val + " à: " + classRange + "=> porte " + input)
-        changerIntensite(input, val);
+        changeValueEclairage(input, val);
     });
 }
 
+//Change les valeurs de la carte selon la position des sliders
 function updateInputRange(){
     changeValueWithRange(".wrap-RGB-1", 16);
     changeValueWithRange(".wrap-RGB-2", 32);
@@ -72,6 +83,7 @@ function updateInputRange(){
     changeValueWithRange(".B", 1024);
 }
 
+//Met à jour les barres selon les données de la carte
 function updateOutputRange(){
     refreshBarre(".wrap-RGB-1", RGBIntensite1);
     refreshBarre(".wrap-RGB-2", RGBIntensite2);
@@ -82,29 +94,44 @@ function updateOutputRange(){
     refreshBarre(".B", BColor);
 }
 
-let zone = document.querySelector(".wrap-BB-1 .range");
+// let zone = document.querySelector(".wrap-BB-1 .range");
 
 $(document).ready(function() {
     lectureCarte();
     updateInputRange();
+    
     //Actualisation des informations, refresh
     setInterval(function(){ 
         lectureCarte();
         updateOutputRange();
-    }, 1000);
+    }, 500);
 
     // $('#zoneColor').farbtastic('#color');
 
+    //Changer couleur selon la roue chromatique
     $('#zoneColor').farbtastic(function(color){
         changeColor(color);
-        updateOutputRange()
-        console.log(this)
-        // $('#zoneColor').mouseup(function(){
-        //     changeColor(color)
-        //     console.log("relaché")
-        // });
+        updateOutputRange();
     });
+
+    AllbandeauOff()
 });
+
+//Off sur le check => met la valeur à 0
+function bandeauOff(classCheck, input){
+    $(classCheck + " .ui-switcher").click(function(){
+        if($(this).attr("aria-checked") == "false"){
+            changeValueEclairage(input, 0)
+        }
+    });
+}
+
+function AllbandeauOff(){
+    bandeauOff(".RGB1-check", 16);
+    bandeauOff(".RGB2-check", 32);
+    bandeauOff(".BB1-check", 64);
+    bandeauOff(".BB2-check", 128);
+}
 
 //Récupère et converti l'intensité (0 à 255) en pourcentage
 function getIntensite(data, input){
@@ -143,7 +170,7 @@ function refreshBarre(classRange, input){
 }
 
 //Requète qui change l'intensité d'un ruban
-function changerIntensite(ruban, valeur){ 
+function changeValueEclairage(ruban, valeur){ 
     $.ajax({
         url: '../cgi/zns.cgi?cmd=l&o='+ ruban +'&p=' + valeur,
         context: document.body
@@ -154,20 +181,15 @@ function changerIntensite(ruban, valeur){
       });
 }
 
+//
 function changeColor(color){
-    console.log(color)
     let hexR = color.substring(1,3);
     let hexG = color.substring(3,5);
     let hexB = color.substring(5,7);
 
-    
-    console.log("==============================")
-    console.log(hexR +" => "+ parseInt(hexR,16))
-    console.log(hexG +" => "+ parseInt(hexG,16))
-    console.log(hexB +" => "+ parseInt(hexB,16))
-    changerIntensite(256, parseInt(hexR,16))
-    changerIntensite(512, parseInt(hexG,16))
-    changerIntensite(1024, parseInt(hexB,16))
-    console.log("envoyé: (" + hexR + "," + hexG + "," + hexB + ")");
-    // console.log("test:" + hexR + " =>" + parseInt(hexR,16))
+    changeValueEclairage(256, parseInt(hexR,16))
+    changeValueEclairage(512, parseInt(hexG,16))
+    changeValueEclairage(1024, parseInt(hexB,16))
+    // console.log("envoyé: (" + hexR + "," + hexG + "," + hexB + ")");
 }
+
