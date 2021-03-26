@@ -33,6 +33,11 @@ let colorParametreTitleS = "#9AC865"; //#9AC865
 let colorGuideTitreS = "#858FC8"; //#858FC8
 let colorStationMeteoTitleS = "#85C8C4"; //#85C8C4
 
+
+$(document).ready(function(){
+    refreshAffichage("not ok")
+});
+
 function themeClair(){
     $('canvas').attr("id", "clair");
     $('.navbar').css({
@@ -78,8 +83,6 @@ function themeSombre(){
     $(".station_meteo_widget").css('background-image', "url(resources/background/widgets/fond_station_meteo_sombre.png)");
 }
 
-refreshAffichage("not ok")
-
 $('#switcher_theme').click(function(){
     refreshAffichage("ok");
 });
@@ -98,7 +101,6 @@ function refreshAffichage(stringue){
     let onofftheme = ($('.checkIci .ui-switcher').attr('aria-checked'))
    
     //On récupère la valeur par défaut si le local storag est inexistant
-    console.log("pas défini: " + localStorage.getItem("modeSombre"))
     if(localStorage.getItem("modeSombre") == null){
         localStorage.setItem("modeSombre",themeSombreActif)
         console.log("et la si défini: " + localStorage.getItem("modeSombre"))

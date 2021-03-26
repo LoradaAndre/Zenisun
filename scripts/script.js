@@ -18,42 +18,45 @@
    // setBubble(range, bubble, contenuVal);
  });
   
- function setBubble(range, bubble, contenuVal) {
-   const val = range.value;
- 
-   const min = range.min || 0;
-   const max =  range.max || 100;
- 
-   offset = Number(((val - min) * 100) / (max - min));
- 
-   bubble.textContent = val;
- 
-   // yes, 14px is a magic number
-   bubble.style.left = `calc(${offset}% - 14px)`;
- }
- 
+//
+function setBubble(range, bubble) {
+  const val = range.value;
+
+  const min = range.min || 0;
+  const max =  range.max || 100;
+
+  offset = Number(((val - min) * 100) / (max - min));
+
+  bubble.textContent = val;
+
+  // yes, 14px is a magic number
+  bubble.style.left = `calc(${offset}% - 14px)`;
+}
+
 function setOffsetBubble(bubble, contenuVal, number, numberSpe) {
 
   if(typeof numberSpe == 'undefined'){
     numberSpe = "";
   }
-    // let a = bubble.parentNode.parentNode.classList
-    // if(a.contains("R") || a.contains("G") || a.contains("B")){
-    //     offset = offset*100/255
-    // }
-    // else{
-        offset = number;
-    // }
+  
+    offset = number;
     
     bubble.textContent = number;
 
     if((contenuVal != null) && (contenuVal.textContent != null)){
         if(contenuVal.parentNode.classList.contains("wrap-lames")){
+          if(typeof number == "undefined"){
+            contenuVal.textContent = "";
+          }else{
             contenuVal.textContent = number + "%";
+          }
         }
         if(contenuVal.parentNode.classList.contains("wrap-bandeau")){
-            console.log(numberSpe)
-          contenuVal.textContent = numberSpe + "W";
+          if(typeof number == "undefined"){
+            contenuVal.textContent = "";
+          }else{
+            contenuVal.textContent = numberSpe + "W";
+          }
         }
     }
 

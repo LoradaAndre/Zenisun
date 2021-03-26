@@ -6,7 +6,7 @@ let valueMotor1;
 let valueMaxMotor0;
 let valueMaxMotor1;
 
-let synchro = true;
+let synchro = false;
 
 $(document).ready(function (){
     
@@ -47,7 +47,6 @@ function updateInput(classWrap, motor){
 
         if(classWrap == ".wrap-lames-1"){
             let val = parseInt(rangeWrap.value*valueMaxMotor0/100);
-            console.log("c'est la 1")
             deplacementLames(1 ,val);
             if(synchro){
                 deplacementLames(2 ,val);
@@ -55,7 +54,6 @@ function updateInput(classWrap, motor){
         }
         else if(classWrap == ".wrap-lames-2"){
             let val = parseInt(rangeWrap.value*valueMaxMotor1/100);
-            console.log("c'est la 2");
             deplacementLames(2 ,val);
             if(synchro){
                 deplacementLames(1 ,val);
@@ -98,9 +96,7 @@ function updateOutputRange(){
 }
 
 function synchronisationLames(){
-    console.log(synchro)
     $(".synchro-check .ui-switcher").click(function(){
-        console.log("yep cliqué")
         if($(this).attr("aria-checked") == "false"){
             synchro = false;
         }else{

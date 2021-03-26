@@ -44,8 +44,6 @@ main{
     padding: 10px;
     
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.10);
- /* background: linear-gradient(to bottom right,rgba(118, 146, 181, 0.7), rgba(128, 144, 193, 0.7)); */ */
-
 }
 
 .flex-right , .flex-left{
@@ -246,7 +244,6 @@ aside p {
   
   .range-wrap::before {
     content: "";
-    /* background: linear-gradient(to right, #ffffff, #F7CB80); */
     background-color: #ffffff;
     width: 100%;
     height: 8px;
