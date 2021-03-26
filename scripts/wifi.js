@@ -61,6 +61,7 @@ function stockWifi(data){
     container.appendChild(bloc);
 
     let sousbloc1 = document.createElement("img")
+    $(sousbloc1).addClass("wifi_intensite")
     $(sousbloc1).addClass("part")
     bloc.appendChild(sousbloc1);
     graduationIntensité(parseInt(cle[1].textContent), sousbloc1)
@@ -75,12 +76,20 @@ function stockWifi(data){
 
     let details = document.createElement("h2");
     sousbloc2.appendChild(details)
-    details.textContent =" ici le WPA,... - canal " + cle[4].textContent
 
     let sousbloc3 = document.createElement("div")
-    $(sousbloc3).addClass("part")
+    $(sousbloc3).addClass("part sousBloc3")
     bloc.appendChild(sousbloc3);
-    sousbloc3.textContent = ">"
+    
+    let img1 = document.createElement("img")
+    sousbloc3.appendChild(img1);
+
+    let img2 = document.createElement("img")
+    img2.src = "../resources/icons/crochet.png"
+    sousbloc3.appendChild(img2);
+
+    details.textContent = typeSecurite(cle[2].textContent, img1) + " - canal " + cle[4].textContent
+
 
     }
     console.log(allWifi)
@@ -96,17 +105,23 @@ function applyCss(){
     refreshAffichage("not ok")
 
     $(".test").css({
-        "width" : "95%"
+        "width" : "95%",
     });
     $("main").css({
-        "display" : "block"
+        "display" : "block",
     });
     $(".test").css({
         "display" : "grid" ,
         "grid-template-columns" : "2fr 8fr 1fr"
     });
     $("h1").css({
-        "text-align": "left"
+        "text-align": "left",
+    });
+    $(".wifi_intensite").css({
+        "margin-left": "10%",
+    });
+    $(".sousbloc3").css({
+        "display" : "flex",
     });
   
 
@@ -130,4 +145,24 @@ function graduationIntensité(rssi, bloc){
     }else{
         console.log("prout")
     }
+}
+
+function typeSecurite(securite, bloc){
+    if(securite & 16){
+        bloc.src = "../resources/icons/cadenas.png"
+        if(securite & 128){
+            return 'WPA2';
+        } 
+        else{
+            if(securite & 64){
+                return 'WPA';
+            }else{
+                return 'WEP';
+            }
+        }       
+    }
+    else{
+        bloc.src = "../resources/icons/cadenasOuvert.png"
+        return 'Open';
+    }      
 }
