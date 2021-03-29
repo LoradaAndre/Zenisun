@@ -1,14 +1,18 @@
 
-let allWifi = new Array();
+let reseau;
+
+let connected = false;
+
 function scanWifi(){ 
     $.ajax({
         url: '../cgi/zns.cgi?cmd=s&p=s',
         context: document.body
       }).done(function(data) {
-        //  alert('done')
+        getConnected(data)
+
          getResultWifi();
-      }).fail(function() {
-          alert("Déplacement de la lame échoué")
+      }).fail(function(data) {
+          getConnected(data);
       });
 }
 
@@ -17,54 +21,46 @@ function getResultWifi(){
         url: '../cgi/zns.cgi?cmd=s&p=g',
         context: document.body
       }).done(function(data) {
-        //  alert('done')
-         console.log(data)
-         stockWifi(data)
-      }).fail(function() {
-          alert("Déplacement de la lame échoué")
+        getConnected(data)
+        stockWifi(data)
+      }).fail(function(data) {
+        getConnected(data)
+        alert("Déplacement de la lame échoué")
       });
 }
 
 function stockWifi(data){
 
-    // let container = document.querySelector("main .contain");
-    // let contenu = data.querySelector("root");
-    // console.log(contenu)
-    // container.innerHTML = String(contenu.innerHTML)
-    // console.log(container)
+    let allElementWifi = document.querySelectorAll(".blocWifi");
 
-    // let bss = document.querySelectorAll("bss")
-    // console.log(bss)
-    // for(let i = 0; i < bss.length; i++){
-    //     bss[i].classList.add("test")
-    // }
-    
-    
+    //Supression des réseaux existants
+    if(allElementWifi.length > 0){
+        for(let i = 0; i < allElementWifi.length; i++){
+            $(allElementWifi[i]).remove();
+        }
+    }
     let container = document.querySelector("main");
 
-    let reseau = data.querySelectorAll("bss")
+    reseau = data.querySelectorAll("bss")
 
-    console.log(reseau[0].children[0].textContent)
     for(let i = 0; i < reseau.length; i++){
-        let element = new Map();
         let cle = reseau[i].children
-        // for(let j = 0; j < cle.length; j++){
-        //     // element.set(cle[j],cle[j].textContent)
-        // }
-        // allWifi.push(element)
 
-          //a chaque fois
+    //a chaque fois
     let bloc = document.createElement("div")
-    // bloc.classList.add("test")
-    $(bloc).addClass("test")
-    console.log("mise en place du .test")
+
+    $(bloc).addClass("test blocWifi")
+    $(bloc).attr("data-bs-toggle","modal");
+    $(bloc).attr("data-bs-target","#exampleModalCenter");
+    $(bloc).attr("id", i)
     container.appendChild(bloc);
 
     let sousbloc1 = document.createElement("img")
+    $(sousbloc1).addClass("image")
     $(sousbloc1).addClass("wifi_intensite")
     $(sousbloc1).addClass("part")
     bloc.appendChild(sousbloc1);
-    graduationIntensité(parseInt(cle[1].textContent), sousbloc1)
+    graduationIntensiteWifi(parseInt(cle[1].textContent), sousbloc1)
 
     let sousbloc2 = document.createElement("div")
     $(sousbloc2).addClass("part")
@@ -82,19 +78,22 @@ function stockWifi(data){
     bloc.appendChild(sousbloc3);
     
     let img1 = document.createElement("img")
+    $(img1).addClass("image")
     sousbloc3.appendChild(img1);
 
     let img2 = document.createElement("img")
+    $(img2).addClass("image")
     img2.src = "../resources/icons/crochet.png"
     sousbloc3.appendChild(img2);
 
-    details.textContent = typeSecurite(cle[2].textContent, img1) + " - canal " + cle[4].textContent
+    details.textContent = typeSecurite(cle[2].textContent, img1, bloc) + " - canal " + cle[4].textContent
 
 
     }
-    console.log(allWifi)
-    console.log(document.querySelector("main"))
+
     applyCss();
+
+    overlayConnexion();
 
 }
 $(document).ready(function(){
@@ -106,13 +105,16 @@ function applyCss(){
 
     $(".test").css({
         "width" : "95%",
+        "margin" : "auto"
     });
     $("main").css({
         "display" : "block",
     });
     $(".test").css({
         "display" : "grid" ,
-        "grid-template-columns" : "2fr 8fr 1fr"
+        "grid-template-columns" : "2fr 8fr 1fr",
+        "margin": "5px",
+        "margin-bottom" : "10px"
     });
     $("h1").css({
         "text-align": "left",
@@ -127,9 +129,8 @@ function applyCss(){
 
 }
 
-function graduationIntensité(rssi, bloc){
+function graduationIntensiteWifi(rssi, bloc){
     let value = rssi - 113;
-    console.log("rssi: " + value)
     if(value > -50){
         console.log("wifi très bon (3barres)");
         bloc.src = "../resources/icons/wifi_graduation/wifi3B.png"
@@ -143,13 +144,15 @@ function graduationIntensité(rssi, bloc){
         console.log("wifi mediocre (0barre)")
         bloc.src = "../resources/icons/wifi_graduation/wifi0B.png"
     }else{
-        console.log("prout")
+        console.log("nope, je ne devrais pas m'afficher")
     }
 }
 
-function typeSecurite(securite, bloc){
+function typeSecurite(securite, blocImage, bloc){
+    $(bloc).addClass("image")
     if(securite & 16){
-        bloc.src = "../resources/icons/cadenas.png"
+        $(bloc).addClass("closed");
+        blocImage.src = "../resources/icons/cadenas.png"
         if(securite & 128){
             return 'WPA2';
         } 
@@ -162,7 +165,74 @@ function typeSecurite(securite, bloc){
         }       
     }
     else{
-        bloc.src = "../resources/icons/cadenasOuvert.png"
+        $(bloc).addClass("open");
+        $(bloc).removeAttr("data-bs-target");
+        $(bloc).removeAttr("data-bs-toggle");
+        blocImage.src = "../resources/icons/cadenasOuvert.png"
         return 'Open';
+
     }      
+}
+
+function overlayConnexion(){
+
+    let titreOverlay = document.querySelector("h5");
+
+    let ele = document.querySelectorAll(".test");
+    for(let i = 0; i < ele.length; i ++){
+        ele[i].addEventListener("click", function(){
+            
+            titreOverlay.textContent = "Connexion au réseau " + this.querySelector("h1").textContent
+            if(this.classList.contains("open")){
+                console.log("oui c'est ouveeeert")
+                    switch_network(ele[i].id)
+            }else{
+                $(".b_first").click(function(){
+                    console.log("connexion en cours...")
+                    switch_network(ele[i].id)
+                });
+            }
+        });
+    }
+}
+
+ /* ========================== Connexion ====================== */
+ 
+function getConnected(data){
+
+    let blocConnexion = document.querySelector(".connexion p");
+    let pastille = document.querySelector(".connexion img");
+  
+    if(data == null){
+        blocConnexion.textContent = "Déconnecté";
+        pastille.setAttribute("src" , "../resources/icons/disconnected.png")
+    }else{
+        blocConnexion.textContent = "Connecté";
+        pastille.setAttribute("src" , "../resources/icons/connected.png")
+    }
+}
+
+$(".bouton_detection").click(function(){
+    scanWifi()
+});
+
+$(".b_first").click(function(){
+
+});
+
+function switch_network(idElement){
+
+    console.log(reseau[idElement].querySelector("sec").textContent)
+    let sec = reseau[idElement].querySelector("sec").textContent
+	let password = $("input").val()
+    let name = reseau[idElement].querySelector("id").textContent
+    let type = reseau[idElement].querySelector("type").textContent
+	
+	$.post( "../cgi/zns_post.cgi" , { sec:sec, key:password, id:name, type:type })
+		.done(function( data ) {
+			alert("You need to connect your device to network " + name + " to continue to use Zenisun pergola" );	
+		})
+        .fail(function(){
+		    alert("Problème de connexion")
+	});
 }

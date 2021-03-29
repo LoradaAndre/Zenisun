@@ -1,0 +1,46 @@
+.bouton_detection{
+    float: right; 
+    margin-right: 37px;
+}
+
+.bouton_detection h1{
+    margin: 2%;
+    text-align: center !important;
+}
+
+.bouton_detection:hover{
+    cursor : pointer
+}
+
+.modal-title{
+    margin: 20px;
+}
+.modal-body{
+    text-align: center;
+}
+.overlay_button{
+    color: white;
+    background-color: #52808B; 
+    /* 84afb9 */
+    margin: 5px; 
+    margin-top: 20px;
+    padding: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.group_overlay_button{
+    justify-content: center;
+    display: flex;
+}
+
+.b_second{
+    background-color: #84afb9; 
+}
+h1{
+    margin-top: 10px;
+}
+.image{
+    width: 50%;
+}

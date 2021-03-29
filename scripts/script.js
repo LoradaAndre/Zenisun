@@ -146,3 +146,4 @@ function setOffsetBubble(bubble, contenuVal, number, numberSpe) {
  
  $(".roue_chroma").hide();
  $(".reglages_rvb").show();
+

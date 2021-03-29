@@ -2,9 +2,12 @@
     <head>
         <meta charset="utf-8">
         <script src="../libs/jquery/jquery-3.5.1.js"></script>
+
+        <link  rel="stylesheet" href="../libs/bootstrap/css/bootstrap.css">
+
+        <link rel="stylesheet" href="../styles/wifi.css">
         <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/navbar.css">
-        <link rel="stylesheet" href="../styles/wifi.css">
         <link href="../libs/onoff/css/switcher.css" rel="stylesheet">
         <script src="../libs/onoff/js/jquery.switcher.js"></script>
         <title>Zenisun</title>
@@ -80,13 +83,40 @@
         </aside>
         <!-- =================== container =================== -->
         <main>
-            <div class="test">
-                <h1>bouh</div>
+            <div class="bouton_detection bouton">
+                <h1>Détecter les réseaux wifi</h1>
             </div>
         </main>
+      
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <!-- <div class="modal-header"> -->
+                
+                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+              <!-- </div> -->
+                <div class="modal-body">
+                    <h5 class="modal-title" id="exampleModalLabel">Connexion au réseau </h5>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Entrez la clé de sécurité réseau</label>
+                        <input type="password" width="100%" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="group_overlay_button">
+                        <div class="overlay_button b_first">Connexion</div>
+                        <div class="overlay_button b_second" data-bs-dismiss="modal">Annuler</div>
+                    </div>
+                </div>
+             
+            </div>
+          </div>
+        </div>
+          <script src="../libs/bootstrap/js/bootstrap.min.js"></script>
+
         <script src="../scripts/theme.js" ></script>
-        <script src="../scripts/wifi.js"></script>
         <script src="../scripts/script.js"></script>
+        <script src="../scripts/wifi.js"></script>
+        
         <script src="../scripts/heure.js"></script>
     </body>
 </html>
