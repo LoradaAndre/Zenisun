@@ -40,7 +40,7 @@ $(document).ready(function(){
 
 function themeClair(){
     $('canvas').attr("id", "clair");
-    $('.navbar').css({
+    $('.navigation_bar').css({
         background: "-webkit-gradient(linear, right top, left bottom, from("+ colorNavBarC[0] +"), to("+ colorNavBarC[1] +"))" 
     });
     $(".icon_true").css('background-color', colorCategorieNavBarC);
@@ -56,7 +56,7 @@ function themeClair(){
 }
 function themeSombre(){
     $('canvas').attr("id", "sombre");
-    $('.navbar').css({
+    $('.navigation_bar').css({
         background: "-webkit-gradient(linear, right top, left bottom, from("+ colorNavBarS[0] +"), to("+ colorNavBarS[1] +"))" 
     });
     $(".icon_true").css('background-color', colorCategorieNavBarS);

@@ -1,4 +1,4 @@
-.navbar{
+.navigation_bar{
     text-align: center;
     background-color: teal;
     position: fixed;
@@ -15,12 +15,12 @@
     padding: 6px;
 }
 
-.navbar a{
+.navigation_bar a{
     text-decoration: none;
     color: white;
 }
 
-.navbar .categorie{
+.navigation_bar .categorie{
    margin: 0%;
 }
 

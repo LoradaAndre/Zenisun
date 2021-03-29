@@ -1,10 +1,16 @@
 @font-face {
     font-family: Manrope;
-    src: url("../resources/font/Manrope/Manrope-VariableFont_wght.ttf");
+    src: url("../resources/font/Manrope/Manrope-VariableFont_wght.ttf") !important;
    }
 html{
-    font-family: Roboto;
-    font-size: thin;
+    font-family: Roboto !important;
+    font-size: thin !important;
+}
+body{
+    font-family: Roboto !important;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
 }
 
 /* ========================== LES DIFFERENTS COMPOSANTS ========================== */
