@@ -1,0 +1,11 @@
+.form-contenantrol{
+    background-color: rgba(45,56,62,0);
+    border: none;
+    padding-left: 10px;
+    font-size: 0.8rem;
+    color: white;
+}
+.form-group{
+    margin: 0;
+    padding: 0;
+}

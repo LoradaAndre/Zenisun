@@ -2,7 +2,12 @@
     <head>
         <meta charset="utf-8">
         <title>Zenisun</title>
+
+        <link  rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.css">
+        <!-- <link rel="stylesheet" href="../libs/scss/custom.scss"> -->
+
         <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/parametres.css">
         <script src="../libs/jquery/jquery-3.5.1.js"></script>
         <link href="../libs/onoff/css/switcher.css" rel="stylesheet">
         <script src="../libs/onoff/js/jquery.switcher.js"></script>
@@ -81,11 +86,12 @@
         </aside>
 
         <main class="settings_main">
+            <!-- <button type="button" class="btn btn-primary">Primary</button> -->
             <div class="flex-left">
                 <div class="parametres_generaux test">
                     <h1>Paramètres généraux</h1>
                     <div class="hr"></div>
-                    <div class="container">
+                    <div class="contenant">
                         <div class="datePara">
                             <h2>Date</h2>
                             <p>01/03/2021</p>
@@ -125,29 +131,35 @@
                 <div class="eclairage test">
                     <h1>Eclairage</h1>
                     <div class="hr"></div>
-                    <div class="container">
+                    <div class="contenant">
                         <div class="line-check">
                             <h2>Allumage automatique sur horaire</h2>
-                            <div class="form-check form-check-inline">
+                            <div class="form-check form-check-inline check-allumage-auto-h">
                               <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
                             </div>
                         </div>
-                        <div class="heure_allum">
-                            <div>
-                                <h2>Heure démarrage</h2>
+                        <div class="selection_horaire_auto">
+                            <div class="heure_allum">
+                                <div>
+                                    <h2>Heure démarrage</h2>
+                                </div>
+                                <div class="h-grid h_allumage">
+                                    <div class="form-group row">
+                                        <input class="form-contenantrol" type="time" value="13:45:00" id="light_on_hour">
+                                    </div>
+                                    <div class="bouton btn-h-allumage"><h3>Appliquer</h3></div>
+                                </div>
                             </div>
-                            <div class="h-grid">
-                                <p>23:00</p>
-                                <p>></p>
-                            </div>
-                        </div>
-                        <div class="heure_extin">
-                            <div>
-                                <h2>Heure extinction</h2>
-                            </div>
-                            <div class="h-grid">
-                                <p>23:00</p>
-                                <p>></p>
+                            <div class="heure_extin">
+                                <div>
+                                    <h2>Heure extinction</h2>
+                                </div>
+                                <div class="h-grid h_extinction">
+                                    <div class="form-group row">
+                                        <input class="form-contenantrol" type="time" value="13:45:00" id="light_off_hour">
+                                    </div>
+                                    <div class="bouton btn-h-extinction"><h3>Appliquer</h3></div>
+                                </div>
                             </div>
                         </div>
                         <div class="">
@@ -167,7 +179,7 @@
                 <div class="parametres_generaux test">
                     <h1>Environnement</h1>
                     <div class="hr"></div>
-                    <div class="container">
+                    <div class="contenant">
                         <div class="line-check">
                             <h2>Hivernage</h2>
                             <div class="form-check form-check-inline">
@@ -221,7 +233,7 @@
                 <div class="apparence test">
                     <h1>Apparence</h1>
                     <div class="hr"></div>
-                    <div class="container">
+                    <div class="contenant">
                         <div class="line-check">
                             <h2>Thème sombre</h2>
                             <div class="form-check form-check-inline checkIci">
@@ -233,7 +245,7 @@
                 <div class="maj test">
                     <h1>Mise à jour logiciel</h1>
                     <div class="hr"></div>
-                    <div class="container">
+                    <div class="contenant">
                         <div class="majbar">
                             <div class="upload_input"><input type="hidden" name="MAX_FILE_SIZE" value="100" /> <input name="file" type="file" /></div>
                             <div class="bouton">
