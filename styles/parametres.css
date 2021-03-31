@@ -10,8 +10,38 @@
     padding: 0;
 }
 
-.list_of_buttons_saison{
+.list_of_buttons_saison, .list_of_buttons_intemperies{
     display: flex;
     gap: 10px;
-    justify-content: center;
+    justify-content: left;
+    /* margin-top: 0.83em; */
+    /* margin-bottom: 0.83em; */
+    margin: 0;
+    padding: 0;;
+    margin-left: 10px;
+} 
+
+.but{
+    vertical-align: middle;
+    padding: 6px;
+    border-radius: 3px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+h3{
+    margin-bottom: 0;;
+}
+/* h2{
+    margin-top: 1em; 
+    margin-bottom: 1em;
+    margin-right: 2%;
+} */
+
+h2{
+    margin-bottom: 0.53em;
+}
+.bloc{
+    margin-bottom: 15px;
 }

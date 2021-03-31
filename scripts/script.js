@@ -70,7 +70,12 @@ function setOffsetBubble(bubble, contenuVal, number, numberSpe) {
  
  
  /* ========================== Boutons multiples actualisation ========================== */
- 
+ function permutationBoutonSaison(){
+  permutationBouton(".list_of_buttons_saison h3");
+}
+function permutationBoutonIntemperies(){
+  permutationBouton(".list_of_buttons_intemperies h3");
+}
  
  function permutationBoutonGradateurLed(){
    permutationBouton(".list_of_buttons_grad_LED h3");
@@ -130,6 +135,8 @@ function setOffsetBubble(bubble, contenuVal, number, numberSpe) {
  permutationBoutonA();
  permutationBoutonLames1();
  permutationBoutonLames2();
+ permutationBoutonSaison()
+ permutationBoutonIntemperies();
  
  /* ========================== Boutons changement coloriastion ========================== */
  

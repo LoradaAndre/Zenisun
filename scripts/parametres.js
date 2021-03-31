@@ -201,3 +201,14 @@ function applyGradateurLed(idButton){
 		});
 	});
 }
+
+$(".button_ete").click(function(){
+	$(".saison_detail").show();
+});
+
+$(".button_hiver").click(function(){
+	$(".saison_detail").show();
+});
+$(".button_saision_off").click(function(){
+	$(".saison_detail").hide();
+});

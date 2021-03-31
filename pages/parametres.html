@@ -180,26 +180,41 @@
                     <h1>Environnement</h1>
                     <div class="hr"></div>
                     <div class="contenant">
-                        <div class="line-check">
-                            <h2>Fermeture en cas de pluie</h2>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
-                            </div>
-                        </div>
 
-                        <div class="bouton list_of_buttons_saison">
-                            <div class="button_off"><h3>Mode OFF</h3></div>
-                            <div class="button_ete"><h3>Mode été</h3></div>
-                            <div class="button_hiver"><h3>Mode hiver</h3></div>
-                        </div>
-                    
-                        <div class="line-check">
+                        <!-- <div class="line-check">
                             <h2>Hivernage</h2>
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
                             </div>
+                        </div> -->
+                        <div class="bloc">
+                            <div class="line-check">
+                                <h2>Fermeture en cas de pluie</h2>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
+                                </div>
+                            </div>
                         </div>
-                        <div class="line-check">
+                        <div class="bloc">
+                            <h2>Intempéries</h2>
+                            <div class=" list_of_buttons_intemperies">
+                                <h3 class="but button_intemp_off" id="I1">Désactivé</h3>
+                                <h3 class="but button_vent" id="I2">Blocage vent</h3>
+                                <h3 class="but button_neige" id="I3">Blocage neige</h3>
+                            </div>
+                        </div>
+                  
+                             
+                        <div class="bloc">
+                            <h2>Mode saisonier</h2>
+                            <div class=" list_of_buttons_saison">
+                                <h3 class="but button_saision_off" id="S1">Désactivé</h3>
+                                <h3 class="but button_ete" id="S2">Mode été</h3>
+                                <h3 class="but button_hiver" id="S3">Mode hiver</h3>
+                            </div>    
+                        </div>
+                       
+                        <!-- <div class="line-check">
                             <h2>Suivi solaire</h2>
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
@@ -210,29 +225,33 @@
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
                             </div>
-                        </div>
-                        <div class="">
-                            <h2>Seuil de fermeture nuit (degré élévation solaire)</h2>
-                            <div class="zone-range-wrap-settings zone-range-wrap">
-                                <p>0°</p>
-                                <div class="range-wrap range-wrap-settings ">
-                                    <input type="range" class="range" min="0" max="45">
-                                    <output class="bubble"></output>
+                        </div> -->
+
+                        <div class="saison_detail">
+                            <div class="bloc">
+                                <h2>Seuil de fermeture nuit (degré élévation solaire)</h2>
+                                <div class="zone-range-wrap-settings zone-range-wrap">
+                                    <p>0°</p>
+                                    <div class="range-wrap range-wrap-settings ">
+                                        <input type="range" class="range" min="0" max="45">
+                                        <output class="bubble"></output>
+                                    </div>
+                                    <p>45°</p>
                                 </div>
-                                <p>45°</p>
                             </div>
-                           
-                        </div>
-                        <div class="">
-                            <h2>Période d'actualisation de suivi solaire</h2>
-                            <div class="list_of_buttons_suivi_sol list_of_buttons">
-                                <h3 id="B1">1 min</h3>
-                                <h3 id="B2">5 min</h3>
-                                <h3 id="B3">15 min</h3>
-                                <h3 id="B4">30 min</h3>
-                                <h3 id="B5">60 min</h3>
+    
+                            <div class="bloc">
+                                <h2>Période d'actualisation de suivi solaire</h2>
+                                <div class="list_of_buttons_suivi_sol list_of_buttons">
+                                    <h3 id="B1">1 min</h3>
+                                    <h3 id="B2">5 min</h3>
+                                    <h3 id="B3">15 min</h3>
+                                    <h3 id="B4">30 min</h3>
+                                    <h3 id="B5">60 min</h3>
+                                </div>
                             </div>
                         </div>
+                        
        
                     </div>
                     
