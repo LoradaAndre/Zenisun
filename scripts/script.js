@@ -111,9 +111,9 @@ function setOffsetBubble(bubble, contenuVal, number, numberSpe) {
      const bubble = a.querySelector(".bubble");
      const contenuVal = a.querySelector(".value-range-wrap");
    
-     let n = $(this).html()
-     let newN = n.substring(0, n.length - 1);
-     setOffsetBubble(bubble, contenuVal, newN)
+    //  let n = $(this).html()
+    //  let newN = n.substring(0, n.length - 1);
+    //  setOffsetBubble(bubble, contenuVal, newN)
  
      // Sur tout les autres boutons
      for(let i = 0; i < tabAllButtons.length; i++){

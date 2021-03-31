@@ -3,12 +3,16 @@ let monitoring_user_config = 0;							// current user configuration :b0=rain mod
 let	heure_allumage = 1200;									// automatically power on light at XX:xx
 let	heure_extinction = 360;		
 
+let grad_led;
+
 $(document).ready(function(){
 	//Actualisation des informations, refresh
 	lectureCarte()
 
 	defaultCheck()
 	allumage_auto_horaire()
+
+	clickGradLed()
 
     setInterval(function(){ 
         lectureCarte();
@@ -35,12 +39,15 @@ function lectureCarte(){
         url: '../cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
         context: document.body
       }).done(function(data){
-		  console.log(data)
+		  console.log(data.all)
+		  	//heure allumage
 			heure_allumage = parseInt(data.all[13].textContent);	
-			console.log(heure_allumage)
-			document.querySelector(".h_allumage input").value	= GMTHourTolocalHour(heure_allumage);					
+			document.querySelector(".h_allumage input").value = GMTHourTolocalHour(heure_allumage);		
+			//heure extinction
 			heure_extinction = parseInt(data.all[14].textContent);	
 			document.querySelector(".h_extinction input").value = GMTHourTolocalHour(heure_extinction);
+			//gradateur LED
+			grad_led = parseInt(data.all[16].textContent);
       }).fail(function() {
         //   alert("Lecture de la carte échouée")  
     });
@@ -166,4 +173,31 @@ function TwoDigit(v){
 		return "0" + v;
 	}
 	return "" + v;
+}
+
+function clickGradLed(){
+	applyGradateurLed("#L1")
+	applyGradateurLed("#L2")
+	applyGradateurLed("#L3")
+	applyGradateurLed("#L4")
+	applyGradateurLed("#L5")
+}
+
+//Vitesse gradateur LED
+function applyGradateurLed(idButton){
+
+	$(idButton).click(function(){
+
+		light_opt = $(idButton).attr("value");
+
+		var command = '../cgi/zns.cgi?cmd=u&p=9&v=' + light_opt+my_current_automatum_cmd;
+		$.ajax({
+		  url: command,	
+		  context: document.body
+		}).done(function() {
+			alert("Mise en place du gradateur LED à " + $(idButton).text())
+		}).fail(function(){
+			alert("Erreur lors de la mise en place du gradateur LED")
+		});
+	});
 }
