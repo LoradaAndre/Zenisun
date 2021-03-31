@@ -16,6 +16,7 @@ $(document).ready(function(){
 	allumage_auto_horaire()
 
 	clickGradLed()
+	clickActSuiviSol()
 
     setInterval(function(){ 
         lectureCarte();
@@ -192,6 +193,14 @@ function clickGradLed(){
 	applyGradateurLed("#L5")
 }
 
+function clickActSuiviSol(){
+	applyPeriodSuiviSol("#B1")
+	applyPeriodSuiviSol("#B2")
+	applyPeriodSuiviSol("#B3")
+	applyPeriodSuiviSol("#B4")
+	applyPeriodSuiviSol("#B5")
+}
+
 //Vitesse gradateur LED
 function applyGradateurLed(idButton){
 
@@ -274,5 +283,24 @@ function apply_shader_close_treshold(value)
 		// alert("élévation solaire à " + value + " degrés")
 	}).fail( function(){
 		alert("fail dans l'élévation solaire")
+	});
+}
+
+function applyPeriodSuiviSol(idButton){
+
+	$(idButton).click(function(){
+
+		sun_upd_per = $(idButton).attr("value");
+		var command = '../cgi/zns.cgi?cmd=u&p=4&v=' + sun_upd_per+my_current_automatum_cmd;
+
+		$.ajax({
+		  url: command,	
+		  context: document.body
+		}).done(function() {
+			alert("temps suiv sol à " + sun_upd_per + " minutes" )
+		}).fail(function() {
+			alert("erreur lors de l'activation du temps du suivi solaire")
+		});
+
 	});
 }
