@@ -14,6 +14,7 @@ $(document).ready(function(){
 
 	defaultCheck()
 	allumage_auto_horaire()
+	fermeture_pluie()
 
 	clickGradLed()
 	clickActSuiviSol()
@@ -88,12 +89,21 @@ function allumage_auto_horaire(){
     $(".check-allumage-auto-h .ui-switcher").click(function(){
         if($(this).attr("aria-checked") == "false"){
             set_user_config ( monitoring_user_config & ~16 )
-			console.log(monitoring_user_config & ~16)
 			$(".selection_horaire_auto").hide();
         }else{
 			set_user_config ( monitoring_user_config | 16 );
-			console.log(monitoring_user_config | 16)
 			$(".selection_horaire_auto").show();
+		}
+    });
+}
+
+//Off sur le check => met la valeur à 0
+function fermeture_pluie(){
+    $(".check-fermeture_pluie .ui-switcher").click(function(){
+        if($(this).attr("aria-checked") == "false"){
+            set_user_config ( monitoring_user_config & ~4 )
+        }else{
+			set_user_config ( monitoring_user_config | 4 );
 		}
     });
 }
