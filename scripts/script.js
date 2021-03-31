@@ -64,6 +64,9 @@ function setOffsetBubble(bubble, contenuVal, number, numberSpe) {
     if(a.contains("R") || a.contains("G") || a.contains("B")){
         offset = offset*100/255
     }
+    if(a.contains("zone-wrap-elevation-sol")){
+      offset = offset*100/45
+    }
     // yes, 14px is a magic number
     bubble.style.left = `calc(${offset}% - 14px)`;
  }

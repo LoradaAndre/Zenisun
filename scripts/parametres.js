@@ -5,9 +5,12 @@ let	heure_extinction = 360;
 
 let grad_led;
 
+let sun_elev_close;
+
 $(document).ready(function(){
 	//Actualisation des informations, refresh
 	lectureCarte()
+	updateInputRange();
 
 	defaultCheck()
 	allumage_auto_horaire()
@@ -16,9 +19,10 @@ $(document).ready(function(){
 
     setInterval(function(){ 
         lectureCarte();
+        updateOutputRange();
 
 		
-    }, 10000);
+    }, 1000);
 });
 
 //Lecture de la carte, récupération des infos pour les paramètres
@@ -46,6 +50,11 @@ function lectureCarte(){
 			//heure extinction
 			heure_extinction = parseInt(data.all[14].textContent);	
 			document.querySelector(".h_extinction input").value = GMTHourTolocalHour(heure_extinction);
+			//sun elev close
+			// sun_elev_close = getSeuilFermeture(data, 15);
+			sun_elev_close = parseInt(data.all[15].textContent);
+			// console.log("sun ele en value: " + data.all[15].textContent)
+			// console.log("sun ele en %: " + sun_elev_close)
 			//gradateur LED
 			grad_led = parseInt(data.all[16].textContent);
       }).fail(function() {
@@ -212,3 +221,58 @@ $(".button_hiver").click(function(){
 $(".button_saision_off").click(function(){
 	$(".saison_detail").hide();
 });
+
+// ====================================================================
+
+//Récupère et converti le seuil de fermeture en pourcentage
+function getSeuilFermeture(data, input){
+    let newVal = data.all[input].textContent
+    return parseInt(newVal*100/45);
+}
+
+//Change les valeurs de la carte selon la position des sliders
+function updateInputRange(){
+    changeValueWithRange(".wrap-elevation_sol");
+}
+
+function changeValueWithRange(classRange){
+    let range = document.querySelector(classRange + " .range");
+    $(range).change(function(){
+		// console.log("range value: " + range.value)
+        apply_shader_close_treshold(range.value);
+    });
+}
+
+//Met à jour les barres selon les données de la carte
+function updateOutputRange(){
+	console.log("allez on change à (en %) :" + sun_elev_close)
+    refreshBarre(".wrap-elevation_sol", sun_elev_close);
+}
+
+//Actualisation des barres selon les données de la carte
+function refreshBarre(classRange, input, inputSpe){
+
+	if(typeof inputSpe == 'undefined'){
+		inputSpe = "";
+	}
+
+	let range = document.querySelector(classRange)
+	let bubble = range.querySelector(".bubble");
+	let contenuVal = range.querySelector(".value-range-wrap");
+
+	setOffsetBubble(bubble, contenuVal, input, inputSpe);
+}
+
+function apply_shader_close_treshold(value)
+{
+	var h = parseInt(value);
+	var command = '../cgi/zns.cgi?cmd=u&p=7&v=' + h+my_current_automatum_cmd;
+	$.ajax({
+	  url: command,	
+	  context: document.body
+	}).done(function(){
+		// alert("élévation solaire à " + value + " degrés")
+	}).fail( function(){
+		alert("fail dans l'élévation solaire")
+	});
+}
