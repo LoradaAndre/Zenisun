@@ -7,6 +7,8 @@ let grad_led;
 
 let sun_elev_close;
 
+let home_set = [];
+
 $(document).ready(function(){
 	//Actualisation des informations, refresh
 	lectureCarte()
@@ -22,7 +24,7 @@ $(document).ready(function(){
     setInterval(function(){ 
         lectureCarte();
         updateOutputRange();
-
+		console.log(monitoring_user_config)
 		
     }, 1000);
 });
@@ -35,7 +37,7 @@ function lectureCarte(){
         context: document.body
       }).done(function(data){
 		//   console.log(data)
-            monitoring_user_config = parseInt(data.all[30].textContent);
+			monitoring_user_config = parseInt(data.all[30].textContent);
       }).fail(function() {
         //   alert("Lecture de la carte échouée")  
     });	
@@ -59,12 +61,30 @@ function lectureCarte(){
 			// console.log("sun ele en %: " + sun_elev_close)
 			//gradateur LED
 			grad_led = parseInt(data.all[16].textContent);
+
+			home_set[0] = parseInt(getMotorHomeSet(data, 2))
+			home_set[1] = parseInt(getMotorHomeSet(data, 3))
       }).fail(function() {
         //   alert("Lecture de la carte échouée")  
     });
 
 	
 }
+
+//Récupère le homeset
+function getMotorHomeSet(data, input){
+    let valHomeSet = data.all[input].textContent
+    let newVal = valHomeSet.split(";")
+    return newVal[2]
+}
+
+//Récupère et converti la valeur du moteur en pourcentage
+function getMotorValue(data, input){
+    let valMotor = data.all[input].textContent
+    let newVal = valMotor.split(";")
+    return newVal[0]*100/newVal[1]
+}
+
 
 //Permet d'effectuer un homing des moteurs
 function homming(mot_id){
@@ -184,7 +204,7 @@ function localHourToGMTHour(str){
 function GMTHourTolocalHour(minutes){
 		var h_local = new Date(Date.UTC( 1970, 0, 1, parseInt(minutes/60), minutes%60 ));	
 		var str = TwoDigit(parseInt(h_local.getHours())) + ":"  + TwoDigit(parseInt(h_local.getMinutes() ));
-		console.log(str)
+		// console.log(str)
 		return str;
 }	
 
@@ -230,16 +250,57 @@ function applyGradateurLed(idButton){
 	});
 }
 
+// ================= mode saisonnier =======================
+
 $(".button_ete").click(function(){
 	$(".saison_detail").show();
+	set_user_config ( monitoring_user_config | 2 );		// set tracking bit
+	set_user_config ( monitoring_user_config & ~4 );	// clr winter bit
 });
 
 $(".button_hiver").click(function(){
 	$(".saison_detail").show();
+	set_user_config ( monitoring_user_config | 4 );		// set winter bit
+	set_user_config ( monitoring_user_config | 2 );		// set tracking bit	
 });
+
 $(".button_saision_off").click(function(){
 	$(".saison_detail").hide();
+	set_user_config ( monitoring_user_config & ~2 );	// clr tracking bit
+	set_user_config ( monitoring_user_config & ~4 );	// clr winter bit
 });
+
+// ================= mode intempéries =======================
+
+$(".button_vent").click(function(){
+	deplacementLames(3, 0);  //déplacement de tout les moteurs à 0°
+	set_user_config ( monitoring_user_config | 8 );		// set wintering  bit
+	$(".button_neige").hide();
+});
+
+$(".button_neige").click(function(){
+	deplacementLamesAngle(3, 90);  //déplacement de tout les moteurs à 90°
+	set_user_config ( monitoring_user_config | 8 );		// set wintering  bit
+	$(".button_vent").hide();
+});
+
+$(".button_intemp_off").click(function(){
+	//Si le homing n'a pas été fait, on le réalise
+	for(let i = 0; i < home_set.length; i++){
+		if(home_set[i] & 1){
+			console.log("passage au suivant")
+		}
+		else{
+			homming(i+1)
+		}
+	}
+	set_user_config ( monitoring_user_config & ~8 );	// clr wintering  bit
+
+	$(".button_neige").show();
+	$(".button_vent").show();
+});
+
+
 
 // ====================================================================
 
@@ -264,7 +325,7 @@ function changeValueWithRange(classRange){
 
 //Met à jour les barres selon les données de la carte
 function updateOutputRange(){
-	console.log("allez on change à (en %) :" + sun_elev_close)
+	// console.log("allez on change à (en %) :" + sun_elev_close)
     refreshBarre(".wrap-elevation_sol", sun_elev_close);
 }
 
@@ -313,4 +374,28 @@ function applyPeriodSuiviSol(idButton){
 		});
 
 	});
+}
+
+//Requête de déplacement de lame à un certain angle
+function deplacementLamesAngle(moteur, angle){ 
+    $.ajax({
+        url: '../cgi/zns.cgi?cmd=m&m=' + moteur + '&a=' + angle,
+        context: document.body
+      }).done(function(data) {
+         alert('déplacement de la lame à ' + angle + "°")
+      }).fail(function() {
+          alert("Déplacement de la lame échoué")
+      });
+}
+
+//Requête de déplacement de lame
+function deplacementLames(moteur, valeur){ 
+    $.ajax({
+        url: '../cgi/zns.cgi?cmd=m&m=' + moteur + '&p=' + valeur,
+        context: document.body
+      }).done(function(data) {
+         alert('done')
+      }).fail(function() {
+          alert("Déplacement de la lame échoué")
+      });
 }
