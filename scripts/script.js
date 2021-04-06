@@ -87,6 +87,10 @@ function permutationBoutonIntemperies(){
  function permutationBoutonSuiviSolaire(){
    permutationBouton(".list_of_buttons_suivi_sol h3");
  }
+
+ function permutationBoutonOrientation(){
+   permutationBouton(".list_of_buttons_orientation h3")
+ }
  
  function permutationBoutonA(){
    permutationBouton(".boutons_colorisation h3");
@@ -99,8 +103,27 @@ function permutationBoutonIntemperies(){
  function permutationBoutonLames2(){
    permutationBouton(".lbl2 h3");
  }
+
+ function permutationBoutonsLocalisation(){
+  permutationBouton(".list_of_geo1 h3");
+  permutationBouton(".list_of_geo2 h3");
+}
+
+function updateAllButons(){
+  let allB = $("h3");
+  for(let i = 0; i< allB.length; i++){
+    if($(allB[i]).attr("check") == "true"){
+      $(allB[i]).css("background-color","#52808B");
+      $(allB[i]).css("color","white");
+    }else if($(allB[i]).attr("check") == "false"){
+      $(allB[i]).css("background-color","white");
+      $(allB[i]).css("color","black");
+    }
+  }
+}
  
  function permutationBouton(boutons){
+  
    // Récupération de chaque boutons et stockage des id
  let tabAllButtons = [];
  
@@ -110,10 +133,14 @@ function permutationBoutonIntemperies(){
  
    // En cas de clic sur un bouton
    $(boutons).click(function(){
+    console.log("bouh")
      // Sur le bouton cliqué
      $(this).css("background-color","#52808B");
      $(this).css("color","white");
      let actuel = $(this).attr("id");
+     $(this).attr("check","true")
+
+     console.log($(this).attr("check"))
  
      let a = this.parentNode.parentNode.children[1];
      const bubble = a.querySelector(".bubble");
@@ -128,6 +155,7 @@ function permutationBoutonIntemperies(){
        if(tabAllButtons[i] != actuel){
          $("#" + tabAllButtons[i]).css("background-color","white");
          $("#" + tabAllButtons[i]).css("color","black");
+         $("#" + tabAllButtons[i]).attr("check","false")
        }
      }
    });
@@ -140,7 +168,14 @@ function permutationBoutonIntemperies(){
  permutationBoutonLames2();
  permutationBoutonSaison()
  permutationBoutonIntemperies();
+ permutationBoutonOrientation();
+ permutationBoutonsLocalisation();
  
+ $(document).ready(function(){
+    setInterval(function(){ 
+      updateAllButons();
+    }, 1000);
+ });
  /* ========================== Boutons changement coloriastion ========================== */
  
  

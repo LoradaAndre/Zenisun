@@ -9,6 +9,17 @@ let sun_elev_close;
 
 let home_set = [];
 
+let longSaved;
+let latSaved;
+
+let long;
+let lat;
+
+let neLong;
+let neLat;
+
+let once = false;
+
 $(document).ready(function(){
 	//Actualisation des informations, refresh
 	lectureCarte()
@@ -21,10 +32,33 @@ $(document).ready(function(){
 	clickGradLed()
 	clickActSuiviSol()
 
+	$(".bouton_geo").click(function(){
+		applyGeolocalisation(neLong, long, neLat, lat)
+	});
+
+	$("#O1_1").click(function(){ //Est
+		neLong = "";
+		applyGeolocalisation(neLong, long, neLat, lat)
+	});
+	$("#O1_2").click(function(){ //Ouest
+		neLong = "-";
+		applyGeolocalisation(neLong, long, neLat, lat)
+	});
+	$("#O2_1").click(function(){ //Nord
+		neLat = "";
+		applyGeolocalisation(neLong, long, neLat, lat)
+	});
+	$("#O2_2").click(function(){ //Sud
+		neLat = "-";
+		applyGeolocalisation(neLong, long, neLat, lat)
+	});
+
+
     setInterval(function(){ 
         lectureCarte();
         updateOutputRange();
-		console.log(monitoring_user_config)
+		affichageGeolocalisation();
+
 		
     }, 1000);
 });
@@ -47,7 +81,7 @@ function lectureCarte(){
         url: '../cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
         context: document.body
       }).done(function(data){
-		  console.log(data.all)
+		//   console.log(data.all)
 		  	//heure allumage
 			heure_allumage = parseInt(data.all[13].textContent);	
 			document.querySelector(".h_allumage input").value = GMTHourTolocalHour(heure_allumage);		
@@ -61,6 +95,9 @@ function lectureCarte(){
 			// console.log("sun ele en %: " + sun_elev_close)
 			//gradateur LED
 			grad_led = parseInt(data.all[16].textContent);
+
+			longSaved =  parseInt(data.all[6].textContent)/100.0;
+			latSaved =  parseInt(data.all[7].textContent)/100.0;
 
 			home_set[0] = parseInt(getMotorHomeSet(data, 2))
 			home_set[1] = parseInt(getMotorHomeSet(data, 3))
@@ -341,6 +378,107 @@ function refreshBarre(classRange, input, inputSpe){
 	let contenuVal = range.querySelector(".value-range-wrap");
 
 	setOffsetBubble(bubble, contenuVal, input, inputSpe);
+}
+
+function getLocalisation(){
+	
+
+}
+
+function affichageGeolocalisation(){
+
+		//Affiche les orientations de geolocalisation selon la valeur enregistrée
+
+		//long < 0 => Est 
+		if(longSaved < 0){ 
+			$("#O1_2").attr("check","true");
+			$("#O1_1").attr("check","false");
+		}
+		//long > 0 => Ouest 
+		else{ 
+			$("#O1_1").attr("check","true");
+			$("#O1_2").attr("check","false");
+		}
+		//lat < 0 => Sud 
+		if(latSaved < 0){
+			$("#O2_2").attr("check","true");
+			$("#O2_1").attr("check","false");
+		}
+		//lat > 0 => Nord 
+		else{
+			$("#O2_1").attr("check","true");
+			$("#O2_2").attr("check","false");
+		}
+
+		//Associe par défaut les valeurs de long/latt en fonction de ce qui est enregistré dans la carte
+		if(once == false && $(".geo_item_long input").val() != "undefined" && $(".geo_item_lat input").val()){
+			$(".geo_item_long input").val(Math.abs(longSaved));
+			$(".geo_item_lat input").val(Math.abs(latSaved));
+
+			long = Math.abs(longSaved);
+			lat = Math.abs(latSaved);
+
+			once = true;
+		}
+
+		//Pour les autres fois, la long/lat => les valeurs de l'input
+		long = $(".geo_item_long input").val();
+		lat = $(".geo_item_lat input").val();
+		
+		//Associe les symboles (+ et -) selon ce qui est enregistré comme cliqué
+		if($("#O1_1").attr("check") == "false"){
+			neLong = "-";
+		}else{
+			neLong = "";
+		}
+
+		if($("#O2_1").attr("check") == "false"){
+			neLat = "-";
+		}else{
+			neLat = "";
+
+		}
+
+		//Affichage de la position 
+		document.querySelector(".geo_final .affichage_geo").textContent = "Positionnement: " + neLat + lat + ", " + neLong + long ;
+
+}
+
+function applyGeolocalisation(neLong, pergola_longitude, neLat, pergola_latitude){
+
+	//Pour la sauvegarde des nombres
+	pergola_longitude = pergola_longitude.toString().replace(',','.');
+	pergola_latitude = pergola_latitude.toString().replace(',','.');
+
+	//Transforme la chaine de caractère en nombre
+	if(neLong == "-"){
+		pergola_longitude = - parseFloat(pergola_longitude)
+	}else{
+		pergola_longitude = parseFloat(pergola_longitude)
+	}
+	if(neLat == "-"){
+		pergola_latitude = - parseFloat(pergola_latitude)
+	}else{
+		pergola_latitude = parseFloat(pergola_latitude)
+	}
+
+	//On applique la géolocalisation de la pergola
+	var command_long = '../cgi/zns.cgi?cmd=u&p=11&v=' + pergola_longitude + my_current_automatum_cmd;
+	$.ajax({
+	  url: command_long,	
+	  context: document.body
+		}).done(function() {
+			alert("envoie de la longitude réussie")
+			var command_lat = '../cgi/zns.cgi?cmd=u&p=12&v=' + pergola_latitude + my_current_automatum_cmd;
+			$.ajax({
+			url: command_lat,	
+			context: document.body
+			}).done( function(){
+				alert("envoi de la geolocalisation réussie")
+			}).fail(function(){
+				alert("bug lors de l'envoi de la geolocalisation")
+		});
+	});
 }
 
 function apply_shader_close_treshold(value)

@@ -106,25 +106,53 @@
                             <h3>Effectuer un homing</h3>
                         </div>
                         <h2>Géolocalisation</h2>
+                        <div class="geo_final">
+                            <h3 class="affichage_geo">Positionnement:</h3>
+                            <h3 class="bouton_geo">Enregistrer</h3>
+                        </div>
                         <div>
-                            <div class="geo_item">
-                                <p>Latitude</p>
-                                <input type="number" id="name" name="name" required minlength="1" maxlength="3" size="3">
-                                <input type="number" id="name" name="name" required minlength="1" maxlength="3" size="3">
+                            <div class="geo_item geo_item_lat">
+                                <div class="form-group">
+                                    <p class="form-control-static">Lattitude</p>
+                                </div>
+                                <div class="">
+                                    <input class="form-control" type="number" value="42" id="example-number-input"  min="0" max="180" step=".01">
+                                </div>
+                                <div class="list_of_buttons list_of_geo2">
+                                    <h3 id="O2_1">Nord</h3>
+                                    <h3 id="O2_2">Sud</h3>
+                                </div>
+                               
+                                <!-- <p>Longitude</p>
+                                <input type="number" class="form-control" placeholder="">     
+                                <input type="number" class="form-control" placeholder="">    -->
                             </div>
-                            <div class="geo_item">
-                                <p>Longitude</p>
-                                <input type="number" id="name" name="name" required minlength="1" maxlength="3" size="3">
-                                <input type="number" id="name" name="name" required minlength="1" maxlength="3" size="3">
+                            
+                            <div class="geo_item geo_item_long">
+                                <div class="form-group">
+                                    <p class="form-control-static">Longitude</p>
+                                </div>
+                                <div class="">
+                                    <input class="form-control" type="number" value="42" id="example-number-input" min="0" max="90" step=".01">
+                                </div>
+                                <div class="list_of_buttons list_of_geo1">
+                                    <h3 id="O1_1">Est</h3>
+                                    <h3 id="O1_2">Ouest</h3>
+                                </div>
+                               
+                                <!-- <p>Latitude</p>
+                                <input type="number" class="form-control" placeholder="">     
+                                <input type="number" class="form-control" placeholder=""> -->
                             </div>
+                          
                         </div>
                         <h2>Orientation</h2>
-                        <select>
-                            <option valeur="N">Nord</option>
-                            <option valeur="S">Sud</option>
-                            <option valeur="E">Est</option>
-                            <option valeur="O">Ouest</option>
-                        </select>
+                        <div class="list_of_buttons_orientation list_of_buttons">
+                            <h3 id="O1" value="0">Nord</h3>
+                            <h3 id="O2" value="1">Sud</h3>
+                            <h3 id="O3" value="2">Est</h3>
+                            <h3 id="O4" value="3">Ouest</h3>
+                        </div>
     
                     </div>
                 </div>
