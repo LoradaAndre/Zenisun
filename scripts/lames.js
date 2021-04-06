@@ -8,15 +8,30 @@ let valueMaxMotor1;
 
 let synchro = false;
 
+let monitoring_user_config;
+
 $(document).ready(function (){
     
     updateAllInput();
+    lectureCarte();
+
+    $("body").click(function(){
+        if((monitoring_user_config & 8) && $("#exampleModalCenter").css("display") == "none"){
+            console.log("yep c'est 8");
+            var myModal = new bootstrap.Modal(document.getElementById("exampleModalCenter"), {});
+          
+            myModal.show();
+        }
+    })
 
     setInterval(function(){ 
         lectureCarte();
+      
         updateOutputRange();
         synchronisationLames();
     }, 1000);
+
+    
 
 });
 
@@ -33,6 +48,18 @@ function lectureCarte(){
       }).fail(function() {
         //   alert("Lecture de la carte échouée")
       });	
+
+      my_current_automatum_cmd = "&ID=0";
+      $.ajax({
+          url: "../cgi/zns.cgi?cmd=d&p=ios"+my_current_automatum_cmd,
+          context: document.body
+        }).done(function(data){
+          //   console.log(data)
+              monitoring_user_config = parseInt(data.all[30].textContent);
+        }).fail(function() {
+          //   alert("Lecture de la carte échouée")  
+      });	
+  
 }
 
 function updateAllInput(){
