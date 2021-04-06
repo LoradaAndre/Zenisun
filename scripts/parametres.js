@@ -121,9 +121,9 @@ function allumage_auto_horaire(){
 function fermeture_pluie(){
     $(".check-fermeture_pluie .ui-switcher").click(function(){
         if($(this).attr("aria-checked") == "false"){
-            set_user_config ( monitoring_user_config & ~4 )
+            set_user_config(monitoring_user_config & ~1);	// clr rain mode bit
         }else{
-			set_user_config ( monitoring_user_config | 4 );
+			set_user_config(monitoring_user_config | 1);	// set rain mode bit
 		}
     });
 }
