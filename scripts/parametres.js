@@ -53,6 +53,9 @@ $(document).ready(function(){
 		applyGeolocalisation(neLong, long, neLat, lat)
 	});
 
+	$("#liste_orientation").change(function(){
+		applyOrientationPergola($(this).val())
+	});
 
     setInterval(function(){ 
         lectureCarte();
@@ -81,7 +84,7 @@ function lectureCarte(){
         url: '../cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
         context: document.body
       }).done(function(data){
-		//   console.log(data.all)
+		  console.log(data.all)
 		  	//heure allumage
 			heure_allumage = parseInt(data.all[13].textContent);	
 			document.querySelector(".h_allumage input").value = GMTHourTolocalHour(heure_allumage);		
@@ -101,6 +104,9 @@ function lectureCarte(){
 
 			home_set[0] = parseInt(getMotorHomeSet(data, 2))
 			home_set[1] = parseInt(getMotorHomeSet(data, 3))
+
+			console.log(data.all[4].textContent)
+			$("#liste_orientation").val(data.all[4].textContent)
       }).fail(function() {
         //   alert("Lecture de la carte échouée")  
     });
@@ -536,4 +542,20 @@ function deplacementLames(moteur, valeur){
       }).fail(function() {
           alert("Déplacement de la lame échoué")
       });
+}
+
+function applyOrientationPergola(valeur){
+
+	console.log(valeur)
+
+	pergola_orient = parseInt(valeur);
+	var command = '../cgi/zns.cgi?cmd=u&p=10&v=' + pergola_orient + my_current_automatum_cmd;
+	$.ajax({
+	  url: command,	
+	  context: document.body
+	}).done( function(data) {
+		alert("envoi du changement d'orientation de la pergola => code: " + pergola_orient )
+	}).fail(function(){
+		alert("erreur lors du changement d'orientation de la pergola")
+	});
 }
