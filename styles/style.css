@@ -69,6 +69,10 @@ main{
     margin-left: 3%;
 }
 
+.flex-container img{
+    width: 100px;
+    height: 100px;
+}
 
 /* ========================== ASIDE ========================== */
 
@@ -154,7 +158,6 @@ aside p {
     justify-content: space-between;
     margin: 1%;
     margin-bottom: 7%;
-
 }
 
 .geo_final h3{
