@@ -8,6 +8,8 @@ let valueMaxMotor1;
 
 let synchro = false;
 
+let init = false;
+
 let monitoring_user_config;
 
 $(document).ready(function (){
@@ -26,8 +28,9 @@ $(document).ready(function (){
 
     setInterval(function(){ 
         lectureCarte();
-      
+        initButtons()
         updateOutputRange();
+        
         synchronisationLames();
     }, 1000);
 
@@ -60,6 +63,44 @@ function lectureCarte(){
           //   alert("Lecture de la carte échouée")  
       });	
   
+}
+
+function initButtons(){
+    if(valueMotor0 != "undefined" && init == false){
+        init = true;
+
+        if(valueMotor0 == 0){
+            $(".lbl1").children().eq(0).attr("check", "true");
+        }
+        if(valueMotor0 == 25){
+            $(".lbl1").children().eq(1).attr("check", "true");
+        }
+        if(valueMotor0 == 50){
+            $(".lbl1").children().eq(2).attr("check", "true");
+        }
+        if(valueMotor0 == 75){
+            $(".lbl1").children().eq(3).attr("check", "true");
+        }
+        if(valueMotor0 == 100){
+            $(".lbl1").children().eq(4).attr("check", "true");
+        }
+
+        if(valueMotor1 == 0){
+            $(".lbl2").children().eq(0).attr("check", "true");
+        }
+        if(valueMotor1 == 25){
+            $(".lbl2").children().eq(1).attr("check", "true");
+        }
+        if(valueMotor1 == 50){
+            $(".lbl2").children().eq(2).attr("check", "true");
+        }
+        if(valueMotor1 == 75){
+            $(".lbl2").children().eq(3).attr("check", "true");
+        }
+        if(valueMotor1 == 100){
+            $(".lbl2").children().eq(4).attr("check", "true");
+        }
+    }
 }
 
 function updateAllInput(){
@@ -138,63 +179,95 @@ $("h3").click(function(){
         deplacementLames(1, 0)
         if(synchro){
             deplacementLames(2, 0)
+            $("#2-LO1").attr("check", "true")
+            resetOther("2-LO1");
         }
     }
     if(this.id == "1-LO2"){
         deplacementLames(1, parseInt(valueMaxMotor0/4));
         if(synchro){
             deplacementLames(2, parseInt(valueMaxMotor1/4))
+            $("#2-LO2").attr("check", "true")
+            resetOther("2-LO2");
         }
     }
     if(this.id == "1-LO3"){
         deplacementLames(1, parseInt(valueMaxMotor0/2))
         if(synchro){
             deplacementLames(2, parseInt(valueMaxMotor1/2))
+            $("#2-LO3").attr("check", "true")
+            resetOther("2-LO3");
         }
     }
     if(this.id == "1-LO4"){
         deplacementLames(1, parseInt(valueMaxMotor0/4*3))
         if(synchro){
             deplacementLames(2, parseInt(valueMaxMotor1/4*3))
+            $("#2-LO4").attr("check", "true")
+            resetOther("2-LO4");
         }
     }
     if(this.id == "1-LO5"){
         deplacementLames(1, valueMaxMotor0)
         if(synchro){
             deplacementLames(2, valueMaxMotor1)
+            $("#2-LO5").attr("check", "true")
+            resetOther("2-LO5");
         }
     }
     if(this.id == "2-LO1"){
         deplacementLames(2, 0)
         if(synchro){
             deplacementLames(1, 0)
+            $("#1-LO1").attr("check", "true")
+            resetOther("1-LO1");
         }
     }
     if(this.id == "2-LO2"){
         deplacementLames(2, parseInt(valueMaxMotor1/4))
         if(synchro){
             deplacementLames(1, parseInt(valueMaxMotor0/4))
+            $("#1-LO2").attr("check", "true")
+            resetOther("1-LO2");
         }
     }
     if(this.id == "2-LO3"){
         deplacementLames(2, parseInt(valueMaxMotor1/2))
         if(synchro){
             deplacementLames(1, parseInt(valueMaxMotor0/2))
+            $("#1-LO3").attr("check", "true")
+            resetOther("1-LO3");
         }
     }
     if(this.id == "2-LO4"){
         deplacementLames(2, parseInt(valueMaxMotor1/4*3))
         if(synchro){
             deplacementLames(1, parseInt(valueMaxMotor0/4*3))
+            $("#1-LO4").attr("check", "true")
+            resetOther("1-LO4");
         }
     }
     if(this.id == "2-LO5"){
         deplacementLames(2, valueMaxMotor1)
         if(synchro){
             deplacementLames(1, valueMaxMotor0)
+            $("#1-LO5").attr("check", "true")
+            resetOther("1-LO5");
         }
     }
 });
+
+function resetOther(element){
+    let allElements = $("#" + element).parent().children();
+    console.log(allElements)
+    for(let i = 0; i < allElements.length; i++){
+        if($(allElements[i]).attr("id") != element){
+            console.log("ele chaque i: " + $(allElements[i]).attr("id"))
+            console.log("element: " + element)
+            $(allElements[i]).attr("check", "false")
+        }
+    }
+}
 
 //Requête de déplacement de lame
 function deplacementLames(moteur, valeur){ 
