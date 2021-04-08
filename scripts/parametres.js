@@ -554,7 +554,7 @@ function deplacementLames(moteur, valeur){
         url: '../cgi/zns.cgi?cmd=m&m=' + moteur + '&p=' + valeur,
         context: document.body
       }).done(function(data) {
-         alert('done')
+         alert('deplacement de la lame à la position' + valeur)
       }).fail(function() {
           alert("Déplacement de la lame échoué")
       });
