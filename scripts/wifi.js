@@ -8,11 +8,10 @@ function scanWifi(){
         url: '../cgi/zns.cgi?cmd=s&p=s',
         context: document.body
       }).done(function(data) {
-        getConnected(data)
-
-         getResultWifi();
+            isConnected(true, data)
+            getResultWifi();
       }).fail(function(data) {
-          getConnected(data);
+            isConnected(false, data)
       });
 }
 
@@ -21,11 +20,11 @@ function getResultWifi(){
         url: '../cgi/zns.cgi?cmd=s&p=g',
         context: document.body
       }).done(function(data) {
-        getConnected(data)
-        stockWifi(data)
+            isConnected(true, data)
+            stockWifi(data)
       }).fail(function(data) {
-        getConnected(data)
-        alert("Déplacement de la lame échoué")
+            isConnected(false, data)
+            alert("Déplacement de la lame échoué")
       });
 }
 
@@ -229,10 +228,12 @@ function switch_network(idElement){
     let type = reseau[idElement].querySelector("type").textContent
 	
 	$.post( "../cgi/zns_post.cgi" , { sec:sec, key:password, id:name, type:type })
-		.done(function( data ) {
+		.done(function(data) {
+            isConnected(true, data)
 			alert("You need to connect your device to network " + name + " to continue to use Zenisun pergola" );	
 		})
         .fail(function(){
+            isConnected(false, data)
 		    alert("Problème de connexion")
 	});
 }

@@ -45,3 +45,19 @@ h2{
 .bloc{
     margin-bottom: 15px;
 }
+.boutons_spe{
+    margin-top: 0.83em;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.boutons_spe h3{
+    color: white;
+    background-color: #52808B;
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+}

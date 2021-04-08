@@ -25,6 +25,7 @@ function lectureCarte(){
         url: "../cgi/zns.cgi?cmd=d&p=ios"+my_current_automatum_cmd,
         context: document.body
       }).done(function(data) {
+            isConnected(true,data);
             //RGB1
             RGBIntensite1 = getIntensite(data, 12); //12: <GPO 4> dans la collection data.all
             RGBWatt1 = getWatt(data, 12);
@@ -42,6 +43,7 @@ function lectureCarte(){
             GColor = getColor(data, 17); //17: <GPO 9>
             BColor = getColor(data, 18); //18: <GPO 10>
       }).fail(function() {
+            isConnected(false, data)
         //   alert("Lecture de la carte échouée")
           
       });	
@@ -201,8 +203,10 @@ function changeValueEclairage(ruban, valeur){
         url: '../cgi/zns.cgi?cmd=l&o='+ ruban +'&p=' + valeur,
         context: document.body
       }).done(function(data) {
+          isConnected(true,data);
         //  alert('done')
       }).fail(function() {
+            isConnected(false, data)
           alert("changement d'intensité échoué")
       });
 }

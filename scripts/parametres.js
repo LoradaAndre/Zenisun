@@ -47,19 +47,21 @@ function lectureCarte(){
         url: "../cgi/zns.cgi?cmd=d&p=ios"+my_current_automatum_cmd,
         context: document.body
       }).done(function(data){
-
+			isConnected(true, data)
 			monitoring_user_config = parseInt(data.all[30].textContent);
 			console.log("monitoring user truc: " + (monitoring_user_config))
 			updateButtons();
 
       }).fail(function() {
-        //   alert("Lecture de la carte échouée")  
+			isConnected(false, data)
+			//   alert("Lecture de la carte échouée")  
     });	
 
 	$.ajax({
         url: '../cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
         context: document.body
       }).done(function(data){
+			isConnected(true, data)
 		  	//heure allumage
 			heure_allumage = parseInt(data.all[13].textContent);	
 			document.querySelector(".h_allumage input").value = GMTHourTolocalHour(heure_allumage);		
@@ -83,6 +85,7 @@ function lectureCarte(){
 
 			$("#liste_orientation").val(data.all[4].textContent)
       }).fail(function() {
+			isConnected(false, data)
         //   alert("Lecture de la carte échouée")  
     });
 
@@ -120,9 +123,11 @@ function homming(mot_id){
 	$.ajax({
 	  url: command,	
 	  context: document.body
-	}).done(function(){
+	}).done(function(data){
+		isConnected(true, data)
 		alert("homing")
 	}).fail(function(){
+		isConnected(false, data)
 		alert("erreur lors de l'aplication de l'homing")
 	});
 }
@@ -238,15 +243,18 @@ var command_long = '../cgi/zns.cgi?cmd=u&p=11&v=' + pergola_longitude + my_curre
 $.ajax({
   url: command_long,	
   context: document.body
-	}).done(function() {
+	}).done(function(data) {
+		isConnected(true, data)
 		alert("envoie de la longitude réussie")
 		var command_lat = '../cgi/zns.cgi?cmd=u&p=12&v=' + pergola_latitude + my_current_automatum_cmd;
 		$.ajax({
 		url: command_lat,	
 		context: document.body
-		}).done( function(){
+		}).done(function(data){
+			isConnected(true, data)
 			alert("envoi de la geolocalisation réussie")
 		}).fail(function(){
+			isConnected(false, data)
 			alert("bug lors de l'envoi de la geolocalisation")
 	});
 });
@@ -265,9 +273,11 @@ function applyOrientationPergola(valeur){
 	$.ajax({
 	  url: command,	
 	  context: document.body
-	}).done( function(data) {
+	}).done(function(data) {
+		isConnected(true, data)
 		alert("envoi du changement d'orientation de la pergola => code: " + pergola_orient )
 	}).fail(function(){
+		isConnected(false, data)
 		alert("erreur lors du changement d'orientation de la pergola")
 	});
 }
@@ -326,8 +336,10 @@ function apply_ligt_off_h(){
 	  url: command,	
 	  context: document.body
 	}).done( function(data) {
+		isConnected(true, data)
 		alert("envoi de l'heure d'extinction terminée")
 	}).fail(function(){
+		isConnected(false, data)
 		alert("echec de l'heure d'extinction ")
 	});
 }
@@ -341,9 +353,11 @@ function apply_ligt_on_h(){
 	$.ajax({
 	  url: command,	
 	  context: document.body
-	}).done( function(data) {
+	}).done(function(data) {
+		isConnected(true, data)
 		alert("envoi de l'heure de démarrage terminée")
 	}).fail(function(){
+		isConnected(false, data)
 		alert("echec de l'heure de démarrage ")
 	});
 }
@@ -368,9 +382,11 @@ function applyGradateurLed(idButton){
 		$.ajax({
 		  url: command,	
 		  context: document.body
-		}).done(function() {
+		}).done(function(data){
+			isConnected(true, data)
 			alert("Mise en place du gradateur LED à " + $(idButton).text())
 		}).fail(function(){
+			isConnected(false, data)
 			alert("Erreur lors de la mise en place du gradateur LED")
 		});
 	});
@@ -483,9 +499,11 @@ function changeSeuilFermNuit(value){
 	$.ajax({
 	  url: command,	
 	  context: document.body
-	}).done(function(){
+	}).done(function(data){
+		isConnected(true, data)
 		alert("élévation solaire à " + value + " degrés")
 	}).fail( function(){
+		isConnected(false, data)
 		alert("fail dans l'élévation solaire")
 	});
 }
@@ -509,9 +527,11 @@ function applyPeriodSuiviSol(idButton){
 		$.ajax({
 		  url: command,	
 		  context: document.body
-		}).done(function() {
+		}).done(function(data) {
+			isConnected(true, data)
 			alert("temps suiv sol à " + sun_upd_per + " minutes" )
 		}).fail(function() {
+			isConnected(false, data)
 			alert("erreur lors de l'activation du temps du suivi solaire")
 		});
 	});
@@ -528,9 +548,11 @@ function set_user_config( new_config ){
 		$.ajax({
 		  url: command,	
 		  context: document.body
-		}).done(function(){
+		}).done(function(data){
+			isConnected(true, data)
 			alert("change config okay");
 		}).fail(function(){
+			isConnected(false, data)
 			alert("erreur lors du changement de config utilisateur");
 		});
 	}
@@ -542,9 +564,11 @@ function deplacementLamesAngle(moteur, angle){
         url: '../cgi/zns.cgi?cmd=m&m=' + moteur + '&a=' + angle,
         context: document.body
       }).done(function(data) {
-         alert('déplacement de la lame à ' + angle + "°")
+			isConnected(true, data)
+			alert('déplacement de la lame à ' + angle + "°")
       }).fail(function() {
-          alert("Déplacement de la lame échoué")
+			isConnected(false, data)
+          	alert("Déplacement de la lame échoué")
       });
 }
 
@@ -554,9 +578,11 @@ function deplacementLames(moteur, valeur){
         url: '../cgi/zns.cgi?cmd=m&m=' + moteur + '&p=' + valeur,
         context: document.body
       }).done(function(data) {
-         alert('deplacement de la lame à la position' + valeur)
+			isConnected(true, data)
+			alert('deplacement de la lame à la position' + valeur)
       }).fail(function() {
-          alert("Déplacement de la lame échoué")
+			isConnected(false, data)
+			alert("Déplacement de la lame échoué")
       });
 }
 
@@ -616,3 +642,6 @@ function updateButtons(){
 		$(".selection_horaire_auto").hide();
 	}
 }
+
+// ================================ MAINTENANCE ================================
+

@@ -45,11 +45,13 @@ function lectureCarte(){
         url: "../cgi/zns.cgi?cmd=d&p=ios"+my_current_automatum_cmd,
         context: document.body
       }).done(function(data) {
-          valueMotor0 = parseInt(getMotorValue(data, 24));
-          valueMaxMotor0 = parseInt(getMotorMaxValue(data, 24));
-          valueMotor1 = parseInt(getMotorValue(data, 25));
-          valueMaxMotor1 = parseInt(getMotorMaxValue(data, 25));
+            isConnected(true, data)
+            valueMotor0 = parseInt(getMotorValue(data, 24));
+            valueMaxMotor0 = parseInt(getMotorMaxValue(data, 24));
+            valueMotor1 = parseInt(getMotorValue(data, 25));
+            valueMaxMotor1 = parseInt(getMotorMaxValue(data, 25));
       }).fail(function() {
+            isConnected(false, data)
         //   alert("Lecture de la carte échouée")
       });	
 
@@ -58,9 +60,11 @@ function lectureCarte(){
           url: "../cgi/zns.cgi?cmd=d&p=ios"+my_current_automatum_cmd,
           context: document.body
         }).done(function(data){
+            isConnected(true, data)
           //   console.log(data)
               monitoring_user_config = parseInt(data.all[30].textContent);
         }).fail(function() {
+            isConnected(false, data)
           //   alert("Lecture de la carte échouée")  
       });	
   
@@ -301,8 +305,10 @@ function deplacementLames(moteur, valeur){
         url: '../cgi/zns.cgi?cmd=m&m=' + moteur + '&p=' + valeur,
         context: document.body
       }).done(function(data) {
-         alert('done')
+            isConnected(true, data)
+            alert('done')
       }).fail(function() {
-          alert("Déplacement de la lame échoué")
+            isConnected(false, data)
+            alert("Déplacement de la lame échoué")
       });
 }
