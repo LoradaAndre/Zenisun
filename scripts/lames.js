@@ -32,6 +32,7 @@ $(document).ready(function (){
         updateOutputRange();
         
         synchronisationLames();
+        sauvegardeSync()
     }, 1000);
 
     
@@ -103,9 +104,34 @@ function initButtons(){
     }
 }
 
+function sauvegardeSync(){
+    if(localStorage.getItem("modeSombre") == null){
+        localStorage.setItem("modeSombre", "false");
+        synchro = false;
+    }else{
+        $(".synchro-check .ui-switcher").attr("aria-checked", localStorage.getItem("syncLames"))
+        synchro = stringToBool(localStorage.getItem("syncLames"));
+    }
+    $(".synchro-check .ui-switcher").click(function(){
+        let value = $(this).attr("aria-checked");
+        localStorage.setItem("syncLames", value);
+        synchro = stringToBool(localStorage.getItem("syncLames"));
+    });
+    console.log(synchro)
+}
 function updateAllInput(){
     updateInput(".wrap-lames-1", 1);
     updateInput(".wrap-lames-2", 2);
+}
+
+function stringToBool(str){
+    if(str === "true"){
+        return true;
+    }
+    if(str === "false"){
+        return false;
+    }
+    return null
 }
 
 function updateInput(classWrap, motor){
