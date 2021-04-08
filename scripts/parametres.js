@@ -601,13 +601,14 @@ function updateButtons(){
 		// $(".button_hiver").attr("check", "false")
 	}
 
-	if(monitoring_user_config&0){
+	if(monitoring_user_config == 0){
+		console.log("oui c'est zéro")
 		$(".button_intemp_off").attr("check", "true")
 		$(".button_saision_off").attr("check", "true")
 	}
 
 	//si allumage auto horaire
-	if(monitoring_user_config&16?1:0){
+	if(monitoring_user_config&16){
 		$(".check-allumage-auto-h .ui-switcher").attr("aria-checked", "true")
 		$(".selection_horaire_auto").show();
 	}else{
