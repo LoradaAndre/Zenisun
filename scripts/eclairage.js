@@ -14,6 +14,8 @@ let RColor;
 let GColor;
 let BColor;
 
+let init = false;
+
 let config = 1;
 
 //Lecture de la carte, récupération des infos pour l'éclairage
@@ -104,6 +106,7 @@ $(document).ready(function() {
     setInterval(function(){ 
         lectureCarte();
         updateOutputRange();
+        defautCheck();
     }, 1000);
 
     // $('#zoneColor').farbtastic('#color');
@@ -117,6 +120,25 @@ $(document).ready(function() {
     AllbandeauOff()
 });
 
+function defautCheck(){
+    if(bb1Intensite != "undefined" && init == false){
+        init = true;
+        if(bb1Intensite != 0){
+            $(".BB1-check .ui-switcher").attr("aria-checked", "true");
+        }
+        if(bb2Intensite != 0){
+            $(".BB2-check .ui-switcher").attr("aria-checked", "true");
+        }
+        if(RGBIntensite1 != 0){
+            console.log("yep ca rentre")
+            $(".RGB1-check .ui-switcher").attr("aria-checked", "true");
+        }
+        if(RGBIntensite2 != 0){
+            $(".RVB2-check .ui-switcher").attr("aria-checked", "true");
+        }
+    }
+  
+}
 //Off sur le check => met la valeur à 0
 function bandeauOff(classCheck, input){
     $(classCheck + " .ui-switcher").click(function(){
