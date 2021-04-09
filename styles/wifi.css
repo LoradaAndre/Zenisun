@@ -1,6 +1,10 @@
 .bouton_detection{
     float: right; 
+    margin: 10px;
     margin-right: 37px;
+    background-color: #52808B;
+    border-radius: 3px;
+    width: 30%;
 }
 
 .bouton_detection h1{
