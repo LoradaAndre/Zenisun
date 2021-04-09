@@ -4,6 +4,9 @@ let valEclairage2;
 let valueMotor1;
 let valueMotor2;
 
+let monitoring_user_config;
+let elevation_sol;
+
 $(document).ready(function (){
     setInterval(function(){ 
         lectureCarte();
@@ -27,6 +30,7 @@ $(document).ready(function (){
             setValueWidgetLames(valEclairage2, canvasEclairage2)
             refreshCanvas(valEclairage2, canvasEclairage2)
         }
+        meteo(monitoring_user_config, elevation_sol)
     }, 1000);
 });
 
@@ -36,6 +40,9 @@ function lectureCarte(){
         url: "cgi/zns.cgi?cmd=d&p=ios"+my_current_automatum_cmd,
         context: document.body
       }).done(function(data) {
+          monitoring_user_config = parseInt(data.all[30].textContent);
+          elevation_sol = parseInt(data.all[27].textContent);
+
           valueMotor1 = parseInt(getMotorValue(data, 24));
           valueMotor2 = parseInt(getMotorValue(data, 25));
 
@@ -44,7 +51,6 @@ function lectureCarte(){
           //BB2
           valEclairage2 = parseInt(getIntensite(data, 15)); //15: <GPO 7>
 
-          console.log(valueMotor1)
       }).fail(function() {
         //   alert("Lecture de la carte échouée")
       });	
@@ -52,7 +58,6 @@ function lectureCarte(){
 
 function getMotorValue(data, input){
     let valMotor = data.all[input].textContent
-    console.log(valMotor)
     let newVal = valMotor.split(";")
     return newVal[0]*100/newVal[1]
 }
@@ -65,13 +70,63 @@ function getIntensite(data, input){
 }
 
 function refreshCanvas(val, canvasType){
-    console.log("dans le refresh =>")
-    console.log(canvasType)
     circle(val, canvasType);
     
 }
 
 function setValueWidgetLames(value, canvasType){
-    console.log(canvasType)
+    // console.log(canvasType)
     // canvasType.setAttribute("value", value);
+}
+
+function meteo(number_config, elevation_sol){
+    if(number_config&8){
+        console.log("on passe en mode neige");
+        $(".meteo_widget").css({
+            "background-image": "url(resources/background/widget_meteo/neige.png)",
+            "background-size": "cover"
+        });
+    }
+    else if(number_config&1){
+        console.log("on passe en mode pluie");
+        $(".meteo_widget").css({
+            "background-image": "url(resources/background/widget_meteo/pluie.png)",
+            "background-size": "cover"
+        });
+    }
+    else if(number_config&2){
+        console.log("on passe en mode été");
+        $(".meteo_widget").css({
+            "background-image": "url(resources/background/widget_meteo/ete.png)",
+            "background-size": "cover"
+        });
+    }
+    else if(number_config&4){
+        console.log("on passe en mode hiver");
+        $(".meteo_widget").css({
+            "background-image": "url(resources/background/widget_meteo/hiver.png)",
+            "background-size": "cover"
+        });
+    }
+    else if(elevation_sol == 0){
+        console.log("il fait nuit");
+        $(".meteo_widget").css({
+            "background-image": "url(resources/background/widget_meteo/nuit.png)",
+            "background-size": "cover"
+        });
+    }
+    else if(elevation_sol > 0 && elevation_sol <= 15){
+        console.log("c'est l'aube");
+        $(".meteo_widget").css({
+            "background-image": "url(resources/background/widget_meteo/aube.png)",
+            "background-size": "cover"
+        });
+    }
+    else{
+        console.log("on est en journée, il fait beau");
+        $(".meteo_widget").css({
+            "background-image": "url(resources/background/widget_meteo/beau.png)",
+            "background-size": "cover"
+        });
+    }
 }

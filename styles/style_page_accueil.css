@@ -95,6 +95,17 @@ h1{
 .connexion_meteo_widget{
     width: 100px;
 }
+
+.temperature, .time .heure{
+    /* text-shadow: 0 0 5px black; */
+    text-shadow: rgb(116, 116, 116) 0 0 5px;
+    /* border: 1px solid red; */
+}
+.connexion_meteo_widget p, .time .jour{
+    /* text-shadow: 0 0 5px black; */
+    text-shadow: rgb(0, 0, 0) 0 0 5px;
+    /* border: 1px solid red; */
+}
 /* ========================== GESTION DES WIDGETS INDIVIDUELS========================== */
 
 .eclairage_widget{
@@ -129,7 +140,7 @@ h1{
 }
 
 .meteo_widget{
-    background-image: url(../resources/background/widget_météo/beau.png);
+    background-image: url(../resources/background/widget_meteo/beau.png);
     background-size: cover;
 }
 

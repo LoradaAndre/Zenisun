@@ -196,11 +196,10 @@ function updateAllButons(){
 
 function isConnected(value, data){
   if((value == false) || (data == null)){
-    console.log($(".connexion p"))
-    $(".connexion p").text("Déconnecté");
+    $(".connexion p").text("déconnecté");
     $(".connexion_icon").attr("src","../resources/icons/disconnected.png");
   }else{
-    $(".connexion p").text("Connecté");
+    $(".connexion p").text("connecté");
     $(".connexion_icon").attr("src","../resources/icons/connected.png")
 
   }
