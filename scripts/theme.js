@@ -49,6 +49,7 @@ function themeClair(){
     });
     $("h2").css('color', colorH2C);
     $("html").css('background-color', colorBackgroundC);
+    $("body").attr('style', 'background-color: ' + colorBackgroundC + " !important");
     $("aside").css('background-color', colorMenuBarC);
     $(".bouton h3, .bubble").css('background-color', colorMain);
     //pas le slider, c'est du less
@@ -65,6 +66,7 @@ function themeSombre(){
     });
     $("h2").css('color', colorH2S);
     $("html").css('background-color', colorBackgroundS);
+    $("body").attr('style', 'background-color: ' + colorBackgroundS + " !important");
     $("aside").css('background-color', colorMenuBarS);
     $(".bouton h3, .bubble").css('background-color', colorMain);
     //pas le slider, c'est du less
