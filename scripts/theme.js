@@ -47,6 +47,9 @@ function themeClair(){
     $('.test').css({
         background: "-webkit-gradient(linear, right top, left bottom, from(rgba(118, 146, 181, 0.7)), to(rgba(128, 144, 193, 0.7)))" 
     });
+    // $('.testModal').css({
+    //     background: "-webkit-gradient(linear, right top, left bottom, from(rgba(118, 146, 181, 1)), to(rgba(128, 144, 193, 1)))" 
+    // });
     $("h2").css('color', colorH2C);
     $("html").css('background-color', colorBackgroundC);
     $("body").attr('style', 'background-color: ' + colorBackgroundC + " !important");
@@ -64,6 +67,9 @@ function themeSombre(){
     $('.test').css({
         background: "-webkit-gradient(linear, right top, left bottom, from(rgba(67, 79, 95, 0.7)), to(rgba(64, 68, 95, 0.7)))" 
     });
+    // $('.testModal').css({
+    //     background: "-webkit-gradient(linear, right top, left bottom, from(rgba(67, 79, 95, 1)), to(rgba(64, 68, 95, 1)))" 
+    // });
     $("h2").css('color', colorH2S);
     $("html").css('background-color', colorBackgroundS);
     $("body").attr('style', 'background-color: ' + colorBackgroundS + " !important");
