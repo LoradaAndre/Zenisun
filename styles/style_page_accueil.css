@@ -1,9 +1,9 @@
 @font-face {
-    font-family: Manrope;
-    src: url("../resources/font/Manrope/Manrope-VariableFont_wght.ttf");
+    font-family: Manrope ;
+    src: url("../resources/font/Manrope/Manrope-VariableFont_wght.ttf") ;
    }
-html{
-    font-family: Manrope;
+html,body{
+    font-family: Manrope !important;
 }
 h1{
     font-size: large;
@@ -15,8 +15,7 @@ h1{
 .widgets{
     margin: auto;
     width: 60%;
-    margin-top: 50px;
-   
+    margin-top: 20px;
 }
 
 .eclairage{
@@ -165,8 +164,9 @@ aside{
     color: white;
     display: flex;
     /* background-color: #7093AE; */
-    position: fixed;
-    right: 10px;
+    /* position: fixed; */
+    margin-left: 3px;
+    margin-bottom: 5px;
     width: 225px;
     border-radius: 3px;
 }

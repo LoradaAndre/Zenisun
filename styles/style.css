@@ -79,11 +79,11 @@ main{
 aside{
     color: white;
     display: flex;
-    /* background-color: #7093AE; */
     position: fixed;
     right: 10px;
     width: 225px;
     border-radius: 3px;
+    top: 5px;
 }
 
 .connexion_icon{
