@@ -20,6 +20,8 @@ let neLat;
 
 let once = false;
 
+let mot;
+
 $(document).ready(function(){
 	//Actualisation des informations, refresh
 	lectureCarte()
@@ -47,10 +49,15 @@ function lectureCarte(){
         url: "../cgi/zns.cgi?cmd=d&p=ios"+my_current_automatum_cmd,
         context: document.body
       }).done(function(data){
+			console.log(data.all)
+
 			isConnected(true, data)
 			monitoring_user_config = parseInt(data.all[30].textContent);
 			console.log("monitoring user truc: " + (monitoring_user_config))
 			updateButtons();
+
+			mot = parseInt(getMotorValue(data,24))
+			console.log(mot)
 
       }).fail(function() {
 			isConnected(false, data)
@@ -82,6 +89,8 @@ function lectureCarte(){
 			//Position des moteurs
 			home_set[0] = parseInt(getMotorHomeSet(data, 2))
 			home_set[1] = parseInt(getMotorHomeSet(data, 3))
+
+			
 
 			$("#liste_orientation").val(data.all[4].textContent)
       }).fail(function() {
@@ -596,10 +605,22 @@ function updateButtons(){
 
 	//si intemperies activé
 	if(monitoring_user_config&8){
-		console.log("intempéries activées: " + (monitoring_user_config&8))
-		$(".button_vent").attr("check", "true")
-		$(".button_neige").attr("check", "true")
-		$(".button_intemp_off").attr("check", "false")
+		if(mot == 0){
+			console.log("vent activées: " + (monitoring_user_config&8))
+			$(".button_vent").attr("check", "true")
+			$(".button_neige").attr("check", "false")
+			$(".button_neige").hide()
+			$(".button_vent").show()
+			$(".button_intemp_off").attr("check", "false")
+		}else{
+			console.log("neige activées: " + (monitoring_user_config&8))
+			$(".button_vent").attr("check", "false")
+			$(".button_vent").hide()
+			$(".button_neige").show()
+			$(".button_neige").attr("check", "true")
+			$(".button_intemp_off").attr("check", "false")
+		}
+		
 	}else{
 		$(".button_intemp_off").attr("check", "true")
 
