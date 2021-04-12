@@ -40,8 +40,10 @@ function lectureCarte(){
         url: "cgi/zns.cgi?cmd=d&p=ios"+my_current_automatum_cmd,
         context: document.body
       }).done(function(data) {
+          isConnected(true, data)
           monitoring_user_config = parseInt(data.all[30].textContent);
           elevation_sol = parseInt(data.all[27].textContent);
+          afficheElevSol(elevation_sol)
 
           valueMotor1 = parseInt(getMotorValue(data, 24));
           valueMotor2 = parseInt(getMotorValue(data, 25));
@@ -52,6 +54,7 @@ function lectureCarte(){
           valEclairage2 = parseInt(getIntensite(data, 15)); //15: <GPO 7>
 
       }).fail(function() {
+         isConnected(false, data)
         //   alert("Lecture de la carte échouée")
       });	
 }
@@ -79,6 +82,19 @@ function setValueWidgetLames(value, canvasType){
     // canvasType.setAttribute("value", value);
 }
 
+function afficheElevSol(elev){
+    $(".elev_sol p").text(elev + "°");
+}
+function isConnected(value, data){
+    if((value == false) || (data == null)){
+      $(".connexion p").text("déconnecté");
+      $(".connexion_icon").attr("src","resources/icons/disconnected.png");
+    }else{
+      $(".connexion p").text("connecté");
+      $(".connexion_icon").attr("src","resources/icons/connected.png")
+  
+    }
+  }
 function meteo(number_config, elevation_sol){
     if(number_config&8){
         console.log("on passe en mode neige");

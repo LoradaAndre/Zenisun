@@ -158,3 +158,57 @@ a{
     float: left;
     width: 20px;
 }
+
+/* ========================== ASIDE ========================== */
+
+aside{
+    color: white;
+    display: flex;
+    /* background-color: #7093AE; */
+    position: fixed;
+    right: 10px;
+    width: 225px;
+    border-radius: 3px;
+}
+
+.connexion_icon{
+    margin-block-end: 1em;
+    /* float: left; */
+    width: 25px;
+    margin: 3%;
+}
+
+.info_icon{
+    width: 25px;
+    margin: auto;
+}
+
+.info, .connexion{
+    margin: auto;
+}
+
+.connexion{
+    text-align: center;
+    width: 115px;
+    display: flex;
+    justify-content: left;
+}
+
+.connexion p{
+    margin-top: 3% !important;
+    margin-bottom: 3% !important;
+    /* border: 1px solid blue; */
+}
+
+aside p {
+    margin: auto;
+}
+
+.elev_sol{
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+    margin-bottom: auto;
+    margin-top: auto;
+    padding-right: 10px;
+    padding-left: 10px;
+}

@@ -6,7 +6,7 @@ html{
     font-family: Roboto !important;
     font-size: thin !important;
 }
-body{
+.widgets{
     font-family: Roboto !important;
     font-size: 1rem;
     font-weight: 400;
