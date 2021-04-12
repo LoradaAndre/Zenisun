@@ -97,11 +97,26 @@ function isConnected(value, data){
   }
 function meteo(number_config, elevation_sol){
     if(number_config&8){
-        console.log("on passe en mode neige");
-        $(".meteo_widget").css({
-            "background-image": "url(resources/background/widget_meteo/neige.png)",
-            "background-size": "cover"
-        });
+        if(valueMotor1 == 0){
+            console.log("on est en mode blocage vent")
+            $(".meteo_widget").css({
+                "background-image": "url(resources/background/widget_meteo/vent.png)",
+                "background-size": "cover"
+            });
+            $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/vent.png")
+            $(".meteo .type_temps p").text("Vent")
+        }
+        else{
+            console.log("on est en mode blocage neige")
+            $(".meteo_widget").css({
+                "background-image": "url(resources/background/widget_meteo/neige.png)",
+                "background-size": "cover"
+            });
+            $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/neige.png")
+            $(".meteo .type_temps p").text("Neige")
+        }
+       
+
     }
     else if(number_config&1){
         console.log("on passe en mode pluie");
@@ -109,6 +124,9 @@ function meteo(number_config, elevation_sol){
             "background-image": "url(resources/background/widget_meteo/pluie.png)",
             "background-size": "cover"
         });
+        $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/pluie.png")
+        $(".meteo .type_temps p").text("Pluie")
+
     }
     else if(number_config&2){
         console.log("on passe en mode été");
@@ -116,6 +134,8 @@ function meteo(number_config, elevation_sol){
             "background-image": "url(resources/background/widget_meteo/ete.png)",
             "background-size": "cover"
         });
+        $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/summer.png")
+        $(".meteo .type_temps p").text("Mode été")
     }
     else if(number_config&4){
         console.log("on passe en mode hiver");
@@ -123,6 +143,8 @@ function meteo(number_config, elevation_sol){
             "background-image": "url(resources/background/widget_meteo/hiver.png)",
             "background-size": "cover"
         });
+        $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/winter.png")
+        $(".meteo .type_temps p").text("Mode hiver")
     }
     else if(elevation_sol == 0){
         console.log("il fait nuit");
@@ -130,6 +152,8 @@ function meteo(number_config, elevation_sol){
             "background-image": "url(resources/background/widget_meteo/nuit.png)",
             "background-size": "cover"
         });
+        $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/nuit.png")
+        $(".meteo .type_temps p").text("Nuit")
     }
     else if(elevation_sol > 0 && elevation_sol <= 15){
         console.log("c'est l'aube");
@@ -137,6 +161,8 @@ function meteo(number_config, elevation_sol){
             "background-image": "url(resources/background/widget_meteo/aube.png)",
             "background-size": "cover"
         });
+        $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/demisoleil.png")
+        $(".meteo .type_temps p").text("Elévation solaire basse")
     }
     else{
         console.log("on est en journée, il fait beau");
@@ -144,5 +170,7 @@ function meteo(number_config, elevation_sol){
             "background-image": "url(resources/background/widget_meteo/beau.png)",
             "background-size": "cover"
         });
+        $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/normal.png")
+        $(".meteo .type_temps p").text("Temps clair")
     }
 }

@@ -69,6 +69,10 @@ h1{
     padding-left: 20px;
 }
 
+.type_temps p{
+    margin: 0;
+}
+
 .icon_type_temps{
     float: left;
     width: 20px;
