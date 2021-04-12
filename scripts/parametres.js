@@ -666,3 +666,11 @@ function updateButtons(){
 
 // ================================ MAINTENANCE ================================
 
+$(".b_first").click(function(){
+	console.log("oui t'as cliqué")
+	console.log($(".modal-body input").val())
+	console.log(typeof $(".modal-body input").val())
+	if($(".modal-body input").val() == "4682"){
+		window.location.href = "setup.html"
+	}
+});

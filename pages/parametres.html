@@ -226,8 +226,8 @@
                     <div class="hr"></div>
                     <div class="contenant">
                         <div class="boutons_spe">
-                            <a href="debug.html"><h3 class="bouton_debug">Debug</h3></a>
-                            <a href="setup_new.html"><h3 class="bouton_setup">Réglages fabricant</h3></a>
+                            <a href="debug.html" ><h3 class="bouton_debug">Debug</h3></a>
+                            <h3 class="bouton_setup" data-bs-target="#exampleModalCenter" data-bs-toggle="modal">Réglages fabricant</h3>
                         </div>
                         
                     </div>
@@ -342,9 +342,32 @@
                 </div>
                
                 
-            </div>
-            
+            </div>    
         </main>
+
+             <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <!-- <div class="modal-header"> -->
+                  
+                  <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                <!-- </div> -->
+                  <div class="modal-body">
+                      <h5 class="modal-title" id="exampleModalLabel">Accès administrateur</h5>
+                      <div class="form-group">
+                          <label for="exampleInputPassword1">Entrez le mot de passe</label>
+                          <input type="password" width="100%" class="form-control" id="exampleInputPassword1">
+                      </div>
+                      <div class="group_overlay_button">
+                          <div class="overlay_button b_first">Connexion</div>
+                          <div class="overlay_button b_second" data-bs-dismiss="modal">Annuler</div>
+                      </div>
+                  </div>
+               
+              </div>
+            </div>
+          </div>
         <!-- <script src="../scripts/setup.js"></script> -->
         <script src="../libs/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="../scripts/script.js"></script>
