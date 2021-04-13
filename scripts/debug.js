@@ -98,37 +98,66 @@ function getValue(data, input, pos){
 function affichageInfos(){
     $("ul").remove()
     let liste = $("<ul></ul>")
+    let bloc1 = $("<div></div>")
+    let bloc2 = $("<div></div>")
+    let bloc3 = $("<div></div>")
+    let bloc4 = $("<div></div>")
     $(".debug").append(liste)
+    $(liste).append(bloc1)
+    $(liste).append(bloc2)
+    $(liste).append(bloc3)
+    $(liste).append(bloc4)
+
+    $(bloc1).append("<h4>General</h4>")
+    $(bloc1).append("<hr>")
+    $(bloc1).append("<li>VIN #1= <span>" + vin[0] + " V</span></li>")
+    $(bloc1).append("<li>VIN #2= <span>" + vin[1] + " V</span></li>")
+    $(bloc1).append("<hr>")
+    $(bloc1).append("<li>Board temp= <span>" + boardTemp + "°C</span></li>")
+    $(bloc1).append("<li>MOS temp= <span>" + MosTemp + "°C</span></li>")
     
-    $(liste).append("<li>VIN #1 = " + vin[0] + " V</li>")
-    $(liste).append("<li>VIN #2 = " + vin[1] + " V</li>")
-    $(liste).append("<li>Board temp = " + boardTemp + "°C</li>")
-    $(liste).append("<li>MOS temp = " + MosTemp + "°C</li>")
-    // $(liste).append("<hr>")
+    $(bloc2).append("<h4>GPI</h4>")
+    $(bloc2).append("<hr>")
     for(let i = 0; i < 6; i++){
-        $(liste).append("<li>GPI #"+ i +" = " + gpi[i] + " V</li>")
+        $(bloc2).append("<li>GPI #"+ i +"= <span>" + gpi[i] + " V</span></li>")
     }
-    // $(liste).append("<hr>")
+    $(bloc3).append("<h4>GPO</h4>")
+    $(bloc3).append("<hr>")
     for(let i = 0; i < 8; i++){
-        $(liste).append("<li>GPO #" + i + " = " + gpO[i] + " A / PWM = "+ gpPWM[i] +"</li>")
+        $(bloc3).append("<li>GPO #" + i + "= <span>" + gpO[i] + " A / PWM= <span>"+ gpPWM[i] +"</span></li>")
     }
-    
-    $(liste).append("<li>GPO #R = PWM = " + gpColor[0] +"</li>")
-    $(liste).append("<li>GPO #G = PWM = " + gpColor[1] + "</li>")
-    $(liste).append("<li>GPO #B = PWM = " + gpColor[2] +"</li>")
+    $(bloc3).append("<hr>")
+    $(bloc3).append("<li>GPO #R = PWM= <span>" + gpColor[0] +"</span></li>")
+    $(bloc3).append("<li>GPO #G = PWM= <span>" + gpColor[1] + "</span></li>")
+    $(bloc3).append("<li>GPO #B = PWM= <span>" + gpColor[2] +"</span></li>")
 
-    // $(liste).append("<hr>")
+    $(bloc4).append("<h4>Other</h4>")
+    $(bloc4).append("<hr>")
     for(let i = 0; i < 2; i++){
-        $(liste).append("<li>Moteur #" + i + " = " + mot[i] + " / " + maxMot[i] + " count</li>")
+        $(bloc4).append("<li>Moteur #" + i + "= <span>" + mot[i] + "</span> / <span>" + maxMot[i] + " count</span></li>")
     }
 
-    // $(liste).append("<hr>")
-    $(liste).append("<li>Pergola orientation = " + pergOrient + "°</li>")
-    $(liste).append("<li>Pergola location: longitude = " + pergLong + " / latitude = " + pergLat + "</li>")
-    // $(liste).append("<hr>")
-    $(liste).append("<li>Sun elevation = " + sunElev + "°</li>")
-    $(liste).append("<li>Sun azimut = " + sunAsimut + "°</li>")
-    $(liste).append("<li>Sun projection on shaders = " + sunShader + "°</li>")
+    $(bloc4).append("<hr>")
+    $(bloc4).append("<li>Pergola orientation = <span>" + pergOrient + "°</span></li>")
+    $(bloc4).append("<li>Pergola longitude= <span>" + pergLong + "</span></li>")
+    $(bloc4).append("<li>Pergola latitude= <span>" + pergLat + "</span></li>")
+    $(bloc4).append("<hr>")
+    $(bloc4).append("<li>Sun elevation= <span>" + sunElev + "°</span></li>")
+    $(bloc4).append("<li>Sun azimut= <span>" + sunAsimut + "°</span></li>")
+    $(bloc4).append("<li>Sun projection on shaders= <span>" + sunShader + "°</span></li>")
+
+    $("span").css("color","white")
+    $("h4").css({
+        "font-size": "medium",
+        "padding-left" : "1rem",
+        "width" : "80%",
+        "text-align" : "center"
+    });
+    $("li").css("padding-left","0")
+    $("ul").css("padding-left","0")
+    $(".debug").css({
+        "padding" : "20px"
+    });
 
 }
 
@@ -141,3 +170,4 @@ $(document).ready(function(){
     }, 1000);
    
 });
+

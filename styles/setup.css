@@ -155,3 +155,15 @@ body{
     margin: 10px;
     vertical-align: middle;
 }
+
+ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    list-style-type: none;
+}
+.debug{
+    color: rgb(192, 192, 192);
+}
+hr{
+    width: 80%;
+}
