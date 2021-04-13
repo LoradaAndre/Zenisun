@@ -1,65 +1,157 @@
-
-.center {
-    text-align:center;
+main{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+    margin-top: 10px;
 }
-input.centerText{
+
+.right-content{
+    /* border: 1px solid red;
+    background-color: tomato; */
+    /* background-color: rgb(56, 56, 56); */
+    height: min-content;
+}
+.left-content{
+    /* border: 1px solid blue;
+    background-color: teal; */
+    background-color: rgb(94, 94, 94);
+    height: min-content;
+}
+
+header{
+    /* border:1px solid violet;
+    background-color: thistle; */
+    background-color: rgb(56, 56, 56);
+    padding: 10px;
+}
+
+h1{
+    font-size: larger;
     text-align: center;
 }
-
-
-.ui-icon-pwr:after {
-	background-image: url("images/pwr.png");
+.elem-list h2{
+    font-size: large;
+    margin: 0;
+}
+h3{
+    font-size: medium;
+    padding: 0;
+    margin:0;
+}
+.cat{
+    display: grid;
+    grid-template-columns: 2fr 1fr 4fr 1fr;
+    margin-bottom: 2px;
+    /* background-color: rgb(150, 200, 247); */
+    background-color: rgb(78, 78, 78);
+    padding: 8px;
+}
+.mod, .val{
+    justify-self: flex-end;
+    /* boutons */
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: 52808B;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.elem-list{
+    list-style-type: none;
+    margin-bottom: 2px;
+    padding: 10px;
+    padding-left: 10px;
+    /* background-color: rgb(238, 184, 133); */
+    background-color: rgb(56, 56, 56);
+    cursor: pointer;
 }
 
-.ui-icon-thermometer:after {
-	background-image: url("images/thermometer.png");
+.elem-spe{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.ui-icon-clock:after {
-	background-image: url("images/clock.png");
+.elem-list h2::before{
+    content: url("../resources/icons/widgets_light/nuageTest.png");
+    margin: 10px;
+}
+.desc{
+    /* color: grey; */
+}
+body{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.form-control{
+    height: 25px;
+    width: 50%;
+}
+.middle{
+    display: flex;
+    justify-content: space-between;
 }
 
-.ui-icon-sun:after {
-	background-image: url("images/sun.png");
+body{
+    background-color: black;
+    color: white;
 }
 
-.ui-icon-rain:after {
-	background-image: url("images/rain.png");
+.elem-list:hover{
+    /* background-color: rgb(92, 91, 91); */
+    background-color: rgb(85, 85, 85) !important;
+}
+.cat:hover{
+    /* background-color: rgb(92, 91, 91); */
+    background-color: grey !important;
 }
 
-.ui-icon-night:after {
-	background-image: url("images/night.png");
+.elem1 h2::before{
+    content: url("../resources/icons/setup/board.png");
+    margin: 10px;
+    vertical-align: middle;
 }
-
-.ui-icon-green:after {
-	background-image: url("images/green.png");
+.elem2 h2::before{
+    content: url("../resources/icons/setup/calibrate.png");
+    margin: 10px;
+    vertical-align: middle;
 }
-
-.ui-icon-red:after {
-	background-image: url("images/red.png");
+.elem3 h2::before{
+    content: url("../resources/icons/setup/input.png");
+    margin: 10px;
+    vertical-align: middle;
 }
-
-
-/* Custom indentations are needed because the length of custom labels differs from
-   the length of the standard labels */
-.custom-size-flipswitch.ui-flipswitch .ui-btn.ui-flipswitch-on {
-    text-indent: -5.9em;
+.elem4 h2::before{
+    content: url("../resources/icons/setup/output.png");
+    margin: 10px;
+    vertical-align: middle;
 }
-.custom-size-flipswitch.ui-flipswitch .ui-flipswitch-off {
-    text-indent: 0.5em;
+.elem5 h2::before, .elem6 h2::before{
+    content: url("../resources/icons/setup/motor.png");
+    margin: 10px;
+    vertical-align: middle;
 }
-/* Custom widths are needed because the length of custom labels differs from
-   the length of the standard labels */
-.custom-size-flipswitch.ui-flipswitch {
-    width: 8.875em;
+.elem7 h2::before{
+    content: url("../resources/icons/setup/miscellaneous.png");
+    margin: 10px;
+    vertical-align: middle;
 }
-.custom-size-flipswitch.ui-flipswitch.ui-flipswitch-active {
-    padding-left: 7em;
-    width: 1.875em;
+.elem8 h2::before{
+    content: url("../resources/icons/setup/manuf.png");
+    margin: 10px;
+    vertical-align: middle;
 }
-@media (min-width: 28em) {
-    /*Repeated from rule .ui-flipswitch above*/
-    .ui-field-contain > label + .custom-size-flipswitch.ui-flipswitch {
-        width: 1.875em;
-    }
+.elem9 h2::before{
+    content: url("../resources/icons/setup/homing.png");
+    margin: 10px;
+    vertical-align: middle;
+}
+.elem10 h2::before{
+    content: url("../resources/icons/setup/set.png");
+    margin: 10px;
+    vertical-align: middle;
+}
+.elem-spe h2::before{
+    content: url("../resources/icons/setup/debug.png");
+    margin: 10px;
+    vertical-align: middle;
 }

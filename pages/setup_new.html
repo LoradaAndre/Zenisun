@@ -1,0 +1,641 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="../libs/jquery/jquery-3.5.1.js"></script>
+
+        <link  rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.css">
+
+        <link rel="stylesheet" href="../styles/setup.css">
+        <title>Zenisun</title>
+    </head>
+    <body>
+        <header>
+            <h1>Zenisun Pergola Setup</h1>
+        </header>
+        <main>
+            <div class="right-content">
+                    <div class="elem-list elem1"><h2>Board settings</h2></div>
+                    <div class="elem-list elem2"><h2>General calibration</h2></div>
+                    <div class="elem-list elem3"><h2>Analog input voltage calibration</h2></div>
+                    <div class="elem-list elem4"><h2>Power outputs current calibration</h2></div>
+                    <div class="elem-list elem5"><h2>Motor 0 configuration</h2></div>
+                    <div class="elem-list elem6"><h2>Motor 1 configuration</h2></div>
+                    <div class="elem-list elem7"><h2>Miscellaneous</h2></div>
+                    <div class="elem-list elem8"><h2>Manifacturer settings</h2></div>
+                    <div class="elem-list elem9"><h2>Homming</h2></div>
+                    <div class="elem-list elem10"><h2>Set positions</h2></div>
+
+                    <div class="elem-list elem-spe"><h2>Debug</h2></div>
+            </div>
+            <div class="left-content">
+                <!-- =============================== Board settings =============================== -->
+                <div class="para1">
+                    <div class="cat">
+                        <h3 class="name">Board version</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">MOS LED rds on(mOhms)</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">MOS LED Rth(DegC/W)</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">MOS motor FS(mAmps)</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">MOS LEDs FS(mAmps)</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                </div>
+
+                <!-- =============================== General calibration =============================== -->
+
+                <div class="para2">
+                    <div class="cat">
+                        <h3 class="name">Temperature (0.1 Deg)</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">Vin #1 (mV)</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">Vin #2 (mV)</h3>
+                        <h3 class="desc">Description</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                </div>
+                 
+                <!-- =============================== Analog inputs voltage calibration  =============================== -->
+
+                <div class="para3">
+                    <div class="cat">
+                        <h3 class="name">GPI #0</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">GPI #1</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">GPI #2</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">GPI #3</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">GPI #4</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">GPI #5</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                </div>
+                
+                <!-- =============================== Power output current calibration  =============================== -->
+
+                <div class="para4">
+                    <div class="cat">
+                        <h3 class="name">GPO #0</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">GPO #1</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">GPO #2</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">GPO #3</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">GPO #4</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">GPO #5</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">GPO #6</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">GPO #7</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                </div>
+                <!-- =============================== Motor 0 configuration  =============================== -->
+
+                <div class="para5">
+                    <div class="cat">
+                        <h3 class="name">PID Kp</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">PID Ki</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">PID Kt</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">motor_max_count</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">motor_max_angle</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">max_current_mAmps</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">home_current_mAmps</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">home_current_offset</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">home_switch_offset</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">zero_degree_offset</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">speed_homing</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">speed_normal</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">max_delta_setpoint_homing</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">max_delta_setpoint_normal</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                </div>
+                 <!-- =============================== Motor 1 configuration  =============================== -->
+
+                 <div class="para6">
+                    <div class="cat">
+                        <h3 class="name">PID Kp</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">PID Ki</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">PID Kt</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">motor_max_count</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">motor_max_angle</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">max_current_mAmps</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">home_current_mAmps</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">home_current_offset</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">home_switch_offset</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">zero_degree_offset</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">speed_homing</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">speed_normal</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">max_delta_setpoint_homing</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">max_delta_setpoint_normal</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                </div>
+                 <!-- =============================== Miscellaneous  =============================== -->
+
+                <div class="para7">
+                    <div class="cat">
+                        <h3 class="name">Shader drying(Degree)</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">XXX</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    <div class="cat">
+                        <h3 class="name">Automatum ID</h3>
+                        <h3 class="desc">int</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                </div>
+                 <!-- =============================== Manufacturer settings  =============================== -->
+
+                 <div class="para8">
+                    <div class="cat">
+                        <h3 class="name">Save manufacturer settings</h3>
+                        <h3 class="desc">XXX</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    
+                    <div class="cat">
+                        <h3 class="name">Load manufacturer settings</h3>
+                        <h3 class="desc">XXX</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                </div>
+
+                 <!-- =============================== Homming  =============================== -->
+
+                 <div class="para9">
+                    <div class="cat">
+                        <h3 class="name">Home motor #0</h3>
+                        <h3 class="desc">XXX</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    
+                    <div class="cat">
+                        <h3 class="name">Home motor #1</h3>
+                        <h3 class="desc">XXX</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                </div>
+
+                 <!-- =============================== set positions  =============================== -->
+
+                 <div class="para10">
+                    <div class="cat">
+                        <h3 class="name">Set motor position ( count )</h3>
+                        <h3 class="desc">XXX</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                    
+                    <div class="cat">
+                        <h3 class="name">Set shader position ( angle )</h3>
+                        <h3 class="desc">XXX</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+
+                    <div class="cat">
+                        <h3 class="name">Set led pwm ( 0-255 count )</h3>
+                        <h3 class="desc">XXX</h3>
+                        <div class="middle">
+                            <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+                            <h3 class="val">Valider</h3>
+                        </div>   
+                        <h3 class="mod">Modifier</h3>
+                    </div>
+                </div>
+
+                 <!-- =============================== Debug  =============================== -->
+
+                 <div class="debug"></div>
+                
+                
+                
+            </div>
+        </main>
+        <script src="../scripts/setup.js"></script>
+        <script src="../scripts/debug.js"></script>
+    </body>
+</html>
+
+<!-- <div class="cat">
+    <h3 class="name">XXX</h3>
+    <h3 class="desc">int</h3>
+    <div class="middle">
+        <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
+        <h3 class="val">Valider</h3>
+    </div>   
+    <h3 class="mod">Modifier</h3>
+</div> -->

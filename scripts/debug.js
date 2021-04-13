@@ -98,17 +98,17 @@ function getValue(data, input, pos){
 function affichageInfos(){
     $("ul").remove()
     let liste = $("<ul></ul>")
-    $("body").append(liste)
+    $(".debug").append(liste)
     
     $(liste).append("<li>VIN #1 = " + vin[0] + " V</li>")
     $(liste).append("<li>VIN #2 = " + vin[1] + " V</li>")
     $(liste).append("<li>Board temp = " + boardTemp + "°C</li>")
     $(liste).append("<li>MOS temp = " + MosTemp + "°C</li>")
-    $(liste).append("<hr>")
+    // $(liste).append("<hr>")
     for(let i = 0; i < 6; i++){
         $(liste).append("<li>GPI #"+ i +" = " + gpi[i] + " V</li>")
     }
-    $(liste).append("<hr>")
+    // $(liste).append("<hr>")
     for(let i = 0; i < 8; i++){
         $(liste).append("<li>GPO #" + i + " = " + gpO[i] + " A / PWM = "+ gpPWM[i] +"</li>")
     }
@@ -117,15 +117,15 @@ function affichageInfos(){
     $(liste).append("<li>GPO #G = PWM = " + gpColor[1] + "</li>")
     $(liste).append("<li>GPO #B = PWM = " + gpColor[2] +"</li>")
 
-    $(liste).append("<hr>")
+    // $(liste).append("<hr>")
     for(let i = 0; i < 2; i++){
         $(liste).append("<li>Moteur #" + i + " = " + mot[i] + " / " + maxMot[i] + " count</li>")
     }
 
-    $(liste).append("<hr>")
+    // $(liste).append("<hr>")
     $(liste).append("<li>Pergola orientation = " + pergOrient + "°</li>")
     $(liste).append("<li>Pergola location: longitude = " + pergLong + " / latitude = " + pergLat + "</li>")
-    $(liste).append("<hr>")
+    // $(liste).append("<hr>")
     $(liste).append("<li>Sun elevation = " + sunElev + "°</li>")
     $(liste).append("<li>Sun azimut = " + sunAsimut + "°</li>")
     $(liste).append("<li>Sun projection on shaders = " + sunShader + "°</li>")
