@@ -167,3 +167,12 @@ ul{
 hr{
     width: 80%;
 }
+/* ================ icone home ================ */
+.home_icon{
+    width: 30px;
+    vertical-align: center;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+}

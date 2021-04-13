@@ -1,0 +1,471 @@
+﻿<!DOCTYPE html> 
+<html>
+	<head>
+		<title>Zenisun Pergola Setup</title>
+		<base href="setup.html">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+		<!-- <link rel="apple-touch-icon" href="images/zenisun.png" />  -->
+		<!-- <link rel="preload" href="images/red.png" as="image"> -->
+		<script src="../libs/jquery/jquery-3.5.1.js"></script>
+		<link rel="stylesheet" href="../styles/setup.css" />
+		<script src="../scripts/setup.js"></script>
+		<!-- <script src="Chart.min.js"></script> -->
+	</head>
+
+<body class="ui-mobile-viewport ui-overlay-a">
+
+
+	<div data-role="header" class="ui-page-theme-b ui-header ui-bar-a ">
+	
+		<h1><b>Manufacturer settings</b></h1>
+		
+		<a href="../index.html" rel="external" class="ui-btn" data-icon="arrow-l">back to main interface</a>
+		
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+			<fieldset data-role="controlgroup" data-type="horizontal" id="automatum_sel">
+				<label class="atm0" id="atm_name_0" for="atm_0">Baie X</label>
+				<input class="atm0" type="radio" name="automatum_sel" id="atm_0" value="0" checked="checked">
+				<label class="atm1" id="atm_name_1" for="atm_1">Baie X</label>
+				<input class="atm1" type="radio" name="automatum_sel" id="atm_1" value="1">
+				<label class="atm2" id="atm_name_2" for="atm_2">Baie X</label>
+				<input class="atm2" type="radio" name="automatum_sel" id="atm_2" value="2">
+				<label class="atm3" id="atm_name_3" for="atm_3">Baie X</label>
+				<input class="atm3" type="radio" name="automatum_sel" id="atm_3" value="3">
+				<a href="#" id="sta_connected" class="ui-btn ui-btn-icon-left ">connexion...</a>
+			</fieldset>
+		</div>
+	</div>
+
+		
+	<div data-role="page" id="page_manuf" data-url="index.html" class="ui-page ui-page-theme-b ui-page-active" style="min-height: 504px;">
+
+
+		
+		<div data-role="popup" id="messagebox" data-theme="a" data-overlay-theme="a">
+			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+			<p id="messagebox_msg">...popup message to display</p>
+		</div>
+		
+
+		<div role="main" class="ui-content">
+		
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+
+					<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> 
+						<h4>Board settings</h4>
+						<div data-role="fieldcontain">
+							<label>Board version</label>
+							<input type="number" id="cal_board_1" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_board_config(1); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label>MOS LED rds on(mOhms)</label>
+							<input type="number" id="cal_board_2" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_board_config(2); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label>MOS LED Rth(DegC/W)</label>
+							<input type="number" id="cal_board_3" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_board_config(3); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label>MOS motor FS(mAmps)</label>
+							<input type="number" id="cal_board_4" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_board_config(4); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label>MOS LEDs FS(mAmps)</label>
+							<input type="number" id="cal_board_5" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_board_config(5); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<a href="#" onclick="javascript:save_board_config(); return false;" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a">Save board settings</a>
+					</div>
+					<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> 
+						<h4>General calibration</h4>
+						<div data-role="fieldcontain">
+							<label>Temperature (0.1 Deg)</label>
+							<input type="number" id="cal_manuf_0" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(0); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label>Vin #1 (mV)</label>
+							<input type="number" id="cal_manuf_1" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(1); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label>Vin #2 (mV)</label>
+							<input type="number" id="cal_manuf_2" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(2); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+					</div>			 
+
+					<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> 
+						<h4>Analog inputs voltage calibration ( mV )</h4>
+						<div data-role="fieldcontain">
+							<label>GPI #0</label>
+							<input type="number" id="cal_manuf_3" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(3); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label>GPI #1</label>
+							<input type="number" id="cal_manuf_4" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(4); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label>GPI #2</label>
+							<input type="number" id="cal_manuf_5" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(5); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label>GPI #3</label>
+							<input type="number" id="cal_manuf_6" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(6); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label>GPI #4</label>
+							<input type="number" id="cal_manuf_7" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(7); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label>GPI #5</label>
+							<input type="number" id="cal_manuf_8" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(8); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+					</div>			 
+
+					<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> 
+						<h4>Power outputs current calibration ( mA )</h4>
+						<div data-role="fieldcontain">
+							<label>GPO #0</label>
+							<input type="number" id="cal_manuf_9" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(9); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label>GPO #1</label>
+							<input type="number" id="cal_manuf_10" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(10); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label>GPO #2</label>
+							<input type="number" id="cal_manuf_11" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(11); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label>GPO #3</label>
+							<input type="number" id="cal_manuf_12" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(12); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label>GPO #4</label>
+							<input type="number" id="cal_manuf_13" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(13); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label>GPO #5</label>
+							<input type="number" id="cal_manuf_14" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(14); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label>GPO #6</label>
+							<input type="number" id="cal_manuf_15" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(15); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label>GPO #7</label>
+							<input type="number" id="cal_manuf_16" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(16); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+					</div>			 
+
+					<div id="mot0" data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+						<h4>Motor 0 configuration</h4>
+						<div data-role="fieldcontain">
+							<label for="motor_kp0">PID Kp</label>
+							<input type="number" name="motor_kp0" id="cal_manuf_25" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(25); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="motor_ki0">PID Ki</label>
+							<input type="number" name="motor_ki0" id="cal_manuf_26" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(26); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="motor_kt0">PID Kt</label>
+							<input type="number" name="motor_kt0" id="cal_manuf_27" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(27); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="motor_max_count0">motor_max_count</label>
+							<input type="number" name="motor_max_count0" id="cal_manuf_17" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(17); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="motor_max_angle0">motor_max_angle</label>
+							<input type="number" name="motor_max_angle0" id="cal_manuf_21" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(21); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="max_current_mAmps0">max_current_mAmps</label>
+							<input type="number" name="max_current_mAmps0" id="cal_manuf_18" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(18); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="max_current_mAmpsh0">home_current_mAmps</label>
+							<input type="number" name="max_current_mAmpsh0" id="cal_manuf_31" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(31); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="current_offseth0">home_current_offset</label>
+							<input type="number" name="current_offseth0" id="cal_manuf_35" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(35); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>						
+						<div data-role="fieldcontain">
+							<label for="switch_offseth0">home_switch_offset</label>
+							<input type="number" name="switch_offseth0" id="cal_manuf_37" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(37); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="zero_offseth0">zero_degree_offset</label>
+							<input type="number" name="zero_offseth0" id="cal_manuf_39" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(39); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="max_pwmh0">speed_homing</label>
+							<input type="number" name="max_pwmh0" id="cal_manuf_32" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(32); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="max_pwmn0">speed_normal</label>
+							<input type="number" name="max_pwmn0" id="cal_manuf_43" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(43); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="max_dltseth0">max_delta_setpoint_homing</label>
+							<input type="number" name="max_dltseth0" id="cal_manuf_45" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(45); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="max_dltsetn0">max_delta_setpoint_normal</label>
+							<input type="number" name="max_dltsetn0" id="cal_manuf_47" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(47); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+					</div>	
+					
+					<div id="mot1" data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> 
+						<h4>Motor 1 configuration</h4>
+						<div data-role="fieldcontain">
+							<label for="motor_kp1">PID Kp</label>
+							<input type="number" name="motor_kp1" id="cal_manuf_28" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(28); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="motor_ki1">PID Ki</label>
+							<input type="number" name="motor_ki1" id="cal_manuf_29" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(29); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="motor_kt1">PID Kt</label>
+							<input type="number" name="motor_kt1" id="cal_manuf_30" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(30); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="motor_max_count1">motor_max_count</label>
+							<input type="number" name="motor_max_count1" id="cal_manuf_19" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(19); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="motor_max_angle1">motor_max_angle</label>
+							<input type="number" name="motor_max_angle1" id="cal_manuf_22" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(22); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="max_current_mAmps1">max_current_mAmps</label>
+							<input type="number" name="max_current_mAmps1" id="cal_manuf_20" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(20); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="max_current_mAmpsh1">home_current_mAmps</label>
+							<input type="number" name="max_current_mAmpsh1" id="cal_manuf_33" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(33); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="current_offseth1">home_current_offset</label>
+							<input type="number" name="current_offseth1" id="cal_manuf_36" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(36); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>						
+						<div data-role="fieldcontain">
+							<label for="switch_offseth1">home_switch_offset</label>
+							<input type="number" name="switch_offseth1" id="cal_manuf_38" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(38); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="zero_offseth1">zero_degree_offset</label>
+							<input type="number" name="zero_offseth1" id="cal_manuf_40" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(40); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="max_pwmh1">speed_homing</label>
+							<input type="number" name="max_pwmh1" id="cal_manuf_34" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(34); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="max_pwmn1">speed_normal</label>
+							<input type="number" name="max_pwmn1" id="cal_manuf_44" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(44); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="max_dltseth1">max_delta_setpoint_homing</label>
+							<input type="number" name="max_dltseth1" id="cal_manuf_46" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(46); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="max_dltsetn1">max_delta_setpoint_normal</label>
+							<input type="number" name="max_dltsetn1" id="cal_manuf_48" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(48); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+					</div>
+
+					<div id="misc_cfg" data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u"> 
+						<h4>Miscellaneous</h4>
+				
+						<div data-role="fieldcontain">
+							<label for="pergola_drying">Shader drying(Degree)</label>
+							<input type="number" name="pergola_drying" id="cal_manuf_24" data-wrapper-class="ui-btn-inline" value="">
+							<a href="#" onclick="javascript:apply_manuf_config(24); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">Apply</a>
+						</div>
+				
+						<form class="ui-grid-b">
+							<div class="ui-block-a">
+								<label for="hwcfg_b0">Motor 1</label>
+								<input type="checkbox" id="hwcfg_b0" name="hwcfg_b0" data-mini="true">
+							</div>
+							<div class="ui-block-b">
+								<label for="hwcfg_b2">Blanc 1</label>
+								<input type="checkbox" id="hwcfg_b2" name="hwcfg_b2" data-mini="true">
+							</div>
+							<div class="ui-block-c">
+								<label for="hwcfg_b4">RGB 1</label>
+								<input type="checkbox" id="hwcfg_b4" name="hwcfg_b4" data-mini="true">
+							</div>
+							<div class="ui-block-a">
+								<label for="hwcfg_b1">Motor 2</label>
+								<input type="checkbox" id="hwcfg_b1" name="hwcfg_b1" data-mini="true">
+							</div>
+							<div class="ui-block-b">
+								<label for="hwcfg_b3">Blanc 2</label>
+								<input type="checkbox" id="hwcfg_b3" name="hwcfg_b3" data-mini="true">
+							</div>
+							<div class="ui-block-c">
+								<label for="hwcfg_b5">RGB 2</label>
+								<input type="checkbox" id="hwcfg_b5" name="hwcfg_b5" data-mini="true">
+							</div>		
+						</form>
+
+
+						<form>
+							<div class="ui-field-contain">
+								<label data-inline="true" for="automatum_id_cfg">Automatum ID :</label>
+								
+								<select name="automatum_id_cfg" id="cal_manuf_50" data-inline="true" data-native-menu="false" class="ui-btn-inline">
+									<option value="0">Baie 1/2</option>
+									<option value="1">Baie 3/4</option>
+									<option value="2">Baie 5/6</option>
+									<option value="3">Baie 7/8</option>
+								</select>
+								<a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a" data-role="button" data-inline="true" onclick="javascript:apply_manuf_config(50); return false;" >Apply</a>
+								
+							</div>
+						</form>
+						
+					</div>
+					
+					<div>
+						<a href="#" onclick="javascript:save_manuf_config(); return false;" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a">Save manufacturer settings</a>
+						<a href="#" onclick="javascript:reset_manuf_config(); return false;" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a">Load default manufacturer settings</a>
+					</div>
+					<div>
+						<a href="#" onclick="javascript:manu_manuf_motor_home(1); return false;" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a">Home motor #0</a>
+						<a href="#" onclick="javascript:manu_manuf_motor_home(2); return false;" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a">Home motor #1</a>
+					</div>
+					
+					<fieldset data-role="controlgroup" data-type="horizontal" >
+						<legend>Set motor position ( count )</legend>
+						<select id="manu_manuf_motor_idx">
+							<option value="1">Moteur #0</option>
+							<option value="2">Moteur #1</option>
+							<option value="3">ALL</option>
+						</select>
+						<input id="manu_manuf_motor_pos" type="number" data-wrapper-class="ui-btn ui-btn-inline" >
+						<a href="#" onclick="javascript:manu_manuf_motor(); return false;" class="ui-btn ui-btn-a">Apply</a>
+					</fieldset>
+
+					<fieldset data-role="controlgroup" data-type="horizontal" >
+						<legend>Set shader position ( angle )</legend>
+						<select id="manu_manuf_motor_idx_a">
+							<option value="1">Shader #0</option>
+							<option value="2">Shader #1</option>
+							<option value="3">ALL</option>
+						</select>
+						<input id="manu_manuf_motor_pos_a" type="number" data-wrapper-class="ui-btn ui-btn-inline" >
+						<a href="#" onclick="javascript:manu_manuf_motor_a(); return false;" class="ui-btn ui-btn-a">Apply</a>
+					</fieldset>
+
+					<fieldset data-role="controlgroup" data-type="horizontal" >
+						<legend>Set led pwm ( 0-255 count )</legend>
+						<select id="manu_manuf_led_idx">
+							<option value="16">LED #4(RGB)</option>
+							<option value="32">LED #5(RGB)</option>
+							<option value="64">LED #6(W)</option>
+							<option value="128">LED #7(W)</option>
+							<option value="256">LED #R</option>
+							<option value="512">LED #G</option>
+							<option value="1024">LED #B</option>
+							<option value="2032">ALL</option>
+						</select>
+						<input id="manu_manuf_led_val" type="number" data-wrapper-class="ui-btn ui-btn-inline" >
+						<a href="#" onclick="javascript:manu_manuf_led(); return false;" class="ui-btn ui-btn-a">Apply</a>
+					</fieldset>
+
+				</div>	
+				<div class="ui-block-b">
+					<ul id="manuf_raw_data">
+						<li>Loading...</li>
+					</ul>
+				</div>
+			</div>
+	
+			<div>
+				<a href="../cgi/data.cgi" rel="external" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a">Download raw flash data</a>
+				<a href="#" onclick="javascript:download_hystory(); return false;" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a">Display motors curves</a>
+			</div>
+			<canvas id="myChart" width="400" height="100"></canvas>
+			<div data-role="fieldcontain">
+				<label style="width: 5%;">Firmware update</label>
+				<input type="file" name="i" id="firmware_file" size="40" data-wrapper-class="ui-btn-inline" value="">
+				<a href="#" onclick="javascript:firmware_upload(); return false;" class="ui-btn ui-btn-inline ui-corner-all ui-btn-a">GO</a>
+			</div>
+		
+		</div><!-- /content -->
+		
+		
+		<div data-role="footer" data-position="fixed" role="contentinfo" class="ui-footer ui-bar-inherit">
+			<h1 class="ui-title" role="heading"  aria-level="1">Firmware V~version~ (c)Zenisun 2017</h1>
+		</div><!-- /footer -->
+
+	</div><!-- /page -->
+
+	<script>
+		$( document ).ready(function(){
+		 	startup_setup(); 
+		}); 
+	</script>
+
+	<div class="ui-loader ui-corner-all ui-body-a ui-loader-default"><span class="ui-icon-loading"></span><h1>loading</h1></div>
+</body>
+
+
+</html>
+
