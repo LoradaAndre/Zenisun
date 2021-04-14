@@ -30,7 +30,6 @@ function lectureCarte(){
         url: "../cgi/zns.cgi?cmd=d&p=ios"+my_current_automatum_cmd,
         context: document.body
       }).done(function(data){
-			console.log(data.all)
 
             vin[0] = parseInt(data.all[22].textContent)/1000 //VDC1
             vin[1] = parseInt(data.all[23].textContent)/1000 //VDC2
@@ -77,7 +76,6 @@ function lectureCarte(){
         url: '../cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
         context: document.body
       }).done(function(data){
-          console.log(data.all)
 
             pergOrient = parseInt(data.all[4].textContent) //orient
             pergLong = parseInt(data.all[6].textContent)/100 //lon
