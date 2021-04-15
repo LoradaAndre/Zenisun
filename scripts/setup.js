@@ -8,6 +8,7 @@ $(document).ready(function(){
     $(".checkDiv").hide()
     $(".info-check").show()
     $(".middle").css("visibility","hidden")
+    $(".validate_spe").css("visibility","hidden")
     afficheUn(".para1")
 
     setInterval(function(){ 
@@ -15,6 +16,8 @@ $(document).ready(function(){
         
     }, 1000);
 })
+
+//====================== clics ======================
 
 $(".mod").click(function(){
     //Si le bouton inscrit "Modifier"
@@ -51,9 +54,8 @@ $(".validate_spe").click(function(){
     $(".info-check").show()
     $(this).css("visibility","hidden")
 
-    console.log($(this).parent().children(".mod").text("Modifier"))
     //Change le bouton "annuler" en "modifier"
-    // $(this).parent().parent().children(".mod").text("Modifier");
+    $(this).parent().children(".mod").text("Modifier")
 
 });
 
@@ -73,17 +75,11 @@ $(".validate").click(function(){
 
     console.log(valueToInsert)
     //Application de la config
-    // applyConfig(categorie, valueToInsert, idToInsert)
+    applyConfig(categorie, valueToInsert, idToInsert)
 
     waitCheck = false;
 
-  
-
 });
-
-// $("#liste_baie").change(function(){
-//     console.log($(this).val())
-// });
 
 $(".elem1").click(function(){
     afficheUn(".para1")
@@ -135,91 +131,7 @@ function afficheUn(celuiAAfficher){
     $(".right-content").children().css("background-color","rgb(56, 56, 56)")
     $(celuiAAfficher).show()
 }
-// ========================= checkbox =========================
 
-$(".validate_spe").click(function(){
-    let mask = 0;
-    
-    if($("#checkMot1").is(":checked")){
-        console.log("le mot1 est checké")
-        mask |= 1
-    }
-    if($("#checkBlanc1").is(":checked")){
-        console.log("le blanc1 est checké")
-        mask |= 4
-    }
-    if($("#checkRGB1").is(":checked")){
-        console.log("le rgb1 est checké")
-        mask |= 16
-    }
-    if($("#checkMot2").is(":checked")){
-        console.log("le mot2 est checké")
-        mask |= 2
-    }
-    if($("#checkBlanc2").is(":checked")){
-        console.log("le blanc2 est checké")
-        mask |= 8
-    }
-    if($("#checkRGB2").is(":checked")){
-        console.log("le RGB2 est checké")
-        mask |= 32
-    }
-
-    $.ajax({
-        url: '../cgi/zns.cgi?cmd=f&p=49&v=' + mask,	
-        context: document.body
-      }).done(function(){
-          alert("envoie du changement de config reussi")
-      }).fail( function(){
-        alert("envoie du changement de config échoué")
-      });
-
-});
-
-// ========================= recup des données =========================
-
-function applyConfig(categorie, valueToInsert, idToInsert){
-    if(categorie.hasClass("para1")){
-        apply_board_config(valueToInsert, idToInsert)
-    }else{
-        console.log("nope c'est aps board")
-        apply_manuf_config(valueToInsert, idToInsert)
-    }
-}
-
-// send a board  setting to pergola : note setting is not automatically saved, call save_board_config() to do that
-function apply_board_config(valueToInsert, idToInsert){
-
-    var command = '../cgi/zns.cgi?cmd=b&p=' + idToInsert + '&v=' + valueToInsert + my_current_automatum_cmd;
-    $.ajax({
-        url: command,	
-        context: document.body
-    }).done(function(){
-        alert("insérer " + valueToInsert + " de l'ID: " + idToInsert + "(dans board)")
-    }).fail(function(){
-        alert("fail de l'envoi du board")
-    });
-}
-    
-
-// send a manufacturer setting to pergola : note setting is not automatically saved, call save_manuf_config() to do that
-function apply_manuf_config(valueToInsert, idToInsert){
-
-    if(idToInsert == '0'){
-        valueToInsert = parseInt(valueToInsert) + 500;	// automatically add the 50°C offset to user entry
-    }
-        
-//	alert ('set parameter ' + suffix_id + ' to ' + cal_val );
-    var command = '../cgi/zns.cgi?cmd=f&p=' + idToInsert + '&v=' + valueToInsert + my_current_automatum_cmd;
-    $.ajax({
-        url: command,	
-        context: document.body
-    }).done(function(){
-        alert("insérer " + valueToInsert + " de l'ID: " + idToInsert + "(pas board)")
-    }).fail(function(){
-        alert("fail de l'envoi du board")
-    });
-}
 
 //Lecture de la carte, récupération des infos pour les paramètres
 function lectureC(){
@@ -254,11 +166,7 @@ function lectureC(){
             $(".tmp").text(boardTemp + " ("+ (boardTemp/10) + "°C)")
 
       }).fail(function() {
-			  alert("Lecture de la carte échouée") 
-            
-           
-
-            
+			  alert("Lecture de la carte échouée")  
     });	
 
 	$.ajax({
@@ -332,12 +240,52 @@ function lectureC(){
                 let hwcfg = parseInt(data.all[17].textContent);
                 affichageCheck(hwcfg)
             }
-            
-
+        
       }).fail(function() {
           alert("Lecture de la carte échouée")  
     });
 }
+
+//=================== Configuration (checkbox) ===================
+
+$(".validate_spe").click(function(){
+    let mask = 0;
+    
+    if($("#checkMot1").is(":checked")){
+        console.log("le mot1 est checké")
+        mask |= 1
+    }
+    if($("#checkBlanc1").is(":checked")){
+        console.log("le blanc1 est checké")
+        mask |= 4
+    }
+    if($("#checkRGB1").is(":checked")){
+        console.log("le rgb1 est checké")
+        mask |= 16
+    }
+    if($("#checkMot2").is(":checked")){
+        console.log("le mot2 est checké")
+        mask |= 2
+    }
+    if($("#checkBlanc2").is(":checked")){
+        console.log("le blanc2 est checké")
+        mask |= 8
+    }
+    if($("#checkRGB2").is(":checked")){
+        console.log("le RGB2 est checké")
+        mask |= 32
+    }
+
+    $.ajax({
+        url: '../cgi/zns.cgi?cmd=f&p=49&v=' + mask,	
+        context: document.body
+      }).done(function(){
+          alert("envoie du changement de config reussi")
+      }).fail( function(){
+        alert("envoie du changement de config échoué")
+      });
+
+});
 
 function affichageCheck(hwcfg){
     let listeDispo = $(".info-check")
@@ -368,4 +316,84 @@ function affichageCheck(hwcfg){
     if(hwcfg&32){
         $(listeDispo).append($("<h3>RGB 2</h3>"))
     }
+}
+// ========================= Manufacturer settings =========================
+
+$(".save").click(function(){
+    save_manuf_config();
+});
+
+function save_manuf_config(){
+	var password = prompt("Please enter password", "xxxx");
+	var command = '../cgi/zns.cgi?cmd=f&p=1234&v=' + password;
+	$.ajax({
+	  url: command,	
+	  context: document.body
+	}).done(function(data) {
+		alert("sauvegarde effectuée")
+	}).error(function(){
+		alert("sauvegarde échouée")
+	});
+}
+
+$(".charge").click(function(){
+    reset_manuf_config();
+});
+
+function reset_manuf_config(){
+	var command = '../cgi/zns.cgi?cmd=f&p=1235&v=7913'+my_current_automatum_cmd;
+	$.ajax({
+	  url: command,	
+	  context: document.body
+	}).done(function(data) {
+		alert("reset effectué")
+		startup_setup();
+	}).error(function(){
+		alert("reset échoué")
+	});
+}
+
+// ========================= Application =========================
+
+function applyConfig(categorie, valueToInsert, idToInsert){
+    if(categorie.hasClass("para1")){
+        apply_board_config(valueToInsert, idToInsert)
+    }else{
+        console.log("nope c'est aps board")
+        apply_manuf_config(valueToInsert, idToInsert)
+    }
+}
+
+// send a board  setting to pergola : note setting is not automatically saved, call save_board_config() to do that
+function apply_board_config(valueToInsert, idToInsert){
+
+    var command = '../cgi/zns.cgi?cmd=b&p=' + idToInsert + '&v=' + valueToInsert + my_current_automatum_cmd;
+    $.ajax({
+        url: command,	
+        context: document.body
+    }).done(function(){
+        alert("insérer " + valueToInsert + " de l'ID: " + idToInsert + "(dans board)")
+    }).fail(function(){
+        alert("fail de l'envoi du board")
+    });
+}
+    
+
+// send a manufacturer setting to pergola : note setting is not automatically saved, call save_manuf_config() to do that
+function apply_manuf_config(valueToInsert, idToInsert){
+
+    if(idToInsert == '0'){
+        valueToInsert = parseInt(valueToInsert) + 500;	// automatically add the 50°C offset to user entry
+    }
+        
+//	alert ('set parameter ' + suffix_id + ' to ' + cal_val );
+    var command = '../cgi/zns.cgi?cmd=f&p=' + idToInsert + '&v=' + valueToInsert + my_current_automatum_cmd;
+    $.ajax({
+        url: command,	
+        context: document.body
+    }).done(function(){
+        alert("insérer " + valueToInsert + " de l'ID: " + idToInsert + "(pas board)")
+    }).fail(function(){
+        alert("fail de l'envoi du board")
+    });
 }
