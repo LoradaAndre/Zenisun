@@ -1,8 +1,11 @@
 let GPI = [0,0,0,0,0,0]
-let GPO = [0,0,0,0,0,0,0,0]
+let GPO_intensite = [0,0,0,0,0,0,0,0]
+let GPO_volt = [0,0,0,0,0,0,0,0]
 let mot0 = []
 let mot1 = []
+let motGrad = []
 let waitCheck = false;
+let motAngle = [0,0]
 
 $(document).ready(function(){
     $(".checkDiv").hide()
@@ -59,7 +62,7 @@ $(".validate_spe").click(function(){
 
 });
 
-$(".validate").click(function(){
+$(".valid").click(function(){
     if($(this).parent().hasClass("middle")){
         //Cache la partie du milieu à l'utilisateur
         $(this).parent().css("visibility","hidden")
@@ -67,8 +70,14 @@ $(".validate").click(function(){
     
     //Change le bouton "annuler" en "modifier"
     $(this).parent().parent().children(".mod").text("Modifier");
-    //Récupération de la valeur mise dans l'input
 
+    waitCheck = false;
+
+});
+
+$(".validate").click(function(){
+
+    //Récupération de la valeur mise dans l'input
     let valueToInsert = $(this).parent().children("input").val()
     let idToInsert = $(this).parent().children("input").attr("id")
     let categorie = $(this).parent().parent().parent()
@@ -77,9 +86,9 @@ $(".validate").click(function(){
     //Application de la config
     applyConfig(categorie, valueToInsert, idToInsert)
 
-    waitCheck = false;
-
 });
+
+
 
 $(".elem1").click(function(){
     afficheUn(".para1")
@@ -144,15 +153,44 @@ function lectureC(){
 
              //=================== GPI ===================
              for(let i = 0; i < 6; i++){
-                GPI[i] = parseInt(data.all[i+2].textContent);
+                GPI[i] = data.all[i+2].textContent;
                 $(".GPI" + i).text(GPI[i])
             }
 
             //=================== GPO ===================
-            for(let i = 0; i < 8; i++){
-                GPO[i] = parseInt(data.all[i+8].textContent)
-                $(".GPO" + i).text(GPO[i])
+            for(let i = 0; i < 12; i++){
+                let GPO = data.all[i+8].textContent
+                let GPO_i_v = GPO.split(";")
+                GPO_intensite[i] = GPO_i_v[0];
+                GPO_volt[i] = GPO_i_v[1];
+
+                if(i < 8){
+                    $(".GPO_Power" + i).text(GPO_volt[i] + " mA")
+                }
+
+                //=================== setPosition ===================
+                if(i > 3){
+                    $(".GPO_Int" + i).text(GPO_intensite[i] + " count")
+                }
             }
+
+            //=================== setPosition ===================
+
+            for(let i = 0; i < 2; i++){
+                let mot = data.all[i+24].textContent;
+                let mot_val_max = mot.split(";")
+                motGrad[i] = mot_val_max[0]
+                $(".mot" + (i+1)).text(motGrad[i] + " counts")
+            }
+
+            //angle
+
+            motAngle[0] = mot0[5] * motGrad[0] / mot0[3]
+            motAngle[1] = mot1[5] * motGrad[1] / mot1[3]
+
+            $(".mot1_angle").text(parseInt(motAngle[0]) + "°")
+            $(".mot2_angle").text(parseInt(motAngle[1]) + "°")
+
             
             //=================== General calibration  ===================
 
@@ -370,6 +408,72 @@ function homming(mot_id){
 		alert("erreur lors de l'aplication de l'homing")
 	});
 }
+
+// ========================== SET ================================
+$(".validate_set_motor").click(function(){
+
+    //Récupération de la valeur mise dans l'input
+    let valueToInsert = $(this).parent().children("input").val()
+    let idToInsert = $(this).parent().children("input").attr("id")
+
+    manu_manuf_motor(valueToInsert, idToInsert);
+});
+
+// move motor to count position [0..max_count]
+function manu_manuf_motor(valueToInsert, idToInsert){
+
+    var command = '../cgi/zns.cgi?cmd=m&m=' + idToInsert + '&p=' + valueToInsert;
+    $.ajax({
+        url: command,	
+        context: document.body
+    }).done(function(){
+        alert("set mot pos OK")
+    }).fail(function() {
+        alert("set mot pos KO")
+    });
+}
+
+$(".validate_set_shader").click(function(){
+    //Récupération de la valeur mise dans l'input
+    let valueToInsert = $(this).parent().children("input").val()
+    let idToInsert = $(this).parent().children("input").attr("id")
+    manu_manuf_motor_a(valueToInsert, idToInsert);
+});
+
+// move shader to angle position [0..angle_max]
+function manu_manuf_motor_a(valueToInsert, idToInsert){
+
+    var command = '../cgi/zns.cgi?cmd=m&m=' + idToInsert + '&a=' + valueToInsert;
+    $.ajax({
+        url: command,	
+        context: document.body
+    }).done(function(){
+        alert("set mot angle OK")
+    }).fail(function() {
+        alert("set mot angle KO")
+    });
+}
+
+$(".validate_set_led").click(function(){
+    //Récupération de la valeur mise dans l'input
+    let valueToInsert = $(this).parent().children("input").val()
+    let idToInsert = $(this).parent().children("input").attr("id")
+    manu_manuf_led(valueToInsert, idToInsert);
+});
+
+function manu_manuf_led(valueToInsert, idToInsert){
+
+	var command = '../cgi/zns.cgi?cmd=l&o=' + idToInsert + '&p=' + valueToInsert;
+	$.ajax({
+	  url: command,	
+	  context: document.body
+	}).done(function(){
+        alert("set led OK")
+    }).fail(function() {
+        alert("set led KO")
+    });
+}
+
 
 // ========================= Application =========================
 
