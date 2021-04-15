@@ -2,8 +2,11 @@ let GPI = [0,0,0,0,0,0]
 let GPO = [0,0,0,0,0,0,0,0]
 let mot0 = []
 let mot1 = []
+let waitCheck = false;
 
 $(document).ready(function(){
+    $(".checkDiv").hide()
+    $(".info-check").show()
     $(".middle").css("visibility","hidden")
     afficheUn(".para1")
 
@@ -24,31 +27,63 @@ $(".mod").click(function(){
         let val = parseInt($(this).parent().children(".desc").text())
         //Insertion ce cette valeur dans l'input
         $(this).parent().children(".middle").children(".form-control").val(val)
+    
+        waitCheck = true;
+
+        $(".checkDiv").show()
+        $(".info-check").hide()
+        $(".validate_spe").css("visibility","visible")
     }
     //Si le bouton inscrit "Annuler"
     else{
         $(this).text("Modifier")
         $(this).parent().children(".middle").css("visibility","hidden")
+    
+        waitCheck = false;
+
+        $(".checkDiv").hide()
+        $(".info-check").show()
     }
     
 });
+$(".validate_spe").click(function(){
+    $(".checkDiv").hide()
+    $(".info-check").show()
+    $(this).css("visibility","hidden")
+
+    console.log($(this).parent().children(".mod").text("Modifier"))
+    //Change le bouton "annuler" en "modifier"
+    // $(this).parent().parent().children(".mod").text("Modifier");
+
+});
 
 $(".validate").click(function(){
-    //Cache la partie du milieu à l'utilisateur
-    $(this).parent().css("visibility","hidden")
+    if($(this).parent().hasClass("middle")){
+        //Cache la partie du milieu à l'utilisateur
+        $(this).parent().css("visibility","hidden")
+    }
+    
     //Change le bouton "annuler" en "modifier"
     $(this).parent().parent().children(".mod").text("Modifier");
     //Récupération de la valeur mise dans l'input
+
     let valueToInsert = $(this).parent().children("input").val()
     let idToInsert = $(this).parent().children("input").attr("id")
     let categorie = $(this).parent().parent().parent()
 
-    console.log(idToInsert)
+    console.log(valueToInsert)
     //Application de la config
-    applyConfig(categorie, valueToInsert, idToInsert)
+    // applyConfig(categorie, valueToInsert, idToInsert)
+
+    waitCheck = false;
+
+  
 
 });
 
+// $("#liste_baie").change(function(){
+//     console.log($(this).val())
+// });
 
 $(".elem1").click(function(){
     afficheUn(".para1")
@@ -100,6 +135,47 @@ function afficheUn(celuiAAfficher){
     $(".right-content").children().css("background-color","rgb(56, 56, 56)")
     $(celuiAAfficher).show()
 }
+// ========================= checkbox =========================
+
+$(".validate_spe").click(function(){
+    let mask = 0;
+    
+    if($("#checkMot1").is(":checked")){
+        console.log("le mot1 est checké")
+        mask |= 1
+    }
+    if($("#checkBlanc1").is(":checked")){
+        console.log("le blanc1 est checké")
+        mask |= 4
+    }
+    if($("#checkRGB1").is(":checked")){
+        console.log("le rgb1 est checké")
+        mask |= 16
+    }
+    if($("#checkMot2").is(":checked")){
+        console.log("le mot2 est checké")
+        mask |= 2
+    }
+    if($("#checkBlanc2").is(":checked")){
+        console.log("le blanc2 est checké")
+        mask |= 8
+    }
+    if($("#checkRGB2").is(":checked")){
+        console.log("le RGB2 est checké")
+        mask |= 32
+    }
+
+    $.ajax({
+        url: '../cgi/zns.cgi?cmd=f&p=49&v=' + mask,	
+        context: document.body
+      }).done(function(){
+          alert("envoie du changement de config reussi")
+      }).fail( function(){
+        alert("envoie du changement de config échoué")
+      });
+
+});
+
 // ========================= recup des données =========================
 
 function applyConfig(categorie, valueToInsert, idToInsert){
@@ -252,8 +328,44 @@ function lectureC(){
             let pergola_drying = parseInt(data.all[5].textContent); //drying
             $(".shader_drying").text(pergola_drying);
 
+            if(waitCheck == false){
+                let hwcfg = parseInt(data.all[17].textContent);
+                affichageCheck(hwcfg)
+            }
+            
+
       }).fail(function() {
           alert("Lecture de la carte échouée")  
     });
+}
 
+function affichageCheck(hwcfg){
+    let listeDispo = $(".info-check")
+    $(listeDispo).empty();
+
+    $("#checkMot1").prop("checked", hwcfg&1)
+    $("#checkMot2").prop("checked", hwcfg&2)
+    $("#checkBlanc1").prop("checked", hwcfg&4)
+    $("#checkBlanc2").prop("checked", hwcfg&8)
+    $("#checkRGB1").prop("checked", hwcfg&16)
+    $("#checkRGB2").prop("checked", hwcfg&32)
+
+    if(hwcfg&1){
+        $(listeDispo).append($("<h3>Moteur 1</h3>"))
+    }
+    if(hwcfg&2){
+        $(listeDispo).append($("<h3>Moteur 2</h3>"))
+    }
+    if(hwcfg&4){
+        $(listeDispo).append($("<h3>Blanc 1</h3>"))
+    }
+    if(hwcfg&8){
+        $(listeDispo).append($("<h3>Blanc 2</h3>"))
+    }
+    if(hwcfg&16){
+        $(listeDispo).append($("<h3>RGB 1</h3>"))
+    }
+    if(hwcfg&32){
+        $(listeDispo).append($("<h3>RGB 2</h3>"))
+    }
 }
