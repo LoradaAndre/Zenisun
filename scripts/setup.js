@@ -353,6 +353,24 @@ function reset_manuf_config(){
 	});
 }
 
+// ========================= Homming =========================
+$(".doHoming").click(function(){
+    homming($(this).attr("id"));
+});
+
+//Permet d'effectuer un homing des moteurs
+function homming(mot_id){
+	var command = '../cgi/zns.cgi?cmd=m&m=' + mot_id + '&p=-10000';
+	$.ajax({
+	  url: command,	
+	  context: document.body
+	}).done(function(data){
+		alert("homing")
+	}).fail(function(){
+		alert("erreur lors de l'aplication de l'homing")
+	});
+}
+
 // ========================= Application =========================
 
 function applyConfig(categorie, valueToInsert, idToInsert){

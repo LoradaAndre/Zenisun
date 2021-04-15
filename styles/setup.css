@@ -47,7 +47,16 @@ h3{
     padding: 8px;
 }
 
-.mod, .validate, .validate_spe, .charge, .save{
+.cat-homming{
+    display: grid;
+    grid-template-columns: 2fr 1fr 3fr 2fr;
+    margin-bottom: 2px;
+    /* background-color: rgb(150, 200, 247); */
+    background-color: rgb(78, 78, 78);
+    padding: 8px;
+}
+
+.mod, .validate, .validate_spe, .charge, .save, .doHoming{
     justify-self: flex-end;
     /* boutons */
     padding: 2px;
