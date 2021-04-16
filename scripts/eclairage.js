@@ -15,6 +15,7 @@ let GColor;
 let BColor;
 
 let init = false;
+let oneTime = false;
 
 let config = 1;
 
@@ -42,11 +43,31 @@ function lectureCarte(){
             RColor = getColor(data, 16); //16: <GPO 8>
             GColor = getColor(data, 17); //17: <GPO 9>
             BColor = getColor(data, 18); //18: <GPO 10>
+
       }).fail(function() {
             isConnected(false, data)
         //   alert("Lecture de la carte échouée")
           
-      });	
+    });	
+
+    $.ajax({
+        url: '../cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
+        context: document.body
+      }).done(function(data){
+			
+        
+             //hwcfg
+             hwcfg = parseInt(data.all[17].textContent)
+             console.log(hwcfg)
+             if(oneTime == false){
+                gestionAffichageBloc(hwcfg)
+             }
+        
+      }).fail(function() {
+          alert("Lecture de la carte échouée")  
+    });
+
+      
 }
 
 function changeValueWithRange(classRange, input){
@@ -101,6 +122,7 @@ function updateOutputRange(){
 // let zone = document.querySelector(".wrap-BB-1 .range");
 
 $(document).ready(function() {
+    $(".test").hide();
     lectureCarte();
     updateInputRange();
 
@@ -108,7 +130,7 @@ $(document).ready(function() {
     setInterval(function(){ 
         lectureCarte();
         updateOutputRange();
-        defautCheck();
+        defaut();
     }, 1000);
 
     // $('#zoneColor').farbtastic('#color');
@@ -122,7 +144,7 @@ $(document).ready(function() {
     AllbandeauOff()
 });
 
-function defautCheck(){
+function defaut(){
     if(bb1Intensite != "undefined" && init == false){
         init = true;
         if(bb1Intensite != 0){
@@ -138,6 +160,11 @@ function defautCheck(){
         if(RGBIntensite2 != 0){
             $(".RVB2-check .ui-switcher").attr("aria-checked", "true");
         }
+
+        // if(hwcfg != "undefined" && init == false){
+        //     init = true;
+        //     gestionAffichageBloc(hwcfg)
+        // }
     }
   
 }
@@ -223,3 +250,23 @@ function changeColor(color){
     // console.log("envoyé: (" + hexR + "," + hexG + "," + hexB + ")");
 }
 
+function gestionAffichageBloc(hwcfg){
+    oneTime = true;
+
+    console.log(hwcfg)
+
+    if(hwcfg&4){
+        $(".bloc_BB1").show();
+    }
+    if(hwcfg&8){
+        $(".bloc_BB2").show();
+    }
+    if(hwcfg&16){
+        $(".bloc_RGB1").show();
+        $(".bloc_Colorisation").show();
+    }
+    if(hwcfg&32){
+        $(".bloc_RGB2").show();
+        $(".bloc_Colorisation").show();
+    }
+}

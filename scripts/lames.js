@@ -12,8 +12,11 @@ let init = false;
 
 let monitoring_user_config;
 
+let hwcfg;
+let oneTime = false;
+
 $(document).ready(function (){
-    
+    $(".test").hide();
     updateAllInput();
     lectureCarte();
 
@@ -56,17 +59,23 @@ function lectureCarte(){
       });	
 
       my_current_automatum_cmd = "&ID=0";
+
       $.ajax({
-          url: "../cgi/zns.cgi?cmd=d&p=ios"+my_current_automatum_cmd,
-          context: document.body
-        }).done(function(data){
-            isConnected(true, data)
-          //   console.log(data)
-              monitoring_user_config = parseInt(data.all[30].textContent);
-        }).fail(function() {
-            isConnected(false, data)
-          //   alert("Lecture de la carte échouée")  
-      });	
+        url: '../cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
+        context: document.body
+      }).done(function(data){
+			
+        
+             //hwcfg
+             hwcfg = parseInt(data.all[17].textContent)
+             console.log(hwcfg)
+             if(oneTime == false){
+                gestionAffichageBloc(hwcfg)
+             }
+        
+      }).fail(function() {
+          alert("Lecture de la carte échouée")  
+    });	
   
 }
 
@@ -311,4 +320,15 @@ function deplacementLames(moteur, valeur){
             isConnected(false, data)
             alert("Déplacement de la lame échoué")
       });
+}
+
+function gestionAffichageBloc(hwcfg){
+    if(hwcfg&1){
+        $(".bloc_Mot1").show();
+    }
+    if(hwcfg&2){
+        $(".bloc_Mot2").show();
+        $(".bloc_sync").show();
+    }
+    
 }
