@@ -3,7 +3,8 @@ let monitoring_user_config = 0;							// current user configuration :b0=rain mod
 let	heure_allumage = 1200;									// automatically power on light at XX:xx
 let	heure_extinction = 360;		
 
-let grad_led;
+let vitesseGradLed;
+let actSuiviSol;
 
 let sun_elev_close;
 
@@ -57,7 +58,10 @@ function lectureCarte(){
 			updateButtons();
 
 			mot = parseInt(getMotorValue(data,24))
-			console.log(mot)
+			
+			actSuiviSol = parseInt(data.all[33].textContent);
+			console.log("actulisation suivi sol: " + actSuiviSol)
+			$(".list_of_buttons_suivi_sol h3[value="+ actSuiviSol +"]").attr("check", "true")
 
       }).fail(function() {
 			isConnected(false, data)
@@ -68,6 +72,8 @@ function lectureCarte(){
         url: '../cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
         context: document.body
       }).done(function(data){
+		  	// console.log(data.all)
+
 			isConnected(true, data)
 		  	//heure allumage
 			heure_allumage = parseInt(data.all[13].textContent);	
@@ -80,7 +86,10 @@ function lectureCarte(){
 			sun_elev_close = parseInt(data.all[15].textContent);
 
 			//gradateur LED
-			grad_led = parseInt(data.all[16].textContent);
+			vitesseGradLed = parseInt(data.all[16].textContent);
+			console.log("vitesse grad led: " + vitesseGradLed)
+			$(".list_of_buttons_grad_LED h3[value="+ vitesseGradLed +"]").attr("check", "true")
+
 
 			//Longitude/lattitude
 			longSaved =  parseInt(data.all[6].textContent)/100.0;
@@ -662,6 +671,8 @@ function updateButtons(){
 		$(".check-allumage-auto-h .ui-switcher").attr("aria-checked", "false")
 		$(".selection_horaire_auto").hide();
 	}
+
+	
 }
 
 // ================================ MAINTENANCE ================================
