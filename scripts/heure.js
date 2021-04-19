@@ -1,5 +1,4 @@
 /* ========================== date/ heure ========================== */
-console.log($(".heure"))
 let date = new Date()
 let jour = date.getDate();
 let mois = date.getMonth() + 1;

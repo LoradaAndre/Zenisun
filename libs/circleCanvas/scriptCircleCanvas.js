@@ -89,8 +89,6 @@ for(let i=0; i<allCanvas.length; i++) {
   // let percentMax = targetElt.dataset.percent;
   let percentMax = targetElt.getAttribute("value");
   
-  console.log("mmmmmmmmmmmmmmmmmmmmmm")
-  console.log("prout")
 	myIntervals[i] = window.setInterval(increment.bind(this, percentMax, targetElt), 15);
   // console.log(myIntervals);
 }
