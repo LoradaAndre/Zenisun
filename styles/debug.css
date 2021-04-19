@@ -13,3 +13,15 @@ ul{
 hr{
     width: 80%;
 }
+
+.home_icon{
+    width: 30px;
+    vertical-align: center;
+}
+header{
+    display: flex;
+}
+.debug{
+    background-color: #5E5E5E;
+    margin-top: 10px;
+}
