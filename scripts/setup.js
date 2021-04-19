@@ -154,7 +154,7 @@ function lectureC(){
              //=================== GPI ===================
              for(let i = 0; i < 6; i++){
                 GPI[i] = data.all[i+2].textContent;
-                $(".GPI" + i).text(GPI[i])
+                $(".GPI" + i).text(GPI[i] + " mV")
             }
 
             //=================== GPO ===================

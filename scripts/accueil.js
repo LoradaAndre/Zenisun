@@ -9,6 +9,7 @@ let elevation_sol;
 
 $(document).ready(function (){
     setInterval(function(){ 
+        sync_date();
         lectureCarte();
         if(valueMotor1 != undefined){
             let canvasLames1 = document.querySelector(".L1-canvas");  
@@ -173,4 +174,18 @@ function meteo(number_config, elevation_sol){
         $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/normal.png")
         $(".meteo .type_temps p").text("Temps clair")
     }
+}
+
+function sync_date(){
+	let now_date = new Date();
+	let date_sec =  now_date.getTime();
+	date_sec /= 1000;	// to seconds for use in pergola
+	// set user setttings : zns.cgi?cmd=u&p=<n>&v=<value>
+	var command = '../cgi/zns.cgi?cmd=u&p=0&v=' + date_sec;
+	$.ajax({
+	  url: command,	
+	  context: document.body
+	}).done(function(){
+	}).fail(function() {
+	});
 }
