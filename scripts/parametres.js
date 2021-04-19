@@ -19,9 +19,10 @@ let lat;
 let neLong;
 let neLat;
 
-let once = false;
+let onceIntemp = false;
 
 let mot;
+let once = false;
 
 $(document).ready(function(){
 	//Actualisation des informations, refresh
@@ -52,12 +53,17 @@ function lectureCarte(){
       }).done(function(data){
 			console.log(data.all)
 
+			mot = parseInt(getMotorValue(data,24))
+
 			isConnected(true, data)
 			monitoring_user_config = parseInt(data.all[30].textContent);
 			console.log("monitoring user truc: " + (monitoring_user_config))
 			updateButtons();
 
-			mot = parseInt(getMotorValue(data,24))
+			console.log(monitoring_user_config)
+			if(onceIntemp == false && monitoring_user_config != "undefined"){
+				defaultIntemperies()
+			}
 			
 			actSuiviSol = parseInt(data.all[33].textContent);
 			console.log("actulisation suivi sol: " + actSuiviSol)
@@ -445,15 +451,24 @@ $(".button_saision_off").click(function(){
 // =============================== INTEMPERIES ===============================
 
 $(".button_vent").click(function(){
+	$(this).attr("check","true")
 	deplacementLames(3, 0);  //déplacement de tout les moteurs à 0°
-	set_user_config ( monitoring_user_config | 8 );		// set wintering  bit
+	
+	setTimeout(function(){
+		set_user_config ( monitoring_user_config | 8 );		// set wintering  bit
+		$(".button_intemp_off").attr("check","false")
+	}, 1000);
 	$(".button_neige").hide();
 });
 
 $(".button_neige").click(function(){
-	deplacementLamesAngle(3, 90);  //déplacement de tout les moteurs à 90°
-	set_user_config ( monitoring_user_config | 8 );		// set wintering  bit
-	$(".button_vent").hide();
+		$(this).attr("check","true")
+		deplacementLamesAngle(3, 90);  //déplacement de tout les moteurs à 90°
+		setTimeout(function(){
+			set_user_config ( monitoring_user_config | 8 );		// set wintering  bit
+			$(".button_intemp_off").attr("check","false")
+		}, 1000);
+		$(".button_vent").hide();
 });
 
 $(".button_intemp_off").click(function(){
@@ -612,29 +627,6 @@ function updateButtons(){
 		$(".check-fermeture_pluie .ui-switcher").attr("aria-checked", "true")
 	}
 
-	//si intemperies activé
-	if(monitoring_user_config&8){
-		if(mot == 0){
-			console.log("vent activées: " + (monitoring_user_config&8))
-			$(".button_vent").attr("check", "true")
-			$(".button_neige").attr("check", "false")
-			$(".button_neige").hide()
-			$(".button_vent").show()
-			$(".button_intemp_off").attr("check", "false")
-		}else{
-			console.log("neige activées: " + (monitoring_user_config&8))
-			$(".button_vent").attr("check", "false")
-			$(".button_vent").hide()
-			$(".button_neige").show()
-			$(".button_neige").attr("check", "true")
-			$(".button_intemp_off").attr("check", "false")
-		}
-		
-	}else{
-		$(".button_intemp_off").attr("check", "true")
-
-	}
-
 	//si mode hiver activé
 	if(monitoring_user_config&4){
 		// $(".button_ete").attr("check", "false")
@@ -671,8 +663,33 @@ function updateButtons(){
 		$(".check-allumage-auto-h .ui-switcher").attr("aria-checked", "false")
 		$(".selection_horaire_auto").hide();
 	}
+}
 
-	
+function defaultIntemperies(){
+	onceIntemp = true;
+	//si intemperies activé
+	if(monitoring_user_config&8){
+		console.log("motval: " + mot)
+		if(mot == 0){
+			console.log("vent activées: " + (monitoring_user_config&8))
+			$(".button_vent").attr("check", "true")
+			$(".button_neige").attr("check", "false")
+			$(".button_neige").hide()
+			$(".button_vent").show()
+			$(".button_intemp_off").attr("check", "false")
+		}else{
+			console.log("neige activées: " + (monitoring_user_config&8))
+			$(".button_vent").attr("check", "false")
+			$(".button_vent").hide()
+			$(".button_neige").show()
+			$(".button_neige").attr("check", "true")
+			$(".button_intemp_off").attr("check", "false")
+		}
+		
+	}else{
+		$(".button_intemp_off").attr("check", "true")
+
+	}
 }
 
 // ================================ MAINTENANCE ================================
