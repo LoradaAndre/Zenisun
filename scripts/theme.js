@@ -89,6 +89,12 @@ function themeSombre(){
     $(".parametres_widget").css('background-image', "url(resources/background/widgets/fond_settings_sombre.png)");
     $(".guide_utilisation_widget").css('background-image', "url(resources/background/widgets/fond_guide_utilisation_sombre.png)");
     $(".station_meteo_widget").css('background-image', "url(resources/background/widgets/fond_station_meteo_sombre.png)");
+
+   
+    $(".wifi_widget img").attr('src', "resources/icons/widgets_dark/wifiSombre.png");
+    $(".parametres_widget img").attr('src', "resources/icons/widgets_dark/settingsSombre.png");
+    $(".guide_utilisation_widget img").attr('src', "resources/icons/widgets_dark/bookSombre.png");
+    $(".station_meteo_widget img").attr('src', "resources/icons/widgets_dark");
 }
 
 $('#switcher_theme').click(function(){

@@ -105,12 +105,12 @@ h1{
 
 .eclairage_widget{
     background-image: url(../resources/background/widgets/fond_eclairage.png);
-    background-size: cover;
+    background-size: 50%;
 }
 
 .lames-orientable_widget{
     background-image: url(../resources/background/widgets/fond_lames_orientables.png);
-    background-size: cover;
+    background-size: 50%;
 }
 
 .wifi_widget{
