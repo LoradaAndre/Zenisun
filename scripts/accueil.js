@@ -7,7 +7,13 @@ let valueMotor2;
 let monitoring_user_config;
 let elevation_sol;
 
+let hwcfg;
+
 $(document).ready(function (){
+
+    $(".canvas-mot").hide();
+    $(".canvas-light").hide();
+
     setInterval(function(){ 
         sync_date();
         lectureCarte();
@@ -57,7 +63,23 @@ function lectureCarte(){
       }).fail(function() {
          isConnected(false, data)
         //   alert("Lecture de la carte échouée")
-      });	
+    });	
+
+    $.ajax({
+        url: 'cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
+        context: document.body
+      }).done(function(data){
+			// console.log(data.all)
+
+            let hwcfg = parseInt(data.all[17].textContent);
+            affichageCircle(hwcfg)
+        
+      }).fail(function() {
+          alert("Lecture de la carte échouée")  
+    });
+
+
+
 }
 
 function getMotorValue(data, input){
@@ -188,4 +210,56 @@ function sync_date(){
 	}).done(function(){
 	}).fail(function() {
 	});
+}
+
+function affichageCircle(hwcfg){
+    console.log(hwcfg)
+    let lengthLames = 0;
+    let lengthLight = 0;
+
+    if(hwcfg&1){
+        $(".canvas-mot1").show();
+        lengthLames += 1;
+    }
+    if(hwcfg&2){
+        $(".canvas-mot2").show();
+        lengthLames += 1;
+    }
+    if(hwcfg&4){
+        $(".canvas-light1").show();
+        lengthLight += 1;
+    }
+    if(hwcfg&8){
+        $(".canvas-light2").show();
+        lengthLight += 1;
+    }
+
+    if(lengthLight == 1){
+        $(".eclairage").css("grid-column", "1 / 2")
+        $(".eclairage").css("grid-row", "1")
+
+        if(lengthLames == 1){
+            $(".lames").css("grid-column", "2 / 3")
+            $(".lames").css("grid-row", "1")
+
+        }else if(lengthLames == 2){
+            $(".lames").css("grid-column", "2 / 4")
+            $(".lames").css("grid-row", "1")
+        }
+    }
+
+    if(lengthLight == 2){
+        $(".eclairage").css("grid-column", "1 / 3")
+        $(".eclairage").css("grid-row", "1")
+
+        if(lengthLames == 1){
+            $(".lames").css("grid-column", "3 / 4")
+            $(".lames").css("grid-row", "1")
+
+        }else if(lengthLames == 2){
+            $(".lames").css("grid-column", "3 / 5")
+            $(".lames").css("grid-row", "1")
+
+        }
+    }
 }
