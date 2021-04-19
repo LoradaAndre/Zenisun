@@ -171,7 +171,7 @@ aside{
     /* position: fixed; */
     margin-left: 3px;
     margin-bottom: 5px;
-    width: 225px;
+    width: 250px;
     border-radius: 3px;
 }
 
@@ -183,8 +183,16 @@ aside{
 }
 
 .info_icon{
-    width: 25px;
+    width: 20px;
     margin: auto;
+}
+
+.elev_icon{
+    width: 15px;
+    height: 15px;
+    margin: auto;
+    margin-bottom: 6px;
+    margin-right: 3px;
 }
 
 .info, .connexion{
@@ -215,4 +223,5 @@ aside p {
     margin-top: auto;
     padding-right: 10px;
     padding-left: 10px;
+    display: flex;
 }

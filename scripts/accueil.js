@@ -181,7 +181,7 @@ function sync_date(){
 	let date_sec =  now_date.getTime();
 	date_sec /= 1000;	// to seconds for use in pergola
 	// set user setttings : zns.cgi?cmd=u&p=<n>&v=<value>
-	var command = '../cgi/zns.cgi?cmd=u&p=0&v=' + date_sec;
+	var command = 'cgi/zns.cgi?cmd=u&p=0&v=' + date_sec;
 	$.ajax({
 	  url: command,	
 	  context: document.body
