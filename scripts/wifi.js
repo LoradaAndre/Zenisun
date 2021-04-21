@@ -38,7 +38,7 @@ function stockWifi(data){
             $(allElementWifi[i]).remove();
         }
     }
-    let container = document.querySelector("main");
+    let container = document.querySelector(".contenu-main");
 
     reseau = data.querySelectorAll("bss")
 
@@ -102,9 +102,13 @@ $(document).ready(function(){
 function applyCss(){
     refreshAffichage("not ok")
 
+    let margeDroite = 20;
+
     $(".test").css({
         "width" : "95%",
-        "margin" : "auto"
+        "float" : "right",
+        "margin" : "auto",
+        // "margin-right" : margeDroite + "px"
     });
     $("main").css({
         "display" : "block",
@@ -124,6 +128,15 @@ function applyCss(){
     $(".sousbloc3").css({
         "display" : "flex",
     });
+    $(".bouton_detection").css({
+        "margin-right" : margeDroite + "px"
+    });
+
+    $(".blocWifi").attr(
+        "style", function(i,s){
+            return(s||'') +  "margin-right: " + margeDroite + "px"
+        }
+    );
   
 
 }

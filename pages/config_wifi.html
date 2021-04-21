@@ -5,8 +5,9 @@
 
         <link  rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.css">
 
-        <link rel="stylesheet" href="../styles/wifi.css">
+        
         <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/wifi.css">
         <link rel="stylesheet" href="../styles/navbar.css">
         <link href="../libs/onoff/css/switcher.css" rel="stylesheet">
         <script src="../libs/onoff/js/jquery.switcher.js"></script>
@@ -70,22 +71,27 @@
                 </a>
             </div>
         </div>
-        <!-- A faire en sorte de ne pas le répéter sur toute les pages -->
-        <aside>
-            <div class="connexion">
-                <img class="aside_icon connexion_icon" src="../resources/icons/connected.png" alt=""><p>Connecté</p>
-            </div>
-            <div class="heure_nav">
-                <p>22:00</p>
-            </div>
-            <div class="home">
-                <a class="coucou" href="../index.html"><img class="aside_icon home_icon" src="../resources/icons/widgets_light/home.png" alt=""></a>
-            </div>
-        </aside>
+     
         <!-- =================== contenant =================== -->
         <main>
-            <div class="bouton_detection bouton">
-                <h1>Détecter les réseaux wifi</h1>
+            <div class="contenu-main">
+                <div class="bouton_detection bouton">
+                    <h1>Détecter les réseaux wifi</h1>
+                </div>
+            </div>
+            <!-- A faire en sorte de ne pas le répéter sur toute les pages -->
+            <div class="left-main">
+                <aside>
+                    <div class="connexion">
+                        <img class="aside_icon connexion_icon" src="../resources/icons/connected.png" alt=""><p>Connecté</p>
+                    </div>
+                    <div class="heure_nav">
+                        <p>22:00</p>
+                    </div>
+                    <div class="home">
+                        <a class="coucou" href="../index.html"><img class="aside_icon home_icon" src="../resources/icons/widgets_light/home.png" alt=""></a>
+                    </div>
+                </aside>
             </div>
         </main>
       
@@ -116,8 +122,10 @@
 
         <script src="../scripts/theme.js" ></script>
         <script src="../scripts/script.js"></script>
-        <script src="../scripts/wifi.js"></script>
+        
         
         <script src="../scripts/heure.js"></script>
+        <script src="../scripts/wifi.js"></script>
+        <script src="../scripts/responsive.js"></script>
     </body>
 </html>

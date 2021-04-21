@@ -1,7 +1,7 @@
 .bouton_detection{
     float: right; 
-    margin: 10px;
-    margin-right: 37px;
+    /* margin: 10px; */
+    /* margin-right: 37px; */
     background-color: #52808B;
     border-radius: 3px;
     width: 30%;
@@ -25,7 +25,6 @@
 .overlay_button{
     color: white;
     background-color: #52808B; 
-    /* 84afb9 */
     margin: 5px; 
     margin-top: 20px;
     padding: 5px;
@@ -47,4 +46,13 @@ h1{
 }
 .image{
     width: 50%;
+}
+
+.contenu-main{
+    display: block;
+}
+
+main{
+    display: grid !important;
+    grid-template-columns: 4fr 1fr;
 }
