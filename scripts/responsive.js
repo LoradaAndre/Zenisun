@@ -39,6 +39,14 @@
 //     $(".overlay").css("display","block");
 // });
 
+
+// $("aside").css("width", $(".left-main").outerWidth() + "px")
+// console.log($(".left-main").outerWidth())
+
+
+// let box = document.querySelector(".left-main");
+// console.log(box.offsetWidth)
+
 function resizeWindowEvent(){
     let widthNavBar = $(".navigation_bar").outerWidth()
     let largeurEcran = window.innerWidth;

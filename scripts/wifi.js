@@ -38,7 +38,7 @@ function stockWifi(data){
             $(allElementWifi[i]).remove();
         }
     }
-    let container = document.querySelector(".contenu-main");
+    let container = document.querySelector(".cont");
 
     reseau = data.querySelectorAll("bss")
 
@@ -77,12 +77,12 @@ function stockWifi(data){
     bloc.appendChild(sousbloc3);
     
     let img1 = document.createElement("img")
-    $(img1).addClass("image")
+    $(img1).addClass("image mini-img")
     sousbloc3.appendChild(img1);
 
     let img2 = document.createElement("img")
-    $(img2).addClass("image")
-    img2.src = "../resources/icons/crochet.png"
+    $(img2).addClass("image mini-img")
+    img2.src = "../resources/icons/widgets_light/next.png"
     sousbloc3.appendChild(img2);
 
     details.textContent = typeSecurite(cle[2].textContent, img1, bloc) + " - canal " + cle[4].textContent
@@ -102,23 +102,21 @@ $(document).ready(function(){
 function applyCss(){
     refreshAffichage("not ok")
 
-    let margeDroite = 20;
+    let margeDroite = 4;
 
     $(".test").css({
-        "width" : "95%",
-        "float" : "right",
-        "margin" : "auto",
+        
         // "margin-right" : margeDroite + "px"
     });
-    $("main").css({
-        "display" : "block",
-    });
+
     $(".test").css({
         "display" : "grid" ,
-        "grid-template-columns" : "2fr 8fr 1fr",
-        "margin": "5px",
-        "margin-bottom" : "10px"
+        "grid-template-columns" : "2fr 8fr 2fr",
+        "margin" : "auto",
+        "margin-bottom" : "10px",
+        "width" : "100%",
     });
+    
     $("h1").css({
         "text-align": "left",
     });
@@ -128,15 +126,32 @@ function applyCss(){
     $(".sousbloc3").css({
         "display" : "flex",
     });
-    $(".bouton_detection").css({
-        "margin-right" : margeDroite + "px"
+    // $(".bouton_detection").css({
+    //     "margin-right" : margeDroite + "%"
+    // });
+    $(".bouton_detection h1").css({
+        "text-align" : "center"
     });
 
-    $(".blocWifi").attr(
-        "style", function(i,s){
-            return(s||'') +  "margin-right: " + margeDroite + "px"
-        }
-    );
+    // $(".blocWifi").attr(
+    //     "style", function(i,s){
+    //         return(s||'') +  "margin-right: " + margeDroite + "%"
+    //     }
+    // );
+
+    $(".cont").css({
+        "margin" : "0",
+        "margin" : "auto",
+        "width" : "70%",
+    });
+
+    $(".mini-img").css({
+        "width": "2vw",
+        "height": "2vw",
+        "margin": "auto"
+    });
+
+
   
 
 }
@@ -164,7 +179,7 @@ function typeSecurite(securite, blocImage, bloc){
     $(bloc).addClass("image")
     if(securite & 16){
         $(bloc).addClass("closed");
-        blocImage.src = "../resources/icons/cadenas.png"
+        blocImage.src = "../resources/icons/widgets_light/lock.png"
         if(securite & 128){
             return 'WPA2';
         } 
@@ -180,7 +195,7 @@ function typeSecurite(securite, blocImage, bloc){
         $(bloc).addClass("open");
         $(bloc).removeAttr("data-bs-target");
         $(bloc).removeAttr("data-bs-toggle");
-        blocImage.src = "../resources/icons/cadenasOuvert.png"
+        blocImage.src = "../resources/icons/widgets_light/unlock.png"
         return 'Open';
 
     }      

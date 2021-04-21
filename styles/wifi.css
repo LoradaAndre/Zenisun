@@ -1,15 +1,12 @@
 .bouton_detection{
-    float: right; 
-    /* margin: 10px; */
-    /* margin-right: 37px; */
+    margin: auto;
     background-color: #52808B;
     border-radius: 3px;
-    width: 30%;
+    width: 50%;
 }
 
 .bouton_detection h1{
-    margin: 2%;
-    text-align: center !important;
+    padding: 5px;
 }
 
 .bouton_detection:hover{
@@ -55,4 +52,19 @@ h1{
 main{
     display: grid !important;
     grid-template-columns: 4fr 1fr;
+}
+
+.cont{
+    margin : 0;
+    margin : auto;
+    width : 70%;
+}
+
+.blocWifi, .bouton_detection {
+    margin-right: 0;
+}
+
+.wifi_intensite{
+    margin-top: auto;
+    margin-bottom: auto;
 }

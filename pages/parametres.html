@@ -73,277 +73,279 @@
                 </a>
             </div>
         </div>
-         <!-- A faire en sorte de ne pas le répéter sur toute les pages -->
-        <aside>
-            <div class="connexion">
-                <img class="aside_icon connexion_icon" src="../resources/icons/wait.png" alt=""><p>connexion...</p>
-            </div>
-            <div class="heure_nav">
-                <p>22:00</p>
-            </div>
-            <div class="home">
-                <a class="coucou" href="../index.html"><img class="aside_icon home_icon" src="../resources/icons/widgets_light/home.png" alt=""></a>
-            </div>
-        </aside>
 
         <main class="settings_main">
-            <!-- <button type="button" class="btn btn-primary">Primary</button> -->
-            <div class="flex-left">
-                <div class="parametres_generaux test">
-                    <h1>Paramètres généraux</h1>
-                    <div class="hr"></div>
-                    <div class="contenant">
-                        <div class="datePara">
-                            <h2>Date</h2>
-                            <p>01/03/2021</p>
-                        </div>
-                        <div class="heurePara">
-                            <h2>Heure</h2>
-                            <p>13:28:32</p>
-                        </div>
-                        
-                        <h2>Homing manuel</h2>
-                        <div class="bouton bouton_homing"> 
-                            <h3>Effectuer un homing</h3>
-                        </div>
-                        <h2>Géolocalisation</h2>
-                        <div class="geo_final">
-                            <h3 class="affichage_geo">Positionnement:</h3>
-                            <h3 class="bouton_geo">Enregistrer</h3>
-                        </div>
-                        <div>
-                            <div class="geo_item geo_item_lat">
-                                <div class="form-group">
-                                    <p class="form-control-static">Lattitude</p>
-                                </div>
-                                <div class="">
-                                    <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
-                                </div>
-                                <div class="list_of_buttons list_of_geo2">
-                                    <h3 id="O2_1">Nord</h3>
-                                    <h3 id="O2_2">Sud</h3>
-                                </div>
-                               
-                                <!-- <p>Longitude</p>
-                                <input type="number" class="form-control" placeholder="">     
-                                <input type="number" class="form-control" placeholder="">    -->
+            <div class="contenu-main">
+                <!-- <button type="button" class="btn btn-primary">Primary</button> -->
+                <div class="flex-left">
+                    <div class="parametres_generaux test">
+                        <h1>Paramètres généraux</h1>
+                        <div class="hr"></div>
+                        <div class="contenant">
+                            <div class="datePara">
+                                <h2>Date</h2>
+                                <p>01/03/2021</p>
+                            </div>
+                            <div class="heurePara">
+                                <h2>Heure</h2>
+                                <p>13:28:32</p>
                             </div>
                             
-                            <div class="geo_item geo_item_long">
-                                <div class="form-group">
-                                    <p class="form-control-static">Longitude</p>
-                                </div>
-                                <div class="">
-                                    <input class="form-control" type="number" value="0" id="example-number-input" min="0" max="90" step=".01">
-                                </div>
-                                <div class="list_of_buttons list_of_geo1">
-                                    <h3 id="O1_1">Est</h3>
-                                    <h3 id="O1_2">Ouest</h3>
-                                </div>
-                               
-                                <!-- <p>Latitude</p>
-                                <input type="number" class="form-control" placeholder="">     
-                                <input type="number" class="form-control" placeholder=""> -->
+                            <h2>Homing manuel</h2>
+                            <div class="bouton bouton_homing"> 
+                                <h3>Effectuer un homing</h3>
                             </div>
-                          
-                        </div>
-                        <h2>Orientation</h2>
-                        <div class="form-group">
-                            <select class="form-control" id="liste_orientation">
-                                <option value="0">Nord</option>
-								<option value="22">Nord-nord-est</option>
-								<option value="45">Nord-est</option>
-								<option value="67">Est-nord-est</option>
-								<option value="90">Est</option>
-								<option value="112">Est-sud-est</option>
-								<option value="135">Sud-est</option>
-								<option value="157">Sud-sud-est</option>
-								<option value="180">Sud</option>
-								<option value="202">Sud-sud-ouest</option>
-								<option value="225">Sud-ouest</option>
-								<option value="247">Ouest-sud-ouest</option>
-								<option value="270">Ouest</option>
-								<option value="292">Ouest-nord-Ouest</option>
-								<option value="315">Nord-ouest</option>
-								<option value="337">Nord-nord-ouest</option>
-                            </select>
-                          </div>
-                        <!-- <div class="list_of_buttons_orientation list_of_buttons">
-                            <h3 id="O1" value="0">Nord</h3>
-                            <h3 id="O2" value="1">Sud</h3>
-                            <h3 id="O3" value="2">Est</h3>
-                            <h3 id="O4" value="3">Ouest</h3>
-                        </div>
-     -->
-                    </div>
-                </div>
-                <div class="eclairage test">
-                    <h1>Eclairage</h1>
-                    <div class="hr"></div>
-                    <div class="contenant">
-                        <div class="line-check">
-                            <h2>Allumage automatique sur horaire</h2>
-                            <div class="form-check form-check-inline check-allumage-auto-h">
-                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
+                            <h2>Géolocalisation</h2>
+                            <div class="geo_final">
+                                <h3 class="affichage_geo">Positionnement:</h3>
+                                <h3 class="bouton_geo">Enregistrer</h3>
                             </div>
-                        </div>
-                        <div class="selection_horaire_auto">
-                            <div class="heure_allum">
-                                <div>
-                                    <h2>Heure démarrage</h2>
-                                </div>
-                                <div class="h-grid h_allumage">
-                                    <div class="form-group row">
-                                        <input class="form-contenantrol" type="time" value="13:45:00" id="light_on_hour">
+                            <div>
+                                <div class="geo_item geo_item_lat">
+                                    <div class="form-group">
+                                        <p class="form-control-static">Lattitude</p>
                                     </div>
-                                    <div class="bouton btn-h-allumage"><h3>Appliquer</h3></div>
-                                </div>
-                            </div>
-                            <div class="heure_extin">
-                                <div>
-                                    <h2>Heure extinction</h2>
-                                </div>
-                                <div class="h-grid h_extinction">
-                                    <div class="form-group row">
-                                        <input class="form-contenantrol" type="time" value="13:45:00" id="light_off_hour">
+                                    <div class="">
+                                        <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
                                     </div>
-                                    <div class="bouton btn-h-extinction"><h3>Appliquer</h3></div>
+                                    <div class="list_of_buttons list_of_geo2">
+                                        <h3 id="O2_1">Nord</h3>
+                                        <h3 id="O2_2">Sud</h3>
+                                    </div>
+                                
+                                    <!-- <p>Longitude</p>
+                                    <input type="number" class="form-control" placeholder="">     
+                                    <input type="number" class="form-control" placeholder="">    -->
                                 </div>
+                                
+                                <div class="geo_item geo_item_long">
+                                    <div class="form-group">
+                                        <p class="form-control-static">Longitude</p>
+                                    </div>
+                                    <div class="">
+                                        <input class="form-control" type="number" value="0" id="example-number-input" min="0" max="90" step=".01">
+                                    </div>
+                                    <div class="list_of_buttons list_of_geo1">
+                                        <h3 id="O1_1">Est</h3>
+                                        <h3 id="O1_2">Ouest</h3>
+                                    </div>
+                                
+                                    <!-- <p>Latitude</p>
+                                    <input type="number" class="form-control" placeholder="">     
+                                    <input type="number" class="form-control" placeholder=""> -->
+                                </div>
+                            
                             </div>
-                        </div>
-                        <div class="">
-                            <h2>Vitesse gradateur LED</h2>
-                            <div class="list_of_buttons_grad_LED list_of_buttons">
-                                <h3 id="L1" value="0">Instantané</h3>
-                                <h3 id="L2" value="1">1 seconde</h3>
-                                <h3 id="L3" value="2">2 secondes</h3>
-                                <h3 id="L4" value="3">4 secondes</h3>
+                            <h2>Orientation</h2>
+                            <div class="form-group">
+                                <select class="form-control" id="liste_orientation">
+                                    <option value="0">Nord</option>
+                                    <option value="22">Nord-nord-est</option>
+                                    <option value="45">Nord-est</option>
+                                    <option value="67">Est-nord-est</option>
+                                    <option value="90">Est</option>
+                                    <option value="112">Est-sud-est</option>
+                                    <option value="135">Sud-est</option>
+                                    <option value="157">Sud-sud-est</option>
+                                    <option value="180">Sud</option>
+                                    <option value="202">Sud-sud-ouest</option>
+                                    <option value="225">Sud-ouest</option>
+                                    <option value="247">Ouest-sud-ouest</option>
+                                    <option value="270">Ouest</option>
+                                    <option value="292">Ouest-nord-Ouest</option>
+                                    <option value="315">Nord-ouest</option>
+                                    <option value="337">Nord-nord-ouest</option>
+                                </select>
                             </div>
+                            <!-- <div class="list_of_buttons_orientation list_of_buttons">
+                                <h3 id="O1" value="0">Nord</h3>
+                                <h3 id="O2" value="1">Sud</h3>
+                                <h3 id="O3" value="2">Est</h3>
+                                <h3 id="O4" value="3">Ouest</h3>
+                            </div>
+        -->
                         </div>
                     </div>
-                </div>
-                <div class="parametre_specifique test">
-                    <h1>Maintenance</h1>
-                    <div class="hr"></div>
-                    <div class="contenant">
-                        <div class="boutons_spe">
-                            <a href="debug.html" ><h3 class="bouton_debug">Debug</h3></a>
-                            <h3 class="bouton_setup" data-bs-target="#exampleModalCenter" data-bs-toggle="modal">Réglages fabricant</h3>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex-right">
-                <div class="parametres_generaux test">
-                    <h1>Environnement</h1>
-                    <div class="hr"></div>
-                    <div class="contenant">
-
-                        <!-- <div class="line-check">
-                            <h2>Hivernage</h2>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
-                            </div>
-                        </div> -->
-                        <div class="bloc">
+                    <div class="eclairage test">
+                        <h1>Eclairage</h1>
+                        <div class="hr"></div>
+                        <div class="contenant">
                             <div class="line-check">
-                                <h2>Fermeture en cas de pluie</h2>
-                                <div class="form-check form-check-inline check-fermeture_pluie">
-                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
+                                <h2>Allumage automatique sur horaire</h2>
+                                <div class="form-check form-check-inline check-allumage-auto-h">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
                                 </div>
                             </div>
-                        </div>
-                        <div class="bloc">
-                            <h2>Intempéries</h2>
-                            <div class=" list_of_buttons_intemperies">
-                                <h3 class="but button_intemp_off" id="I1">Désactivé</h3>
-                                <h3 class="but button_vent" id="I2">Blocage vent</h3>
-                                <h3 class="but button_neige" id="I3">Blocage neige</h3>
-                            </div>
-                        </div>
-                  
-                             
-                        <div class="bloc">
-                            <h2>Mode saisonier</h2>
-                            <div class=" list_of_buttons_saison">
-                                <h3 class="but button_saision_off" id="S1">Désactivé</h3>
-                                <h3 class="but button_ete" id="S2">Mode été</h3>
-                                <h3 class="but button_hiver" id="S3">Mode hiver</h3>
-                            </div>    
-                        </div>
-                       
-                        <!-- <div class="line-check">
-                            <h2>Suivi solaire</h2>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
-                            </div>
-                        </div>
-                        <div class="line-check">
-                            <h2>Mode ombrage minimum</h2>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
-                            </div>
-                        </div> -->
-
-                        <div class="saison_detail">
-                            <div class="bloc">
-                                <h2>Seuil de fermeture nuit (degré élévation solaire)</h2>
-                                <div class="zone-range-wrap-settings zone-range-wrap  zone-wrap-elevation-sol">
-                                    <p>0°</p>
-                                    <div class="range-wrap range-wrap-settings wrap-elevation_sol">
-                                        <input type="range" class="range" min="0" max="45">
-                                        <output class="bubble"></output>
+                            <div class="selection_horaire_auto">
+                                <div class="heure_allum">
+                                    <div>
+                                        <h2>Heure démarrage</h2>
                                     </div>
-                                    <p>45°</p>
+                                    <div class="h-grid h_allumage">
+                                        <div class="form-group row">
+                                            <input class="form-contenantrol" type="time" value="13:45:00" id="light_on_hour">
+                                        </div>
+                                        <div class="bouton btn-h-allumage"><h3>Appliquer</h3></div>
+                                    </div>
+                                </div>
+                                <div class="heure_extin">
+                                    <div>
+                                        <h2>Heure extinction</h2>
+                                    </div>
+                                    <div class="h-grid h_extinction">
+                                        <div class="form-group row">
+                                            <input class="form-contenantrol" type="time" value="13:45:00" id="light_off_hour">
+                                        </div>
+                                        <div class="bouton btn-h-extinction"><h3>Appliquer</h3></div>
+                                    </div>
                                 </div>
                             </div>
-    
+                            <div class="">
+                                <h2>Vitesse gradateur LED</h2>
+                                <div class="list_of_buttons_grad_LED list_of_buttons">
+                                    <h3 id="L1" value="0">Instantané</h3>
+                                    <h3 id="L2" value="1">1 seconde</h3>
+                                    <h3 id="L3" value="2">2 secondes</h3>
+                                    <h3 id="L4" value="3">4 secondes</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="parametre_specifique test">
+                        <h1>Maintenance</h1>
+                        <div class="hr"></div>
+                        <div class="contenant">
+                            <div class="boutons_spe">
+                                <a href="debug.html" ><h3 class="bouton_debug">Debug</h3></a>
+                                <h3 class="bouton_setup" data-bs-target="#exampleModalCenter" data-bs-toggle="modal">Réglages fabricant</h3>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-right">
+                    <div class="parametres_generaux test">
+                        <h1>Environnement</h1>
+                        <div class="hr"></div>
+                        <div class="contenant">
+
+                            <!-- <div class="line-check">
+                                <h2>Hivernage</h2>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
+                                </div>
+                            </div> -->
                             <div class="bloc">
-                                <h2>Période d'actualisation de suivi solaire</h2>
-                                <div class="list_of_buttons_suivi_sol list_of_buttons">
-                                    <h3 id="B1" value="1">1 min</h3>
-                                    <h3 id="B2" value="5">5 min</h3>
-                                    <h3 id="B3" value="15">15 min</h3>
-                                    <h3 id="B4" value="30">30 min</h3>
-                                    <h3 id="B5" value="60">60 min</h3>
+                                <div class="line-check">
+                                    <h2>Fermeture en cas de pluie</h2>
+                                    <div class="form-check form-check-inline check-fermeture_pluie">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
+                                    </div>
                                 </div>
                             </div>
+                            <div class="bloc">
+                                <h2>Intempéries</h2>
+                                <div class=" list_of_buttons_intemperies">
+                                    <h3 class="but button_intemp_off" id="I1">Désactivé</h3>
+                                    <h3 class="but button_vent" id="I2">Blocage vent</h3>
+                                    <h3 class="but button_neige" id="I3">Blocage neige</h3>
+                                </div>
+                            </div>
+                    
+                                
+                            <div class="bloc">
+                                <h2>Mode saisonier</h2>
+                                <div class=" list_of_buttons_saison">
+                                    <h3 class="but button_saision_off" id="S1">Désactivé</h3>
+                                    <h3 class="but button_ete" id="S2">Mode été</h3>
+                                    <h3 class="but button_hiver" id="S3">Mode hiver</h3>
+                                </div>    
+                            </div>
+                        
+                            <!-- <div class="line-check">
+                                <h2>Suivi solaire</h2>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
+                                </div>
+                            </div>
+                            <div class="line-check">
+                                <h2>Mode ombrage minimum</h2>
+                                <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
+                                </div>
+                            </div> -->
+
+                            <div class="saison_detail">
+                                <div class="bloc">
+                                    <h2>Seuil de fermeture nuit (degré élévation solaire)</h2>
+                                    <div class="zone-range-wrap-settings zone-range-wrap  zone-wrap-elevation-sol">
+                                        <p>0°</p>
+                                        <div class="range-wrap range-wrap-settings wrap-elevation_sol">
+                                            <input type="range" class="range" min="0" max="45">
+                                            <output class="bubble"></output>
+                                        </div>
+                                        <p>45°</p>
+                                    </div>
+                                </div>
+        
+                                <div class="bloc">
+                                    <h2>Période d'actualisation de suivi solaire</h2>
+                                    <div class="list_of_buttons_suivi_sol list_of_buttons">
+                                        <h3 id="B1" value="1">1 min</h3>
+                                        <h3 id="B2" value="5">5 min</h3>
+                                        <h3 id="B3" value="15">15 min</h3>
+                                        <h3 id="B4" value="30">30 min</h3>
+                                        <h3 id="B5" value="60">60 min</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            
+        
                         </div>
                         
-       
                     </div>
+                    <div class="apparence test">
+                        <h1>Apparence</h1>
+                        <div class="hr"></div>
+                        <div class="contenant">
+                            <div class="line-check">
+                                <h2>Thème sombre</h2>
+                                <div class="form-check form-check-inline checkIci">
+                                <input class="form-check-input" type="checkbox" id="switcher_theme">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="maj test">
+                        <h1>Mise à jour logiciel</h1>
+                        <div class="hr"></div>
+                        <div class="contenant">
+                            <div class="majbar">
+                                <div class="upload_input"><input type="hidden" name="MAX_FILE_SIZE" value="100" /> <input name="file" type="file" /></div>
+                                <div class="bouton">
+                                    <h3>Installer</h3>
+                                </div>
+                            </div>
+                        </div>
                     
-                </div>
-                <div class="apparence test">
-                    <h1>Apparence</h1>
-                    <div class="hr"></div>
-                    <div class="contenant">
-                        <div class="line-check">
-                            <h2>Thème sombre</h2>
-                            <div class="form-check form-check-inline checkIci">
-                              <input class="form-check-input" type="checkbox" id="switcher_theme">
-                            </div>
-                        </div>
                     </div>
-                </div>
-                <div class="maj test">
-                    <h1>Mise à jour logiciel</h1>
-                    <div class="hr"></div>
-                    <div class="contenant">
-                        <div class="majbar">
-                            <div class="upload_input"><input type="hidden" name="MAX_FILE_SIZE" value="100" /> <input name="file" type="file" /></div>
-                            <div class="bouton">
-                                <h3>Installer</h3>
-                            </div>
-                        </div>
+                </div>    
+            </div>
+            <div class="left-main">
+                 <!-- A faire en sorte de ne pas le répéter sur toute les pages -->
+                <aside>
+                    <div class="connexion">
+                        <img class="aside_icon connexion_icon" src="../resources/icons/wait.png" alt=""><p>connexion...</p>
                     </div>
-                   
-                </div>
-               
-                
-            </div>    
+                    <div class="heure_nav">
+                        <p>22:00</p>
+                    </div>
+                    <div class="home">
+                        <a class="coucou" href="../index.html"><img class="aside_icon home_icon" src="../resources/icons/widgets_light/home.png" alt=""></a>
+                    </div>
+        </aside>
+            </div>
         </main>
 
              <!-- Modal -->
@@ -376,5 +378,6 @@
         <script src="../scripts/theme.js"></script>
         <script src="../scripts/heure.js"></script>
         <script src="../scripts/navbar.js"></script>
+        <script src="../scripts/responsive.js"></script>
     </body>
 </html>

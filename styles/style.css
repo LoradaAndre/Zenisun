@@ -44,11 +44,11 @@ main{
     grid-template-columns: 4fr 1fr;
     /* grid-template-rows: */
     color: white;
-    background-color: yellow !important;
-    border: 3px solid yellow;
+    /* background-color: yellow !important;
+    border: 3px solid yellow; */
 }
 .contenu-main{
-    background-color: orange;
+    /* background-color: orange; */
     display: flex;
     justify-content: center;;
 }
@@ -62,8 +62,8 @@ main{
 }
 
 .flex-right , .flex-left{
-    background-color: pink;
-    border: 1px solid purple;
+    /* background-color: pink;
+    border: 1px solid purple; */
     width: 40%;
 }
 
@@ -86,17 +86,18 @@ main{
 /* ========================== ASIDE ========================== */
 .left-main{
     width: 100%;
-    background-color: greenyellow !important;
+    /* background-color: greenyellow !important; */
 }
 aside{
     color: white;
+    text-align: center;
     display: flex;
-    /* position: fixed; */
+    position: fixed;
     right: 10px;
-    /* width: 225px; */
+    width: 20%;
     border-radius: 3px;
     top: 5px;
-    background-color: blue;
+    /* background-color: blue; */
 }
 
 .connexion_icon{
