@@ -38,13 +38,20 @@ h3{
 main{
     width: 60%;
     margin: auto;
-    display: flex;
+    /* display: flex; */
+    display: grid;
     flex-direction: row;
-    /* grid-template-columns: 1fr 1fr; */
+    grid-template-columns: 4fr 1fr;
     /* grid-template-rows: */
     color: white;
+    /* background-color: yellow !important;
+    border: 3px solid yellow; */
 }
-
+.contenu-main{
+    /* background-color: orange; */
+    display: flex;
+    justify-content: center;;
+}
 .test{
     margin: 5px;
     margin-bottom: 10px;
@@ -55,7 +62,9 @@ main{
 }
 
 .flex-right , .flex-left{
-    width: 50%;
+    /* background-color: pink;
+    border: 1px solid purple; */
+    width: 40%;
 }
 
 .hr{
@@ -75,15 +84,19 @@ main{
 }
 
 /* ========================== ASIDE ========================== */
-
+.left-main{
+    width: 100%;
+    /* background-color: greenyellow !important; */
+}
 aside{
     color: white;
     display: flex;
-    position: fixed;
+    /* position: fixed; */
     right: 10px;
-    width: 225px;
+    /* width: 225px; */
     border-radius: 3px;
     top: 5px;
+    /* background-color: blue; */
 }
 
 .connexion_icon{
