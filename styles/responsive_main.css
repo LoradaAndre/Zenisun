@@ -1,7 +1,7 @@
 @media screen and (max-width: 1200px){
     .widgets{
         width: 80%;
-        /* border: 1px solid teal; */
+        border: 1px solid teal;
     }
 }
 
@@ -10,9 +10,7 @@
         border: 3px dotted red;
     }
     .sous_widgets{
+        display: grid;
         grid-template-columns: 1fr 1fr;
-    }
-    .widget{
-        grid-area: 1 / 2;
     }
 }

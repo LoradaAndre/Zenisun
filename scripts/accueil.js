@@ -234,40 +234,40 @@ function affichageCircle(hwcfg){
         lengthLight += 1;
     }
 
-    if(lengthLight == 1){
-        $(".eclairage").css({
-            "grid-column": "1 / 2",
-            "grid-row": "1"
-        })
-        $(".eclairage_widget").css("background-size", "100%")
+    // if(lengthLight == 1){
+    //     $(".eclairage").css({
+    //         "grid-column": "1 / 2",
+    //         "grid-row": "1"
+    //     })
+    //     $(".eclairage_widget").css("background-size", "100%")
 
-        if(lengthLames == 1){
-            $(".lames").css("grid-column", "2 / 3")
-            $(".lames").css("grid-row", "1")
-            $(".lames-orientable_widget").css("background-size", "100%")
+    //     if(lengthLames == 1){
+    //         $(".lames").css("grid-column", "2 / 3")
+    //         $(".lames").css("grid-row", "1")
+    //         $(".lames-orientable_widget").css("background-size", "100%")
 
-        }else if(lengthLames == 2){
-            $(".lames").css("grid-column", "2 / 4")
-            $(".lames").css("grid-row", "1")
-            $(".lames-orientable_widget").css("background-size", "50%")
-        }
-    }
+    //     }else if(lengthLames == 2){
+    //         $(".lames").css("grid-column", "2 / 4")
+    //         $(".lames").css("grid-row", "1")
+    //         $(".lames-orientable_widget").css("background-size", "50%")
+    //     }
+    // }
 
-    if(lengthLight == 2){
-        $(".eclairage").css("grid-column", "1 / 3")
-        $(".eclairage").css("grid-row", "1")
-        $(".eclairage_widget").css("background-size", "50%")
+    // if(lengthLight == 2){
+    //     $(".eclairage").css("grid-column", "1 / 3")
+    //     $(".eclairage").css("grid-row", "1")
+    //     $(".eclairage_widget").css("background-size", "50%")
 
-        if(lengthLames == 1){
-            $(".lames").css("grid-column", "3 / 4")
-            $(".lames").css("grid-row", "1")
-            $(".lames-orientable_widget").css("background-size", "100%")
+    //     if(lengthLames == 1){
+    //         $(".lames").css("grid-column", "3 / 4")
+    //         $(".lames").css("grid-row", "1")
+    //         $(".lames-orientable_widget").css("background-size", "100%")
 
-        }else if(lengthLames == 2){
-            $(".lames").css("grid-column", "3 / 5")
-            $(".lames").css("grid-row", "1")
-            $(".lames-orientable_widget").css("background-size", "50%")
+    //     }else if(lengthLames == 2){
+    //         $(".lames").css("grid-column", "3 / 5")
+    //         $(".lames").css("grid-row", "1")
+    //         $(".lames-orientable_widget").css("background-size", "50%")
 
-        }
-    }
+    //     }
+    // }
 }

@@ -19,10 +19,10 @@ h1{
 }
 
 /* Bloc contenant les petits widgets*/
-.sous_widgets{
+/* .sous_widgets{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-}
+} */
 
 /* Les petits widgets */
 .widget{
