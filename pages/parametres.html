@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <title>Zenisun</title>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link  rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.css">
         <!-- <link rel="stylesheet" href="../libs/scss/custom.scss"> -->
 
@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="../libs/rangeslider/css/rSlider.min.css">
         <script src="../libs/rangeslider/js/rSlider.min.js"></script>
         <link rel="stylesheet" href="../styles/navbar.css">
+        <link rel="stylesheet" href="../styles/responsive.css">
     </head>
     <body>
          <!-- A faire en sorte de ne pas le répéter sur toute les pages -->
@@ -92,13 +93,11 @@
                             </div>
                             
                             <h2>Homing manuel</h2>
-                            <div class="bouton bouton_homing"> 
-                                <h3>Effectuer un homing</h3>
-                            </div>
+                            <h3 class="bouton bouton_homing">Effectuer un homing</h3>
                             <h2>Géolocalisation</h2>
                             <div class="geo_final">
                                 <h3 class="affichage_geo">Positionnement:</h3>
-                                <h3 class="bouton_geo">Enregistrer</h3>
+                                <h3 class="bouton bouton_geo">Enregistrer</h3>
                             </div>
                             <div>
                                 <div class="geo_item geo_item_lat">
@@ -216,8 +215,8 @@
                         <div class="hr"></div>
                         <div class="contenant">
                             <div class="boutons_spe">
-                                <a href="debug.html" ><h3 class="bouton_debug">Debug</h3></a>
-                                <h3 class="bouton_setup" data-bs-target="#exampleModalCenter" data-bs-toggle="modal">Réglages fabricant</h3>
+                                <a href="debug.html" ><h3 class="bouton_debug bouton">Debug</h3></a>
+                                <h3 class="bouton_setup bouton" data-bs-target="#exampleModalCenter" data-bs-toggle="modal">Réglages fabricant</h3>
                             </div>
                             
                         </div>
@@ -323,9 +322,7 @@
                         <div class="contenant">
                             <div class="majbar">
                                 <div class="upload_input"><input type="hidden" name="MAX_FILE_SIZE" value="100" /> <input name="file" type="file" /></div>
-                                <div class="bouton">
-                                    <h3>Installer</h3>
-                                </div>
+                                <h3 class="bouton install-button">Installer</h3>
                             </div>
                         </div>
                     

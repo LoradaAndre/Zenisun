@@ -53,7 +53,8 @@ function resizeWindowEvent(){
     let diff = largeurEcran - widthNavBar - 20
     $("main").css({
         "width": diff + "px",
-        "margin-right" : "0"
+        "margin-right" : "0",
+        "margin-left" : widthNavBar,
     })
 
     // $(".contenu-main").css({
@@ -62,7 +63,10 @@ function resizeWindowEvent(){
     // })
 }
 
-resizeWindowEvent()
-window.onresize = resizeWindowEvent;
+if(window.innerWidth > 800){
+    resizeWindowEvent()
+    window.onresize = resizeWindowEvent;
+}
+
 // // console.log(document.querySelector("."))
 // // offsetHeight
