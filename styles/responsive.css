@@ -1,22 +1,35 @@
 /* Computer version */
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 1200px){
     header{
         display: none;
         /* background-color: red; */
     }
     
+    main{
+        margin-top : 10px;
+    }
+    aside{
+        top: 10px;
+    }
    
+    .coucou{
+        margin: auto;
+    }
 }
 /* Little computer version and more */
 @media screen and (min-width: 800px){
     .menu{
         display: none;
     }
+
+    .categorie_spe{
+        display: none;
+    }
  }
 
 
 /* Little computer version */
-@media screen and (max-width: 1000px) and (min-width: 800px){
+@media screen and (max-width: 1200px) and (min-width: 800px){
     .navigation_bar{
         z-index: 3;
     }
@@ -26,12 +39,12 @@
 }
 
 /* Little computer version and less*/
-@media screen and (max-width: 1000px){
-    header{
+@media screen and (max-width: 1200px){
+    /* header{
         display: block;
         position: fixed;
         height: 50px;
-    }
+    } */
     main{
         margin-top: 50px;
         display: block;
@@ -47,13 +60,17 @@
 
     .menu{
         display: block;
+        margin: auto;
+        margin-left: 10px;
+        margin-right: 0;
     }
 
     .menu img{
-        width: 25px;
-        margin-top: 3px;
+        /* width: 25px; */
+        /* margin-top: 3px;
         margin-bottom: 3px;
-        margin-left: 12px;
+        margin-left: 12px; */
+        
         vertical-align: middle
     }
 
@@ -71,12 +88,38 @@
     h1{
         font-size: 2vw;
     }
+
+    .home{
+        padding: 1vw;
+    }
+    
     
 
 }
 
 /* Tablette version */
-@media screen and (max-width: 800px) and (min-width: 400px){
+@media screen and (max-width: 800px) and (min-width: 500px){
+    aside{
+        height: 4vh;
+    }
+    .menu img, .home_icon, .icon_close img{
+        width: 4vw;
+    }
+
+    .home{
+        padding: 0.5vw;
+        padding-right: 2vw;
+        padding-left: 2vw;
+    }
+
+    h2{
+        font-size: 1.5vw;
+    }
+
+    .mini-img{
+        width: 3vw;
+        height: 3vw;
+    }
    
 }
 
@@ -89,17 +132,25 @@
     .contenu-main{
         width: 100%;
     }
+
+    .widgets{
+        width: 80%;
+    }
+   
    
 
 }
 
 /* Mobile version */
-@media screen and (max-width: 400px){
+@media screen and (max-width: 500px){
     h1{
         font-size: 4vw;
     }
-    main{
-        /* background-color: teal; */
+    h2{
+        font-size: 3.5vw;
+    }
+    h3{
+        font-size: 3vw;
     }
 
     .heure_nav{
@@ -114,4 +165,40 @@
         margin: auto;
         width: 80%;
     }
+
+    .icon_navbar img{
+        width: 5vw;
+        height: auto;
+    }
+
+    .aside{
+        height: 6vh;
+    }
+    .menu img, .home_icon, .icon_close img{
+        width: 6vw;
+    }
+
+    .home{
+        padding: 1.5vw;
+    }
+
+    .bouton_detection{
+        width: 100%;
+    }
+
+    .mini-img{
+        width: 4vw;
+        height: 4vw;
+    }
+
+    .detailWifi{
+        display: none;
+    }
+
+    .blocWifi{
+        grid-template-columns: 2fr 4fr 2fr;
+    }
 }
+.icon_close{
+    text-align: right;
+} 

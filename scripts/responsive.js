@@ -65,8 +65,70 @@ function resizeWindowEvent(){
 
 if(window.innerWidth > 800){
     resizeWindowEvent()
-    window.onresize = resizeWindowEvent;
+    window.onresize = () => {
+        resizeWindowEvent;
+        // window.location.reload();
+    }
 }
+
+// if(window.innerWidth < 500){
+    
+// }
+
+$(".menu").click(function(){
+    $(this).hide()
+    $(".navigation_bar").css({
+        "display" : "block",
+        "width" : "50%",
+        "z-index" : "3",
+        "box-shadow" : "0px 0px 10px #42555a"
+    })
+    $("aside").css({
+        "width" : "50%",
+    })
+    $(".categorie a").css({
+        "display" : 'flex'
+    })
+    $(".nom_widget").css({
+        "margin" : "auto",
+        "margin-left" : "10px"
+    })
+    $(".icon_navbar img").css({
+        "margin" : "auto",
+        "width" : "5vw"
+    })
+
+    // $(".icon_close img").css({
+    //     "width": "25px",
+    //     "margin": "auto",
+    //     "margin-right" : "2px"
+    // })
+
+    // $(".icon_close").css({
+    //     "justify-content"
+    // })
+});
+
+$(".icon_close img").click(function(){
+    $(this).hide();
+    $(".navigation_bar").hide();
+    $("aside").css({
+        "width" : "100%",
+    })
+    $(".menu").show()
+})
 
 // // console.log(document.querySelector("."))
 // // offsetHeight
+
+// setTimeout(function(){
+//     if($(".canvas-mot2").css("display") == "none"){
+//         $(".eclairage_widget").css({
+//             "grid-area: 1 / 2;"
+//         })
+//     }
+// }, 100)
+
+
+
+

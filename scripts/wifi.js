@@ -70,6 +70,7 @@ function stockWifi(data){
     name.textContent = cle[0].textContent
 
     let details = document.createElement("h2");
+    $(details).addClass("detailWifi")
     sousbloc2.appendChild(details)
 
     let sousbloc3 = document.createElement("div")
@@ -77,11 +78,11 @@ function stockWifi(data){
     bloc.appendChild(sousbloc3);
     
     let img1 = document.createElement("img")
-    $(img1).addClass("image mini-img")
+    $(img1).addClass("image mini-img mini-img-1")
     sousbloc3.appendChild(img1);
 
     let img2 = document.createElement("img")
-    $(img2).addClass("image mini-img")
+    $(img2).addClass("image mini-img mini-img-2")
     img2.src = "../resources/icons/widgets_light/next.png"
     sousbloc3.appendChild(img2);
 
@@ -145,11 +146,32 @@ function applyCss(){
         "width" : "70%",
     });
 
-    $(".mini-img").css({
+    $(".mini-img-1").css({
         "width": "2vw",
         "height": "2vw",
         "margin": "auto"
     });
+
+    if(window.innerWidth > 800){
+        $(".mini-img-2").css({
+            "width": "2vw",
+            "height": "2vw",
+            "margin": "auto"
+        });
+    }if(window.innerWidth > 500 && window.innerWidth < 800){
+        $(".mini-img-2").css({
+            "width": "3vw",
+            "height": "3vw",
+            "margin": "auto"
+        });
+    }else{
+        $(".mini-img-2").css({
+            "width": "4vw",
+            "height": "4vw",
+            "margin": "auto"
+        });
+    }
+    
 
 
   
