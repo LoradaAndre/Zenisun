@@ -83,12 +83,16 @@ h1{
 }
 
 .icon{
-    margin: 10px;
+    /* margin: 10px; <============== */ 
     margin-bottom: 20px;
 }
 
 .connexion_meteo_widget{
     width: 100px;
+}
+
+.meteo_widget{
+    margin-bottom: 8px;
 }
 
 .temperature, .time .heure{

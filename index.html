@@ -2,6 +2,7 @@
     <head>
         <meta charset="utf-8">
         <title>Zenisun</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link  rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.css">
 
         <link rel="stylesheet" href="styles/style_page_accueil.css">
@@ -53,12 +54,17 @@
                     <!-- widget 1 -->
                     <a href="pages/eclairage.html" class="eclairage">
                         <div class="eclairage_widget widget">
-                                <div class="icon all_canvas">
+                                <div class="icon all_canvas all_canvas_eclairage">
                                     <div id="score" class="flex-container canvas-light1 canvas-light">
                                         <canvas class="round1 E1-canvas" value="100" data-color="#F9AD3C" colorBar="#E59D31" id="clair"></canvas>
                                     </div>
                                     <div id="score" class="flex-container canvas-light2 canvas-light">
                                         <canvas class="round1 E2-canvas" value="100" data-color="#F9AD3C" colorBar="#E59D31" id="clair"></canvas>
+                                    </div>
+                                </div>
+                                <div class="icon icon_lamp">
+                                    <div id="score" class="flex-container">
+                                        <img src="resources/icons/widgets_light/lamp.png" alt="image de test">
                                     </div>
                                 </div>
                             <h1>Éclairage</h1>
@@ -67,7 +73,7 @@
     
                     <a href="pages/lames_orientabes.html" class="lames">
                         <div class="lames-orientable_widget widget">
-                            <div class="icon all_canvas">
+                            <div class="icon all_canvas  all_canvas_lames">
                                 <div id="score" class="flex-container canvas-mot1 canvas-mot">
                                     <canvas class="round2 L1-canvas" value="100" data-color="#4795D5" colorBar="#448DC9" id="clair"></canvas>
                                 </div>

@@ -13,6 +13,8 @@ $(document).ready(function (){
 
     $(".canvas-mot").hide();
     $(".canvas-light").hide();
+    $(".eclairage").hide();
+    $(".icon_lamp").hide();
 
     setInterval(function(){ 
         sync_date();
@@ -217,22 +219,34 @@ function affichageCircle(hwcfg){
     let lengthLames = 0;
     let lengthLight = 0;
 
-    if(hwcfg&1){
+    if(hwcfg&1){ //Mot1
         $(".canvas-mot1").show();
-        lengthLames += 1;
     }
-    if(hwcfg&2){
+    if(hwcfg&2){ //Mot2
         $(".canvas-mot2").show();
-        lengthLames += 1;
     }
-    if(hwcfg&4){
+    if(hwcfg&16){ //RGB1
+        $(".eclairage").show();
+        $(".all_canvas_eclairage").hide();
+        $(".icon_lamp").show()
+    }
+    if(hwcfg&32){ //RGB2
+        $(".eclairage").show();
+        $(".all_canvas_eclairage").hide();
+        $(".icon_lamp").show()
+    }
+    if(hwcfg&4){ //BB1
+        $(".eclairage").show();
+        $(".all_canvas_eclairage").show();
         $(".canvas-light1").show();
-        lengthLight += 1;
+        $(".icon_lamp").hide()
     }
-    if(hwcfg&8){
+    if(hwcfg&8){ //BB2
+        $(".eclairage").show();
         $(".canvas-light2").show();
-        lengthLight += 1;
+        // $(".icon_lamp").hide()
     }
+
 
     // if(lengthLight == 1){
     //     $(".eclairage").css({
