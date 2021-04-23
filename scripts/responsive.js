@@ -182,6 +182,23 @@ function updateWidgetResponsive(){
                 $(".lames").css("grid-row", "1")
                 $(".lames-orientable_widget").css("background-size", "50%")
             }
+
+            if($(".eclairage").css("display") == "none"){
+                console.log("pas délément eclairage")
+                if($(".canvas-mot2").css("display") == "none"){
+                    console.log("1 seul élément pour les moteurs")
+                    $(".lames").css("grid-column", "1 / 2")
+                    $(".lames").css("grid-row", "1")
+                    $(".lames-orientable_widget").css("background-size", "100%")
+        
+                }else{
+                    console.log("2 élément pour les moteurs")
+                    $(".lames").css("grid-column", "1 / 3")
+                    $(".lames").css("grid-row", "1")
+                    $(".lames-orientable_widget").css("background-size", "50%")
+                }
+            }
+
         }else{
             console.log("2 éléments pour les lights")
             $(".eclairage").css("grid-column", "1 / 3")

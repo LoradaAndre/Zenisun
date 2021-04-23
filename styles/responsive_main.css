@@ -1,16 +1,83 @@
 @media screen and (max-width: 1200px){
     .widgets{
         width: 80%;
-        border: 1px solid teal;
     }
 }
 
 @media screen and (max-width: 500px){
     .widgets{
-        border: 3px dotted red;
     }
     .sous_widgets{
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
+
+    .temperature, .heure{
+        font-size: 7vw; /*<======== */
+    }
+
+    .type_temps, .jour{
+        font-size: 3vw; /*<======== */
+    }
+
+    aside{
+        margin: 3px;
+    }
+
+    h1{
+        font-size: 5vw;
+    }
+
+    .icon img{
+        width: 20vw;
+    }
+
+    canvas{
+        width: 20vw;
+        height: 20vw;
+    }
+}
+
+@media screen and (min-width: 500px){
+    aside{
+        margin-left: 3px;
+        margin-bottom: 5px;
+        width: 250px;
+    }
+
+    
+}
+
+@media screen and (max-width: 400px) {
+    .all_canvas{
+        gap: 20px;
+    }
+    
+}
+
+@media screen and (min-width: 500px) and (max-width: 1000px){
+
+    .temperature, .heure{
+        /* background-color: red; */
+        font-size: 5vw; /*<======== */
+    }
+
+    .type_temps, .jour{
+        /* background-color: green; */
+        font-size: 2vw; /*<======== */
+    }
+    
+}
+
+@media screen and (min-width: 1000px){
+    .temperature, .heure{
+        /* background-color: red; */
+        font-size: 3vw; /*<======== */
+    }
+
+    .type_temps, .jour{
+        /* background-color: green; */
+        font-size: 1.3vw; /*<======== */
+    }
+
 }

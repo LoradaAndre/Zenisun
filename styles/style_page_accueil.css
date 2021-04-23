@@ -65,10 +65,16 @@ h1{
     margin: 0;
 }
 
+.type_temps{
+    justify-content: center;
+    margin: auto;
+    display: flex;
+}
+
 .icon_type_temps{
-    float: left;
     width: 20px;
-    margin: 2px;
+    height: 20px;
+    margin-right: 10px;
 }
 
 .meteo , .time{
@@ -76,9 +82,9 @@ h1{
     text-align: center;
     margin-top: auto;
     margin-bottom: auto;
+    width: 25%
 }
 .temperature , .heure{
-    font-size: 3rem;
     font-weight: bold;
 }
 
@@ -165,9 +171,6 @@ aside{
     display: flex;
     /* background-color: #7093AE; */
     /* position: fixed; */
-    margin-left: 3px;
-    margin-bottom: 5px;
-    width: 250px;
     border-radius: 3px;
 }
 
