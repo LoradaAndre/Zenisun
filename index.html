@@ -24,8 +24,8 @@
                         <img class="aside_icon elev_icon" src="resources/icons/widgets_light/elevSolaire.png" alt="">
                         <p>00°</p>
                     </div>
-                    <div class="info">
-                        <a class="coucou" href="pages/a_propos.html"><img class="aside_icon info_icon" src="resources/icons/widgets_light/info.png" alt=""></a>
+                    <div class="info" data-bs-toggle="modal" data-bs-target="#exampleModal"> 
+                        <img class="aside_icon info_icon" src="resources/icons/widgets_light/info.png" alt="">
                     </div>
                 </aside>
         
@@ -132,7 +132,30 @@
                 </div>
     
             </div>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog test">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Contactez Zenisun</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                            <p>Mail: info@zenisun.fr</p>
+                            <p>Tel: +33 (0)4 28 04 42 08</p>
+                            <p>Site web: <a href="www.zenisun.fr">www.zenisun.fr</a></p>
+                            <p>Adresse: 10 Rue de l'Industrie, 42240 Unieux</p>
+                            
+                       
+                    </div>
+                    <div class="modal-footer">
+                        <p>Logiciel version V1.20A</p> 
+                    </div>
+                  </div>
+                </div>
+              </div>
        
+        <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="libs/circleCanvas/scriptCircleCanvas.js"></script>
         <script src="scripts/accueil.js"></script>
         <script src="scripts/theme.js"></script>

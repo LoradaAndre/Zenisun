@@ -79,9 +79,6 @@ function lectureCarte(){
       }).fail(function() {
           alert("Lecture de la carte échouée")  
     });
-
-
-
 }
 
 function getMotorValue(data, input){
@@ -285,3 +282,7 @@ function affichageCircle(hwcfg){
     //     }
     // }
 }
+
+// $(".info").click(function(){
+//     $("#exampleModal").addClass("show");
+// });
