@@ -157,6 +157,29 @@ function affichageInfos(){
         "padding" : "20px"
     });
 
+    if(window.innerWidth < 800){
+
+        if(window.innerWidth < 400){
+            $("ul").css({
+                "display ": "grid",
+                "grid-template-columns": "1fr"
+            });
+    
+            $("h4").css("margin-top","15px")
+        }else{
+            $("ul").css({
+                "display ": "grid",
+                "grid-template-columns": "1fr 1fr"
+            });
+        }   
+    }
+    else{
+        $("ul").css({
+            "display ": "grid",
+            "grid-template-columns": "1fr 1fr 1fr 1fr"
+        });
+    }
+
 }
 
 
