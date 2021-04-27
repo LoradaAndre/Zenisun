@@ -2,33 +2,42 @@
     <head>
         <meta charset="utf-8">
         <script src="../libs/jquery/jquery-3.5.1.js"></script>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link  rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.css">
 
         <link rel="stylesheet" href="../styles/setup.css">
+        <link rel="stylesheet" href="../styles/setup_responsive.css">
         <title>Zenisun</title>
     </head>
     <body>
         <header>
+            <div class="menu">
+                <img class="menu_icon" src="../resources/icons/widgets_light/menu.png" alt="">
+            </div>
+            <h1>Zenisun Pergola Setup</h1>
             <div class="home">
                 <a href="../index.html"><img class="home_icon" src="../resources/icons/widgets_light/home.png" alt=""></a>
             </div>
-            <h1>Zenisun Pergola Setup</h1>
         </header>
         <main>
             <div class="right-content">
-                    <div class="elem-list elem1"><h2>Board settings</h2></div>
-                    <div class="elem-list elem2"><h2>General calibration</h2></div>
-                    <div class="elem-list elem3"><h2>Analog input voltage calibration</h2></div>
-                    <div class="elem-list elem4"><h2>Power outputs current calibration</h2></div>
-                    <div class="elem-list elem5"><h2>Motor 0 configuration</h2></div>
-                    <div class="elem-list elem6"><h2>Motor 1 configuration</h2></div>
-                    <div class="elem-list elem7"><h2>Miscellaneous</h2></div>
-                    <div class="elem-list elem8"><h2>Manufacturer settings</h2></div>
-                    <div class="elem-list elem9"><h2>Homming</h2></div>
-                    <div class="elem-list elem10"><h2>Set positions</h2></div>
+                <div class="elem-list elem-list-spe">
+                    <div class="close">
+                        <img src="../resources/icons/widgets_light/close.png" alt="image de test">
+                    </div>
+                </div>
+                <div class="elem-list elem1"><h2>Board settings</h2></div>
+                <div class="elem-list elem2"><h2>General calibration</h2></div>
+                <div class="elem-list elem3"><h2>Analog input voltage calibration</h2></div>
+                <div class="elem-list elem4"><h2>Power outputs current calibration</h2></div>
+                <div class="elem-list elem5"><h2>Motor 0 configuration</h2></div>
+                <div class="elem-list elem6"><h2>Motor 1 configuration</h2></div>
+                <div class="elem-list elem7"><h2>Miscellaneous</h2></div>
+                <div class="elem-list elem8"><h2>Manufacturer settings</h2></div>
+                <div class="elem-list elem9"><h2>Homming</h2></div>
+                <div class="elem-list elem10"><h2>Set positions</h2></div>
 
-                    <div class="elem-list elem-spe"><h2>Debug</h2></div>
+                <div class="elem-list elem-spe"><h2>Debug</h2></div>
             </div>
             <div class="left-content">
                 <!-- =============================== Board settings =============================== -->
@@ -794,6 +803,7 @@
         </main>
         <script src="../scripts/setup.js"></script>
         <script src="../scripts/debug.js"></script>
+        <script src="../scripts/setup_responsive.js"></script>
     </body>
 </html>
 

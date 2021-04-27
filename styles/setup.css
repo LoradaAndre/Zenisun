@@ -28,21 +28,22 @@ header{
 }
 
 h1{
-    font-size: larger;
+    /* font-size: larger; */
     text-align: center;
+    margin: auto;
 }
 .elem-list h2{
-    font-size: large;
+    /* font-size: large; */
     margin: 0;
 }
 h3{
-    font-size: medium;
+    /* font-size: medium; */
     padding: 0;
     margin:0;
 }
 .cat{
     display: grid;
-    grid-template-columns: 2fr 1fr 4fr 1fr;
+    /* grid-template-columns: 2fr 1fr 4fr 1fr; */
     margin-bottom: 2px;
     /* background-color: rgb(150, 200, 247); */
     background-color: rgb(78, 78, 78);
