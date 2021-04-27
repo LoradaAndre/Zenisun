@@ -2,23 +2,18 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link  rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.css">
 
-        <script src="../libs/jquery/jquery-3.5.1.js"></script>
+        <title>Zenisun</title>
+
+        <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/navbar.css">
-        <link href="../libs/onoff/css/switcher.css" rel="stylesheet">
-        <script src="../libs/onoff/js/jquery.switcher.js"></script>
-        <link href="../libs/onoff/css/switcher.css" rel="stylesheet">
-        <script src="../libs/onoff/js/jquery.switcher.js"></script>
-        <link rel="stylesheet" href="../styles/responsive.css">
-        <title>Zenisun</title>
+        <link rel="stylesheet" href="../libs/onoff/css/switcher.css">
+        <link rel="stylesheet" href="../responsive/responsive.css">
     </head>
+
     <body>
-        <!-- A faire en sorte de ne pas le répéter sur toute les pages -->
-
-            
-
+        <!-- ============================================== NavBar ============================================== -->
         <div class="navigation_bar">
 
             <div class="categorie categorie_spe">
@@ -54,7 +49,7 @@
                 </a>
             </div>
         
-            <!-- ======================== MAJ ======================== -->
+            <!-- ======================== Mise à jour - Station météo ======================== -->
             <!-- <div class="categorie categorie_station_meteo">
                 <a href="station_meteo.html">
                     <div class="icon_navbar">
@@ -82,9 +77,10 @@
                 </a>
             </div>
         </div>
-        <!-- =================== contenant =================== -->
-        <main>
+        
+        <main> <!-- ============================================== Contenant ============================================== -->
            <div class="contenu-main">
+               <!-- ============== GAUCHE ==============-->
                 <div class="flex-left">
                     <div class="test bloc_Mot1">
                         <div class="contenant">
@@ -106,6 +102,8 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- ============== DROITE ==============-->
                 <div class="flex-right">
                     <div class="test bloc_Mot2">
                         <div class="contenant">
@@ -138,8 +136,9 @@
                     </div>
                 </div>
            </div>
+
+           <!-- ============================================== Aside ============================================== -->
            <div class="left-main">
-                <!-- A faire en sorte de ne pas le répéter sur toute les pages -->
                 <aside>
                     <div class="menu">
                         <img class="menu_icon" src="../resources/icons/widgets_light/menu.png" alt="">
@@ -158,33 +157,25 @@
                 </aside>
         </div>
         </main>
-
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- ============================================== Modal ============================================== -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content testModal">
-                <!-- <div class="modal-header"> -->
-                  
-                  <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
-                <!-- </div> -->
-                  <div class="modal-body">
-                      <h5 class="modal-title" id="exampleModalLabel">Désactivez le mode intempéries (vent ou hiver) pour avoir accès à cette page.</h5>
-                      
-                      <!-- <div class="group_overlay_button">
-                          <div class="overlay_button b_first">Connexion</div>
-                          <div class="overlay_button b_second" data-bs-dismiss="modal">Annuler</div>
-                      </div> -->
-                  </div>
-               
-              </div>
+            <div class="modal-content testModal">
+                <div class="modal-body">
+                    <h5 class="modal-title" id="exampleModalLabel">Désactivez le mode intempéries (vent ou hiver) pour avoir accès à cette page.</h5>
+                </div>
             </div>
-          </div>
+            </div>
+        </div>
+
+        <!-- ============================================== scripts ============================================== -->
+        <script src="../libs/jquery/jquery-3.5.1.js"></script>
         <script src="../libs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="../libs/onoff/js/jquery.switcher.js"></script>
         <script src="../scripts/script.js"></script>
         <script src="../scripts/lames.js"></script>
-        <!-- <script src="../scripts/zenisun.js"></script> -->
         <script src="../scripts/theme.js"></script>
         <script src="../scripts/heure.js"></script>
-        <script src="../scripts/responsive.js"></script>
+        <script src="../responsive/responsive.js"></script>
     </body>
 </html>

@@ -16,8 +16,6 @@
     display: flex;
     gap: 10px;
     justify-content: left;
-    /* margin-top: 0.83em; */
-    /* margin-bottom: 0.83em; */
     margin: 0;
     padding: 0;;
     margin-left: 10px;
@@ -51,18 +49,10 @@ h2{
     justify-content: center;
     gap: 10px;
 }
-/* .boutons_spe h3{
-    color: white;
-    background-color: #52808B;
-    border-radius: 3px;
-    padding: 5px;
-    cursor: pointer;
-} */
 a{
     text-decoration: none;
 }
 /* ==================== MODAL ============== */
-
 
 .modal-title{
     margin: 20px;
@@ -72,8 +62,7 @@ a{
 }
 .overlay_button{
     color: white;
-    background-color: #52808B; 
-    /* 84afb9 */
+    background-color: #52808B;
     margin: 5px; 
     margin-top: 20px;
     padding: 5px;

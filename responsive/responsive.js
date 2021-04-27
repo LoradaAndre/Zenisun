@@ -1,52 +1,5 @@
 
-// $(".overlay").click(function(){
-//     $(this).css("display","none");
-//     $(".navigation_bar").css({
-//         "display" : "block",
-//         "width" : "70%",
-//         "z-index" : "3"
-//     });
-
-//     $(".icon_navbar img").css({
-//         "width" : "30px",
-//         "vertical-align" : "middle",
-//         "margin" : "10px"
-//     });
-//     $(".categorie a").css({
-//         "display" : "flex"
-//     })
-//     $(".categorie_spe").css({
-//         "display" : "flex",
-//         "justify-content" : "space-between"
-//     })
-//     $(".categorie_spe img").css({
-//         "margin-top" : "auto",
-//         "margin-bottom" : "auto"
-//     })
-//     $(".nom_widget").css({
-//         "margin-top" : "auto",
-//         "margin-bottom" : "auto"
-//     })
-// });
-
-// $(".close").click(function(){
-//     $(this).css("float","left");
-
-//     $(".navigation_bar").css({
-//         "display" : "none"
-//     });
-
-//     $(".overlay").css("display","block");
-// });
-
-
-// $("aside").css("width", $(".left-main").outerWidth() + "px")
-// console.log($(".left-main").outerWidth())
-
-
-// let box = document.querySelector(".left-main");
-// console.log(box.offsetWidth)
-
+//Taille de la main selon la taille de la barre de navigation
 function resizeWindowEvent(){
     let widthNavBar = $(".navigation_bar").outerWidth()
     let largeurEcran = window.innerWidth;
@@ -56,48 +9,20 @@ function resizeWindowEvent(){
         "margin-right" : "0",
         "margin-left" : widthNavBar,
     })
-
-    // $(".contenu-main").css({
-    //     "width": "100%",
-    //     // "margin" : "auto"
-    // })
 }
 
+//Adaptation auto
 if(window.innerWidth > 800){
     resizeWindowEvent()
     window.onresize = () => {
         resizeWindowEvent;
-        // window.location.reload();
     }
 }
 
-// setTimeout(function(){
-    //     if($(".canvas-light2").css("display") == "none"){
-    //         $(".eclairage_widget").css({
-    //             "grid-column": "1 / 2",
-    //             "grid-row" : "1 / 2"
-    //         });
-    //     }else{
-    //         $(".eclairage_widget").css({
-    //             "grid-column": "1 / 3",
-    //             "grid-row" : "1 / 2"
-    //         });
-    //     }
-    //     if($(".canvas-mot2").css("display") == "none"){
-    //         $(".eclairage_widget").css({
-    //             "grid-column": "1 / 2",
-    //             "grid-row" : "2 / 3"
-    //         });
-    //     }else{
-    //         $(".lames-orientable_widget").css({
-    //             "grid-column": "1 / 3",
-    //             "grid-row" : "2 / 3"
-    //         });
-    //     }
-    // }, 100)
-
+//Gestion du resposive des widgets selOn la configuration utilisateur
 function updateWidgetResponsive(){
 
+    //Responsive inf à 800px
     if(window.innerWidth < 800){
 
         $(".sous_widgets").css({
@@ -105,42 +30,53 @@ function updateWidgetResponsive(){
             "grid-template-columns" : "1fr 1fr"
         });
         
+        //Un seul bandeau blanc
         if($(".canvas-light2").css("display") == "none"){
-            $(".eclairage").css({
-                "grid-column": "1 / 2"
-            })
+            $(".eclairage").css("grid-column", "1 / 2")
             $(".eclairage_widget").css("background-size", "100%")
-    
+            
+            //Un seul moteur
             if($(".canvas-mot2").css("display") == "none"){
-                $(".lames").css("grid-column", "2 / 3")
-                $(".lames").css("grid-row", "1")
+                $(".lames").css({
+                    "grid-column": "2 / 3",
+                    "grid-row": "1"
+                })
+
                 $(".lames-orientable_widget").css("background-size", "100%")
     
                 $(".eclairage").css({
                     "grid-row": "1",
                 })
-    
+
+            //deux moteurs
             }else{
-                $(".lames").css("grid-column", "1 / 3")
-                $(".lames").css("grid-row", "1")
-                $(".lames-orientable_widget").css("background-size", "50%")
+                $(".lames").css({
+                    "grid-column" : "1 / 3",
+                    "grid-row" : "1"
+                });
+
+                $(".lames-orientable_widget").css("background-size", "50%");
     
-                $(".eclairage").css({
-                    "grid-row": "2",
-                })
+                $(".eclairage").css("grid-row", "2");
             }
+        //deux bandeaux blancs
         }else{
     
             $(".lames").css("grid-row", "2")
     
-            $(".eclairage").css("grid-column", "1 / 3")
-            $(".eclairage").css("grid-row", "1")
+            $(".eclairage").css({
+                "grid-column": "1 / 3",
+                "grid-row": "1"
+            });
+
             $(".eclairage_widget").css("background-size", "50%")
-    
+            
+            //un seul moteur
             if($(".canvas-mot2").css("display") == "none"){
                 $(".lames").css("grid-column", "1 / 2")
                 $(".lames-orientable_widget").css("background-size", "100%")
     
+            //deux moteurs
             }else{
                 $(".lames").css("grid-column", "1 / 3")
                 $(".lames-orientable_widget").css("background-size", "50%")
@@ -149,70 +85,65 @@ function updateWidgetResponsive(){
         }
     }
     
+    //Responsive inf à 800px
     if(window.innerWidth > 800){
 
-        // console.log("L1: " + $(".canvas-light1").css("display"))
-        // console.log("L2: " + $(".canvas-light2").css("display"))
-        // console.log("M1: " + $(".canvas-mot1").css("display"))
-        // console.log("M2: " + $(".canvas-mot2").css("display"))
-        
-        // console.log("all" + $(".all_canvas_eclairage").css("display"))
         $(".sous_widgets").css({
             "display" : "grid",
             "grid-template-columns" : "1fr 1fr 1fr 1fr"
         });
     
+        //un seul bandeau blanc ou aucun bandeau blanc (mais des RGB)
         if($(".canvas-light2").css("display") == "none" || $(".all_canvas_eclairage").css("display") == "none"){
-            console.log("1 seul élément pour les lights")
             $(".eclairage").css({
                 "grid-column": "1 / 2",
                 "grid-row": "1"
             })
             $(".eclairage_widget").css("background-size", "100%")
     
+            //un seul moteur
             if($(".canvas-mot2").css("display") == "none"){
-                console.log("1 seul élément pour les moteurs")
                 $(".lames").css("grid-column", "2 / 3")
                 $(".lames").css("grid-row", "1")
                 $(".lames-orientable_widget").css("background-size", "100%")
     
+            //deux moteurs
             }else{
-                console.log("2 élément pour les moteurs")
                 $(".lames").css("grid-column", "2 / 4")
                 $(".lames").css("grid-row", "1")
                 $(".lames-orientable_widget").css("background-size", "50%")
             }
 
+            //Aucun bandeau blanc
             if($(".eclairage").css("display") == "none"){
-                console.log("pas délément eclairage")
+                //un seul moteur
                 if($(".canvas-mot2").css("display") == "none"){
-                    console.log("1 seul élément pour les moteurs")
+                    // console.log("1 seul élément pour les moteurs")
                     $(".lames").css("grid-column", "1 / 2")
                     $(".lames").css("grid-row", "1")
                     $(".lames-orientable_widget").css("background-size", "100%")
         
+                //deux moteurs
                 }else{
-                    console.log("2 élément pour les moteurs")
                     $(".lames").css("grid-column", "1 / 3")
                     $(".lames").css("grid-row", "1")
                     $(".lames-orientable_widget").css("background-size", "50%")
                 }
             }
-
+        //deux bandeaux blancs
         }else{
-            console.log("2 éléments pour les lights")
             $(".eclairage").css("grid-column", "1 / 3")
             $(".eclairage").css("grid-row", "1")
             $(".eclairage_widget").css("background-size", "50%")
     
+            //un seul moteur
             if($(".canvas-mot2").css("display") == "none"){
-                console.log("1 seul élément pour les moteurs")
                 $(".lames").css("grid-column", "3 / 4")
                 $(".lames").css("grid-row", "1")
                 $(".lames-orientable_widget").css("background-size", "100%")
     
             }else{
-                console.log("2 éléments pour les lights")
+                //deux moteurs
                 $(".lames").css("grid-column", "3 / 5")
                 $(".lames").css("grid-row", "1")
                 $(".lames-orientable_widget").css("background-size", "50%")
@@ -222,6 +153,7 @@ function updateWidgetResponsive(){
     }
 } 
 
+//Clic sur l'icone de menu => ouvrir le menu
 $(".menu").click(function(){
     $(this).hide()
 
@@ -253,18 +185,9 @@ $(".menu").click(function(){
     })
 
     $(".icon_close img").show();
-
-    // $(".icon_close img").css({
-    //     "width": "25px",
-    //     "margin": "auto",
-    //     "margin-right" : "2px"
-    // })
-
-    // $(".icon_close").css({
-    //     "justify-content"
-    // })
 });
 
+//Clic sur la croix de menu => fermer le menu
 $(".icon_close img").click(function(){
     
     $("aside").animate({
@@ -283,8 +206,7 @@ $(".icon_close img").click(function(){
     
 })
 
-// // console.log(document.querySelector("."))
-// // offsetHeight
+// Appel responsive widgets
 updateWidgetResponsive()
 
 setInterval(function(){

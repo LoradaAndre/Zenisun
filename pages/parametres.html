@@ -1,23 +1,21 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Zenisun</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link  rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.css">
-        <!-- <link rel="stylesheet" href="../libs/scss/custom.scss"> -->
 
+        <title>Zenisun</title>
+
+        <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/parametres.css">
-        <script src="../libs/jquery/jquery-3.5.1.js"></script>
-        <link href="../libs/onoff/css/switcher.css" rel="stylesheet">
-        <script src="../libs/onoff/js/jquery.switcher.js"></script>
-        <link rel="stylesheet" href="../libs/rangeslider/css/rSlider.min.css">
-        <script src="../libs/rangeslider/js/rSlider.min.js"></script>
         <link rel="stylesheet" href="../styles/navbar.css">
-        <link rel="stylesheet" href="../styles/responsive.css">
+        <link rel="stylesheet" href="../styles/parametres.css">
+        <link rel="stylesheet" href="../libs/onoff/css/switcher.css">
+        <link rel="stylesheet" href="../libs/rangeslider/css/rSlider.min.css">
+        <link rel="stylesheet" href="../responsive/responsive.css">
     </head>
+
     <body>
-         <!-- A faire en sorte de ne pas le répéter sur toute les pages -->
+        <!-- ============================================== NavBar ============================================== -->
         <div class="navigation_bar">
 
             <div class="categorie categorie_spe">
@@ -53,7 +51,7 @@
                 </a>
             </div>
         
-            <!-- ======================== MAJ ======================== -->
+            <!-- ======================== Mise à jour - Station météo ======================== -->
             <!-- <div class="categorie categorie_station_meteo">
                 <a href="station_meteo.html">
                     <div class="icon_navbar">
@@ -82,25 +80,30 @@
             </div>
         </div>
 
-        <main class="settings_main">
+        <!-- ============================================== Contenant ============================================== -->
+        <main class="settings_main"> 
             <div class="contenu-main">
-                <!-- <button type="button" class="btn btn-primary">Primary</button> -->
+                <!-- ============== GAUCHE ==============-->
                 <div class="flex-left">
+                    <!-- ============== BLOC paramètres généraux ==============-->
                     <div class="parametres_generaux test">
                         <h1>Paramètres généraux</h1>
                         <div class="hr"></div>
                         <div class="contenant">
+                            <!-- ============== date ==============-->
                             <div class="datePara">
                                 <h2>Date</h2>
                                 <p>01/03/2021</p>
                             </div>
+                            <!-- ============== heure ==============-->
                             <div class="heurePara">
                                 <h2>Heure</h2>
                                 <p>13:28:32</p>
                             </div>
-                            
+                            <!-- ============== homming ==============-->
                             <h2>Homing manuel</h2>
                             <h3 class="bouton bouton_homing">Effectuer un homing</h3>
+                            <!-- ============== geolocalisation ==============-->
                             <h2>Géolocalisation</h2>
                             <div class="geo_final">
                                 <h3 class="affichage_geo">Positionnement:</h3>
@@ -118,12 +121,7 @@
                                         <h3 id="O2_1">Nord</h3>
                                         <h3 id="O2_2">Sud</h3>
                                     </div>
-                                
-                                    <!-- <p>Longitude</p>
-                                    <input type="number" class="form-control" placeholder="">     
-                                    <input type="number" class="form-control" placeholder="">    -->
                                 </div>
-                                
                                 <div class="geo_item geo_item_long">
                                     <div class="form-group">
                                         <p class="form-control-static">Longitude</p>
@@ -135,13 +133,9 @@
                                         <h3 id="O1_1">Est</h3>
                                         <h3 id="O1_2">Ouest</h3>
                                     </div>
-                                
-                                    <!-- <p>Latitude</p>
-                                    <input type="number" class="form-control" placeholder="">     
-                                    <input type="number" class="form-control" placeholder=""> -->
                                 </div>
-                            
                             </div>
+                            <!-- ============== orientation ==============-->
                             <h2>Orientation</h2>
                             <div class="form-group">
                                 <select class="form-control" id="liste_orientation">
@@ -163,30 +157,26 @@
                                     <option value="337">Nord-nord-ouest</option>
                                 </select>
                             </div>
-                            <!-- <div class="list_of_buttons_orientation list_of_buttons">
-                                <h3 id="O1" value="0">Nord</h3>
-                                <h3 id="O2" value="1">Sud</h3>
-                                <h3 id="O3" value="2">Est</h3>
-                                <h3 id="O4" value="3">Ouest</h3>
-                            </div>
-        -->
                         </div>
                     </div>
+
+                    <!-- ============== BLOC éclairage ==============-->
                     <div class="eclairage test">
                         <h1>Eclairage</h1>
                         <div class="hr"></div>
                         <div class="contenant">
+                            <!-- ============== allumage auto horaire ==============-->
                             <div class="line-check">
                                 <h2>Allumage automatique sur horaire</h2>
                                 <div class="form-check form-check-inline check-allumage-auto-h">
                                 <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
                                 </div>
                             </div>
+                            <!-- ============== optn: allumage auto horaire ==============-->
                             <div class="selection_horaire_auto">
+                                <!-- ============== heure allumage ==============-->
                                 <div class="heure_allum">
-                                    <div>
-                                        <h2>Heure démarrage</h2>
-                                    </div>
+                                    <div><h2>Heure démarrage</h2></div>
                                     <div class="h-grid h_allumage">
                                         <div class="form-group row">
                                             <input class="form-contenantrol" type="time" value="13:45:00" id="light_on_hour">
@@ -194,10 +184,9 @@
                                         <div class="bouton btn-h-allumage"><h3>Appliquer</h3></div>
                                     </div>
                                 </div>
+                                <!-- ============== heure extinction ==============-->
                                 <div class="heure_extin">
-                                    <div>
-                                        <h2>Heure extinction</h2>
-                                    </div>
+                                    <div><h2>Heure extinction</h2></div>
                                     <div class="h-grid h_extinction">
                                         <div class="form-group row">
                                             <input class="form-contenantrol" type="time" value="13:45:00" id="light_off_hour">
@@ -206,6 +195,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- ============== vitesse gradateur led ==============-->
                             <div class="">
                                 <h2>Vitesse gradateur LED</h2>
                                 <div class="list_of_buttons_grad_LED list_of_buttons">
@@ -217,6 +207,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- ============== Maintenance ==============-->
                     <div class="parametre_specifique test">
                         <h1>Maintenance</h1>
                         <div class="hr"></div>
@@ -230,18 +221,14 @@
                     </div>
                 </div>
 
+                <!-- ========== DROITE ==========-->
                 <div class="flex-right">
+                    <!-- ============== BLOC Environnement ==============-->
                     <div class="parametres_generaux test">
                         <h1>Environnement</h1>
                         <div class="hr"></div>
                         <div class="contenant">
-
-                            <!-- <div class="line-check">
-                                <h2>Hivernage</h2>
-                                <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
-                                </div>
-                            </div> -->
+                            <!-- ============== fermeture pluie ==============-->
                             <div class="bloc">
                                 <div class="line-check">
                                     <h2>Fermeture en cas de pluie</h2>
@@ -250,6 +237,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- ============== intempéries ==============-->
                             <div class="bloc">
                                 <h2>Intempéries</h2>
                                 <div class=" list_of_buttons_intemperies">
@@ -258,8 +246,7 @@
                                     <h3 class="but button_neige" id="I3">Blocage neige</h3>
                                 </div>
                             </div>
-                    
-                                
+                            <!-- ============== mode saisonier ==============-->
                             <div class="bloc">
                                 <h2>Mode saisonier</h2>
                                 <div class=" list_of_buttons_saison">
@@ -268,21 +255,9 @@
                                     <h3 class="but button_hiver" id="S3">Mode hiver</h3>
                                 </div>    
                             </div>
-                        
-                            <!-- <div class="line-check">
-                                <h2>Suivi solaire</h2>
-                                <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
-                                </div>
-                            </div>
-                            <div class="line-check">
-                                <h2>Mode ombrage minimum</h2>
-                                <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
-                                </div>
-                            </div> -->
-
+                            <!-- ============== optn : mode saisonier ==============-->
                             <div class="saison_detail">
+                                <!-- ============== seuil de fermeture nuit ==============-->
                                 <div class="bloc">
                                     <h2>Seuil de fermeture nuit (degré élévation solaire)</h2>
                                     <div class="zone-range-wrap-settings zone-range-wrap  zone-wrap-elevation-sol">
@@ -294,7 +269,7 @@
                                         <p>45°</p>
                                     </div>
                                 </div>
-        
+                                <!-- ============== actualisation suivi solaire ==============-->
                                 <div class="bloc">
                                     <h2>Période d'actualisation de suivi solaire</h2>
                                     <div class="list_of_buttons_suivi_sol list_of_buttons">
@@ -306,11 +281,9 @@
                                     </div>
                                 </div>
                             </div>
-                            
-        
                         </div>
-                        
                     </div>
+                    <!-- ============== BLOC Apparence ==============-->
                     <div class="apparence test">
                         <h1>Apparence</h1>
                         <div class="hr"></div>
@@ -323,6 +296,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- ============== BLOC Maj Logicielle ==============-->
                     <div class="maj test">
                         <h1>Mise à jour logiciel</h1>
                         <div class="hr"></div>
@@ -332,12 +306,12 @@
                                 <h3 class="bouton install-button">Installer</h3>
                             </div>
                         </div>
-                    
                     </div>
                 </div>    
             </div>
+
+            <!-- ============================================== Aside ============================================== -->
             <div class="left-main">
-                 <!-- A faire en sorte de ne pas le répéter sur toute les pages -->
                  <aside>
                     <div class="menu">
                         <img class="menu_icon" src="../resources/icons/widgets_light/menu.png" alt="">
@@ -357,14 +331,10 @@
             </div>
         </main>
 
-             <!-- Modal -->
+        <!-- ============================================== Modal ============================================== -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
-                <!-- <div class="modal-header"> -->
-                  
-                  <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
-                <!-- </div> -->
                   <div class="modal-body">
                       <h5 class="modal-title" id="exampleModalLabel">Accès administrateur</h5>
                       <div class="form-group">
@@ -376,17 +346,19 @@
                           <div class="overlay_button b_second" data-bs-dismiss="modal">Annuler</div>
                       </div>
                   </div>
-               
               </div>
             </div>
-          </div>
-        <!-- <script src="../scripts/setup.js"></script> -->
+        </div>
+        
+        <!-- ============================================== scripts ============================================== -->
+        <script src="../libs/jquery/jquery-3.5.1.js"></script>
         <script src="../libs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="../libs/onoff/js/jquery.switcher.js"></script>
+        <script src="../libs/rangeslider/js/rSlider.min.js"></script>
         <script src="../scripts/script.js"></script>
         <script src="../scripts/parametres.js"></script>
         <script src="../scripts/theme.js"></script>
         <script src="../scripts/heure.js"></script>
-        <script src="../scripts/navbar.js"></script>
-        <script src="../scripts/responsive.js"></script>
+        <script src="../responsive/responsive.js"></script>
     </body>
 </html>

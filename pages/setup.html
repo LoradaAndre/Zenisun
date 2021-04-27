@@ -1,15 +1,18 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <script src="../libs/jquery/jquery-3.5.1.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link  rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.css">
 
-        <link rel="stylesheet" href="../styles/setup.css">
-        <link rel="stylesheet" href="../styles/setup_responsive.css">
         <title>Zenisun</title>
+
+        <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../styles/setup.css">
+        <link rel="stylesheet" href="../styles/navbar.css">
+        <link rel="stylesheet" href="../responsive/setup_responsive.css">
     </head>
+
     <body>
+        <!-- ============================================== Header ============================================== -->
         <header>
             <div class="menu">
                 <img class="menu_icon" src="../resources/icons/widgets_light/menu.png" alt="">
@@ -19,8 +22,10 @@
                 <a href="../index.html"><img class="home_icon" src="../resources/icons/widgets_light/home.png" alt=""></a>
             </div>
         </header>
-        <main>
+
+        <main> <!-- ============================================== Contenant ============================================== -->
             <div class="right-content">
+                <!-- ============================================== Navigation ============================================== -->
                 <div class="elem-list elem-list-spe">
                     <div class="close">
                         <img src="../resources/icons/widgets_light/close.png" alt="image de test">
@@ -44,7 +49,7 @@
                 <div class="para1">
                     <div class="cat">
                         <h3 class="name">Board version</h3>
-                        <h3 class="desc board_version">int</h3>
+                        <h3 class="desc board_version"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="1"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -53,7 +58,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">MOS LED rds on</h3>
-                        <h3 class="desc MOS_LED_rds">int</h3>
+                        <h3 class="desc MOS_LED_rds"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="2"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -62,7 +67,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">MOS LED Rth</h3>
-                        <h3 class="desc MOS_LED_Rth">int</h3>
+                        <h3 class="desc MOS_LED_Rth"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="3"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -71,7 +76,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">MOS motor FS</h3>
-                        <h3 class="desc MOS_motor_FS">int</h3>
+                        <h3 class="desc MOS_motor_FS"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="4"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -80,7 +85,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">MOS LEDs FS</h3>
-                        <h3 class="desc MOS_LEDs_FS">int</h3>
+                        <h3 class="desc MOS_LEDs_FS"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="5"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -94,7 +99,7 @@
                 <div class="para2">
                     <div class="cat">
                         <h3 class="name">Temperature</h3>
-                        <h3 class="desc tmp">int</h3>
+                        <h3 class="desc tmp"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="0"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -103,7 +108,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">Vin #1</h3>
-                        <h3 class="desc vin1">int</h3>
+                        <h3 class="desc vin1"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="1"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -126,7 +131,7 @@
                 <div class="para3">
                     <div class="cat">
                         <h3 class="name">GPI #0</h3>
-                        <h3 class="desc GPI0">int</h3>
+                        <h3 class="desc GPI0"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="3"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -135,7 +140,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">GPI #1</h3>
-                        <h3 class="desc GPI1">int</h3>
+                        <h3 class="desc GPI1"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="4"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -144,7 +149,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">GPI #2</h3>
-                        <h3 class="desc GPI2">int</h3>
+                        <h3 class="desc GPI2"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="5"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -153,7 +158,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">GPI #3</h3>
-                        <h3 class="desc GPI3">int</h3>
+                        <h3 class="desc GPI3"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="6"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -162,7 +167,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">GPI #4</h3>
-                        <h3 class="desc GPI4">int</h3>
+                        <h3 class="desc GPI4"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="7"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -171,7 +176,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">GPI #5</h3>
-                        <h3 class="desc GPI5">int</h3>
+                        <h3 class="desc GPI5"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="8"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -185,7 +190,7 @@
                 <div class="para4">
                     <div class="cat">
                         <h3 class="name">GPO #0</h3>
-                        <h3 class="desc GPO_Power0">int</h3>
+                        <h3 class="desc GPO_Power0"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="9"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -194,7 +199,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">GPO #1</h3>
-                        <h3 class="desc GPO_Power1">int</h3>
+                        <h3 class="desc GPO_Power1"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="10"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -203,7 +208,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">GPO #2</h3>
-                        <h3 class="desc GPO_Power2">int</h3>
+                        <h3 class="desc GPO_Power2"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="11"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -212,7 +217,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">GPO #3</h3>
-                        <h3 class="desc GPO_Power3">int</h3>
+                        <h3 class="desc GPO_Power3"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="12"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -221,7 +226,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">GPO #4</h3>
-                        <h3 class="desc GPO_Power4">int</h3>
+                        <h3 class="desc GPO_Power4"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="13"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -230,7 +235,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">GPO #5</h3>
-                        <h3 class="desc GPO_Power5">int</h3>
+                        <h3 class="desc GPO_Power5"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="14"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -239,7 +244,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">GPO #6</h3>
-                        <h3 class="desc GPO_Power6">int</h3>
+                        <h3 class="desc GPO_Power6"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="15"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -248,7 +253,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">GPO #7</h3>
-                        <h3 class="desc GPO_Power7">int</h3>
+                        <h3 class="desc GPO_Power7"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="16"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -261,7 +266,7 @@
                 <div class="para5">
                     <div class="cat">
                         <h3 class="name">PID Kp</h3>
-                        <h3 class="desc PID_Kp0">int</h3>
+                        <h3 class="desc PID_Kp0"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="25"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -270,7 +275,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">PID Ki</h3>
-                        <h3 class="desc PID_Ki0">int</h3>
+                        <h3 class="desc PID_Ki0"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="26"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -279,7 +284,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">PID Kt</h3>
-                        <h3 class="desc PID_Kt0">int</h3>
+                        <h3 class="desc PID_Kt0"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="27"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -288,7 +293,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">motor_max_count</h3>
-                        <h3 class="desc motor_max_count0">int</h3>
+                        <h3 class="desc motor_max_count0"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="17"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -297,7 +302,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">motor_max_angle</h3>
-                        <h3 class="desc motor_max_angle0">int</h3>
+                        <h3 class="desc motor_max_angle0"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="21"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -306,7 +311,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">max_current_mAmps</h3>
-                        <h3 class="desc max_current_mAmps0">int</h3>
+                        <h3 class="desc max_current_mAmps0"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="18"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -315,7 +320,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">home_current_mAmps</h3>
-                        <h3 class="desc home_current_mAmps0">int</h3>
+                        <h3 class="desc home_current_mAmps0"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="31"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -324,7 +329,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">home_current_offset</h3>
-                        <h3 class="desc home_current_offset0">int</h3>
+                        <h3 class="desc home_current_offset0"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="35"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -333,7 +338,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">home_switch_offset</h3>
-                        <h3 class="desc home_switch_offset0">int</h3>
+                        <h3 class="desc home_switch_offset0"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="37"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -342,7 +347,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">zero_degree_offset</h3>
-                        <h3 class="desc zero_degree_offset0">int</h3>
+                        <h3 class="desc zero_degree_offset0"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="39"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -351,7 +356,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">speed_homing</h3>
-                        <h3 class="desc speed_homing0">int</h3>
+                        <h3 class="desc speed_homing0"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="32"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -360,7 +365,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">speed_normal</h3>
-                        <h3 class="desc speed_normal0">int</h3>
+                        <h3 class="desc speed_normal0"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="43"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -369,7 +374,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">max_delta_setpoint_homing</h3>
-                        <h3 class="desc max_delta_setpoint_homing0">int</h3>
+                        <h3 class="desc max_delta_setpoint_homing0"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="45"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -378,7 +383,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">max_delta_setpoint_normal</h3>
-                        <h3 class="desc max_delta_setpoint_normal0">int</h3>
+                        <h3 class="desc max_delta_setpoint_normal0"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="47"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -391,7 +396,7 @@
                  <div class="para6">
                     <div class="cat">
                         <h3 class="name">PID Kp</h3>
-                        <h3 class="desc PID_Kp1">int</h3>
+                        <h3 class="desc PID_Kp1"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="28"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -400,7 +405,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">PID Ki</h3>
-                        <h3 class="desc PID_Ki1">int</h3>
+                        <h3 class="desc PID_Ki1"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="29"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -409,7 +414,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">PID Kt</h3>
-                        <h3 class="desc PID_Kt1">int</h3>
+                        <h3 class="desc PID_Kt1"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="30"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -418,7 +423,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">motor_max_count</h3>
-                        <h3 class="desc motor_max_count1">int</h3>
+                        <h3 class="desc motor_max_count1"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="19"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -427,7 +432,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">motor_max_angle</h3>
-                        <h3 class="desc motor_max_angle1">int</h3>
+                        <h3 class="desc motor_max_angle1"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="22"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -436,7 +441,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">max_current_mAmps</h3>
-                        <h3 class="desc max_current_mAmps1">int</h3>
+                        <h3 class="desc max_current_mAmps1"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="20"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -445,7 +450,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">home_current_mAmps</h3>
-                        <h3 class="desc home_current_mAmps1">int</h3>
+                        <h3 class="desc home_current_mAmps1"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="33"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -454,7 +459,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">home_current_offset</h3>
-                        <h3 class="desc home_current_offset1">int</h3>
+                        <h3 class="desc home_current_offset1"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="36"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -463,7 +468,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">home_switch_offset</h3>
-                        <h3 class="desc home_switch_offset1">int</h3>
+                        <h3 class="desc home_switch_offset1"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="38"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -472,7 +477,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">zero_degree_offset</h3>
-                        <h3 class="desc zero_degree_offset1">int</h3>
+                        <h3 class="desc zero_degree_offset1"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="40"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -481,7 +486,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">speed_homing</h3>
-                        <h3 class="desc speed_homing1">int</h3>
+                        <h3 class="desc speed_homing1"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="34"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -490,7 +495,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">speed_normal</h3>
-                        <h3 class="desc speed_normal1">int</h3>
+                        <h3 class="desc speed_normal1"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="44"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -499,7 +504,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">max_delta_setpoint_homing</h3>
-                        <h3 class="desc max_delta_setpoint_homing1">int</h3>
+                        <h3 class="desc max_delta_setpoint_homing1"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="46"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -508,7 +513,7 @@
                     </div>
                     <div class="cat">
                         <h3 class="name">max_delta_setpoint_normal</h3>
-                        <h3 class="desc max_delta_setpoint_normal1">int</h3>
+                        <h3 class="desc max_delta_setpoint_normal1"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="48"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -521,7 +526,7 @@
                 <div class="para7">
                     <div class="cat">
                         <h3 class="name">Shader drying(Degree)</h3>
-                        <h3 class="desc shader_drying">int</h3>
+                        <h3 class="desc shader_drying"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="24"  min="0"  >
                             <h3 class="valid validate">Valider</h3>
@@ -533,12 +538,12 @@
                         <h3 class="name">Configuration</h3>
 
                         <div class="info-check">
-                            <h3>AAAA</h3>
-                            <h3>AAAA</h3>
-                            <h3>AAAA</h3>
-                            <h3>AAAA</h3>
-                            <h3>AAAA</h3>
-                            <h3>AAAA</h3>
+                            <h3></h3>
+                            <h3></h3>
+                            <h3></h3>
+                            <h3></h3>
+                            <h3></h3>
+                            <h3></h3>
                         </div>
                         
                         <div class="checkDiv"> <!-- middle -->
@@ -577,7 +582,7 @@
                     </div>
                     <!-- <div class="cat">
                         <h3 class="name">Automatum ID</h3>
-                        <h3 class="desc automatum_ID">Baie XXXX</h3>
+                        <h3 class="desc automatum_ID">Baie X</h3>
                         <div class="middle form-group">
                             <select class="form-control" id="liste_baie">
                                 <option value="">Baie 1/2</option>
@@ -646,7 +651,7 @@
 
                     <div class="cat">
                         <h3 class="name">Set motor #0 position</h3>
-                        <h3 class="desc mot1">XXX</h3>
+                        <h3 class="desc mot1"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="1"  min="0"  >
                             <h3 class="valid validate_set_motor">Valider</h3>
@@ -656,7 +661,7 @@
 
                     <div class="cat">
                         <h3 class="name">Set motor #1 position</h3>
-                        <h3 class="desc mot2">XXX</h3>
+                        <h3 class="desc mot2"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="2"  min="0"  >
                             <h3 class="valid validate_set_motor">Valider</h3>
@@ -680,7 +685,7 @@
                     
                     <div class="cat">
                         <h3 class="name">Set motor #0 angle</h3>
-                        <h3 class="desc mot1_angle">XXX</h3>
+                        <h3 class="desc mot1_angle"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="1"  min="0"  >
                             <h3 class="valid validate_set_shader">Valider</h3>
@@ -714,7 +719,7 @@
 
                     <div class="cat">
                         <h3 class="name">Set GPO #4 (RGB_strip #1) </h3>
-                        <h3 class="desc GPO_Int4">XXX</h3>
+                        <h3 class="desc GPO_Int4"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="16"  min="0" max="255">
                             <h3 class="valid validate_set_led">Valider</h3>
@@ -724,7 +729,7 @@
 
                     <div class="cat">
                         <h3 class="name">Set GPO #5 (RGB_strip #2)</h3>
-                        <h3 class="desc GPO_Int5">XXX</h3>
+                        <h3 class="desc GPO_Int5"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="32"  min="0" max="255">
                             <h3 class="valid validate_set_led">Valider</h3>
@@ -734,7 +739,7 @@
 
                     <div class="cat">
                         <h3 class="name">Set GPO #6 (white_strip #1) </h3>
-                        <h3 class="desc GPO_Int6">XXX</h3>
+                        <h3 class="desc GPO_Int6"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="64"  min="0" max="255">
                             <h3 class="valid validate_set_led">Valider</h3>
@@ -744,7 +749,7 @@
 
                     <div class="cat">
                         <h3 class="name">Set GPO #7 (white_strip #2)</h3>
-                        <h3 class="desc GPO_Int7">XXX</h3>
+                        <h3 class="desc GPO_Int7"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="128"  min="0" max="255">
                             <h3 class="valid validate_set_led">Valider</h3>
@@ -754,7 +759,7 @@
 
                     <div class="cat">
                         <h3 class="name">Set GPO #8 (red)</h3>
-                        <h3 class="desc GPO_Int8">XXX</h3>
+                        <h3 class="desc GPO_Int8"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="256"  min="0" max="255">
                             <h3 class="valid validate_set_led">Valider</h3>
@@ -764,7 +769,7 @@
 
                     <div class="cat">
                         <h3 class="name">Set GPO #9 (green)</h3>
-                        <h3 class="desc GPO_Int9">XXX</h3>
+                        <h3 class="desc GPO_Int9"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="512"  min="0" max="255">
                             <h3 class="valid validate_set_led">Valider</h3>
@@ -774,7 +779,7 @@
 
                     <div class="cat">
                         <h3 class="name">Set GPO #10 (blue)</h3>
-                        <h3 class="desc GPO_Int10">XXX</h3>
+                        <h3 class="desc GPO_Int10"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="1024"  min="0" max="255">
                             <h3 class="valid validate_set_led">Valider</h3>
@@ -784,7 +789,7 @@
 
                     <div class="cat">
                         <h3 class="name">Set all values</h3>
-                        <h3 class="desc GPO_Int11">XXX</h3>
+                        <h3 class="desc GPO_Int11"></h3>
                         <div class="middle">
                             <input class="form-control" type="number" value="0" id="2032"  min="0" max="255">
                             <h3 class="valid validate_set_led">Valider</h3>
@@ -797,22 +802,13 @@
 
                  <div class="debug"></div>
                 
-                
-                
             </div>
         </main>
+
+        <!-- ============================================== scripts ============================================== -->
+        <script src="../libs/jquery/jquery-3.5.1.js"></script>
         <script src="../scripts/setup.js"></script>
         <script src="../scripts/debug.js"></script>
-        <script src="../scripts/setup_responsive.js"></script>
+        <script src="../responsive/setup_responsive.js"></script>
     </body>
 </html>
-
-<!-- <div class="cat">
-    <h3 class="name">XXX</h3>
-    <h3 class="desc">int</h3>
-    <div class="middle">
-        <input class="form-control" type="number" value="0" id="AAAAAAAAAAAAAAA"  min="0"  >
-        <h3 class="valid validate">Valider</h3>
-    </div>   
-    <h3 class="mod">Modifier</h3>
-</div> -->

@@ -1,11 +1,19 @@
 /* ========================== date/ heure ========================== */
+
+let joursLettres = ["Dimanche", "Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
+let moisLettres = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Décembre"];
+$(".time .jour").html(joursLettres[date.getDay()] + " " + date.getDate() + " " + moisLettres[date.getMonth()]  );
+
 let date = new Date()
 let jour = date.getDate();
 let mois = date.getMonth() + 1;
 let annee = date.getFullYear();
+
 if(mois < 10){
   mois = "0" + mois;
 }
+
+//Affichage de la date
 $(".datePara p").html("<p>" + jour + "/" + mois + "/"+ annee +  "</p>");
 
 function refresh(){
@@ -34,7 +42,5 @@ function showDate() {
 }
 showDate()
 
-let joursLettres = ["Dimanche", "Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
-let moisLettres = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Décembre"];
-$(".time .jour").html(joursLettres[date.getDay()] + " " + date.getDate() + " " + moisLettres[date.getMonth()]  );
+
 

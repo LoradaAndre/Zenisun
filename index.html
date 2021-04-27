@@ -1,166 +1,169 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Zenisun</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link  rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.css">
 
-        <link rel="stylesheet" href="styles/style_page_accueil.css">
-        <script src="libs/jquery/jquery-3.5.1.js"></script>
-        <script src="libs/onoff/js/jquery.switcher.js"></script>
+        <title>Zenisun</title>
+
+        <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" href="libs/circleCanvas/styleCircleCanvas.css">
+        <link rel="stylesheet" href="styles/style_page_accueil.css">
         <link rel="stylesheet" href="styles/navbar.css">
-        <link rel="stylesheet" href="styles/responsive_main.css">
+        <link rel="stylesheet" href="responsive/responsive_main.css">
     </head>
+
     <body>
-      
-            <div class="widgets">
-
-                <aside >
-                    <div class="connexion">
-                        <img class="aside_icon connexion_icon" src="resources/icons/wait.png" alt=""><p>connexion...</p>
-                    </div>
-                    <div class="elev_sol">
-                        <img class="aside_icon elev_icon" src="resources/icons/widgets_light/elevSolaire.png" alt="">
-                        <p>00°</p>
-                    </div>
-                    <div class="info" data-bs-toggle="modal" data-bs-target="#exampleModal"> 
-                        <img class="aside_icon info_icon" src="resources/icons/widgets_light/info.png" alt="">
-                    </div>
-                </aside>
-        
-
-                <!-- widget meteo -->
-                <div class="meteo_widget">
-    
-                    <div class="meteo">
-                        <div class="type_temps">
-                            <img src="" class="icon_type_temps" alt="icone temps"> <!--resources/icons/widgets_light/nuage.png -->
-                            <p>Nuageux</p> 
-                        </div>
-                        <div class="temperature">20°C</div>
-                    </div>
-    
-                    <!-- <div class="connexion_meteo_widget">
-                        <div><img class="aside_icon connexion_icon" src="resources/icons/connected.png" alt=""><p>Connecté</p></div> 
-                    </div>
-     -->
-                    <div class="time">
-                        <div class="heure">22:00</div>
-                        <div class="jour">Mardi 10 Mars</div>
-                    </div>
+        <!-- ============================================== Tout les widgets ============================================== -->
+        <div class="widgets">
+            <!-- ============================================== Aside ============================================== -->
+            <aside >
+                <div class="connexion">
+                    <img class="aside_icon connexion_icon" src="resources/icons/wait.png" alt=""><p>connexion...</p>
                 </div>
-                <div class="sous_widgets">
-                    <!-- widget 1 -->
-                    <a href="pages/eclairage.html" class="eclairage">
-                        <div class="eclairage_widget widget">
-                                <div class="icon all_canvas all_canvas_eclairage">
-                                    <div id="score" class="flex-container canvas-light1 canvas-light">
-                                        <canvas class="round1 E1-canvas" value="100" data-color="#F9AD3C" colorBar="#E59D31" id="clair"></canvas>
-                                    </div>
-                                    <div id="score" class="flex-container canvas-light2 canvas-light">
-                                        <canvas class="round1 E2-canvas" value="100" data-color="#F9AD3C" colorBar="#E59D31" id="clair"></canvas>
-                                    </div>
-                                </div>
-                                <div class="icon icon_lamp">
-                                    <div id="score" class="flex-container">
-                                        <img src="resources/icons/widgets_light/lamp.png" alt="image de test">
-                                    </div>
-                                </div>
-                            <h1>Éclairage</h1>
-                        </div>  
-                    </a>
+                <div class="elev_sol">
+                    <img class="aside_icon elev_icon" src="resources/icons/widgets_light/elevSolaire.png" alt="">
+                    <p>00°</p>
+                </div>
+                <div class="info" data-bs-toggle="modal" data-bs-target="#exampleModal"> 
+                    <img class="aside_icon info_icon" src="resources/icons/widgets_light/info.png" alt="">
+                </div>
+            </aside>
     
-                    <a href="pages/lames_orientabes.html" class="lames">
-                        <div class="lames-orientable_widget widget">
-                            <div class="icon all_canvas  all_canvas_lames">
-                                <div id="score" class="flex-container canvas-mot1 canvas-mot">
-                                    <canvas class="round2 L1-canvas" value="100" data-color="#4795D5" colorBar="#448DC9" id="clair"></canvas>
-                                </div>
-                                <div id="score" class="flex-container canvas-mot2 canvas-mot">
-                                    <canvas class="round2 L2-canvas" value="100" data-color="#4795D5" colorBar="#448DC9" id="clair"></canvas>
-                                </div>
-                            </div>
-                            <h1>Lames orientables</h1>
-                        </div>
-                    </a>
-                        
-                    <a href="pages/config_wifi.html">
-                        <div class="wifi_widget widget">
-                            <div class="icon">
-                                <div id="score" class="flex-container">
-                                    <img src="resources/icons/widgets_light/wifi.png" alt="image de test">
-                                </div>
-                            </div>
-                            <h1>Configuration wifi</h1>
-                        </div>
-                    </a>
+            <!-- ============================================== Widget météo ============================================== -->
+            <div class="meteo_widget">
+                 <!-- ====== DROITE ====== -->
+                <div class="meteo">
+                    <div class="type_temps">
+                        <img src="" class="icon_type_temps" alt="icone temps"> <!--resources/icons/widgets_light/nuage.png -->
+                        <p>Nuageux</p> 
+                    </div>
+                    <div class="temperature">20°C</div>
+                </div>
+                <!-- ====== GAUCHE ====== -->
+                <div class="time">
+                    <div class="heure">22:00</div>
+                    <div class="jour">Mardi 10 Mars</div>
+                </div>
+            </div>
 
-                    <a href="pages/guide_utilisation.html">
-                        <div class="guide_utilisation_widget widget">
-                            <div class="icon">
-                                <div id="score" class="flex-container">
-                                    <img src="resources/icons/widgets_light/book.png" alt="image de test">
+            <!-- ============================================== Tout les sous_widgets ============================================== -->
+            <div class="sous_widgets">
+                <!-- ============================================== Widget éclairage ============================================== -->
+                <a href="pages/eclairage.html" class="eclairage">
+                    <div class="eclairage_widget widget">
+                            <div class="icon all_canvas all_canvas_eclairage">
+                                <div id="score" class="flex-container canvas-light1 canvas-light">
+                                    <canvas class="round1 E1-canvas" value="100" data-color="#F9AD3C" colorBar="#E59D31" id="clair"></canvas>
+                                </div>
+                                <div id="score" class="flex-container canvas-light2 canvas-light">
+                                    <canvas class="round1 E2-canvas" value="100" data-color="#F9AD3C" colorBar="#E59D31" id="clair"></canvas>
                                 </div>
                             </div>
-                            <h1>Guide d'utilisation</h1>
-                        </div>
-                    </a>
-    
-                    <a href="pages/parametres.html">
-                        <div class="parametres_widget widget">
-                            <div class="icon">
-                                <div id="score" class="flex-container">
-                                    <img src="resources/icons/widgets_light/settings.png" alt="image de test">
-                                </div>
-                            </div>
-                            <h1>Paramètres</h1>
-                        </div>
-                    </a>
-                    
-                    <!-- ======================== MAJ ======================== -->
-                    <!-- <a href="pages/station_meteo.html">
-                        <div class="station_meteo_widget widget">
-                            <div class="icon">
+                            <div class="icon icon_lamp">
                                 <div id="score" class="flex-container">
                                     <img src="resources/icons/widgets_light/lamp.png" alt="image de test">
                                 </div>
                             </div>
-                            <h1>Station météo</h1>
+                        <h1>Éclairage</h1>
+                    </div>  
+                </a>
+
+                <!-- ============================================== Widget lames orientables ============================================== -->
+                <a href="pages/lames_orientabes.html" class="lames">
+                    <div class="lames-orientable_widget widget">
+                        <div class="icon all_canvas  all_canvas_lames">
+                            <div id="score" class="flex-container canvas-mot1 canvas-mot">
+                                <canvas class="round2 L1-canvas" value="100" data-color="#4795D5" colorBar="#448DC9" id="clair"></canvas>
+                            </div>
+                            <div id="score" class="flex-container canvas-mot2 canvas-mot">
+                                <canvas class="round2 L2-canvas" value="100" data-color="#4795D5" colorBar="#448DC9" id="clair"></canvas>
+                            </div>
                         </div>
-                    </a> -->
-                </div>
-    
+                        <h1>Lames orientables</h1>
+                    </div>
+                </a>
+                    
+                <!-- ============================================== Widget config wifi ============================================== -->
+                <a href="pages/config_wifi.html">
+                    <div class="wifi_widget widget">
+                        <div class="icon">
+                            <div id="score" class="flex-container">
+                                <img src="resources/icons/widgets_light/wifi.png" alt="image de test">
+                            </div>
+                        </div>
+                        <h1>Configuration wifi</h1>
+                    </div>
+                </a>
+
+                <!-- ============================================== Widget guide utilisation ============================================== -->
+                <a href="pages/guide_utilisation.html">
+                    <div class="guide_utilisation_widget widget">
+                        <div class="icon">
+                            <div id="score" class="flex-container">
+                                <img src="resources/icons/widgets_light/book.png" alt="image de test">
+                            </div>
+                        </div>
+                        <h1>Guide d'utilisation</h1>
+                    </div>
+                </a>
+
+                <!-- ============================================== Widget paramètres ============================================== -->
+                <a href="pages/parametres.html">
+                    <div class="parametres_widget widget">
+                        <div class="icon">
+                            <div id="score" class="flex-container">
+                                <img src="resources/icons/widgets_light/settings.png" alt="image de test">
+                            </div>
+                        </div>
+                        <h1>Paramètres</h1>
+                    </div>
+                </a>
+                
+                <!-- ======================== futur widhet météo ======================== -->
+                <!-- <a href="pages/station_meteo.html">
+                    <div class="station_meteo_widget widget">
+                        <div class="icon">
+                            <div id="score" class="flex-container">
+                                <img src="resources/icons/widgets_light/lamp.png" alt="image de test">
+                            </div>
+                        </div>
+                        <h1>Station météo</h1>
+                    </div>
+                </a> -->
             </div>
 
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog test">
-                  <div class="modal-content">
+        </div>
+
+        <!-- ============================================== Modal à propos ============================================== -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog test">
+                <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Contactez Zenisun</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h5 class="modal-title" id="exampleModalLabel">Contactez Zenisun</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                             <p>Mail: info@zenisun.fr</p>
                             <p>Tel: +33 (0)4 28 04 42 08</p>
                             <p>Site web: <a href="www.zenisun.fr">www.zenisun.fr</a></p>
                             <p>Adresse: 10 Rue de l'Industrie, 42240 Unieux</p>
-                            
-                       
                     </div>
                     <div class="modal-footer">
                         <p>Logiciel version V1.20A</p> 
                     </div>
-                  </div>
                 </div>
-              </div>
-       
+            </div>
+        </div>
+            
+        <!-- ============================================== scripts ============================================== -->
+        <script src="libs/jquery/jquery-3.5.1.js"></script>
         <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="libs/onoff/js/jquery.switcher.js"></script>
         <script src="libs/circleCanvas/scriptCircleCanvas.js"></script>
         <script src="scripts/accueil.js"></script>
         <script src="scripts/theme.js"></script>
         <script src="scripts/heure.js"></script>
         <script src="scripts/navbar.js"></script>
-        <script src="scripts/responsive.js"></script>
+        <script src="responsive/responsive.js"></script>
     </body>
 </html>

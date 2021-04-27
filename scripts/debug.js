@@ -67,32 +67,29 @@ function lectureCarte(){
             sunAsimut = parseInt(data.all[28].textContent) //s_azi
             sunShader = parseInt(data.all[29].textContent) //s_prj
 
-
       }).fail(function() {
-			//   alert("Lecture de la carte échouée")  
     });	
 
 	$.ajax({
         url: '../cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
         context: document.body
       }).done(function(data){
-
             pergOrient = parseInt(data.all[4].textContent) //orient
             pergLong = parseInt(data.all[6].textContent)/100 //lon
             pergLat = parseInt(data.all[7].textContent)/100 //lat
 			
       }).fail(function() {
-        //   alert("Lecture de la carte échouée")  
     });
 }
 
+//Récupération des données de l'automate
 function getValue(data, input, pos){
-    let valMotor = data.all[input].textContent
-    valMotor = valMotor.split(";")
-    return valMotor[pos]
+    let value = data.all[input].textContent
+    value = value.split(";")
+    return value[pos]
 }
 
-
+//Génération du DOM selons les données
 function affichageInfos(){
     $("ul").remove()
     let liste = $("<ul></ul>")
@@ -143,7 +140,8 @@ function affichageInfos(){
     $(bloc4).append("<li>Sun elevation= <span>" + sunElev + "°</span></li>")
     $(bloc4).append("<li>Sun azimut= <span>" + sunAsimut + "°</span></li>")
     $(bloc4).append("<li>Sun projection on shaders= <span>" + sunShader + "°</span></li>")
-
+    
+    //CSS de la génération 
     $("span").css("color","white")
     $("h4").css({
         "font-size": "medium",
@@ -157,6 +155,7 @@ function affichageInfos(){
         "padding" : "20px"
     });
 
+    //Responsive de cette génération
     if(window.innerWidth < 800){
 
         if(window.innerWidth < 400){
@@ -189,6 +188,5 @@ $(document).ready(function(){
         lectureCarte()
         affichageInfos()
     }, 1000);
-   
 });
 

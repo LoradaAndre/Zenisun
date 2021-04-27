@@ -87,12 +87,9 @@ function stockWifi(data){
     sousbloc3.appendChild(img2);
 
     details.textContent = typeSecurite(cle[2].textContent, img1, bloc) + " - canal " + cle[4].textContent
-
-
     }
 
     applyCss();
-
     overlayConnexion();
 
 }
@@ -104,11 +101,6 @@ function applyCss(){
     refreshAffichage("not ok")
 
     let margeDroite = 4;
-
-    $(".test").css({
-        
-        // "margin-right" : margeDroite + "px"
-    });
 
     $(".test").css({
         "display" : "grid" ,
@@ -127,18 +119,9 @@ function applyCss(){
     $(".sousbloc3").css({
         "display" : "flex",
     });
-    // $(".bouton_detection").css({
-    //     "margin-right" : margeDroite + "%"
-    // });
     $(".bouton_detection h1").css({
         "text-align" : "center"
     });
-
-    // $(".blocWifi").attr(
-    //     "style", function(i,s){
-    //         return(s||'') +  "margin-right: " + margeDroite + "%"
-    //     }
-    // );
 
     $(".cont").css({
         "margin" : "0",
@@ -171,11 +154,6 @@ function applyCss(){
             "margin": "auto"
         });
     }
-    
-
-
-  
-
 }
 
 function graduationIntensiteWifi(rssi, bloc){
@@ -226,7 +204,6 @@ function typeSecurite(securite, blocImage, bloc){
 function overlayConnexion(){
 
     let titreOverlay = document.querySelector("h5");
-
     let ele = document.querySelectorAll(".test");
     for(let i = 0; i < ele.length; i ++){
         ele[i].addEventListener("click", function(){

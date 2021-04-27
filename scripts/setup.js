@@ -25,12 +25,16 @@ $(document).ready(function(){
 $(".mod").click(function(){
     //Si le bouton inscrit "Modifier"
     if($(this).text() == "Modifier"){
+
         //Montre la partie du milieu
         $(this).parent().children(".middle").css("visibility","visible")
+
         //Change le bouton "modifier" en "annuler"
         $(this).text("Annuler")
+
         //Récupération de la valeur affichée 
         let val = parseInt($(this).parent().children(".desc").text())
+
         //Insertion ce cette valeur dans l'input
         $(this).parent().children(".middle").children(".form-control").val(val)
     
@@ -50,8 +54,8 @@ $(".mod").click(function(){
         $(".checkDiv").hide()
         $(".info-check").show()
     }
-    
 });
+
 $(".validate_spe").click(function(){
     $(".checkDiv").hide()
     $(".info-check").show()
@@ -76,7 +80,6 @@ $(".valid").click(function(){
 });
 
 $(".validate").click(function(){
-
     //Récupération de la valeur mise dans l'input
     let valueToInsert = $(this).parent().children("input").val()
     let idToInsert = $(this).parent().children("input").attr("id")

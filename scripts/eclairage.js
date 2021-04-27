@@ -46,16 +46,12 @@ function lectureCarte(){
 
       }).fail(function() {
             isConnected(false, data)
-        //   alert("Lecture de la carte échouée")
-          
     });	
 
     $.ajax({
         url: '../cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
         context: document.body
       }).done(function(data){
-			
-        
              //hwcfg
              hwcfg = parseInt(data.all[17].textContent)
              console.log(hwcfg)
@@ -66,8 +62,7 @@ function lectureCarte(){
       }).fail(function() {
           alert("Lecture de la carte échouée")  
     });
-
-      
+    
 }
 
 function changeValueWithRange(classRange, input){
@@ -119,8 +114,6 @@ function updateOutputRange(){
     refreshBarre(".B", BColor);
 }
 
-// let zone = document.querySelector(".wrap-BB-1 .range");
-
 $(document).ready(function() {
     $(".test").hide();
     lectureCarte();
@@ -133,14 +126,11 @@ $(document).ready(function() {
         defaut();
     }, 1000);
 
-    // $('#zoneColor').farbtastic('#color');
-
     //Changer couleur selon la roue chromatique
     $('#zoneColor').farbtastic(function(color){
         changeColor(color);
         updateOutputRange();
     });
-
     AllbandeauOff()
 });
 
@@ -160,11 +150,6 @@ function defaut(){
         if(RGBIntensite2 != 0){
             $(".RVB2-check .ui-switcher").attr("aria-checked", "true");
         }
-
-        // if(hwcfg != "undefined" && init == false){
-        //     init = true;
-        //     gestionAffichageBloc(hwcfg)
-        // }
     }
   
 }
@@ -216,7 +201,6 @@ function refreshBarre(classRange, input, inputSpe){
         if(typeof inputSpe == 'undefined'){
             inputSpe = "";
         }
-
         let range = document.querySelector(classRange)
         let bubble = range.querySelector(".bubble");
         let contenuVal = range.querySelector(".value-range-wrap");
@@ -234,7 +218,6 @@ function changeValueEclairage(ruban, valeur){
         //  alert('done')
       }).fail(function() {
             isConnected(false, data)
-          alert("changement d'intensité échoué")
       });
 }
 
@@ -247,9 +230,9 @@ function changeColor(color){
     changeValueEclairage(256, parseInt(hexR,16))
     changeValueEclairage(512, parseInt(hexG,16))
     changeValueEclairage(1024, parseInt(hexB,16))
-    // console.log("envoyé: (" + hexR + "," + hexG + "," + hexB + ")");
 }
 
+//Affichage des blocs semon la config utilisateur
 function gestionAffichageBloc(hwcfg){
     oneTime = true;
 

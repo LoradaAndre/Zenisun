@@ -6,46 +6,34 @@ main{
 }
 
 .right-content{
-    /* border: 1px solid red;
-    background-color: tomato; */
-    /* background-color: rgb(56, 56, 56); */
     height: min-content;
     
 }
 
 .left-content{
-    /* border: 1px solid blue;
-    background-color: teal; */
     background-color: rgb(94, 94, 94);
     height: min-content;
 }
 
 header{
-    /* border:1px solid violet;
-    background-color: thistle; */
     background-color: rgb(56, 56, 56);
     padding: 10px;
 }
 
 h1{
-    /* font-size: larger; */
     text-align: center;
     margin: auto;
 }
 .elem-list h2{
-    /* font-size: large; */
     margin: 0;
 }
 h3{
-    /* font-size: medium; */
     padding: 0;
     margin:0;
 }
 .cat{
     display: grid;
-    /* grid-template-columns: 2fr 1fr 4fr 1fr; */
     margin-bottom: 2px;
-    /* background-color: rgb(150, 200, 247); */
     background-color: rgb(78, 78, 78);
     padding: 8px;
 }
@@ -54,13 +42,11 @@ h3{
     display: grid;
     grid-template-columns: 2fr 1fr 3fr 2fr;
     margin-bottom: 2px;
-    /* background-color: rgb(150, 200, 247); */
     background-color: rgb(78, 78, 78);
     padding: 8px;
 }
 .cat-title{
     margin-bottom: 2px;
-    /* background-color: rgb(150, 200, 247); */
     background-color: rgb(78, 78, 78);
     padding: 8px;
     text-align: center;
@@ -83,7 +69,6 @@ h3{
     margin-bottom: 2px;
     padding: 10px;
     padding-left: 10px;
-    /* background-color: rgb(238, 184, 133); */
     background-color: rgb(56, 56, 56);
     cursor: pointer;
 }
@@ -116,11 +101,9 @@ body{
 }
 
 .elem-list:hover{
-    /* background-color: rgb(92, 91, 91); */
     background-color: rgb(85, 85, 85) !important;
 }
 .cat:hover{
-    /* background-color: rgb(92, 91, 91); */
     background-color: grey !important;
 }
 
@@ -207,7 +190,6 @@ header{
     display: grid;
     grid-template-columns: 2fr 4fr 1fr 1fr;;
     margin-bottom: 2px;
-    /* background-color: rgb(150, 200, 247); */
     background-color: rgb(78, 78, 78);
     padding: 8px;
 }

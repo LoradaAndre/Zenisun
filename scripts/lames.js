@@ -20,6 +20,7 @@ $(document).ready(function (){
     updateAllInput();
     lectureCarte();
 
+    //Affichage du modal d'avertissement du blocage des lames
     $("body").click(function(){
         if((monitoring_user_config & 8) && $("#exampleModalCenter").css("display") == "none"){
             console.log("yep c'est 8");
@@ -37,9 +38,6 @@ $(document).ready(function (){
         synchronisationLames();
         sauvegardeSync()
     }, 1000);
-
-    
-
 });
 
 function lectureCarte(){
@@ -55,7 +53,6 @@ function lectureCarte(){
             valueMaxMotor1 = parseInt(getMotorMaxValue(data, 25));
       }).fail(function() {
             isConnected(false, data)
-        //   alert("Lecture de la carte échouée")
       });	
 
       my_current_automatum_cmd = "&ID=0";
@@ -64,21 +61,18 @@ function lectureCarte(){
         url: '../cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
         context: document.body
       }).done(function(data){
-			
-        
              //hwcfg
              hwcfg = parseInt(data.all[17].textContent)
              console.log(hwcfg)
              if(oneTime == false){
                 gestionAffichageBloc(hwcfg)
              }
-        
       }).fail(function() {
-          alert("Lecture de la carte échouée")  
     });	
   
 }
 
+//Gestion des boutons de pourcentage
 function initButtons(){
     if(valueMotor0 != "undefined" && init == false){
         init = true;
@@ -117,6 +111,7 @@ function initButtons(){
     }
 }
 
+//Sauvegarde de la synchronisation des lames (local storage)
 function sauvegardeSync(){
     if(localStorage.getItem("modeSombre") == null){
         localStorage.setItem("modeSombre", "false");
@@ -132,6 +127,7 @@ function sauvegardeSync(){
     });
     console.log(synchro)
 }
+
 function updateAllInput(){
     updateInput(".wrap-lames-1", 1);
     updateInput(".wrap-lames-2", 2);
@@ -322,6 +318,7 @@ function deplacementLames(moteur, valeur){
       });
 }
 
+//Gestion de l'affichage des blocs selon la config utilisateur
 function gestionAffichageBloc(hwcfg){
     if(hwcfg&1){
         $(".bloc_Mot1").show();

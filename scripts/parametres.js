@@ -51,34 +51,30 @@ function lectureCarte(){
         url: "../cgi/zns.cgi?cmd=d&p=ios"+my_current_automatum_cmd,
         context: document.body
       }).done(function(data){
-			console.log(data.all)
-
 			mot = parseInt(getMotorValue(data,24))
 
 			isConnected(true, data)
+
+			//configuration utilsateur
 			monitoring_user_config = parseInt(data.all[30].textContent);
-			console.log("monitoring user truc: " + (monitoring_user_config))
 			updateButtons();
 
-			console.log(monitoring_user_config)
 			if(onceIntemp == false && monitoring_user_config != "undefined"){
 				defaultIntemperies()
 			}
 			
+			//actualisation suivi solaire
 			actSuiviSol = parseInt(data.all[33].textContent);
-			console.log("actulisation suivi sol: " + actSuiviSol)
 			$(".list_of_buttons_suivi_sol h3[value="+ actSuiviSol +"]").attr("check", "true")
 
       }).fail(function() {
 			isConnected(false, data)
-			//   alert("Lecture de la carte échouée")  
     });	
 
 	$.ajax({
         url: '../cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
         context: document.body
       }).done(function(data){
-		  	// console.log(data.all)
 
 			isConnected(true, data)
 		  	//heure allumage
@@ -93,7 +89,7 @@ function lectureCarte(){
 
 			//gradateur LED
 			vitesseGradLed = parseInt(data.all[16].textContent);
-			console.log("vitesse grad led: " + vitesseGradLed)
+			// console.log("vitesse grad led: " + vitesseGradLed)
 			$(".list_of_buttons_grad_LED h3[value="+ vitesseGradLed +"]").attr("check", "true")
 
 
@@ -105,16 +101,15 @@ function lectureCarte(){
 			home_set[0] = parseInt(getMotorHomeSet(data, 2))
 			home_set[1] = parseInt(getMotorHomeSet(data, 3))
 
-			
-
+			//Affichage de la valeur de l'orientation sur le dropdown
 			$("#liste_orientation").val(data.all[4].textContent)
       }).fail(function() {
-			isConnected(false, data)
-        //   alert("Lecture de la carte échouée")  
+			isConnected(false, data) 
     });
 
 }
 
+//Convertiseur int en boolean
 function testTrueFalse(number){
 	if(number == 0){
 		return "false"
@@ -475,7 +470,7 @@ $(".button_intemp_off").click(function(){
 	//Si le homing n'a pas été fait, on le réalise
 	for(let i = 0; i < home_set.length; i++){
 		if(home_set[i] & 1){
-			console.log("passage au suivant")
+			// console.log("passage au suivant")
 		}
 		else{
 			homming(i+1)
@@ -623,14 +618,14 @@ function updateButtons(){
 
 	//si pluie activée
 	if(monitoring_user_config&1){
-		console.log("pluie activée: " + (monitoring_user_config&1))
+		// console.log("pluie activée: " + (monitoring_user_config&1))
 		$(".check-fermeture_pluie .ui-switcher").attr("aria-checked", "true")
 	}
 
 	//si mode hiver activé
 	if(monitoring_user_config&4){
 		// $(".button_ete").attr("check", "false")
-		console.log("mode hiver activées: " + (monitoring_user_config&4))
+		// console.log("mode hiver activées: " + (monitoring_user_config&4))
 		$(".button_hiver").attr("check", "true")
 		$(".button_ete").attr("check", "false")	
 		$(".button_saision_off").attr("check", "false")
@@ -639,7 +634,7 @@ function updateButtons(){
 
 	//si mode été activé
 	if(monitoring_user_config&2){
-		console.log("mode été activées: " + (monitoring_user_config&2))
+		// console.log("mode été activées: " + (monitoring_user_config&2))
 
 		$(".button_ete").attr("check", "true")
 
@@ -650,7 +645,7 @@ function updateButtons(){
 	}
 
 	if(monitoring_user_config == 0){
-		console.log("oui c'est zéro")
+		// console.log("oui c'est zéro")
 		$(".button_intemp_off").attr("check", "true")
 		$(".button_saision_off").attr("check", "true")
 	}
@@ -669,16 +664,16 @@ function defaultIntemperies(){
 	onceIntemp = true;
 	//si intemperies activé
 	if(monitoring_user_config&8){
-		console.log("motval: " + mot)
+		// console.log("motval: " + mot)
 		if(mot == 0){
-			console.log("vent activées: " + (monitoring_user_config&8))
+			// console.log("vent activées: " + (monitoring_user_config&8))
 			$(".button_vent").attr("check", "true")
 			$(".button_neige").attr("check", "false")
 			$(".button_neige").hide()
 			$(".button_vent").show()
 			$(".button_intemp_off").attr("check", "false")
 		}else{
-			console.log("neige activées: " + (monitoring_user_config&8))
+			// console.log("neige activées: " + (monitoring_user_config&8))
 			$(".button_vent").attr("check", "false")
 			$(".button_vent").hide()
 			$(".button_neige").show()
@@ -695,9 +690,9 @@ function defaultIntemperies(){
 // ================================ MAINTENANCE ================================
 
 $(".b_first").click(function(){
-	console.log("oui t'as cliqué")
-	console.log($(".modal-body input").val())
-	console.log(typeof $(".modal-body input").val())
+	// console.log("oui t'as cliqué")
+	// console.log($(".modal-body input").val())
+	// console.log(typeof $(".modal-body input").val())
 	if($(".modal-body input").val() == "4682"){
 		window.location.href = "setup.html"
 	}

@@ -20,29 +20,26 @@ $(document).ready(function (){
         sync_date();
         lectureCarte();
         if(valueMotor1 != undefined){
-            let canvasLames1 = document.querySelector(".L1-canvas");  
-            setValueWidgetLames(valueMotor1, canvasLames1)
+            let canvasLames1 = document.querySelector(".L1-canvas"); 
             refreshCanvas(valueMotor1, canvasLames1)
         }
         if(valueMotor2 != undefined){
-            let canvasLames2 = document.querySelector(".L2-canvas");  
-            setValueWidgetLames(valueMotor2, canvasLames2)
+            let canvasLames2 = document.querySelector(".L2-canvas");
             refreshCanvas(valueMotor2, canvasLames2)
         }
         if(valEclairage1 != undefined){
-            let canvasEclairage1 = document.querySelector(".E1-canvas"); 
-            setValueWidgetLames(valEclairage1, canvasEclairage1)
+            let canvasEclairage1 = document.querySelector(".E1-canvas");
             refreshCanvas(valEclairage1, canvasEclairage1)
         }
         if(valEclairage2 != undefined){
-            let canvasEclairage2 = document.querySelector(".E2-canvas"); 
-            setValueWidgetLames(valEclairage2, canvasEclairage2)
+            let canvasEclairage2 = document.querySelector(".E2-canvas");
             refreshCanvas(valEclairage2, canvasEclairage2)
         }
         meteo(monitoring_user_config, elevation_sol)
     }, 1000);
 });
 
+//Lecture des données de la carte électronque
 function lectureCarte(){
     my_current_automatum_cmd = "&ID=0";
     $.ajax({
@@ -64,20 +61,16 @@ function lectureCarte(){
 
       }).fail(function() {
          isConnected(false, data)
-        //   alert("Lecture de la carte échouée")
     });	
 
     $.ajax({
         url: 'cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
         context: document.body
       }).done(function(data){
-			// console.log(data.all)
-
+          //Config utilisateur
             let hwcfg = parseInt(data.all[17].textContent);
             affichageCircle(hwcfg)
-        
-      }).fail(function() {
-          alert("Lecture de la carte échouée")  
+      }).fail(function() { 
     });
 }
 
@@ -94,19 +87,17 @@ function getIntensite(data, input){
     return newVal[0]*100/255;
 }
 
+//Met à jour les circles des widgets selons les données de la carte
 function refreshCanvas(val, canvasType){
     circle(val, canvasType);
-    
 }
 
-function setValueWidgetLames(value, canvasType){
-    // console.log(canvasType)
-    // canvasType.setAttribute("value", value);
-}
-
+//Affichage de l'élévation solaire
 function afficheElevSol(elev){
     $(".elev_sol p").text(elev + "°");
 }
+
+//Vérification de connexion
 function isConnected(value, data){
     if((value == false) || (data == null)){
       $(".connexion p").text("déconnecté");
@@ -116,11 +107,14 @@ function isConnected(value, data){
       $(".connexion_icon").attr("src","resources/icons/connected.png")
   
     }
-  }
+}
+
+//Gestion du widget météo selon les paramètres enregistrés
 function meteo(number_config, elevation_sol){
+    //Blocage vent / neige (même numéro)
     if(number_config&8){
+        //Blogage vent
         if(valueMotor1 == 0){
-            console.log("on est en mode blocage vent")
             $(".meteo_widget").css({
                 "background-image": "url(resources/background/widget_meteo/vent.png)",
                 "background-size": "cover"
@@ -128,6 +122,7 @@ function meteo(number_config, elevation_sol){
             $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/vent.png")
             $(".meteo .type_temps p").text("Vent")
         }
+        //Blocage neige
         else{
             console.log("on est en mode blocage neige")
             $(".meteo_widget").css({
@@ -137,11 +132,9 @@ function meteo(number_config, elevation_sol){
             $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/neige.png")
             $(".meteo .type_temps p").text("Neige")
         }
-       
-
     }
+    //Mode pluie =============> à modif 
     else if(number_config&1){
-        console.log("on passe en mode pluie");
         $(".meteo_widget").css({
             "background-image": "url(resources/background/widget_meteo/pluie.png)",
             "background-size": "cover"
@@ -150,8 +143,8 @@ function meteo(number_config, elevation_sol){
         $(".meteo .type_temps p").text("Pluie")
 
     }
+    //Mode été
     else if(number_config&2){
-        console.log("on passe en mode été");
         $(".meteo_widget").css({
             "background-image": "url(resources/background/widget_meteo/ete.png)",
             "background-size": "cover"
@@ -159,8 +152,8 @@ function meteo(number_config, elevation_sol){
         $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/summer.png")
         $(".meteo .type_temps p").text("Mode été")
     }
+    //Mode hiver
     else if(number_config&4){
-        console.log("on passe en mode hiver");
         $(".meteo_widget").css({
             "background-image": "url(resources/background/widget_meteo/hiver.png)",
             "background-size": "cover"
@@ -168,6 +161,7 @@ function meteo(number_config, elevation_sol){
         $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/winter.png")
         $(".meteo .type_temps p").text("Mode hiver")
     }
+    //Mode nuit
     else if(elevation_sol == 0){
         console.log("il fait nuit");
         $(".meteo_widget").css({
@@ -177,6 +171,7 @@ function meteo(number_config, elevation_sol){
         $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/nuit.png")
         $(".meteo .type_temps p").text("Nuit")
     }
+    //Aube - crépuscule
     else if(elevation_sol > 0 && elevation_sol <= 15){
         console.log("c'est l'aube");
         $(".meteo_widget").css({
@@ -186,6 +181,7 @@ function meteo(number_config, elevation_sol){
         $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/demisoleil.png")
         $(".meteo .type_temps p").text("Elévation solaire basse")
     }
+    //Aucun paramètres de défini
     else{
         console.log("on est en journée, il fait beau");
         $(".meteo_widget").css({
@@ -197,6 +193,7 @@ function meteo(number_config, elevation_sol){
     }
 }
 
+//Synchronisation de la date de l'automate à celle de Date (Js)
 function sync_date(){
 	let now_date = new Date();
 	let date_sec =  now_date.getTime();
@@ -211,6 +208,7 @@ function sync_date(){
 	});
 }
 
+//Affichages des circles selon la config utilisateur
 function affichageCircle(hwcfg){
     console.log(hwcfg)
     let lengthLames = 0;
@@ -241,48 +239,5 @@ function affichageCircle(hwcfg){
     if(hwcfg&8){ //BB2
         $(".eclairage").show();
         $(".canvas-light2").show();
-        // $(".icon_lamp").hide()
     }
-
-
-    // if(lengthLight == 1){
-    //     $(".eclairage").css({
-    //         "grid-column": "1 / 2",
-    //         "grid-row": "1"
-    //     })
-    //     $(".eclairage_widget").css("background-size", "100%")
-
-    //     if(lengthLames == 1){
-    //         $(".lames").css("grid-column", "2 / 3")
-    //         $(".lames").css("grid-row", "1")
-    //         $(".lames-orientable_widget").css("background-size", "100%")
-
-    //     }else if(lengthLames == 2){
-    //         $(".lames").css("grid-column", "2 / 4")
-    //         $(".lames").css("grid-row", "1")
-    //         $(".lames-orientable_widget").css("background-size", "50%")
-    //     }
-    // }
-
-    // if(lengthLight == 2){
-    //     $(".eclairage").css("grid-column", "1 / 3")
-    //     $(".eclairage").css("grid-row", "1")
-    //     $(".eclairage_widget").css("background-size", "50%")
-
-    //     if(lengthLames == 1){
-    //         $(".lames").css("grid-column", "3 / 4")
-    //         $(".lames").css("grid-row", "1")
-    //         $(".lames-orientable_widget").css("background-size", "100%")
-
-    //     }else if(lengthLames == 2){
-    //         $(".lames").css("grid-column", "3 / 5")
-    //         $(".lames").css("grid-row", "1")
-    //         $(".lames-orientable_widget").css("background-size", "50%")
-
-    //     }
-    // }
 }
-
-// $(".info").click(function(){
-//     $("#exampleModal").addClass("show");
-// });

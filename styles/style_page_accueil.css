@@ -19,10 +19,6 @@ h1{
 }
 
 /* Bloc contenant les petits widgets*/
-/* .sous_widgets{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-} */
 
 /* Les petits widgets */
 .widget{
@@ -30,8 +26,6 @@ h1{
     height: 95%;
     /* titre du widget */
     text-align: center;
-    /* color: white; */
-
 }
 
 .widget:hover{
@@ -46,7 +40,6 @@ h1{
     padding: min-content;
     width: min-content;
     height: min-content;
-    /* border: 1px solid red; */
 }
 /* ========================== GESTION DU BLOC METEO ========================== */
 
@@ -102,14 +95,10 @@ h1{
 }
 
 .temperature, .time .heure{
-    /* text-shadow: 0 0 5px black; */
     text-shadow: rgb(116, 116, 116) 0 0 5px;
-    /* border: 1px solid red; */
 }
 .connexion_meteo_widget p, .time .jour{
-    /* text-shadow: 0 0 5px black; */
     text-shadow: rgb(0, 0, 0) 0 0 5px;
-    /* border: 1px solid red; */
 }
 /* ========================== GESTION DES WIDGETS INDIVIDUELS========================== */
 
