@@ -222,19 +222,24 @@ function updateWidgetResponsive(){
     }
 } 
 
-
-
 $(".menu").click(function(){
     $(this).hide()
+
     $(".navigation_bar").css({
         "display" : "block",
         "width" : "50%",
         "z-index" : "3",
         "box-shadow" : "0px 0px 10px #42555a"
     })
-    $("aside").css({
-        "width" : "50%",
-    })
+
+    $(".navigation_bar").animate({
+        left : "0"
+    }, 250);
+
+    $("aside").animate({
+        "width" : "55%",
+    }, 250);
+
     $(".categorie a").css({
         "display" : 'flex'
     })
@@ -246,6 +251,8 @@ $(".menu").click(function(){
         "margin" : "auto",
         "width" : "5vw"
     })
+
+    $(".icon_close img").show();
 
     // $(".icon_close img").css({
     //     "width": "25px",
@@ -259,12 +266,21 @@ $(".menu").click(function(){
 });
 
 $(".icon_close img").click(function(){
-    $(this).hide();
-    $(".navigation_bar").hide();
-    $("aside").css({
+    
+    $("aside").animate({
         "width" : "100%",
-    })
+    }, 450);
+
     $(".menu").show()
+
+    $(".navigation_bar").animate({
+        left : "-55%"
+    }, 500);
+
+    setTimeout(function(){
+        $(this).hide();
+    }, 500)
+    
 })
 
 // // console.log(document.querySelector("."))

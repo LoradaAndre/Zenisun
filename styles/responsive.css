@@ -121,7 +121,7 @@
 /* Tablette version and less*/
 @media screen and (max-width: 800px){
     .navigation_bar{
-        display: none;
+        left: -55%
     }
 
     .contenu-main{

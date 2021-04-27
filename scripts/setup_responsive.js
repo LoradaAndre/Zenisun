@@ -1,4 +1,3 @@
-
 let taille = document.querySelector(".right-content").offsetWidth
 
 if(window.innerWidth < 800){
