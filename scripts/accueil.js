@@ -106,10 +106,10 @@ function afficheElevSol(elev){
 function isConnected(value, data){
     if((value == false) || (data == null)){
       $(".connexion p").text("déconnecté");
-      $(".connexion_icon").attr("src","resources/icons/disconnected.png");
+      $(".connexion_icon").attr("src","resources/icons/leds/disconnected.png");
     }else{
       $(".connexion p").text("connecté");
-      $(".connexion_icon").attr("src","resources/icons/connected.png")
+      $(".connexion_icon").attr("src","resources/icons//leds/connected.png")
   
     }
 }
