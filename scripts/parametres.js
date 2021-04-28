@@ -24,7 +24,15 @@ let onceIntemp = false;
 let mot;
 let once = false;
 
+let getHourAllumage = true;
+let getHourExtinction = true;
+
 $(document).ready(function(){
+	$(".btn-h-allumage").hide();
+	$(".btn-h-extinction").hide();
+
+	$(".h_allumage input").hide();
+	$(".h_extinction input").hide();
 	//Actualisation des informations, refresh
 	lectureCarte()
 	//Met à jour les sliders par rapport aux données de la carte
@@ -75,14 +83,19 @@ function lectureCarte(){
         url: '../cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
         context: document.body
       }).done(function(data){
-
 			isConnected(true, data)
 		  	//heure allumage
-			heure_allumage = parseInt(data.all[13].textContent);	
-			document.querySelector(".h_allumage input").value = GMTHourTolocalHour(heure_allumage);		
+			heure_allumage = parseInt(data.all[13].textContent);
+			if(getHourAllumage){
+				$(".affichage_heure_allumage").text(GMTHourTolocalHour(heure_allumage))
+				document.querySelector(".h_allumage input").value = GMTHourTolocalHour(heure_allumage);
+			}	
 			//heure extinction
-			heure_extinction = parseInt(data.all[14].textContent);	
-			document.querySelector(".h_extinction input").value = GMTHourTolocalHour(heure_extinction);
+			heure_extinction = parseInt(data.all[14].textContent);
+			if(getHourExtinction){
+				$(".affichage_heure_extinction").text(GMTHourTolocalHour(heure_extinction))
+				document.querySelector(".h_extinction input").value = GMTHourTolocalHour(heure_extinction);
+			}	
 		
 			//seuil de fermeture nuit
 			sun_elev_close = parseInt(data.all[15].textContent);
@@ -308,6 +321,46 @@ function allumage_auto_horaire(){
     });
 }
 
+//En cas de clic sur le bouton Modifier/Annuler => heure allumage
+$(".btn-h-allumage-modifier").click(function(){
+	//Si c'est modifier
+	if($(this).children().text() == "Modifier"){
+		getHourAllumage = false;
+		$(".btn-h-allumage").show();
+		$(".btn-h-allumage-modifier h3").text("Annuler")
+		$(".affichage_heure_allumage").hide();
+		$(".h_allumage input").show()
+	//Si c'est annuler
+	}else if($(this).children().text() == "Annuler"){
+		getHourAllumage = true;
+		$(".btn-h-allumage").hide();
+		$(".btn-h-allumage-modifier h3").text("Modifier")
+		$(".affichage_heure_allumage").show();
+		$(".h_allumage input").hide()
+	}
+	
+})
+
+//En cas de clic sur le bouton Modifier/Annuler => heure extinction
+$(".btn-h-extinction-modifier").click(function(){
+	//Si c'est modifier
+	if($(this).children().text() == "Modifier"){
+		getHourExtinction = false;
+		$(".btn-h-extinction").show();
+		$(".btn-h-extinction-modifier h3").text("Annuler")
+		$(".affichage_heure_extinction").hide();
+		$(".h_extinction input").show()
+
+	//Si c'est annuler
+	}else if($(this).children().text() == "Annuler"){
+		getHourExtinction = true;
+		$(".btn-h-extinction").hide();
+		$(".btn-h-extinction-modifier h3").text("Modifier")
+		$(".affichage_heure_extinction").show();
+		$(".h_extinction input").hide()
+	}
+})
+
 //Converti l'heure en local (format XX:XX) en GMT
 function localHourToGMTHour(str){
 	var h_pergola = (new Date( 1970, 0, 1, str.substr(0,2), str.substr(3))).getTime();	 // in milliseconds
@@ -331,17 +384,27 @@ function TwoDigit(v){
 //Clique sur appliquer => Applique l'heure pour l'allumage
 $(".btn-h-allumage").click(function(){
 	apply_ligt_on_h();
+	getHourAllumage = true;
+	$(".btn-h-allumage").hide();
+	$(".btn-h-allumage-modifier h3").text("Modifier")
+	$(".affichage_heure_allumage").show();
+	$(".h_allumage input").hide()
 });
 
 //Clique sur appliquer => applique l'heure pour l'extinction
 $(".btn-h-extinction").click(function(){
 	apply_ligt_off_h();
+	getHourExtinction = true;
+	$(".btn-h-extinction").hide();
+	$(".btn-h-extinction-modifier h3").text("Modifier")
+	$(".affichage_heure_extinction").show();
+	$(".h_extinction input").hide()
 });
 
 //Applique l'heure pour l'extinction
 function apply_ligt_off_h(){
 
-	heure_allumage = $('#ligt_off_h').val()
+	heure_allumage = $('#light_off_hour').val()
 
 	var command = '../cgi/zns.cgi?cmd=u&p=6&v=' + localHourToGMTHour(heure_allumage);
 	$.ajax({
