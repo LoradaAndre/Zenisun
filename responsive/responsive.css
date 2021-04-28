@@ -139,13 +139,13 @@
 /* Mobile version */
 @media screen and (max-width: 500px){
     h1{
-        font-size: 4vw;
+        font-size: 4.5vw;
     }
     h2{
-        font-size: 3.5vw;
+        font-size: 4vw;
     }
     h3{
-        font-size: 3vw;
+        font-size: 3.2vw;
     }
 
     .heure_nav{

@@ -7,6 +7,8 @@ let valueMotor2;
 let monitoring_user_config;
 let elevation_sol;
 
+let capteurPluie;
+
 let hwcfg;
 
 $(document).ready(function (){
@@ -41,11 +43,11 @@ $(document).ready(function (){
 
 //Lecture des données de la carte électronque
 function lectureCarte(){
-    my_current_automatum_cmd = "&ID=0";
     $.ajax({
-        url: "cgi/zns.cgi?cmd=d&p=ios"+my_current_automatum_cmd,
+        url: "cgi/zns.cgi?cmd=d&p=ios",
         context: document.body
       }).done(function(data) {
+
           isConnected(true, data)
           monitoring_user_config = parseInt(data.all[30].textContent);
           elevation_sol = parseInt(data.all[27].textContent);
@@ -59,14 +61,17 @@ function lectureCarte(){
           //BB2
           valEclairage2 = parseInt(getIntensite(data, 15)); //15: <GPO 7>
 
+          capteurPluie = parseInt(data.all[6].textContent)
+
       }).fail(function() {
          isConnected(false, data)
     });	
 
     $.ajax({
-        url: 'cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
+        url: 'cgi/zns.cgi?cmd=c',
         context: document.body
       }).done(function(data){
+        console.log(data.all)
           //Config utilisateur
             let hwcfg = parseInt(data.all[17].textContent);
             affichageCircle(hwcfg)
@@ -134,7 +139,7 @@ function meteo(number_config, elevation_sol){
         }
     }
     //Mode pluie =============> à modif 
-    else if(number_config&1){
+    else if(capteurPluie < 6000){
         $(".meteo_widget").css({
             "background-image": "url(resources/background/widget_meteo/pluie.png)",
             "background-size": "cover"
