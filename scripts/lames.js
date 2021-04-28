@@ -20,16 +20,6 @@ $(document).ready(function (){
     updateAllInput();
     lectureCarte();
 
-    //Affichage du modal d'avertissement du blocage des lames
-    $("body").click(function(){
-        if((monitoring_user_config & 8) && $("#exampleModalCenter").css("display") == "none"){
-            console.log("yep c'est 8");
-            var myModal = new bootstrap.Modal(document.getElementById("exampleModalCenter"), {});
-          
-            myModal.show();
-        }
-    })
-
     setInterval(function(){ 
         lectureCarte();
         initButtons()
@@ -51,6 +41,10 @@ function lectureCarte(){
             valueMaxMotor0 = parseInt(getMotorMaxValue(data, 24));
             valueMotor1 = parseInt(getMotorValue(data, 25));
             valueMaxMotor1 = parseInt(getMotorMaxValue(data, 25));
+
+            monitoring_user_config = parseInt(data.all[30].textContent);
+			console.log(monitoring_user_config)
+
       }).fail(function() {
             isConnected(false, data)
       });	
@@ -63,7 +57,6 @@ function lectureCarte(){
       }).done(function(data){
              //hwcfg
              hwcfg = parseInt(data.all[17].textContent)
-             console.log(hwcfg)
              if(oneTime == false){
                 gestionAffichageBloc(hwcfg)
              }
@@ -125,7 +118,6 @@ function sauvegardeSync(){
         localStorage.setItem("syncLames", value);
         synchro = stringToBool(localStorage.getItem("syncLames"));
     });
-    console.log(synchro)
 }
 
 function updateAllInput(){
@@ -312,12 +304,24 @@ function deplacementLames(moteur, valeur){
       }).done(function(data) {
             isConnected(true, data)
             alert('done')
+            //Affichage du modal d'avertissement du blocage des lames
+            
+            verificationBlocageSystème()
       }).fail(function() {
             isConnected(false, data)
             alert("Déplacement de la lame échoué")
       });
 }
 
+//Affiche une popup de prévention en cas de blocage vent/neige
+function verificationBlocageSystème(){
+    if((monitoring_user_config & 8) && $("#exampleModalCenter").css("display") == "none"){
+        console.log("yep c'est 8");
+        var myModal = new bootstrap.Modal(document.getElementById("exampleModalCenter"), {});
+    
+        myModal.show();
+    }
+}
 //Gestion de l'affichage des blocs selon la config utilisateur
 function gestionAffichageBloc(hwcfg){
     if(hwcfg&1){
@@ -326,6 +330,5 @@ function gestionAffichageBloc(hwcfg){
     if(hwcfg&2){
         $(".bloc_Mot2").show();
         $(".bloc_sync").show();
-    }
-    
+    }   
 }
