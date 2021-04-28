@@ -207,7 +207,6 @@ function lectureC(){
             $(".tmp").text(boardTemp + " ("+ (boardTemp/10) + "°C)")
 
       }).fail(function() {
-			  alert("Lecture de la carte échouée")  
     });	
 
 	$.ajax({
@@ -283,7 +282,6 @@ function lectureC(){
             }
         
       }).fail(function() {
-          alert("Lecture de la carte échouée")  
     });
 }
 
@@ -321,9 +319,7 @@ $(".validate_spe").click(function(){
         url: '../cgi/zns.cgi?cmd=f&p=49&v=' + mask,	
         context: document.body
       }).done(function(){
-          alert("envoie du changement de config reussi")
       }).fail( function(){
-        alert("envoie du changement de config échoué")
       });
 
 });
@@ -370,10 +366,8 @@ function save_manuf_config(){
 	$.ajax({
 	  url: command,	
 	  context: document.body
-	}).done(function(data) {
-		alert("sauvegarde effectuée")
+	}).done(function() {
 	}).error(function(){
-		alert("sauvegarde échouée")
 	});
 }
 
@@ -386,11 +380,9 @@ function reset_manuf_config(){
 	$.ajax({
 	  url: command,	
 	  context: document.body
-	}).done(function(data) {
-		alert("reset effectué")
+	}).done(function() {
 		startup_setup();
 	}).error(function(){
-		alert("reset échoué")
 	});
 }
 
@@ -405,10 +397,8 @@ function homming(mot_id){
 	$.ajax({
 	  url: command,	
 	  context: document.body
-	}).done(function(data){
-		alert("homing")
+	}).done(function(){
 	}).fail(function(){
-		alert("erreur lors de l'aplication de l'homing")
 	});
 }
 
@@ -430,9 +420,7 @@ function manu_manuf_motor(valueToInsert, idToInsert){
         url: command,	
         context: document.body
     }).done(function(){
-        alert("set mot pos OK")
     }).fail(function() {
-        alert("set mot pos KO")
     });
 }
 
@@ -451,9 +439,7 @@ function manu_manuf_motor_a(valueToInsert, idToInsert){
         url: command,	
         context: document.body
     }).done(function(){
-        alert("set mot angle OK")
     }).fail(function() {
-        alert("set mot angle KO")
     });
 }
 
@@ -471,9 +457,7 @@ function manu_manuf_led(valueToInsert, idToInsert){
 	  url: command,	
 	  context: document.body
 	}).done(function(){
-        alert("set led OK")
     }).fail(function() {
-        alert("set led KO")
     });
 }
 
@@ -497,9 +481,7 @@ function apply_board_config(valueToInsert, idToInsert){
         url: command,	
         context: document.body
     }).done(function(){
-        alert("insérer " + valueToInsert + " de l'ID: " + idToInsert + "(dans board)")
     }).fail(function(){
-        alert("fail de l'envoi du board")
     });
 }
     
@@ -511,14 +493,11 @@ function apply_manuf_config(valueToInsert, idToInsert){
         valueToInsert = parseInt(valueToInsert) + 500;	// automatically add the 50°C offset to user entry
     }
         
-//	alert ('set parameter ' + suffix_id + ' to ' + cal_val );
     var command = '../cgi/zns.cgi?cmd=f&p=' + idToInsert + '&v=' + valueToInsert + my_current_automatum_cmd;
     $.ajax({
         url: command,	
         context: document.body
     }).done(function(){
-        alert("insérer " + valueToInsert + " de l'ID: " + idToInsert + "(pas board)")
     }).fail(function(){
-        alert("fail de l'envoi du board")
     });
 }

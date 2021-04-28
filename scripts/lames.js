@@ -303,13 +303,11 @@ function deplacementLames(moteur, valeur){
         context: document.body
       }).done(function(data) {
             isConnected(true, data)
-            alert('done')
             //Affichage du modal d'avertissement du blocage des lames
             
             verificationBlocageSystème()
       }).fail(function() {
             isConnected(false, data)
-            alert("Déplacement de la lame échoué")
       });
 }
 

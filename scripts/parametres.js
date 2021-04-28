@@ -144,10 +144,8 @@ function homming(mot_id){
 	  context: document.body
 	}).done(function(data){
 		isConnected(true, data)
-		alert("homing")
 	}).fail(function(){
 		isConnected(false, data)
-		alert("erreur lors de l'aplication de l'homing")
 	});
 }
 
@@ -264,17 +262,14 @@ $.ajax({
   context: document.body
 	}).done(function(data) {
 		isConnected(true, data)
-		alert("envoie de la longitude réussie")
 		var command_lat = '../cgi/zns.cgi?cmd=u&p=12&v=' + pergola_latitude + my_current_automatum_cmd;
 		$.ajax({
 		url: command_lat,	
 		context: document.body
 		}).done(function(data){
 			isConnected(true, data)
-			alert("envoi de la geolocalisation réussie")
 		}).fail(function(){
 			isConnected(false, data)
-			alert("bug lors de l'envoi de la geolocalisation")
 	});
 });
 }
@@ -294,10 +289,8 @@ function applyOrientationPergola(valeur){
 	  context: document.body
 	}).done(function(data) {
 		isConnected(true, data)
-		alert("envoi du changement d'orientation de la pergola => code: " + pergola_orient )
 	}).fail(function(){
 		isConnected(false, data)
-		alert("erreur lors du changement d'orientation de la pergola")
 	});
 }
 // =============================== ALLUMAGE AUTO SUR HORAIRE ===============================
@@ -356,10 +349,8 @@ function apply_ligt_off_h(){
 	  context: document.body
 	}).done( function(data) {
 		isConnected(true, data)
-		alert("envoi de l'heure d'extinction terminée")
 	}).fail(function(){
 		isConnected(false, data)
-		alert("echec de l'heure d'extinction ")
 	});
 }
 
@@ -374,10 +365,8 @@ function apply_ligt_on_h(){
 	  context: document.body
 	}).done(function(data) {
 		isConnected(true, data)
-		alert("envoi de l'heure de démarrage terminée")
 	}).fail(function(){
 		isConnected(false, data)
-		alert("echec de l'heure de démarrage ")
 	});
 }
 // =============================== VITESSE GRADATEUR LED ===============================
@@ -403,10 +392,8 @@ function applyGradateurLed(idButton){
 		  context: document.body
 		}).done(function(data){
 			isConnected(true, data)
-			alert("Mise en place du gradateur LED à " + $(idButton).text())
 		}).fail(function(){
 			isConnected(false, data)
-			alert("Erreur lors de la mise en place du gradateur LED")
 		});
 	});
 }
@@ -529,10 +516,8 @@ function changeSeuilFermNuit(value){
 	  context: document.body
 	}).done(function(data){
 		isConnected(true, data)
-		alert("élévation solaire à " + value + " degrés")
 	}).fail( function(){
 		isConnected(false, data)
-		alert("fail dans l'élévation solaire")
 	});
 }
 
@@ -557,10 +542,8 @@ function applyPeriodSuiviSol(idButton){
 		  context: document.body
 		}).done(function(data) {
 			isConnected(true, data)
-			alert("temps suiv sol à " + sun_upd_per + " minutes" )
 		}).fail(function() {
 			isConnected(false, data)
-			alert("erreur lors de l'activation du temps du suivi solaire")
 		});
 	});
 }
@@ -578,10 +561,8 @@ function set_user_config( new_config ){
 		  context: document.body
 		}).done(function(data){
 			isConnected(true, data)
-			alert("change config okay");
 		}).fail(function(){
 			isConnected(false, data)
-			alert("erreur lors du changement de config utilisateur");
 		});
 	}
 }
@@ -593,10 +574,8 @@ function deplacementLamesAngle(moteur, angle){
         context: document.body
       }).done(function(data) {
 			isConnected(true, data)
-			alert('déplacement de la lame à ' + angle + "°")
       }).fail(function() {
 			isConnected(false, data)
-          	alert("Déplacement de la lame échoué")
       });
 }
 
@@ -607,10 +586,8 @@ function deplacementLames(moteur, valeur){
         context: document.body
       }).done(function(data) {
 			isConnected(true, data)
-			alert('deplacement de la lame à la position' + valeur)
       }).fail(function() {
 			isConnected(false, data)
-			alert("Déplacement de la lame échoué")
       });
 }
 

@@ -24,7 +24,6 @@ function getResultWifi(){
             stockWifi(data)
       }).fail(function(data) {
             isConnected(false, data)
-            alert("Déplacement de la lame échoué")
       });
 }
 
@@ -257,10 +256,8 @@ function switch_network(idElement){
 	$.post( "../cgi/zns_post.cgi" , { sec:sec, key:password, id:name, type:type })
 		.done(function(data) {
             isConnected(true, data)
-			alert("You need to connect your device to network " + name + " to continue to use Zenisun pergola" );	
 		})
         .fail(function(){
             isConnected(false, data)
-		    alert("Problème de connexion")
 	});
 }

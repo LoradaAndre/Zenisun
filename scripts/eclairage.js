@@ -60,7 +60,6 @@ function lectureCarte(){
              }
         
       }).fail(function() {
-          alert("Lecture de la carte échouée")  
     });
     
 }
@@ -215,7 +214,6 @@ function changeValueEclairage(ruban, valeur){
         context: document.body
       }).done(function(data) {
           isConnected(true,data);
-        //  alert('done')
       }).fail(function() {
             isConnected(false, data)
       });
