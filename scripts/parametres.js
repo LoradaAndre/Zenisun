@@ -611,7 +611,6 @@ function applyPeriodSuiviSol(idButton){
 	});
 }
 
-// =============================== UPGRADE ===============================
 // =============================== AUTRE ===============================
 
 function set_user_config( new_config ){
@@ -737,3 +736,103 @@ $(".b_first").click(function(){
 		window.location.href = "setup.html"
 	}
 });
+
+// =============================== FIRMWARE ===============================
+
+$(".install-button").click(function(){
+	usr_firmware_upload();
+})
+
+function getXMLHttpRequest() 
+{
+var xhr = null;
+	if (window.XMLHttpRequest || window.ActiveXObject) 
+	{
+		if (window.ActiveXObject) 
+		{
+			try 
+			{
+				xhr = new ActiveXObject("Msxml2.XMLHTTP");
+			} catch(e) 
+			{
+				xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+		} 
+		else 
+		{
+			xhr = new XMLHttpRequest(); 
+		}
+	} 
+	else 
+	{
+		alert("ERROR : XMLHttpRequestunavailable!");
+		return null;
+	}
+	return xhr;
+}
+
+function usr_firmware_upload() 
+{
+	var fd = new FormData();
+	fd.append("i", document.getElementById('firmware_file').files[0]);
+	var xhr = new getXMLHttpRequest();
+	xhr.upload.addEventListener("progress", firmware_uploadProgress, false);
+	xhr.addEventListener("load", firmware_uploadComplete_usr, false);
+	xhr.addEventListener("error", firmware_uploadFailed, false);
+	xhr.addEventListener("abort", firmware_uploadCanceled, false);
+//	xhr.open('POST', '/upload');
+	xhr.open('POST', '../firmware');
+	$(".brouillon").html('<h1 id="progress_num">Please wait...</h1><progress id="progress_bar" value="0" max="100.0"></progress>');
+	xhr.send(fd);
+}
+
+
+function firmware_uploadProgress(evt) {
+	if (evt.lengthComputable) {
+		var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+		document.getElementById('progress_num').innerHTML = 'Firmware upload ... ' + percentComplete.toString() + '%';
+		document.getElementById('progress_bar').value = percentComplete;
+	}
+	else {
+		document.getElementById('progress_num').innerHTML = 'unknow';
+	}
+}
+
+function firmware_uploadComplete_usr(evt)
+{
+	/* This event is raised when the server send back a response */
+//            alert(evt.target.responseText);
+//	alert('upload completed');
+	$('.brouillon').html('<h1>Please wait while restarting...</h1>');
+	firmware_wait_restart_usr();
+//	window.location.reload();
+}
+
+
+function firmware_uploadFailed(evt) {
+	alert("There was an error attempting to upload the file.");
+}
+
+function firmware_uploadCanceled(evt) {
+	alert("The upload has been cancelled by the user or the browser dropped the connection.");
+}
+		
+
+
+function firmware_wait_restart_usr()
+{
+	$.ajax({
+		url: '../cgi/version.cgi',	// ask for firmware version
+		context: document.body
+	})
+	.done( function(data) { 	
+			$('.brouillon').html('<h1>Firmware ' + data + ' now running<br/>Please wait while reloading...</h1>' );
+			setTimeout("window.location.reload();", 5000);
+			})
+	.fail(  function( jqXHR, textStatus, errorThrown )  {
+//			$('#page_manuf').html('<h1>' + textStatus + '</h1>' );
+			$('.brouillon').find( "h1" ).append( "." );
+			setTimeout("firmware_wait_restart();", 5000);
+	});
+	
+}
