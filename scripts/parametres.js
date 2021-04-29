@@ -670,17 +670,21 @@ function updateButtons(){
 		$(".button_saision_off").attr("check", "false")
 
 	}
-
 	//si mode été activé
-	if(monitoring_user_config&2){
+	else if(monitoring_user_config&2){
 		// console.log("mode été activées: " + (monitoring_user_config&2))
 
 		$(".button_ete").attr("check", "true")
-
 		$(".button_hiver").attr("check", "false")
 		$(".button_saision_off").attr("check", "false")
 		
 		// $(".button_hiver").attr("check", "false")
+	}
+	//si ni mode été ni mode hiver
+	else{
+		$(".button_ete").attr("check", "false")
+		$(".button_hiver").attr("check", "false")
+		$(".button_saision_off").attr("check", "true")
 	}
 
 	if(monitoring_user_config == 0){
