@@ -52,13 +52,13 @@ h3{
     text-align: center;
 }
 
-.mod, .validate, .validate_spe, .charge, .save, .doHoming{
+.mod, .validate, .validate_spe, .charge, .save, .doHoming, .valid{
     justify-self: flex-end;
     /* boutons */
     padding: 2px;
     padding-left: 10px;
     padding-right: 10px;
-    background-color: 52808B;
+    background-color: #52808B;
     border-radius: 3px;
     cursor: pointer;
     margin: auto;
