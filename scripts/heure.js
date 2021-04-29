@@ -15,7 +15,7 @@ if(mois < 10){
 }
 
 //Affichage de la date
-$(".datePara p").html("<p>" + jour + "/" + mois + "/"+ annee +  "</p>");
+$(".datePara h3").html("<p>" + jour + "/" + mois + "/"+ annee +  "</p>");
 
 function refresh(){
   let t = 1000; // rafraîchissement en millisecondes
@@ -33,7 +33,7 @@ function showDate() {
   let time = h + ':' + m + ':' + s;
   let timeSmall =  h + ':' + m;
 
-  $(".heurePara p").html("<p>" + time +  "</p>");
+  $(".heurePara h3").html("<p>" + time +  "</p>");
   $(".heure_nav p").html("<p>" + timeSmall +  "</p>");
 
   $(".time .heure").html(timeSmall);
