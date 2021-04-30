@@ -27,12 +27,16 @@ let once = false;
 let getHourAllumage = true;
 let getHourExtinction = true;
 
+let capteurPluie;
+
 $(document).ready(function(){
 	$(".btn-h-allumage").hide();
 	$(".btn-h-extinction").hide();
 
 	$(".h_allumage input").hide();
 	$(".h_extinction input").hide();
+
+	$(".saison_detail").hide();
 	//Actualisation des informations, refresh
 	lectureCarte()
 	//Met à jour les sliders par rapport aux données de la carte
@@ -74,6 +78,9 @@ function lectureCarte(){
 			//actualisation suivi solaire
 			actSuiviSol = parseInt(data.all[33].textContent);
 			$(".list_of_buttons_suivi_sol h3[value="+ actSuiviSol +"]").attr("check", "true")
+
+			//Capteur pluie
+			capteurPluie = parseInt(data.all[6].textContent)
 
       }).fail(function() {
 			isConnected(false, data)
@@ -669,6 +676,7 @@ function updateButtons(){
 		$(".button_ete").attr("check", "false")	
 		$(".button_saision_off").attr("check", "false")
 
+		$(".saison_detail").show();
 	}
 	//si mode été activé
 	else if(monitoring_user_config&2){
@@ -677,14 +685,15 @@ function updateButtons(){
 		$(".button_ete").attr("check", "true")
 		$(".button_hiver").attr("check", "false")
 		$(".button_saision_off").attr("check", "false")
-		
-		// $(".button_hiver").attr("check", "false")
+
+		$(".saison_detail").show();
 	}
 	//si ni mode été ni mode hiver
 	else{
 		$(".button_ete").attr("check", "false")
 		$(".button_hiver").attr("check", "false")
 		$(".button_saision_off").attr("check", "true")
+		$(".saison_detail").hide();
 	}
 
 	if(monitoring_user_config == 0){
