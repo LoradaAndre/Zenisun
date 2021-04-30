@@ -87,6 +87,10 @@ function changeValueWithRange(classRange, input){
             //transformer la valeur en pourcentage, en intensité/couleur (0 à 255)
             val = parseInt(range.value*255/100);
         }
+
+        if(input == 16 || input == 32){
+            changeValueEclairage(2048, 255);
+        }
         changeValueEclairage(input, val);
     });
 }
