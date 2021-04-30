@@ -151,7 +151,7 @@ function defaut(){
             $(".RGB1-check .ui-switcher").attr("aria-checked", "true");
         }
         if(RGBIntensite2 != 0){
-            $(".RVB2-check .ui-switcher").attr("aria-checked", "true");
+            $(".RGB2-check .ui-switcher").attr("aria-checked", "true");
         }
     }
   
