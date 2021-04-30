@@ -11,6 +11,14 @@
 }
 
 
+.geo_item{
+    margin: 5px;
+}
+
+.affichage_geo{
+    margin: auto;
+}
+
 
 .list_of_buttons_saison, .list_of_buttons_intemperies{
     display: flex;
