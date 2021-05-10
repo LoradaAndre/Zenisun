@@ -11,12 +11,17 @@ let capteurPluie;
 
 let hwcfg;
 
+function getElementCarte(data, value){
+    return $(data).find(value).text();
+}
+
 $(document).ready(function (){
 
     $(".canvas-mot").hide();
     $(".canvas-light").hide();
     $(".eclairage").hide();
     $(".icon_lamp").hide();
+    $(".lames").hide();
 
     setInterval(function(){ 
         sync_date();
@@ -47,21 +52,35 @@ function lectureCarte(){
         url: "cgi/zns.cgi?cmd=d&p=ios",
         context: document.body
       }).done(function(data) {
+          console.log("==========test============")
 
           isConnected(true, data)
-          monitoring_user_config = parseInt(data.all[30].textContent);
-          elevation_sol = parseInt(data.all[27].textContent);
+        //   monitoring_user_config = parseInt(data.all[30].textContent);
+        //   monitoring_user_config = getXMLValue(data, 'user')
+        monitoring_user_config = parseInt(getElementCarte(data, "user"));
+          console.log(monitoring_user_config)
+
+        //   elevation_sol = getXMLValue( data, 's_elev');
+        elevation_sol = parseInt(getElementCarte(data, "s_elev"));
+          console.log(elevation_sol)
           afficheElevSol(elevation_sol)
 
-          valueMotor1 = parseInt(getMotorValue(data, 24));
-          valueMotor2 = parseInt(getMotorValue(data, 25));
+
+
+        //   valueMotor1 = parseInt(getMotorValue(data, 24));
+        valueMotor1 = getMotorValue(getElementCarte(data, "Mot0"));
+        //   valueMotor2 = parseInt(getMotorValue(data, 25));
+        valueMotor2 = getMotorValue(getElementCarte(data, "Mot1"));
 
           //BB1
-          valEclairage1 = parseInt(getIntensite(data, 14)); //14: <GPO 6>
+        //   valEclairage1 = parseInt(getIntensite(data, 14)); //14: <GPO 6>
+        valEclairage1 = getIntensite(getElementCarte(data, "gpo6")); 
           //BB2
-          valEclairage2 = parseInt(getIntensite(data, 15)); //15: <GPO 7>
+        //   valEclairage2 = parseInt(getIntensite(data, 15)); //15: <GPO 7>
+        valEclairage2 = getIntensite(getElementCarte(data, "gpo7")) 
 
-          capteurPluie = parseInt(data.all[6].textContent)
+        //   capteurPluie = parseInt(data.all[6].textContent)
+        capteurPluie = parseInt(getElementCarte(data, "gpi4"))
 
       }).fail(function() {
          isConnected(false, data)
@@ -71,25 +90,25 @@ function lectureCarte(){
         url: 'cgi/zns.cgi?cmd=c',
         context: document.body
       }).done(function(data){
-        console.log(data.all)
           //Config utilisateur
-            let hwcfg = parseInt(data.all[17].textContent);
+            // let hwcfg = parseInt(data.all[17].textContent);
+            let hwcfg = parseInt(getElementCarte(data, "hwcfg"))
             affichageCircle(hwcfg)
       }).fail(function() { 
     });
 }
 
-function getMotorValue(data, input){
-    let valMotor = data.all[input].textContent
+function getMotorValue(valMotor){
+    // let valMotor = data.all[input].textContent
     let newVal = valMotor.split(";")
-    return newVal[0]*100/newVal[1]
+    return parseInt(newVal[0]*100/newVal[1])
 }
 
 //Récupère et converti l'intensité (0 à 255) en pourcentage
-function getIntensite(data, input){
-    let ledIntensite = data.all[input].textContent
+function getIntensite(ledIntensite){
+    // let ledIntensite = data.all[input].textContent
     let newVal = ledIntensite.split(";")
-    return newVal[0]*100/255;
+    return parseInt(newVal[0]*100/255);
 }
 
 //Met à jour les circles des widgets selons les données de la carte
@@ -109,7 +128,7 @@ function isConnected(value, data){
       $(".connexion_icon").attr("src","resources/icons/leds/disconnected.png");
     }else{
       $(".connexion p").text("connecté");
-      $(".connexion_icon").attr("src","resources/icons//leds/connected.png")
+      $(".connexion_icon").attr("src","resources/icons/leds/connected.png")
   
     }
 }
@@ -121,7 +140,7 @@ function meteo(number_config, elevation_sol){
         //Blogage vent
         if(valueMotor1 == 0){
             $(".meteo_widget").css({
-                "background-image": "url(resources/background/widget_meteo/vent.png)",
+                "background-image": "url(resources/background/widget_meteo/vent.jpg)",
                 "background-size": "cover"
             });
             $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/vent.png")
@@ -131,7 +150,7 @@ function meteo(number_config, elevation_sol){
         else{
             console.log("on est en mode blocage neige")
             $(".meteo_widget").css({
-                "background-image": "url(resources/background/widget_meteo/neige.png)",
+                "background-image": "url(resources/background/widget_meteo/neige.jpg)",
                 "background-size": "cover"
             });
             $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/neige.png")
@@ -141,7 +160,7 @@ function meteo(number_config, elevation_sol){
     //Mode pluie =============> à modif 
     else if(capteurPluie < 6000){
         $(".meteo_widget").css({
-            "background-image": "url(resources/background/widget_meteo/pluie.png)",
+            "background-image": "url(resources/background/widget_meteo/pluie.jpg)",
             "background-size": "cover"
         });
         $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/pluie.png")
@@ -151,7 +170,7 @@ function meteo(number_config, elevation_sol){
     //Mode été
     else if(number_config&2){
         $(".meteo_widget").css({
-            "background-image": "url(resources/background/widget_meteo/ete.png)",
+            "background-image": "url(resources/background/widget_meteo/ete.jpg)",
             "background-size": "cover"
         });
         $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/summer.png")
@@ -160,7 +179,7 @@ function meteo(number_config, elevation_sol){
     //Mode hiver
     else if(number_config&4){
         $(".meteo_widget").css({
-            "background-image": "url(resources/background/widget_meteo/hiver.png)",
+            "background-image": "url(resources/background/widget_meteo/hiver.jpg)",
             "background-size": "cover"
         });
         $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/winter.png")
@@ -170,7 +189,7 @@ function meteo(number_config, elevation_sol){
     else if(elevation_sol == 0){
         console.log("il fait nuit");
         $(".meteo_widget").css({
-            "background-image": "url(resources/background/widget_meteo/nuit.png)",
+            "background-image": "url(resources/background/widget_meteo/nuit.jpg)",
             "background-size": "cover"
         });
         $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/nuit.png")
@@ -180,7 +199,7 @@ function meteo(number_config, elevation_sol){
     else if(elevation_sol > 0 && elevation_sol <= 15){
         console.log("c'est l'aube");
         $(".meteo_widget").css({
-            "background-image": "url(resources/background/widget_meteo/aube.png)",
+            "background-image": "url(resources/background/widget_meteo/aube.jpg)",
             "background-size": "cover"
         });
         $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/demisoleil.png")
@@ -190,7 +209,7 @@ function meteo(number_config, elevation_sol){
     else{
         console.log("on est en journée, il fait beau");
         $(".meteo_widget").css({
-            "background-image": "url(resources/background/widget_meteo/beau.png)",
+            "background-image": "url(resources/background/widget_meteo/beau.jpg)",
             "background-size": "cover"
         });
         $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/normal.png")
@@ -221,9 +240,11 @@ function affichageCircle(hwcfg){
 
     if(hwcfg&1){ //Mot1
         $(".canvas-mot1").show();
+        $(".lames").show();
     }
     if(hwcfg&2){ //Mot2
         $(".canvas-mot2").show();
+        $(".lames").show();
     }
     if(hwcfg&16){ //RGB1
         $(".eclairage").show();

@@ -7,25 +7,25 @@ if(window.innerWidth < 800){
         "left" : "-" + taille + "px",
         "width" : "60%",
         "height" : "100%",
-        "box-shadow" : "0px 0px 10px black"
-
+        "box-shadow" : "0px 0px 10px black",
+        "z-index" : "3"
     })
 }
 
 $(".menu").click(function(){
     $(".right-content").animate({
-        left : "0"
+        "left" : "0"
     }, 250);
 });
 
 $(".close").click(function(){
     $(".right-content").animate({
-        left : "-" + taille + "px"
+        "left" : "-" + taille + "px"
     }, 500);
 });
 
 $(".elem-list").click(function(){
     $(".right-content").animate({
-        left : "-" + taille + "px"
+        "left" : "-" + taille + "px"
     }, 500);
 });

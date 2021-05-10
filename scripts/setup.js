@@ -144,25 +144,28 @@ function afficheUn(celuiAAfficher){
     $(celuiAAfficher).show()
 }
 
+function getElementCarte(data, value){
+    return $(data).find(value).text();
+}
 
 //Lecture de la carte, récupération des infos pour les paramètres
 function lectureC(){
-    my_current_automatum_cmd = "&ID=0";
     $.ajax({
-        url: "../cgi/zns.cgi?cmd=d&p=ios"+my_current_automatum_cmd,
+        url: "../cgi/zns.cgi?cmd=d&p=ios",
         context: document.body
       }).done(function(data){
-			// console.log(data.all)
 
              //=================== GPI ===================
              for(let i = 0; i < 6; i++){
-                GPI[i] = data.all[i+2].textContent;
+                // GPI[i] = data.all[i+2].textContent;
+                GPI[i] = getElementCarte(data, "gpi" + i)
                 $(".GPI" + i).text(GPI[i] + " mV")
             }
 
             //=================== GPO ===================
             for(let i = 0; i < 12; i++){
-                let GPO = data.all[i+8].textContent
+                // let GPO = data.all[i+8].textContent
+                let GPO = getElementCarte(data, "gpo" + i)
                 let GPO_i_v = GPO.split(";")
                 GPO_intensite[i] = GPO_i_v[0];
                 GPO_volt[i] = GPO_i_v[1];
@@ -180,7 +183,8 @@ function lectureC(){
             //=================== setPosition ===================
 
             for(let i = 0; i < 2; i++){
-                let mot = data.all[i+24].textContent;
+                // let mot = data.all[i+24].textContent;
+                let mot = getElementCarte(data, "Mot" + i)
                 let mot_val_max = mot.split(";")
                 motGrad[i] = mot_val_max[0]
                 $(".mot" + (i+1)).text(motGrad[i] + " counts")
@@ -197,44 +201,53 @@ function lectureC(){
             
             //=================== General calibration  ===================
 
-            vin[0] = parseInt(data.all[22].textContent)//VDC1
+            // vin[0] = parseInt(data.all[22].textContent)//VDC1
+            vin[0] = parseInt(getElementCarte(data, "VDC1"))
             $(".vin1").text(vin[0] + " mV")
 
-            vin[1] = parseInt(data.all[23].textContent) //VDC2
+            // vin[1] = parseInt(data.all[23].textContent) //VDC2
+            vin[1] = parseInt(getElementCarte(data, "VDC2"))
             $(".vin2").text(vin[1] + " mV")
 
-            let boardTemp = parseInt(data.all[21].textContent) //Temp
+            // let boardTemp = parseInt(data.all[21].textContent) //Temp
+            let boardTemp = parseInt(getElementCarte(data, "Temp"))
             $(".tmp").text(boardTemp + " ("+ (boardTemp/10) + "°C)")
 
       }).fail(function() {
     });	
 
 	$.ajax({
-        url: '../cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
+        url: '../cgi/zns.cgi?cmd=c',
         context: document.body
       }).done(function(data){
 			// console.log(data.all)
 
             //=================== Board setting ===================
-            let board_version = parseInt(data.all[8].textContent); //board
+            // let board_version = parseInt(data.all[8].textContent); //board
+            let board_version = parseInt(getElementCarte(data, "board"))
             $(".board_version").text(board_version)
             
-            let board_rds = parseInt(data.all[9].textContent); //rds
+            // let board_rds = parseInt(data.all[9].textContent); //rds
+            let board_rds = parseInt(getElementCarte(data, "rds"))
             $(".MOS_LED_rds").text(board_rds + " mOhms")
 
-            let board_rth = parseInt(data.all[10].textContent); //rth
+            // let board_rth = parseInt(data.all[10].textContent); //rth
+            let board_rth = parseInt(getElementCarte(data, "rth"))
             $(".MOS_LED_Rth").text(board_rth + " DegC/W")
 
-            let board_mot_fs = parseInt(data.all[11].textContent); //mot_fs
+            // let board_mot_fs = parseInt(data.all[11].textContent); //mot_fs
+            let board_mot_fs = parseInt(getElementCarte(data, "mot_fs"))
             $(".MOS_motor_FS").text(board_mot_fs + " mAmps")
 
-            let board_led_fs = parseInt(data.all[12].textContent); //led_fs
+            // let board_led_fs = parseInt(data.all[12].textContent); //led_fs
+            let board_led_fs = parseInt(getElementCarte(data, "led_fs"))
             $(".MOS_LEDs_FS").text(board_led_fs + " mAmps")
 
             
 
             //=================== Motor 0 calib ===================
-            let valMot0 = data.all[2].textContent;
+            // let valMot0 = data.all[2].textContent;
+            let valMot0 = getElementCarte(data, "Mot0");
             mot0 = valMot0.split(";")
 
             $(".PID_Kp0").text(mot0[0]);
@@ -253,7 +266,8 @@ function lectureC(){
             $(".max_delta_setpoint_normal0").text(mot0[13]);
 
             //=================== Motor 1 calib ===================
-            let valMot1 = data.all[3].textContent;
+            // let valMot1 = data.all[3].textContent;
+            let valMot1 = getElementCarte(data, "Mot1");
             mot1 = valMot1.split(";")
 
             $(".PID_Kp1").text(mot1[0]);
@@ -273,11 +287,13 @@ function lectureC(){
 
             //=================== Miscellaneous ===================
             //pergola_drying
-            let pergola_drying = parseInt(data.all[5].textContent); //drying
+            // let pergola_drying = parseInt(data.all[5].textContent); //drying
+            let pergola_drying = parseInt(getElementCarte(data, "drying"))
             $(".shader_drying").text(pergola_drying);
 
             if(waitCheck == false){
-                let hwcfg = parseInt(data.all[17].textContent);
+                // let hwcfg = parseInt(data.all[17].textContent);
+                let hwcfg = parseInt(getElementCarte(data, "hwcfg"));
                 affichageCheck(hwcfg)
             }
         
@@ -376,7 +392,7 @@ $(".charge").click(function(){
 });
 
 function reset_manuf_config(){
-	var command = '../cgi/zns.cgi?cmd=f&p=1235&v=7913'+my_current_automatum_cmd;
+	var command = '../cgi/zns.cgi?cmd=f&p=1235&v=7913';
 	$.ajax({
 	  url: command,	
 	  context: document.body
@@ -476,7 +492,7 @@ function applyConfig(categorie, valueToInsert, idToInsert){
 // send a board  setting to pergola : note setting is not automatically saved, call save_board_config() to do that
 function apply_board_config(valueToInsert, idToInsert){
 
-    var command = '../cgi/zns.cgi?cmd=b&p=' + idToInsert + '&v=' + valueToInsert + my_current_automatum_cmd;
+    var command = '../cgi/zns.cgi?cmd=b&p=' + idToInsert + '&v=' + valueToInsert;
     $.ajax({
         url: command,	
         context: document.body
@@ -493,7 +509,7 @@ function apply_manuf_config(valueToInsert, idToInsert){
         valueToInsert = parseInt(valueToInsert) + 500;	// automatically add the 50°C offset to user entry
     }
         
-    var command = '../cgi/zns.cgi?cmd=f&p=' + idToInsert + '&v=' + valueToInsert + my_current_automatum_cmd;
+    var command = '../cgi/zns.cgi?cmd=f&p=' + idToInsert + '&v=' + valueToInsert;
     $.ajax({
         url: command,	
         context: document.body

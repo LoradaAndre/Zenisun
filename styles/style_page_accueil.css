@@ -23,7 +23,8 @@ h1{
 /* Les petits widgets */
 .widget{
     margin: 3px;
-    height: 95%;
+    /* height: 95%; */
+    height: 170px;
     /* titre du widget */
     text-align: center;
 }
@@ -33,7 +34,10 @@ h1{
 }
 
 .all_canvas{
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */ 
+    display: -ms-flexbox; /* TWEENER - IE 10 */ 
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ 
+    display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
     margin-right: auto !important;
     margin-left: auto !important;
     gap: 50px;
@@ -44,7 +48,10 @@ h1{
 /* ========================== GESTION DU BLOC METEO ========================== */
 
 .meteo_widget{
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */ 
+    display: -ms-flexbox; /* TWEENER - IE 10 */ 
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ 
+    display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
     justify-content: space-between;
     margin: 3px;
     margin-bottom: -3px;
@@ -61,7 +68,10 @@ h1{
 .type_temps{
     justify-content: center;
     margin: auto;
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */ 
+    display: -ms-flexbox; /* TWEENER - IE 10 */ 
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ 
+    display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
 }
 
 .icon_type_temps{
@@ -103,38 +113,38 @@ h1{
 /* ========================== GESTION DES WIDGETS INDIVIDUELS========================== */
 
 .eclairage_widget{
-    background-image: url(../resources/background/widgets/fond_eclairage.png);
+    background-image: url(../resources/background/widgets/fond_eclairage.jpg);
     background-size: 50%;
 }
 
 .lames-orientable_widget{
-    background-image: url(../resources/background/widgets/fond_lames_orientables.png);
+    background-image: url(../resources/background/widgets/fond_lames_orientables.jpg);
     background-size: 50%;
 }
 
 .wifi_widget{
-    background-image: url(../resources/background/widgets/fond_wifi.png);
+    background-image: url(../resources/background/widgets/fond_wifi.jpg);
     background-size: cover;
 }
 
 
 .parametres_widget{
-    background-image: url(../resources/background/widgets/fond_settings.png);
+    background-image: url(../resources/background/widgets/fond_settings.jpg);
     background-size: cover;
 }
 
 .guide_utilisation_widget{
-    background-image: url(../resources/background/widgets/fond_guide_utilisation.png);
+    background-image: url(../resources/background/widgets/fond_guide_utilisation.jpg);
     background-size: cover;
 }
 
 .station_meteo_widget{
-    background-image: url(../resources/background/widgets/fond_station_meteo.png);
+    background-image: url(../resources/background/widgets/fond_station_meteo.jpg);
     background-size: cover;
 }
 
 .meteo_widget{
-    background-image: url(../resources/background/widget_meteo/beau.png);
+    background-image: url(../resources/background/widget_meteo/beau.jpg);
     background-size: cover;
 }
 
@@ -157,7 +167,10 @@ a{
 
 aside{
     color: white;
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */ 
+    display: -ms-flexbox; /* TWEENER - IE 10 */ 
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ 
+    display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
     /* background-color: #7093AE; */
     /* position: fixed; */
     border-radius: 3px;
@@ -190,7 +203,10 @@ aside{
 .connexion{
     text-align: center;
     width: 115px;
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */ 
+    display: -ms-flexbox; /* TWEENER - IE 10 */ 
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ 
+    display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
     justify-content: left;
 }
 
@@ -211,5 +227,8 @@ aside p {
     margin-top: auto;
     padding-right: 10px;
     padding-left: 10px;
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */ 
+    display: -ms-flexbox; /* TWEENER - IE 10 */ 
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ 
+    display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
 }

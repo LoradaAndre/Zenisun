@@ -45,7 +45,7 @@ function updateWidgetResponsive(){
                 $(".lames-orientable_widget").css("background-size", "100%")
     
                 $(".eclairage").css({
-                    "grid-row": "1",
+                    "grid-row": "1"
                 })
 
             //deux moteurs
@@ -163,6 +163,8 @@ $(".menu").click(function(){
         "z-index" : "3",
         "box-shadow" : "0px 0px 10px #42555a"
     })
+
+    $("hr").css("z-index" , "2")
 
     $(".navigation_bar").animate({
         left : "0"

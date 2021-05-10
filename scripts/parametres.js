@@ -56,19 +56,24 @@ $(document).ready(function(){
     }, 1000);
 });
 
+function getElementCarte(data, value){
+    return $(data).find(value).text();
+}
+
 //Lecture de la carte, récupération des infos pour les paramètres
 function lectureCarte(){
-    my_current_automatum_cmd = "&ID=0";
     $.ajax({
-        url: "../cgi/zns.cgi?cmd=d&p=ios"+my_current_automatum_cmd,
+        url: "../cgi/zns.cgi?cmd=d&p=ios",
         context: document.body
       }).done(function(data){
-			mot = parseInt(getMotorValue(data,24))
+			// mot = parseInt(getMotorValue(data,24))
+			mot = parseInt(getMotorValue(getElementCarte(data, "Mot0")))
 
 			isConnected(true, data)
 
 			//configuration utilsateur
-			monitoring_user_config = parseInt(data.all[30].textContent);
+			// monitoring_user_config = parseInt(data.all[30].textContent);
+			monitoring_user_config = parseInt(getElementCarte(data, "user"));
 			updateButtons();
 
 			if(onceIntemp == false && monitoring_user_config != "undefined"){
@@ -76,53 +81,65 @@ function lectureCarte(){
 			}
 			
 			//actualisation suivi solaire
-			actSuiviSol = parseInt(data.all[33].textContent);
+			// actSuiviSol = parseInt(data.all[33].textContent);
+			actSuiviSol = parseInt(getElementCarte(data , "sun_delay"));
 			$(".list_of_buttons_suivi_sol h3[value="+ actSuiviSol +"]").attr("check", "true")
 
 			//Capteur pluie
-			capteurPluie = parseInt(data.all[6].textContent)
+			// capteurPluie = parseInt(data.all[6].textContent)
+			capteurPluie = parseInt(getElementCarte(data, "gpi4"))
+
 
       }).fail(function() {
 			isConnected(false, data)
     });	
 
 	$.ajax({
-        url: '../cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
+        url: '../cgi/zns.cgi?cmd=c',
         context: document.body
       }).done(function(data){
 			isConnected(true, data)
 		  	//heure allumage
-			heure_allumage = parseInt(data.all[13].textContent);
+			// heure_allumage = parseInt(data.all[13].textContent);
+			heure_allumage = parseInt(getElementCarte(data, "ligt_on_h"))
 			if(getHourAllumage){
 				$(".affichage_heure_allumage").text(GMTHourTolocalHour(heure_allumage))
 				document.querySelector(".h_allumage input").value = GMTHourTolocalHour(heure_allumage);
 			}	
 			//heure extinction
-			heure_extinction = parseInt(data.all[14].textContent);
+			// heure_extinction = parseInt(data.all[14].textContent);
+			heure_extinction = parseInt(getElementCarte(data, "ligt_off_h"))
 			if(getHourExtinction){
 				$(".affichage_heure_extinction").text(GMTHourTolocalHour(heure_extinction))
 				document.querySelector(".h_extinction input").value = GMTHourTolocalHour(heure_extinction);
 			}	
 		
 			//seuil de fermeture nuit
-			sun_elev_close = parseInt(data.all[15].textContent);
+			// sun_elev_close = parseInt(data.all[15].textContent);
+			sun_elev_close = parseInt(getElementCarte(data, "sun_elev_close"))
 
 			//gradateur LED
-			vitesseGradLed = parseInt(data.all[16].textContent);
+			// vitesseGradLed = parseInt(data.all[16].textContent);
+			vitesseGradLed = parseInt(getElementCarte(data, "light_opt"));
 			// console.log("vitesse grad led: " + vitesseGradLed)
 			$(".list_of_buttons_grad_LED h3[value="+ vitesseGradLed +"]").attr("check", "true")
 
 
 			//Longitude/lattitude
-			longSaved =  parseInt(data.all[6].textContent)/100.0;
-			latSaved =  parseInt(data.all[7].textContent)/100.0;
+			// longSaved =  parseInt(data.all[6].textContent)/100.0;
+			longSaved =  parseInt(getElementCarte(data, "lon"))/100.0
+			// latSaved =  parseInt(data.all[7].textContent)/100.0;
+			latSaved =  parseInt(getElementCarte(data, "lat"))/100.0
 
 			//Position des moteurs
-			home_set[0] = parseInt(getMotorHomeSet(data, 2))
-			home_set[1] = parseInt(getMotorHomeSet(data, 3))
+			// home_set[0] = parseInt(getMotorHomeSet(data, 2))
+			home_set[0] = parseInt(getElementCarte(data, "Mot0"))
+			// home_set[1] = parseInt(getMotorHomeSet(data, 3))
+			home_set[1] = parseInt(getElementCarte(data, "Mot1"))
 
 			//Affichage de la valeur de l'orientation sur le dropdown
-			$("#liste_orientation").val(data.all[4].textContent)
+			// $("#liste_orientation").val(data.all[4].textContent)
+			$("#liste_orientation").val(getElementCarte(data, "orient"))
       }).fail(function() {
 			isConnected(false, data) 
     });
@@ -140,9 +157,8 @@ function testTrueFalse(number){
 
 }
 //Récupère et converti la valeur du moteur en pourcentage
-function getMotorValue(data, input){
-    let valMotor = data.all[input].textContent
-    let newVal = valMotor.split(";")
+function getMotorValue(valMotor){
+    newVal = valMotor.split(";")
     return newVal[0]*100/newVal[1]
 }
 
@@ -150,9 +166,8 @@ function getMotorValue(data, input){
 // =============================== HOMING ===============================
 
 //Récupère si le homeset à été effectué ou non
-function getMotorHomeSet(data, input){
-    let valHomeSet = data.all[input].textContent
-    let newVal = valHomeSet.split(";")
+function getMotorHomeSet(valHomeSet){
+    newVal = valHomeSet.split(";")
     return newVal[2]
 }
 
@@ -276,13 +291,13 @@ if(neLat == "-"){
 }
 
 //On applique la géolocalisation de la pergola
-var command_long = '../cgi/zns.cgi?cmd=u&p=11&v=' + pergola_longitude + my_current_automatum_cmd;
+var command_long = '../cgi/zns.cgi?cmd=u&p=11&v=' + pergola_longitude;
 $.ajax({
   url: command_long,	
   context: document.body
 	}).done(function(data) {
 		isConnected(true, data)
-		var command_lat = '../cgi/zns.cgi?cmd=u&p=12&v=' + pergola_latitude + my_current_automatum_cmd;
+		var command_lat = '../cgi/zns.cgi?cmd=u&p=12&v=' + pergola_latitude;
 		$.ajax({
 		url: command_lat,	
 		context: document.body
@@ -303,7 +318,7 @@ function defaultOrientationPergola(){
 //Requête d'orientation de la pergola (paramètres généraux)
 function applyOrientationPergola(valeur){
 	pergola_orient = parseInt(valeur);
-	var command = '../cgi/zns.cgi?cmd=u&p=10&v=' + pergola_orient + my_current_automatum_cmd;
+	var command = '../cgi/zns.cgi?cmd=u&p=10&v=' + pergola_orient;
 	$.ajax({
 	  url: command,	
 	  context: document.body
@@ -456,7 +471,7 @@ function applyGradateurLed(idButton){
 
 		light_opt = $(idButton).attr("value");
 
-		var command = '../cgi/zns.cgi?cmd=u&p=9&v=' + light_opt+my_current_automatum_cmd;
+		var command = '../cgi/zns.cgi?cmd=u&p=9&v=' + light_opt;
 		$.ajax({
 		  url: command,	
 		  context: document.body
@@ -542,8 +557,7 @@ $(".button_intemp_off").click(function(){
 // =============================== SEUIL DE FERMETURE NUIT ===============================
 
 //Récupère et converti le seuil de fermeture en pourcentage
-function getSeuilFermeture(data, input){
-    let newVal = data.all[input].textContent
+function getSeuilFermeture(newVal){
     return parseInt(newVal*100/45);
 }
 
@@ -580,7 +594,7 @@ function refreshBarre(classRange, input, inputSpe){
 //Requête de changement du seil de fermeture nuit (Environnement)
 function changeSeuilFermNuit(value){
 	var h = parseInt(value);
-	var command = '../cgi/zns.cgi?cmd=u&p=7&v=' + h+my_current_automatum_cmd;
+	var command = '../cgi/zns.cgi?cmd=u&p=7&v=' + h;
 	$.ajax({
 	  url: command,	
 	  context: document.body
@@ -605,7 +619,7 @@ function clickActSuiviSol(){
 function applyPeriodSuiviSol(idButton){
 	$(idButton).click(function(){
 		sun_upd_per = $(idButton).attr("value");
-		var command = '../cgi/zns.cgi?cmd=u&p=4&v=' + sun_upd_per+my_current_automatum_cmd;
+		var command = '../cgi/zns.cgi?cmd=u&p=4&v=' + sun_upd_per;
 
 		$.ajax({
 		  url: command,	
@@ -795,7 +809,7 @@ function usr_firmware_upload()
 	xhr.addEventListener("abort", firmware_uploadCanceled, false);
 //	xhr.open('POST', '/upload');
 	xhr.open('POST', '../firmware');
-	$(".brouillon").html('<h1 id="progress_num">Please wait...</h1><progress id="progress_bar" value="0" max="100.0"></progress>');
+	$(".upload_information").html('<h2 id="progress_num">Veuillez patienter...</h2>');
 	xhr.send(fd);
 }
 
@@ -803,8 +817,9 @@ function usr_firmware_upload()
 function firmware_uploadProgress(evt) {
 	if (evt.lengthComputable) {
 		var percentComplete = Math.round(evt.loaded * 100 / evt.total);
-		document.getElementById('progress_num').innerHTML = 'Firmware upload ... ' + percentComplete.toString() + '%';
+		document.getElementById('progress_num').innerHTML = 'Téléchargement du firmware ... ' + percentComplete.toString() + '%';
 		document.getElementById('progress_bar').value = percentComplete;
+		$('#progress_bar').hide();
 	}
 	else {
 		document.getElementById('progress_num').innerHTML = 'unknow';
@@ -816,18 +831,19 @@ function firmware_uploadComplete_usr(evt)
 	/* This event is raised when the server send back a response */
 //            alert(evt.target.responseText);
 //	alert('upload completed');
-	$('.brouillon').html('<h1>Please wait while restarting...</h1>');
+	$('.upload_information').html('<h2>Patientez, l\'installation démarre...</h2>');
+	$('.upload_information').html('<h2>La wifi de votre pergola va redémarrer, pensez à vous reconnecter</h2>');
 	firmware_wait_restart_usr();
 //	window.location.reload();
 }
 
 
 function firmware_uploadFailed(evt) {
-	alert("There was an error attempting to upload the file.");
+	alert("Une erreur est survenue durant l'installation du firmware");
 }
 
 function firmware_uploadCanceled(evt) {
-	alert("The upload has been cancelled by the user or the browser dropped the connection.");
+	alert("Le chargement à été annulé par l'utilisateur ou la connexion wifi à été coupée");
 }
 		
 
@@ -839,12 +855,12 @@ function firmware_wait_restart_usr()
 		context: document.body
 	})
 	.done( function(data) { 	
-			$('.brouillon').html('<h1>Firmware ' + data + ' now running<br/>Please wait while reloading...</h1>' );
+			$('.upload_information').html('<h2>Firmware ' + data + ' now running<br/>Please wait while reloading...</h2>' );
 			setTimeout("window.location.reload();", 5000);
 			})
 	.fail(  function( jqXHR, textStatus, errorThrown )  {
 //			$('#page_manuf').html('<h1>' + textStatus + '</h1>' );
-			$('.brouillon').find( "h1" ).append( "." );
+			$('.upload_information').find( "h2" ).append( "." );
 			setTimeout("firmware_wait_restart();", 5000);
 	});
 	

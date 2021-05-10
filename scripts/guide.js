@@ -3,9 +3,8 @@ $(document).ready(function(){
 });
 
 function lectureCarte(){
-    my_current_automatum_cmd = "&ID=0";
     $.ajax({
-        url: "../cgi/zns.cgi?cmd=d&p=ios"+my_current_automatum_cmd,
+        url: "../cgi/zns.cgi?cmd=d&p=ios",
         context: document.body
       }).done(function(data) {
             isConnected(true,data);

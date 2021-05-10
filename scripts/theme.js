@@ -75,12 +75,12 @@ function themeSombre(){
     $(".guide_utilisation_widget").css('color', colorGuideTitreS);
     $(".station_meteo_widget").css('color', colorStationMeteoTitleS);
 
-    $(".eclairage_widget").css('background-image', "url(resources/background/widgets/fond_eclairage_sombre.png)");
-    $(".lames-orientable_widget").css('background-image', "url(resources/background/widgets/fond_lames_orientables_sombre.png)");
-    $(".wifi_widget").css('background-image', "url(resources/background/widgets/fond_wifi_sombre.png)");
-    $(".parametres_widget").css('background-image', "url(resources/background/widgets/fond_settings_sombre.png)");
-    $(".guide_utilisation_widget").css('background-image', "url(resources/background/widgets/fond_guide_utilisation_sombre.png)");
-    $(".station_meteo_widget").css('background-image', "url(resources/background/widgets/fond_station_meteo_sombre.png)");
+    $(".eclairage_widget").css('background-image', "url(resources/background/widgets/fond_eclairage_sombre.jpg)");
+    $(".lames-orientable_widget").css('background-image', "url(resources/background/widgets/fond_lames_orientables_sombre.jpg)");
+    $(".wifi_widget").css('background-image', "url(resources/background/widgets/fond_wifi_sombre.jpg)");
+    $(".parametres_widget").css('background-image', "url(resources/background/widgets/fond_settings_sombre.jpg)");
+    $(".guide_utilisation_widget").css('background-image', "url(resources/background/widgets/fond_guide_utilisation_sombre.jpg)");
+    $(".station_meteo_widget").css('background-image', "url(resources/background/widgets/fond_station_meteo_sombre.jpg)");
 
    
     $(".wifi_widget img").attr('src', "resources/icons/widgets_dark/wifiSombre.png");

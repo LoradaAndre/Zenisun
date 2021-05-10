@@ -39,7 +39,8 @@ function stockWifi(data){
     }
     let container = document.querySelector(".cont");
 
-    reseau = data.querySelectorAll("bss")
+    // reseau = data.querySelectorAll("bss")
+    reseau = $(data).find("bss")
 
     for(let i = 0; i < reseau.length; i++){
         let cle = reseau[i].children
@@ -241,23 +242,16 @@ $(".bouton_detection").click(function(){
     scanWifi()
 });
 
-$(".b_first").click(function(){
-
-});
-
 function switch_network(idElement){
-
     console.log(reseau[idElement].querySelector("sec").textContent)
     let sec = reseau[idElement].querySelector("sec").textContent
-	let password = $("input").val()
+    let password = $("input").val()
     let name = reseau[idElement].querySelector("id").textContent
     let type = reseau[idElement].querySelector("type").textContent
 	
 	$.post( "../cgi/zns_post.cgi" , { sec:sec, key:password, id:name, type:type })
-		.done(function(data) {
-            isConnected(true, data)
-		})
-        .fail(function(){
-            isConnected(false, data)
-	});
+    .done( 
+        function( data ) {
+        alert( "Connectez-vous à la wifi " + name + " pour coninuer à avoir accès à l'application." );	
+        });
 }

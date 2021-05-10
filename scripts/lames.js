@@ -30,33 +30,40 @@ $(document).ready(function (){
     }, 1000);
 });
 
+function getElementCarte(data, value){
+    return $(data).find(value).text();
+}
+
 function lectureCarte(){
-    my_current_automatum_cmd = "&ID=0";
     $.ajax({
-        url: "../cgi/zns.cgi?cmd=d&p=ios"+my_current_automatum_cmd,
+        url: "../cgi/zns.cgi?cmd=d&p=ios",
         context: document.body
       }).done(function(data) {
             isConnected(true, data)
-            valueMotor0 = parseInt(getMotorValue(data, 24));
-            valueMaxMotor0 = parseInt(getMotorMaxValue(data, 24));
-            valueMotor1 = parseInt(getMotorValue(data, 25));
-            valueMaxMotor1 = parseInt(getMotorMaxValue(data, 25));
+            // valueMotor0 = parseInt(getMotorValue(data, 24));
+            valueMotor0 = parseInt(getMotorValue(getElementCarte(data, "Mot0")));
+            // valueMaxMotor0 = parseInt(getMotorMaxValue(data, 24));
+            valueMaxMotor0 = parseInt(getMotorMaxValue(getElementCarte(data, "Mot0")));
+            // valueMotor1 = parseInt(getMotorValue(data, 25));
+            valueMotor1 = parseInt(getMotorValue(getElementCarte(data, "Mot1")));
+            // valueMaxMotor1 = parseInt(getMotorMaxValue(data, 25));
+            valueMaxMotor1 = parseInt(getMotorMaxValue(getElementCarte(data, "Mot0")));
 
-            monitoring_user_config = parseInt(data.all[30].textContent);
+            // monitoring_user_config = parseInt(data.all[30].textContent);
+            monitoring_user_config = parseInt(getElementCarte(data, "user"));
 			console.log(monitoring_user_config)
 
       }).fail(function() {
             isConnected(false, data)
       });	
 
-      my_current_automatum_cmd = "&ID=0";
 
       $.ajax({
-        url: '../cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
+        url: '../cgi/zns.cgi?cmd=c',
         context: document.body
       }).done(function(data){
              //hwcfg
-             hwcfg = parseInt(data.all[17].textContent)
+             hwcfg = parseInt(getElementCarte(data, "hwcfg"))
              if(oneTime == false){
                 gestionAffichageBloc(hwcfg)
              }
@@ -158,16 +165,14 @@ function updateInput(classWrap, motor){
 }
 
 //Récupère et converti la valeur du moteur en pourcentage
-function getMotorValue(data, input){
-    let valMotor = data.all[input].textContent
-    let newVal = valMotor.split(";")
+function getMotorValue(valMotor){
+    newVal = valMotor.split(";")
     return newVal[0]*100/newVal[1]
 }
 
 //Récupère la valeur maximale du moteur
-function getMotorMaxValue(data, input){
-    let valMotor = data.all[input].textContent
-    let newVal = valMotor.split(";")
+function getMotorMaxValue(valMotor){
+    newVal = valMotor.split(";")
     return newVal[1];
 }
 

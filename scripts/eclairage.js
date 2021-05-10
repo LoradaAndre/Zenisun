@@ -19,41 +19,56 @@ let oneTime = false;
 
 let config = 1;
 
+function getElementCarte(data, value){
+    return $(data).find(value).text();
+}
+
 //Lecture de la carte, récupération des infos pour l'éclairage
 function lectureCarte(){
-    my_current_automatum_cmd = "&ID=0";
     $.ajax({
-        url: "../cgi/zns.cgi?cmd=d&p=ios"+my_current_automatum_cmd,
+        url: "../cgi/zns.cgi?cmd=d&p=ios",
         context: document.body
       }).done(function(data) {
             isConnected(true,data);
             //RGB1
-            RGBIntensite1 = getIntensite(data, 12); //12: <GPO 4> dans la collection data.all
-            RGBWatt1 = getWatt(data, 12);
+            // RGBIntensite1 = getIntensite(data, 12); //12: <GPO 4> dans la collection data.all
+            // RGBWatt1 = getWatt(data, 12);
+            RGBIntensite1 = getIntensite(getElementCarte(data, "gpo4"))
+            RGBWatt1 = getWatt(getElementCarte(data, "gpo4"));
             //RGB2
-            RGBIntensite2 = getIntensite(data, 13); //13: <GPO 5>
-            RGBWatt2 = getWatt(data, 13);
+            // RGBIntensite2 = getIntensite(data, 13); //13: <GPO 5>
+            // RGBWatt2 = getWatt(data, 13);
+            RGBIntensite2 = getIntensite(getElementCarte(data, "gpo5"))
+            RGBWatt2 = getWatt(getElementCarte(data, "gpo5"));
             //BB1
-            bb1Intensite = getIntensite(data, 14); //14: <GPO 6>
-            bb1Watt = getWatt(data, 14);
+            // bb1Intensite = getIntensite(data, 14); //14: <GPO 6>
+            // bb1Watt = getWatt(data, 14);
+            bb1Intensite = getIntensite(getElementCarte(data, "gpo6")); //14: <GPO 6>
+            bb1Watt = getWatt(getElementCarte(data, "gpo6"));
             //BB2
-            bb2Intensite = getIntensite(data, 15); //15: <GPO 7>
-            bb2Watt = getWatt(data, 15);
+            // bb2Intensite = getIntensite(data, 15); //15: <GPO 7>
+            // bb2Watt = getWatt(data, 15);
+            bb2Intensite = getIntensite(getElementCarte(data, "gpo7")); //15: <GPO 7>
+            bb2Watt = getWatt(getElementCarte(data, "gpo7"));
             //RGB color
-            RColor = getColor(data, 16); //16: <GPO 8>
-            GColor = getColor(data, 17); //17: <GPO 9>
-            BColor = getColor(data, 18); //18: <GPO 10>
+            // RColor = getColor(data, 16); //16: <GPO 8>
+            RColor = getColor(getElementCarte(data, "gpo8"));
+            // GColor = getColor(data, 17); //17: <GPO 9>
+            GColor = getColor(getElementCarte(data, "gpo9"));
+            // BColor = getColor(data, 18); //18: <GPO 10>
+            BColor = getColor(getElementCarte(data, "gpo10"));
 
       }).fail(function() {
             isConnected(false, data)
     });	
 
     $.ajax({
-        url: '../cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
+        url: '../cgi/zns.cgi?cmd=c',
         context: document.body
       }).done(function(data){
              //hwcfg
-             hwcfg = parseInt(data.all[17].textContent)
+            //  hwcfg = parseInt(data.all[17].textContent)
+            hwcfg = parseInt(getElementCarte(data, "hwcfg"))
              console.log(hwcfg)
              if(oneTime == false){
                 gestionAffichageBloc(hwcfg)
@@ -173,22 +188,19 @@ function AllbandeauOff(){
 }
 
 //Récupère et converti l'intensité (0 à 255) en pourcentage
-function getIntensite(data, input){
-    let ledIntensite = data.all[input].textContent
+function getIntensite(ledIntensite){
     let newVal = ledIntensite.split(";")
     return parseInt(newVal[0]*100/255);
 }
 
 //Récupère et converti la puissance (en mA) en Watt
-function getWatt(data, input){
-    let ledIntensite = data.all[input].textContent
-    let newVal = ledIntensite.split(";")
+function getWatt(ledPower){
+    let newVal = ledPower.split(";")
     return parseFirstDecimal(newVal[1]*24/1000);
 }
 
 //Récupère la couleur
-function getColor(data, input){
-    let ledColor = data.all[input].textContent
+function getColor(ledColor){
     let newVal = ledColor.split(";")
     return newVal[0];
 }

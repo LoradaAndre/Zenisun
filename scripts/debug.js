@@ -23,68 +23,83 @@ let pergOrient;
 let pergLong;
 let pergLat;
 
+function getElementCarte(data, value){
+    return $(data).find(value).text();
+}
+
 //Lecture de la carte, récupération des infos pour les paramètres
 function lectureCarte(){
-    my_current_automatum_cmd = "&ID=0";
     $.ajax({
-        url: "../cgi/zns.cgi?cmd=d&p=ios"+my_current_automatum_cmd,
+        url: "../cgi/zns.cgi?cmd=d&p=ios",
         context: document.body
       }).done(function(data){
 
-            vin[0] = parseInt(data.all[22].textContent)/1000 //VDC1
-            vin[1] = parseInt(data.all[23].textContent)/1000 //VDC2
+            vin[0] = parseInt(getElementCarte(data,"VDC1"))/1000 //VDC1
+            vin[1] = parseInt(getElementCarte(data,"VDC2"))/1000 //VDC2
 
-            boardTemp = parseInt(data.all[21].textContent)/10 //Temp
-            MosTemp = parseInt(data.all[31].textContent)/10 //tmos
+            boardTemp = parseInt(getElementCarte(data,"Temp"))/10 //Temp
+            MosTemp = parseInt(getElementCarte(data,"tmos"))/10 //tmos
 
             for(let i = 0; i < 6; i++){
                 //GPI
-                gpi[i] = parseInt(data.all[(i+2)].textContent)/1000
+                // gpi[i] = parseInt(data.all[(i+2)].textContent)/1000
+                gpi[i] = parseInt(getElementCarte(data, "gpi"+i))
             }
             
             for(let i = 0; i < 8; i++){
                 //GPO
-                gpO[i] = parseInt(getValue(data,(i+8),1))/1000
+                // gpO[i] = parseInt(getValue(data,(i+8),1))/1000
+                gpO[i] = parseInt(getValue(getElementCarte(data, "gpo" + i),1))/1000
                 //GPPWM
-                gpPWM[i] = parseInt(getValue(data,(i+8),0))
+                // gpPWM[i] = parseInt(getValue(data,(i+8),0))
+                gpPWM[i] = parseInt(getValue(getElementCarte(data, "gpo" + i),0))
             }
             
-            for(let i = 0; i < 4; i++){
+            for(let i = 8; i < 11; i++){
                 //RGB
-                gpColor[i] = parseInt(getValue(data,(i+16),0))
+                // gpColor[i] = parseInt(getValue(data,(i+16),0))
+                gpColor[i] = parseInt(getValue(getElementCarte(data, "gpo" + i),0))
                 //RGBPWM
-                gpColorPWM[i] = parseInt(getValue(data,(i+16),1))
+                // gpColorPWM[i] = parseInt(getValue(data,(i+16),1))
+                gpColorPWM[i] = parseInt(getValue(getElementCarte(data, "gpo" + i),1))
             }
 
             for(let i = 0; i < 2; i++){
                 //mot
-                mot[i] = parseInt(getValue(data,(i+24),0))
+                // mot[i] = parseInt(getValue(data,(i+24),0))
+                mot[i] = parseInt(getValue(getElementCarte(data, "Mot0"),0))
                 //maxMot
-                maxMot[i] = parseInt(getValue(data,(i+24),1))
+                // maxMot[i] = parseInt(getValue(data,(i+24),1))
+                maxMot[i] = parseInt(getValue(getElementCarte(data, "Mot0"),1))
             }
 
-            sunElev = parseInt(data.all[27].textContent) //s_elev
-            sunAsimut = parseInt(data.all[28].textContent) //s_azi
-            sunShader = parseInt(data.all[29].textContent) //s_prj
+            // sunElev = parseInt(data.all[27].textContent) //s_elev
+            sunElev = parseInt(getElementCarte(data, "s_elev"));
+            // sunAsimut = parseInt(data.all[28].textContent) //s_azi
+            sunAsimut = parseInt(getElementCarte(data, "s_azi"));
+            // sunShader = parseInt(data.all[29].textContent) //s_prj
+            sunShader = parseInt(getElementCarte(data, "s_prj"));
 
       }).fail(function() {
     });	
 
 	$.ajax({
-        url: '../cgi/zns.cgi?cmd=c'+my_current_automatum_cmd,
+        url: '../cgi/zns.cgi?cmd=c',
         context: document.body
       }).done(function(data){
-            pergOrient = parseInt(data.all[4].textContent) //orient
-            pergLong = parseInt(data.all[6].textContent)/100 //lon
-            pergLat = parseInt(data.all[7].textContent)/100 //lat
+            // pergOrient = parseInt(data.all[4].textContent) //orient
+            pergOrient = parseInt(getElementCarte(data, "orient"))
+            // pergLong = parseInt(data.all[6].textContent)/100 //lon
+            pergLong = parseInt(getElementCarte(data, "lon"))
+            // pergLat = parseInt(data.all[7].textContent)/100 //lat
+            pergLat = parseInt(getElementCarte(data, "lat"))
 			
       }).fail(function() {
     });
 }
 
 //Récupération des données de l'automate
-function getValue(data, input, pos){
-    let value = data.all[input].textContent
+function getValue(value, pos){
     value = value.split(";")
     return value[pos]
 }

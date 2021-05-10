@@ -91,7 +91,10 @@ body{
     width: 50%;
 }
 .middle{
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */ 
+    display: -ms-flexbox; /* TWEENER - IE 10 */ 
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ 
+    display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
     justify-content: space-between;
 }
 
@@ -175,13 +178,19 @@ hr{
     vertical-align: center;
 }
 header{
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */ 
+    display: -ms-flexbox; /* TWEENER - IE 10 */ 
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ 
+    display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
     justify-content: space-between;
 }
 
 .checkDiv, .info-check{
     grid-column: 2 / 3;
-    display: flex;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */ 
+    display: -ms-flexbox; /* TWEENER - IE 10 */ 
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ 
+    display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
     flex-wrap: wrap;
     gap: 20px;
 }
