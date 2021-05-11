@@ -197,13 +197,21 @@ function meteo(number_config, elevation_sol){
     }
     //Aube - crépuscule
     else if(elevation_sol > 0 && elevation_sol <= 15){
-        console.log("c'est l'aube");
+        let date = new Date()
+        let h = date.getHours();
         $(".meteo_widget").css({
             "background-image": "url(resources/background/widget_meteo/aube.jpg)",
             "background-size": "cover"
         });
         $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/demisoleil.png")
-        $(".meteo .type_temps p").text("Elévation solaire basse")
+        if(getHours < 12){
+            $(".meteo .type_temps p").text("Aube")
+            console.log("c'est l'aube");
+        
+        }else{
+            $(".meteo .type_temps p").text("Crépuscule")
+            console.log("c'est le crépuscule");
+        }
     }
     //Aucun paramètres de défini
     else{
