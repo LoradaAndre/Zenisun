@@ -248,10 +248,11 @@ function switch_network(idElement){
     let password = $("input").val()
     let name = reseau[idElement].querySelector("id").textContent
     let type = reseau[idElement].querySelector("type").textContent
+    console.log("sec: " + sec + " pass: " + password + " name: " + name + " type: " + type )
 	
 	$.post( "../cgi/zns_post.cgi" , { sec:sec, key:password, id:name, type:type })
     .done( 
         function( data ) {
-        alert( "Connectez-vous à la wifi " + name + " pour coninuer à avoir accès à l'application." );	
+        alert( "Connectez-vous au wifi " + name + " pour continuer à avoir accès à l'application." );	
         });
 }
