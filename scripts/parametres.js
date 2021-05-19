@@ -489,7 +489,7 @@ function applyGradateurLed(idButton){
 //Off sur le check => met la valeur à 0
 function fermeture_pluie(){
     $(".check-fermeture_pluie .ui-switcher").click(function(){
-        if($(this).attr("aria-checked") == "true" && capteurPluie < 6000){
+        if($(this).attr("aria-checked") == "true"){
             set_user_config(monitoring_user_config | 1);	// clr rain mode bit
         }else{
 			set_user_config(monitoring_user_config & ~1);  	// set rain mode bit
