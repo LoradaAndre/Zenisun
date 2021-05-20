@@ -51,6 +51,7 @@ function lectureCarte(){
             // monitoring_user_config = parseInt(data.all[30].textContent);
             monitoring_user_config = parseInt(getElementCarte(data, "user"));
 			console.log(monitoring_user_config)
+            updateSaisonnier();
 
       }).fail(function() {
             isConnected(false, data)
@@ -318,7 +319,7 @@ function deplacementLames(moteur, valeur){
 }
 
 //Affiche une popup de prévention en cas de blocage vent/neige/hiver/été
-$(".test").click(function(){
+$(".bloc_mot").click(function(){
     if(($("#exampleModalCenter1").css("display") == "none") && (monitoring_user_config & 8)){
         console.log("yep c'est " + monitoring_user_config);
         var myModal = new bootstrap.Modal(document.getElementById("exampleModalCenter1"), {});
@@ -341,4 +342,69 @@ function gestionAffichageBloc(hwcfg){
         $(".bloc_Mot2").show();
         $(".bloc_sync").show();
     }   
+}
+
+// =============================== SAISONNIER ===============================
+
+function updateSaisonnier(){
+    //si le bit suivi solaire est activé (mode été)
+    if(monitoring_user_config&2){
+        //si le bit de l'ombrage minimum est activé (mode hiver activé) => active mode hiver
+        if(monitoring_user_config&4){
+            $(".button_hiver").attr("check", "true")
+            $(".button_ete").attr("check", "false")	
+            $(".button_saision_off").attr("check", "false")
+
+            $(".saison_detail").show();
+
+        }//si le bit de l'ombrage minimum est désactivé (mode hiver activé) => active mode été
+        else{
+            $(".button_ete").attr("check", "true")
+            $(".button_hiver").attr("check", "false")
+            $(".button_saision_off").attr("check", "false")
+
+            $(".saison_detail").show();
+        }
+    }
+    //si ni mode été ni mode hiver
+    else{
+        $(".button_ete").attr("check", "false")
+        $(".button_hiver").attr("check", "false")
+        $(".button_saision_off").attr("check", "true")
+        $(".saison_detail").hide();
+    }
+}
+
+$(".button_ete").click(function(){
+	$(".saison_detail").show();
+	set_user_config ( monitoring_user_config | 2 );		// set tracking bit
+	set_user_config ( monitoring_user_config & ~4 );	// clr winter bit
+});
+
+$(".button_hiver").click(function(){
+	$(".saison_detail").show();
+	set_user_config ( monitoring_user_config | 4 );		// set winter bit
+	set_user_config ( monitoring_user_config | 2 );		// set tracking bit	
+});
+
+$(".button_saision_off").click(function(){
+	$(".saison_detail").hide();
+	set_user_config ( monitoring_user_config & ~2 );	// clr tracking bit
+	set_user_config ( monitoring_user_config & ~4 );	// clr winter bit
+});
+
+function set_user_config( new_config ){
+	new_config &= 65535;	// bound to 16 bits
+	if ( monitoring_user_config != new_config ){
+		monitoring_user_config = new_config;	// anticipate to answer.
+		var command = '../cgi/zns.cgi?cmd=u&p=3&v=' + new_config;
+		$.ajax({
+		  url: command,	
+		  context: document.body
+		}).done(function(data){
+			isConnected(true, data)
+		}).fail(function(){
+			isConnected(false, data)
+		});
+	}
 }

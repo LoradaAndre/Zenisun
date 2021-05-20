@@ -83,6 +83,11 @@ main{
     margin-left: 3%;
 }
 
+.contenant_saisonnier{
+    display: flex;
+    justify-content: space-between;
+}
+
 .flex-container img{
     width: 100px;
     height: 100px;
@@ -452,3 +457,32 @@ height: min-content;
     display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
 }
 
+.list_of_buttons_saison{
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */ 
+    display: -ms-flexbox; /* TWEENER - IE 10 */ 
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ 
+    display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
+    /* gap: 10px; */
+    justify-content: left;
+    margin: 0;
+    padding: 0;;
+    margin-left: 10px;
+} 
+
+.list_of_buttons_saison h3{
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: min-content;
+    text-align: center;
+}
+
+.but{
+    vertical-align: middle;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}

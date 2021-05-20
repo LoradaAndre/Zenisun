@@ -169,21 +169,22 @@ function meteo(number_config, elevation_sol){
     }
     //Mode été
     else if(number_config&2){
-        $(".meteo_widget").css({
-            "background-image": "url(resources/background/widget_meteo/ete.jpg)",
-            "background-size": "cover"
-        });
-        $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/summer.png")
-        $(".meteo .type_temps p").text("Mode été")
-    }
-    //Mode hiver
-    else if(number_config&4){
-        $(".meteo_widget").css({
-            "background-image": "url(resources/background/widget_meteo/hiver.jpg)",
-            "background-size": "cover"
-        });
-        $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/winter.png")
-        $(".meteo .type_temps p").text("Mode hiver")
+        //Mode hiver
+        if(number_config&4){
+            $(".meteo_widget").css({
+                "background-image": "url(resources/background/widget_meteo/hiver.jpg)",
+                "background-size": "cover"
+            });
+            $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/winter.png")
+            $(".meteo .type_temps p").text("Mode hiver")
+        }else{
+            $(".meteo_widget").css({
+                "background-image": "url(resources/background/widget_meteo/ete.jpg)",
+                "background-size": "cover"
+            });
+            $(".meteo .type_temps img").attr("src","resources/icons/widgets_light/summer.png")
+            $(".meteo .type_temps p").text("Mode été")
+        }
     }
     //Mode nuit
     else if(elevation_sol <= 0){
