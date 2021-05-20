@@ -506,7 +506,7 @@ $(".button_ete").click(function(){
 $(".button_hiver").click(function(){
 	$(".saison_detail").show();
 	set_user_config ( monitoring_user_config | 4 );		// set winter bit
-	set_user_config ( monitoring_user_config & ~2 );	// clear tracking bit	
+	set_user_config ( monitoring_user_config | 2 );		// set tracking bit	
 });
 
 $(".button_saision_off").click(function(){
@@ -682,25 +682,24 @@ function updateButtons(){
 		$(".check-fermeture_pluie .ui-switcher").attr("aria-checked", "true")
 	}
 
-	//si mode hiver activé
-	if(monitoring_user_config&4){
-		// $(".button_ete").attr("check", "false")
-		// console.log("mode hiver activées: " + (monitoring_user_config&4))
-		$(".button_hiver").attr("check", "true")
-		$(".button_ete").attr("check", "false")	
-		$(".button_saision_off").attr("check", "false")
+	//si le bit suivi solaire est activé (mode été)
+	if(monitoring_user_config&2){
+		//si le bit de l'ombrage minimum est activé (mode hiver activé) => active mode hiver
+		if(monitoring_user_config&4){
+			$(".button_hiver").attr("check", "true")
+			$(".button_ete").attr("check", "false")	
+			$(".button_saision_off").attr("check", "false")
 
-		$(".saison_detail").show();
-	}
-	//si mode été activé
-	else if(monitoring_user_config&2){
-		// console.log("mode été activées: " + (monitoring_user_config&2))
+			$(".saison_detail").show();
 
-		$(".button_ete").attr("check", "true")
-		$(".button_hiver").attr("check", "false")
-		$(".button_saision_off").attr("check", "false")
+		}//si le bit de l'ombrage minimum est désactivé (mode hiver activé) => active mode été
+		else{
+			$(".button_ete").attr("check", "true")
+			$(".button_hiver").attr("check", "false")
+			$(".button_saision_off").attr("check", "false")
 
-		$(".saison_detail").show();
+			$(".saison_detail").show();
+		}
 	}
 	//si ni mode été ni mode hiver
 	else{

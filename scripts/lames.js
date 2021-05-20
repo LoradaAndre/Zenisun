@@ -24,7 +24,6 @@ $(document).ready(function (){
         lectureCarte();
         initButtons()
         updateOutputRange();
-        
         synchronisationLames();
         sauvegardeSync()
     }, 1000);
@@ -128,8 +127,8 @@ function sauvegardeSync(){
 }
 
 function updateAllInput(){
-    updateInput(".wrap-lames-1", 1);
-    updateInput(".wrap-lames-2", 2);
+    updateInput(".wrap-lames-1");
+    updateInput(".wrap-lames-2");
 }
 
 function stringToBool(str){
@@ -142,23 +141,25 @@ function stringToBool(str){
     return null
 }
 
-function updateInput(classWrap, motor){
+function updateInput(classWrap){
     let rangeWrap = document.querySelector(classWrap + " .range");
 
     $(rangeWrap).change(function(){
 
-        if(classWrap == ".wrap-lames-1"){
-            let val = parseInt(rangeWrap.value*valueMaxMotor0/100);
-            deplacementLames(1 ,val);
-            if(synchro){
-                deplacementLames(2 ,val);
-            }
-        }
-        else if(classWrap == ".wrap-lames-2"){
-            let val = parseInt(rangeWrap.value*valueMaxMotor1/100);
-            deplacementLames(2 ,val);
-            if(synchro){
+        if(!((monitoring_user_config & 2) || (monitoring_user_config & 4))){
+            if(classWrap == ".wrap-lames-1"){
+                let val = parseInt(rangeWrap.value*valueMaxMotor0/100);
                 deplacementLames(1 ,val);
+                if(synchro){
+                    deplacementLames(2 ,val);
+                }
+            }
+            else if(classWrap == ".wrap-lames-2"){
+                let val = parseInt(rangeWrap.value*valueMaxMotor1/100);
+                deplacementLames(2 ,val);
+                if(synchro){
+                    deplacementLames(1 ,val);
+                }
             }
         }
     });
@@ -207,84 +208,86 @@ function synchronisationLames(){
 
 //Applique le pourcentage des boutons
 $("h3").click(function(){
-    if(this.id == "1-LO1"){
-        deplacementLames(1, 0)
-        if(synchro){
-            deplacementLames(2, 0)
-            $("#2-LO1").attr("check", "true")
-            resetOther("2-LO1");
-        }
-    }
-    if(this.id == "1-LO2"){
-        deplacementLames(1, parseInt(valueMaxMotor0/4));
-        if(synchro){
-            deplacementLames(2, parseInt(valueMaxMotor1/4))
-            $("#2-LO2").attr("check", "true")
-            resetOther("2-LO2");
-        }
-    }
-    if(this.id == "1-LO3"){
-        deplacementLames(1, parseInt(valueMaxMotor0/2))
-        if(synchro){
-            deplacementLames(2, parseInt(valueMaxMotor1/2))
-            $("#2-LO3").attr("check", "true")
-            resetOther("2-LO3");
-        }
-    }
-    if(this.id == "1-LO4"){
-        deplacementLames(1, parseInt(valueMaxMotor0/4*3))
-        if(synchro){
-            deplacementLames(2, parseInt(valueMaxMotor1/4*3))
-            $("#2-LO4").attr("check", "true")
-            resetOther("2-LO4");
-        }
-    }
-    if(this.id == "1-LO5"){
-        deplacementLames(1, valueMaxMotor0)
-        if(synchro){
-            deplacementLames(2, valueMaxMotor1)
-            $("#2-LO5").attr("check", "true")
-            resetOther("2-LO5");
-        }
-    }
-    if(this.id == "2-LO1"){
-        deplacementLames(2, 0)
-        if(synchro){
+    if(!((monitoring_user_config & 2) || (monitoring_user_config & 4))){
+        if(this.id == "1-LO1"){
             deplacementLames(1, 0)
-            $("#1-LO1").attr("check", "true")
-            resetOther("1-LO1");
+            if(synchro){
+                deplacementLames(2, 0)
+                $("#2-LO1").attr("check", "true")
+                resetOther("2-LO1");
+            }
         }
-    }
-    if(this.id == "2-LO2"){
-        deplacementLames(2, parseInt(valueMaxMotor1/4))
-        if(synchro){
-            deplacementLames(1, parseInt(valueMaxMotor0/4))
-            $("#1-LO2").attr("check", "true")
-            resetOther("1-LO2");
+        if(this.id == "1-LO2"){
+            deplacementLames(1, parseInt(valueMaxMotor0/4));
+            if(synchro){
+                deplacementLames(2, parseInt(valueMaxMotor1/4))
+                $("#2-LO2").attr("check", "true")
+                resetOther("2-LO2");
+            }
         }
-    }
-    if(this.id == "2-LO3"){
-        deplacementLames(2, parseInt(valueMaxMotor1/2))
-        if(synchro){
+        if(this.id == "1-LO3"){
             deplacementLames(1, parseInt(valueMaxMotor0/2))
-            $("#1-LO3").attr("check", "true")
-            resetOther("1-LO3");
+            if(synchro){
+                deplacementLames(2, parseInt(valueMaxMotor1/2))
+                $("#2-LO3").attr("check", "true")
+                resetOther("2-LO3");
+            }
         }
-    }
-    if(this.id == "2-LO4"){
-        deplacementLames(2, parseInt(valueMaxMotor1/4*3))
-        if(synchro){
+        if(this.id == "1-LO4"){
             deplacementLames(1, parseInt(valueMaxMotor0/4*3))
-            $("#1-LO4").attr("check", "true")
-            resetOther("1-LO4");
+            if(synchro){
+                deplacementLames(2, parseInt(valueMaxMotor1/4*3))
+                $("#2-LO4").attr("check", "true")
+                resetOther("2-LO4");
+            }
         }
-    }
-    if(this.id == "2-LO5"){
-        deplacementLames(2, valueMaxMotor1)
-        if(synchro){
+        if(this.id == "1-LO5"){
             deplacementLames(1, valueMaxMotor0)
-            $("#1-LO5").attr("check", "true")
-            resetOther("1-LO5");
+            if(synchro){
+                deplacementLames(2, valueMaxMotor1)
+                $("#2-LO5").attr("check", "true")
+                resetOther("2-LO5");
+            }
+        }
+        if(this.id == "2-LO1"){
+            deplacementLames(2, 0)
+            if(synchro){
+                deplacementLames(1, 0)
+                $("#1-LO1").attr("check", "true")
+                resetOther("1-LO1");
+            }
+        }
+        if(this.id == "2-LO2"){
+            deplacementLames(2, parseInt(valueMaxMotor1/4))
+            if(synchro){
+                deplacementLames(1, parseInt(valueMaxMotor0/4))
+                $("#1-LO2").attr("check", "true")
+                resetOther("1-LO2");
+            }
+        }
+        if(this.id == "2-LO3"){
+            deplacementLames(2, parseInt(valueMaxMotor1/2))
+            if(synchro){
+                deplacementLames(1, parseInt(valueMaxMotor0/2))
+                $("#1-LO3").attr("check", "true")
+                resetOther("1-LO3");
+            }
+        }
+        if(this.id == "2-LO4"){
+            deplacementLames(2, parseInt(valueMaxMotor1/4*3))
+            if(synchro){
+                deplacementLames(1, parseInt(valueMaxMotor0/4*3))
+                $("#1-LO4").attr("check", "true")
+                resetOther("1-LO4");
+            }
+        }
+        if(this.id == "2-LO5"){
+            deplacementLames(2, valueMaxMotor1)
+            if(synchro){
+                deplacementLames(1, valueMaxMotor0)
+                $("#1-LO5").attr("check", "true")
+                resetOther("1-LO5");
+            }
         }
     }
 });
@@ -303,28 +306,32 @@ function resetOther(element){
 
 //Requête de déplacement de lame
 function deplacementLames(moteur, valeur){ 
+    console.log(monitoring_user_config)
     $.ajax({
         url: '../cgi/zns.cgi?cmd=m&m=' + moteur + '&p=' + valeur,
         context: document.body
-      }).done(function(data) {
+        }).done(function(data) {
             isConnected(true, data)
-            //Affichage du modal d'avertissement du blocage des lames
-            
-            verificationBlocageSystème()
-      }).fail(function() {
+        }).fail(function() {
             isConnected(false, data)
-      });
+        });
 }
 
-//Affiche une popup de prévention en cas de blocage vent/neige
-function verificationBlocageSystème(){
-    if((monitoring_user_config & 8) && $("#exampleModalCenter").css("display") == "none"){
-        console.log("yep c'est 8");
-        var myModal = new bootstrap.Modal(document.getElementById("exampleModalCenter"), {});
+//Affiche une popup de prévention en cas de blocage vent/neige/hiver/été
+$(".test").click(function(){
+    if(($("#exampleModalCenter1").css("display") == "none") && (monitoring_user_config & 8)){
+        console.log("yep c'est " + monitoring_user_config);
+        var myModal = new bootstrap.Modal(document.getElementById("exampleModalCenter1"), {});
     
         myModal.show();
     }
-}
+    else if(($("#exampleModalCenter2").css("display") == "none") && (monitoring_user_config & 2)){
+        console.log("yep c'est " + monitoring_user_config);
+        var myModal = new bootstrap.Modal(document.getElementById("exampleModalCenter2"), {});
+    
+        myModal.show();
+    }
+});
 //Gestion de l'affichage des blocs selon la config utilisateur
 function gestionAffichageBloc(hwcfg){
     if(hwcfg&1){
