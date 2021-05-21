@@ -15,10 +15,13 @@ let monitoring_user_config;
 let hwcfg;
 let oneTime = false;
 
+let switchSynchro;
+
 $(document).ready(function (){
     $(".test").hide();
     updateAllInput();
     lectureCarte();
+    createSwitch();
 
     setInterval(function(){ 
         lectureCarte();
@@ -113,14 +116,21 @@ function initButtons(){
 
 //Sauvegarde de la synchronisation des lames (local storage)
 function sauvegardeSync(){
-    if(localStorage.getItem("modeSombre") == null){
-        localStorage.setItem("modeSombre", "false");
+    //Si la syncho est pas enregistrée, on enregistre false
+    if(localStorage.getItem("syncLames") == null){
+        localStorage.setItem("syncLames", "false");
         synchro = false;
-    }else{
-        $(".synchro-check .ui-switcher").attr("aria-checked", localStorage.getItem("syncLames"))
-        synchro = stringToBool(localStorage.getItem("syncLames"));
     }
-    $(".synchro-check .ui-switcher").click(function(){
+    //dans le cals ou elle est enregistrée... on assimile le switcher à ce qui est enregistré 
+    synchro = stringToBool(localStorage.getItem("syncLames"));
+    if(synchro){
+        switchSynchro.on();
+    }else{
+        switchSynchro.off();
+    }
+
+    $(".switch").click(function(){
+        console.log($(this).attr("aria-checked"))
         let value = $(this).attr("aria-checked");
         localStorage.setItem("syncLames", value);
         synchro = stringToBool(localStorage.getItem("syncLames"));
@@ -198,7 +208,7 @@ function updateOutputRange(){
 }
 
 function synchronisationLames(){
-    $(".synchro-check .ui-switcher").click(function(){
+    $(".synchro-check .switch").click(function(){
         if($(this).attr("aria-checked") == "false"){
             synchro = false;
         }else{
@@ -407,4 +417,16 @@ function set_user_config( new_config ){
 			isConnected(false, data)
 		});
 	}
+}
+
+function createSwitch(){
+    var el = document.querySelector('.checkbox-switch');
+    switchSynchro = new Switch(el, 
+        {
+            size: 'small',
+            onSwitchColor    : '#52808B', //inter
+            offSwitchColor   : '#bbbfc0',
+            onJackColor      : '#ffffff', //bouboule
+            offJackColor     : '#ffffff'
+        });
 }

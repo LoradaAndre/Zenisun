@@ -29,6 +29,9 @@ let getHourExtinction = true;
 
 let capteurPluie;
 
+let allumageAuto_switch;
+let fermeturePluie_switch;
+
 $(document).ready(function(){
 	$(".btn-h-allumage").hide();
 	$(".btn-h-extinction").hide();
@@ -42,6 +45,9 @@ $(document).ready(function(){
 	//Met à jour les sliders par rapport aux données de la carte
 	updateInputRange();
 
+	//Création des switcher
+	createDoubleSwitch();
+	
 	allumage_auto_horaire()
 	fermeture_pluie()
 	clickGradLed()
@@ -53,6 +59,7 @@ $(document).ready(function(){
         lectureCarte();
         updateOutputRange();
 		affichageGeolocalisation();
+		updateButtons();
     }, 1000);
 });
 
@@ -74,7 +81,6 @@ function lectureCarte(){
 			//configuration utilsateur
 			// monitoring_user_config = parseInt(data.all[30].textContent);
 			monitoring_user_config = parseInt(getElementCarte(data, "user"));
-			updateButtons();
 
 			if(onceIntemp == false && monitoring_user_config != "undefined"){
 				defaultIntemperies()
@@ -332,7 +338,7 @@ function applyOrientationPergola(valeur){
 
 //Off sur le check => met la valeur à 0
 function allumage_auto_horaire(){
-    $(".check-allumage-auto-h .ui-switcher").click(function(){
+    $(".line-allumage-auto .switch").click(function(){
         if($(this).attr("aria-checked") == "false"){
             set_user_config ( monitoring_user_config & ~16 )
 			$(".selection_horaire_auto").hide();
@@ -488,7 +494,7 @@ function applyGradateurLed(idButton){
 
 //Off sur le check => met la valeur à 0
 function fermeture_pluie(){
-    $(".check-fermeture_pluie .ui-switcher").click(function(){
+    $(".line-fermeture-pluie .switch").click(function(){
         if($(this).attr("aria-checked") == "true"){
             set_user_config(monitoring_user_config | 1);	// clr rain mode bit
         }else{
@@ -634,6 +640,33 @@ function applyPeriodSuiviSol(idButton){
 
 // =============================== AUTRE ===============================
 
+//Création des switcher
+function createDoubleSwitch(){
+    let elallumage = document.querySelector('.allumageAuto-check');
+    let elpluie = document.querySelector('.fermeturePluie-check');
+
+	console.log("======================")
+	console.log(elallumage)
+	console.log(elpluie)
+
+	allumageAuto_switch = new Switch(elallumage, 
+        {
+            size: 'small',
+            onSwitchColor    : '#52808B', //inter
+            offSwitchColor   : '#bbbfc0',
+            onJackColor      : '#ffffff', //bouboule
+            offJackColor     : '#ffffff'
+        });
+	fermeturePluie_switch = new Switch(elpluie, 
+        {
+            size: 'small',
+            onSwitchColor    : '#52808B', //inter
+            offSwitchColor   : '#bbbfc0',
+            onJackColor      : '#ffffff', //bouboule
+            offJackColor     : '#ffffff'
+        });
+}
+
 function set_user_config( new_config ){
 	new_config &= 65535;	// bound to 16 bits
 	if ( monitoring_user_config != new_config ){
@@ -679,7 +712,8 @@ function updateButtons(){
 	//si pluie activée
 	if(monitoring_user_config&1){
 		// console.log("pluie activée: " + (monitoring_user_config&1))
-		$(".check-fermeture_pluie .ui-switcher").attr("aria-checked", "true")
+		// $(".check-fermeture_pluie .ui-switcher").attr("aria-checked", "true")
+		fermeturePluie_switch.on()
 	}
 
 	//si le bit suivi solaire est activé (mode été)
@@ -717,10 +751,12 @@ function updateButtons(){
 
 	//si allumage auto horaire
 	if(monitoring_user_config&16){
-		$(".check-allumage-auto-h .ui-switcher").attr("aria-checked", "true")
+		// $(".check-allumage-auto-h .ui-switcher").attr("aria-checked", "true")
+		allumageAuto_switch.on()
 		$(".selection_horaire_auto").show();
 	}else{
-		$(".check-allumage-auto-h .ui-switcher").attr("aria-checked", "false")
+		// $(".check-allumage-auto-h .ui-switcher").attr("aria-checked", "false")
+		allumageAuto_switch.off()
 		$(".selection_horaire_auto").hide();
 	}
 }

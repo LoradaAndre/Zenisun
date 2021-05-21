@@ -19,6 +19,11 @@ let oneTime = false;
 
 let config = 1;
 
+let bb1_switch;
+let bb2_switch;
+let rgb1_switch;
+let rgb2_switch;
+
 function getElementCarte(data, value){
     return $(data).find(value).text();
 }
@@ -85,13 +90,13 @@ function changeValueWithRange(classRange, input){
 
         //Lorsque l'on touche à la barre, automatiquement on active le curseur on/off
         if(classRange == ".wrap-BB-1"){
-            $(".BB1-check .ui-switcher").attr("aria-checked", "true");
+            bb1_switch.on()
         }else if(classRange == ".wrap-BB-2"){
-            $(".BB2-check .ui-switcher").attr("aria-checked", "true");
+            bb2_switch.on()
         }else if(classRange == ".wrap-RGB-1"){
-            $(".RGB1-check .ui-switcher").attr("aria-checked", "true");
+            rgb1_switch.on()
         }else if(classRange == ".wrap-RGB-2"){
-            $(".RGB2-check .ui-switcher").attr("aria-checked", "true");
+            rgb2_switch.on()
         }
 
         let val;
@@ -136,6 +141,7 @@ $(document).ready(function() {
     $(".test").hide();
     lectureCarte();
     updateInputRange();
+    createSwitch()
 
     //Actualisation des informations, refresh
     setInterval(function(){ 
@@ -156,24 +162,25 @@ function defaut(){
     if(bb1Intensite != "undefined" && init == false){
         init = true;
         if(bb1Intensite != 0){
-            $(".BB1-check .ui-switcher").attr("aria-checked", "true");
+            bb1_switch.on()
         }
         if(bb2Intensite != 0){
-            $(".BB2-check .ui-switcher").attr("aria-checked", "true");
+            bb2_switch.on()
         }
         if(RGBIntensite1 != 0){
-            console.log("yep ca rentre")
-            $(".RGB1-check .ui-switcher").attr("aria-checked", "true");
+            rgb1_switch.on()
         }
         if(RGBIntensite2 != 0){
-            $(".RGB2-check .ui-switcher").attr("aria-checked", "true");
+            rgb2_switch.on()
         }
     }
   
 }
 //Off sur le check => met la valeur à 0
 function bandeauOff(classCheck, input){
-    $(classCheck + " .ui-switcher").click(function(){
+    console.log("====== test ========")
+    console.log($(classCheck + " .switch"))
+    $(classCheck + " .switch").click(function(){
         if($(this).attr("aria-checked") == "false"){
             changeValueEclairage(input, 0)
         }
@@ -181,10 +188,10 @@ function bandeauOff(classCheck, input){
 }
 
 function AllbandeauOff(){
-    bandeauOff(".RGB1-check", 16);
-    bandeauOff(".RGB2-check", 32);
-    bandeauOff(".BB1-check", 64);
-    bandeauOff(".BB2-check", 128);
+    bandeauOff(".bloc_RGB1", 16);
+    bandeauOff(".bloc_RGB2", 32);
+    bandeauOff(".bloc_BB1", 64);
+    bandeauOff(".bloc_BB2", 128);
 }
 
 //Récupère et converti l'intensité (0 à 255) en pourcentage
@@ -266,4 +273,45 @@ function gestionAffichageBloc(hwcfg){
         $(".bloc_RGB2").show();
         $(".bloc_Colorisation").show();
     }
+}
+
+//Création des switcher
+function createSwitch(){
+    let el1 = document.querySelector('.BB1-check');
+    let el2 = document.querySelector('.BB2-check');
+    let el3 = document.querySelector('.RGB1-check');
+    let el4 = document.querySelector('.RGB2-check');
+
+    bb1_switch = new Switch(el1, 
+        {
+            size: 'small',
+            onSwitchColor    : '#52808B', //inter
+            offSwitchColor   : '#bbbfc0',
+            onJackColor      : '#ffffff', //bouboule
+            offJackColor     : '#ffffff'
+        });
+    bb2_switch = new Switch(el2, 
+        {
+            size: 'small',
+            onSwitchColor    : '#52808B', //inter
+            offSwitchColor   : '#bbbfc0',
+            onJackColor      : '#ffffff', //bouboule
+            offJackColor     : '#ffffff'
+        });
+    rgb1_switch = new Switch(el3, 
+        {
+            size: 'small',
+            onSwitchColor    : '#52808B', //inter
+            offSwitchColor   : '#bbbfc0',
+            onJackColor      : '#ffffff', //bouboule
+            offJackColor     : '#ffffff'
+        });
+    rgb2_switch = new Switch(el4, 
+        {
+            size: 'small',
+            onSwitchColor    : '#52808B', //inter
+            offSwitchColor   : '#bbbfc0',
+            onJackColor      : '#ffffff', //bouboule
+            offJackColor     : '#ffffff'
+        });
 }

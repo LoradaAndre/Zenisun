@@ -1,5 +1,6 @@
 /* ========================== FOR SWITCHER ========================== */
-$.switcher();
+// $.switcher();
+let theme_switch;
 let themeSombreActif = 'false';
 
 
@@ -33,7 +34,14 @@ let colorStationMeteoTitleS = "#85C8C4"; //#85C8C4
 
 
 $(document).ready(function(){
+    createSwitchTheme()
     refreshAffichage("not ok")
+
+    //mettre le thème à jour au changement du switcher
+    $('.line-check-theme .switch').click(function(){ 
+        console.log("oui j'ai cliqué sur celui de thème")
+        refreshAffichage("ok");
+    });
 });
 
 function themeClair(){
@@ -89,10 +97,6 @@ function themeSombre(){
     $(".station_meteo_widget img").attr('src', "resources/icons/widgets_dark");
 }
 
-$('#switcher_theme').click(function(){
-    refreshAffichage("ok");
-});
-
 function getThemeEnregistre(){
        return localStorage.getItem("modeSombre");
 }
@@ -103,13 +107,16 @@ function enregistrer(){
     
 }
 
-function refreshAffichage(stringue){
-    let onofftheme = ($('.checkIci .ui-switcher').attr('aria-checked'))
+function refreshAffichage(value){
+    let onofftheme = ($('.line-check-theme .switch').attr('aria-checked'))
+    console.log(onofftheme)
    
     //On récupère la valeur par défaut si le local storag est inexistant
     if(localStorage.getItem("modeSombre") == null){
+        //On balance false dans le local storage
         localStorage.setItem("modeSombre",themeSombreActif)
         console.log("et la si défini: " + localStorage.getItem("modeSombre"))
+        //On affiche le theme selon ce qui est enregistré
         afficheTheme(getThemeEnregistre());
     }
    
@@ -117,15 +124,26 @@ function refreshAffichage(stringue){
         afficheTheme(getThemeEnregistre());
         
     }
-    if(stringue === "ok"){
+    if(value === "ok"){
+        console.log("thèmesombre: " + onofftheme)
         afficheTheme(onofftheme);
     }
+    //sinon on affiche le thème selon ce qui est enregistré
     else{
         afficheTheme(getThemeEnregistre());
-        $('.checkIci .ui-switcher').attr('aria-checked', getThemeEnregistre())
+        //met a jour le switcher selon le thème enregistré
+        let check = document.querySelector('.theme-check')
+        if(check != undefined){
+            if(getThemeEnregistre() == "true"){
+                theme_switch.on();
+            }else{
+                theme_switch.off();
+            }
+        }
     }
 }
 
+//application du thème selon l'argument
 function afficheTheme(themeSombreAc){
     themeSombreAc = themeSombreAc.toString();
 
@@ -144,6 +162,18 @@ function afficheTheme(themeSombreAc){
     }
 }
 
-$(".coucou").click(function(){
-    refreshAffichage("not ok");
-});
+// $(".coucou").click(function(){
+//     refreshAffichage("not ok");
+// });
+
+function createSwitchTheme(){
+    let eltheme = document.querySelector('.theme-check');
+    theme_switch = new Switch(eltheme, 
+        {
+            size: 'small',
+            onSwitchColor    : '#52808B', //inter
+            offSwitchColor   : '#bbbfc0',
+            onJackColor      : '#ffffff', //bouboule
+            offJackColor     : '#ffffff'
+        });
+}

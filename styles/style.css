@@ -267,7 +267,12 @@ aside p {
 
 /* ========================== SWITCHER (ON/OFF) ========================== */
 
-.ui-switcher {
+
+.switch{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+/* .ui-switcher {
     background-color: #bdc1c2;
     display: inline-block;
     height: 20px;
@@ -310,7 +315,7 @@ aside p {
 
   .form-check{
       min-height: 0;
-  }
+  } */
  
   /* ========================== RANGE SLIDER ========================== */
   .value-range-wrap{

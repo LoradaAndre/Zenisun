@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/navbar.css">
         <link rel="stylesheet" href="../styles/parametres.css">
-        <link rel="stylesheet" href="../libs/onoff/css/switcher.css">
+        <link rel="stylesheet" href="../libs/toggle/dist/switch.css" />
         <link rel="stylesheet" href="../libs/rangeslider/css/rSlider.min.css">
         <link rel="stylesheet" href="../responsive/responsive.css">
     </head>
@@ -167,11 +167,9 @@
                         <div class="hr"></div>
                         <div class="contenant">
                             <!-- ============== allumage auto horaire ==============-->
-                            <div class="line-check">
+                            <div class="line-check line-allumage-auto">
                                 <h2>Allumage automatique sur horaire</h2>
-                                <div class="form-check form-check-inline check-allumage-auto-h">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
-                                </div>
+                                <input type="checkbox" class="checkbox-switch allumageAuto-check" />
                             </div>
                             <!-- ============== optn: allumage auto horaire ==============-->
                             <div class="selection_horaire_auto">
@@ -235,11 +233,9 @@
                         <div class="contenant">
                             <!-- ============== fermeture pluie ==============-->
                             <div class="bloc">
-                                <div class="line-check">
+                                <div class="line-check line-fermeture-pluie">
                                     <h2>Fermeture en cas de pluie</h2>
-                                    <div class="form-check form-check-inline check-fermeture_pluie">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1">
-                                    </div>
+                                    <input type="checkbox" class="checkbox-switch fermeturePluie-check" />
                                 </div>
                             </div>
                             <!-- ============== intempéries ==============-->
@@ -293,11 +289,9 @@
                         <h1>Apparence</h1>
                         <div class="hr"></div>
                         <div class="contenant">
-                            <div class="line-check">
+                            <div class="line-check line-check-theme">
                                 <h2>Thème sombre</h2>
-                                <div class="form-check form-check-inline checkIci">
-                                <input class="form-check-input" type="checkbox" id="switcher_theme">
-                                </div>
+                                <input type="checkbox" class="checkbox-switch theme-check" />
                             </div>
                         </div>
                     </div>
@@ -359,7 +353,7 @@
         <!-- ============================================== scripts ============================================== -->
         <script src="../libs/jquery/jquery-3.5.1.js"></script>
         <script src="../libs/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="../libs/onoff/js/jquery.switcher.js"></script>
+        <script src="../libs/toggle/dist/switch.js"></script>
         <script src="../libs/rangeslider/js/rSlider.min.js"></script>
         <script src="../scripts/script.js"></script>
         <script src="../scripts/parametres.js"></script>
