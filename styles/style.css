@@ -59,13 +59,27 @@ main{
     display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
     justify-content: center;
 }
-.test{
+.test, .bouton_sauvegarde_eclairage{
     margin: 5px;
     margin-bottom: 10px;
     border-radius: 3px;
     padding: 10px;
     
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.10);
+}
+
+/* .bouton_sauvegarde_eclairage{
+    box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 10px;
+    margin: 5px 5px 10px;
+    border-radius: 3px;
+    padding: 10px;
+} */
+
+.bouton_sauvegarde_eclairage{
+    background-color:#52808B;
+    cursor: pointer;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 
 .flex-right , .flex-left{

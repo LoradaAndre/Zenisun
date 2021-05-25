@@ -17,12 +17,14 @@ let BColor;
 let init = false;
 let oneTime = false;
 
-let config = 1;
+let goSansAttente = true;
 
 let bb1_switch;
 let bb2_switch;
 let rgb1_switch;
 let rgb2_switch;
+
+let sauvegarde_eclairage;	// memory for 8 light pwm : PWM[4 .. 11] = dummy, dymmy, White1, white2, Red, green, blue, RVB dimming.
 
 function getElementCarte(data, value){
     return $(data).find(value).text();
@@ -62,6 +64,8 @@ function lectureCarte(){
             GColor = getColor(getElementCarte(data, "gpo9"));
             // BColor = getColor(data, 18); //18: <GPO 10>
             BColor = getColor(getElementCarte(data, "gpo10"));
+
+            getSavedMemoryLight(data)
 
       }).fail(function() {
             isConnected(false, data)
@@ -138,7 +142,7 @@ function updateOutputRange(){
 }
 
 $(document).ready(function() {
-    $(".test").hide();
+    // $(".test").hide();
     lectureCarte();
     updateInputRange();
     createSwitch()
@@ -148,6 +152,7 @@ $(document).ready(function() {
         lectureCarte();
         updateOutputRange();
         defaut();
+        AllEventSwitch();
     }, 1000);
 
     //Changer couleur selon la roue chromatique
@@ -155,7 +160,6 @@ $(document).ready(function() {
         changeColor(color);
         updateOutputRange();
     });
-    AllbandeauOff()
 });
 
 function defaut(){
@@ -177,21 +181,41 @@ function defaut(){
   
 }
 //Off sur le check => met la valeur à 0
-function bandeauOff(classCheck, input){
-    console.log("====== test ========")
-    console.log($(classCheck + " .switch"))
+function eventSwitch(classCheck, input, value){
     $(classCheck + " .switch").click(function(){
-        if($(this).attr("aria-checked") == "false"){
-            changeValueEclairage(input, 0)
+        console.log("cliqué")
+        if(goSansAttente){
+            goSansAttente = false;
+            if($(this).attr("aria-checked") == "false"){
+                changeValueEclairage(input, 0)
+            }else{
+                console.log("rentré 1")
+                changeValueEclairage(input, value)
+
+                if(classCheck == ".bloc_RGB1" || classCheck == ".bloc_RGB1"){
+                    console.log("yep")
+
+                    //application du RGB
+                    changeValueEclairage(256, sauvegarde_eclairage[4]);
+                    changeValueEclairage(512, sauvegarde_eclairage[5]);
+                    changeValueEclairage(1024, sauvegarde_eclairage[6]);
+
+                    //activation des bandeaux rgb
+                    changeValueEclairage(2048, sauvegarde_eclairage[7]);
+                }else{
+                    console.log("nope")
+                }
+            }
         }
     });
 }
 
-function AllbandeauOff(){
-    bandeauOff(".bloc_RGB1", 16);
-    bandeauOff(".bloc_RGB2", 32);
-    bandeauOff(".bloc_BB1", 64);
-    bandeauOff(".bloc_BB2", 128);
+function AllEventSwitch(){
+    eventSwitch(".bloc_RGB1", 16, sauvegarde_eclairage[7]);
+    eventSwitch(".bloc_RGB2", 32, sauvegarde_eclairage[7]);
+
+    eventSwitch(".bloc_BB1", 64, sauvegarde_eclairage[2]);
+    eventSwitch(".bloc_BB2", 128, sauvegarde_eclairage[3]);
 }
 
 //Récupère et converti l'intensité (0 à 255) en pourcentage
@@ -237,12 +261,14 @@ function changeValueEclairage(ruban, valeur){
         context: document.body
       }).done(function(data) {
           isConnected(true,data);
+          setTimeout(function(){
+            goSansAttente = true;
+          })
       }).fail(function() {
             isConnected(false, data)
       });
 }
 
-//
 function changeColor(color){
     let hexR = color.substring(1,3);
     let hexG = color.substring(3,5);
@@ -314,4 +340,29 @@ function createSwitch(){
             onJackColor      : '#ffffff', //bouboule
             offJackColor     : '#ffffff'
         });
+}
+
+//récupérer les éléments sauvegardés
+function getSavedMemoryLight(data){
+    let mem0pack = getElementCarte(data, 'mem0');
+	sauvegarde_eclairage = mem0pack.split(";");	// split 8 mem values
+    console.log(sauvegarde_eclairage)
+}
+
+//Sauvegarde de la configuration d'éclairage
+$(".bouton_sauvegarde_eclairage").click(function(){
+    saveLightMemory();
+});
+
+//Requete sauvegarde de la configuration d'éclairage
+function saveLightMemory(){
+    console.log("rentré")
+	let command = '../cgi/zns.cgi?cmd=u&p=8&v=1';
+	$.ajax({
+	  url: command,	
+	  context: document.body
+	}).done(function(data) {
+		alert("Cette configuration d'éclairage sera utilisée pour les allumages automatique")
+	}).fail(function() {
+	});
 }
