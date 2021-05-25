@@ -349,7 +349,7 @@ aside p {
   .range-wrap {
     position: relative;
     margin: auto;
-    padding: 1.5em 0; /*  Giving more room for hover  */
+    padding: 1.2em 0; /*  Giving more room for hover  */
     max-width: 400px;
   }
   

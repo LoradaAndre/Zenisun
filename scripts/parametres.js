@@ -123,6 +123,8 @@ function lectureCarte(){
 			//seuil de fermeture nuit
 			// sun_elev_close = parseInt(data.all[15].textContent);
 			sun_elev_close = parseInt(getElementCarte(data, "sun_elev_close"))
+			$(".value_fermeture_nuit").text(sun_elev_close + "°")
+
 
 			//gradateur LED
 			// vitesseGradLed = parseInt(data.all[16].textContent);
