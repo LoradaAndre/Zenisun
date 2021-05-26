@@ -24,6 +24,8 @@ let bb2_switch;
 let rgb1_switch;
 let rgb2_switch;
 
+let allLight_switch;
+
 let sauvegarde_eclairage;	// memory for 8 light pwm : PWM[4 .. 11] = dummy, dymmy, White1, white2, Red, green, blue, RVB dimming.
 
 function getElementCarte(data, value){
@@ -164,18 +166,26 @@ $(document).ready(function() {
 
 function defaut(){
     if(bb1Intensite != "undefined" && init == false){
-        init = true;
+        // init = true;
         if(bb1Intensite != 0){
             bb1_switch.on()
+        }else{
+            bb1_switch.off()
         }
         if(bb2Intensite != 0){
             bb2_switch.on()
+        }else{
+            bb2_switch.off()
         }
         if(RGBIntensite1 != 0){
             rgb1_switch.on()
+        }else{
+            rgb1_switch.off()
         }
         if(RGBIntensite2 != 0){
             rgb2_switch.on()
+        }else{
+            rgb2_switch.off()
         }
     }
   
@@ -184,7 +194,7 @@ function defaut(){
 function eventSwitch(classCheck, input, value){
     $(classCheck + " .switch").click(function(){
         console.log("cliqué")
-        if(goSansAttente){
+        if(goSansAttente && classCheck != ".allumage_lumiere"){
             goSansAttente = false;
             if($(this).attr("aria-checked") == "false"){
                 changeValueEclairage(input, 0)
@@ -206,6 +216,24 @@ function eventSwitch(classCheck, input, value){
                     console.log("nope")
                 }
             }
+        }else if(goSansAttente && classCheck == ".allumage_lumiere"){
+            console.log("youp dedans")
+            goSansAttente = false;
+            if($(this).attr("aria-checked") == "false"){
+                changeValueEclairage(2032, 0)
+            }else{
+                changeValueEclairage(2048, sauvegarde_eclairage[7]);
+
+                changeValueEclairage(16, sauvegarde_eclairage[7])
+                changeValueEclairage(32, sauvegarde_eclairage[7])
+                changeValueEclairage(64, sauvegarde_eclairage[2])
+                changeValueEclairage(128, sauvegarde_eclairage[3])
+
+                //application du RGB
+                changeValueEclairage(256, sauvegarde_eclairage[4]);
+                changeValueEclairage(512, sauvegarde_eclairage[5]);
+                changeValueEclairage(1024, sauvegarde_eclairage[6]);
+            }
         }
     });
 }
@@ -216,6 +244,8 @@ function AllEventSwitch(){
 
     eventSwitch(".bloc_BB1", 64, sauvegarde_eclairage[2]);
     eventSwitch(".bloc_BB2", 128, sauvegarde_eclairage[3]);
+
+    eventSwitch(".allumage_lumiere", 2032)
 }
 
 //Récupère et converti l'intensité (0 à 255) en pourcentage
@@ -308,6 +338,8 @@ function createSwitch(){
     let el3 = document.querySelector('.RGB1-check');
     let el4 = document.querySelector('.RGB2-check');
 
+    let el5 = document.querySelector(".allLight-check");
+
     bb1_switch = new Switch(el1, 
         {
             size: 'small',
@@ -333,6 +365,15 @@ function createSwitch(){
             offJackColor     : '#ffffff'
         });
     rgb2_switch = new Switch(el4, 
+        {
+            size: 'small',
+            onSwitchColor    : '#52808B', //inter
+            offSwitchColor   : '#bbbfc0',
+            onJackColor      : '#ffffff', //bouboule
+            offJackColor     : '#ffffff'
+        });
+
+    allLight_switch = new Switch(el5, 
         {
             size: 'small',
             onSwitchColor    : '#52808B', //inter
