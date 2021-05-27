@@ -144,7 +144,8 @@ function updateOutputRange(){
 }
 
 $(document).ready(function() {
-    // $(".test").hide();
+    $(".test").hide();
+    $(".allumage_lumiere").show();
     lectureCarte();
     updateInputRange();
     createSwitch()
@@ -153,8 +154,11 @@ $(document).ready(function() {
     setInterval(function(){ 
         lectureCarte();
         updateOutputRange();
-        defaut();
         AllEventSwitch();
+    }, 500);
+
+    setInterval(() => {
+        defaut();
     }, 1000);
 
     //Changer couleur selon la roue chromatique

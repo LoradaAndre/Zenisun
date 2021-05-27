@@ -59,7 +59,7 @@ main{
     display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
     justify-content: center;
 }
-.test, .bouton_sauvegarde_eclairage{
+.test, .bouton_sauvegarde_eclairage, .ambiance{
     margin: 5px;
     margin-bottom: 10px;
     border-radius: 3px;
@@ -74,6 +74,13 @@ main{
     border-radius: 3px;
     padding: 10px;
 } */
+
+.ambiance{
+    cursor: pointer;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 
 .bouton_sauvegarde_eclairage{
     background-color:#52808B;
