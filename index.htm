@@ -67,7 +67,7 @@
                                     <img src="resources/icons/widgets_light/lamp.png" alt="image de test">
                                 </div>
                             </div>
-                        <h1>Éclairage</h1>
+                        <h1 id="titreWidgetEclairage">...</h1>
                     </div>  
                 </a>
 
@@ -82,7 +82,7 @@
                                 <canvas class="round2 L2-canvas" value="100" data-color="#4795D5" colorBar="#448DC9" id="clair"></canvas>
                             </div>
                         </div>
-                        <h1>Lames orientables</h1>
+                        <h1 id="titreWidgetLames">...</h1>
                     </div>
                 </a>
                     
@@ -94,7 +94,7 @@
                                 <img src="resources/icons/widgets_light/wifi.png" alt="image de test">
                             </div>
                         </div>
-                        <h1>Configuration wifi</h1>
+                        <h1 id="titreWidgetWifi">....</h1>
                     </div>
                 </a>
 
@@ -106,7 +106,7 @@
                                 <img src="resources/icons/widgets_light/book.png" alt="image de test">
                             </div>
                         </div>
-                        <h1>Guide d'utilisation</h1>
+                        <h1 id="titreWidgetGuide">...</h1>
                     </div>
                 </a>
 
@@ -118,7 +118,7 @@
                                 <img src="resources/icons/widgets_light/settings.png" alt="image de test">
                             </div>
                         </div>
-                        <h1>Paramètres</h1>
+                        <h1 id="titreWidgetParametres">...</h1>
                     </div>
                 </a>
                 
@@ -146,13 +146,13 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                            <p>Mail: info@zenisun.fr</p>
-                            <p>Tel: +33 (0)4 28 04 42 08</p>
-                            <p>Site web: <a href="www.zenisun.fr">www.zenisun.fr</a></p>
-                            <p>Adresse: 10 Rue de l'Industrie, 42240 Unieux</p>
+                            <p id="mailContact">Mail: info@zenisun.fr</p>
+                            <p id="telContact">Tel: +33 (0)4 28 04 42 08</p>
+                            <p id="webContact">Site web: <a href="www.zenisun.fr"> www.zenisun.fr</a></p>
+                            <p id="adresseContact">Adresse: 10 Rue de l'Industrie, 42240 Unieux</p>
                     </div>
                     <div class="modal-footer">
-                        <p>Logiciel version V1.20A</p> 
+                        <p id="versionContact">Logiciel version V2.0B</p> 
                     </div>
                 </div>
             </div>
@@ -160,6 +160,7 @@
             
         <!-- ============================================== scripts ============================================== -->
         <script src="libs/jquery/jquery-3.5.1.js"></script>
+        <script src="lang/lang.js"></script>
         <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="libs/toggle/dist/switch.js"></script>
         <script src="libs/circleCanvas/scriptCircleCanvas.js"></script>

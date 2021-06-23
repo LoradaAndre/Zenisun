@@ -24,6 +24,21 @@
     text-align: center;
 }
 
+.drapeauLangue{
+    display: flex;
+}
+
+.drapeauLangue > img{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.drapeauLangue > img:hover{
+    box-shadow: 0px 0px 15px 0px rgba(255,255,255,0.5);
+}
+
+
+
 .list_of_buttons_saison, .list_of_buttons_intemperies{
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */ 
     display: -ms-flexbox; /* TWEENER - IE 10 */ 

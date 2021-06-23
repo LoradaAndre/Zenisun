@@ -11,6 +11,8 @@ let capteurPluie;
 
 let hwcfg;
 
+let fr_lang;
+
 function getElementCarte(data, value){
     return $(data).find(value).text();
 }

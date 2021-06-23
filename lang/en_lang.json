@@ -1,0 +1,221 @@
+{
+    "general" :
+        {
+            "navigation" :
+                {
+                    "eclairageTitle" : "Lighting",
+                    "lamesTitle" : "Rotating slats",
+                    "ConfigWifiTitle" : "Wifi configuration",
+                    "GuideTitle" : "Using manual",
+                    "ParaTitle" : "Settings"
+                },
+
+            "connexionOn" : "connected",
+            "connexionOff" : "disconnected",
+            "connexionEnCours" : "connection..."
+        },
+    "pageAccueil" :
+        {
+            "widgets" : 
+                {
+                    "eclairageTitle" : "Lighting",
+                    "lamesTitle" : "Rotating slats",
+                    "ConfigWifiTitle" : "Wifi configuration",
+                    "GuideTitle" : "Using manual",
+                    "ParaTitle" : "Settings"
+                },
+            "meteo" : 
+                {
+                    "defaultMeteo" : "Clear weather",
+                    "leveeSoleil" : "Dawn",
+                    "coucherSoleil" : "Dusk",
+
+                    "vent" : "Wind",
+                    "neige" : "Snow",
+                    "pluie" : "Rain",
+
+                    "nuit" : "Night",
+                    "modeEte" : "Summer mode",
+                    "modeHiver" : "Winter mode"
+                },
+            "dateMeteo" : {
+                    "joursLettres" : ["Sunday", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+                    "moisLettres" : ["January","February","March","April","May","June","July","August","September","October","November","December"]
+                },
+            "popupContact" :
+                {
+                    "titre" : "Contact Zenisun",
+                    "mail" : "Mail: info@zenisun.fr",
+                    "tel" : "Phone: +33 (0)4 28 04 42 08",
+                    "web" : "Website: www.zenisun.fr",
+                    "adress" : "Adress: 10 Rue de l'Industrie, 42240 Unieux",
+                    "version" : "Software version V1.20A"
+                }
+        },
+    "pageEclairage" :
+        {
+            "BB1" : "White strip n°1",
+            "BB2" : "White strip n°2",
+            "RGB1" : "RGB strip n°1",
+            "RGB2" : "RGB strip n°2",
+            "allLumieres" : "Switching on the lights",
+            "colorisationWidget" :
+                {
+                    "titre" : "Colorisation",
+                    "réglageRVB" : "RGB settings",
+                    "roueChroma" : "Color wheel",
+                    "R" : "Red",
+                    "G" : "Green",
+                    "B" : "Blue"
+                },
+            "ambiance" :
+                {
+                    "calme" : "Calm",
+                    "confort" : "Cosiness",
+                    "sérénité" : "Serenity",
+                    "detente" : "Relaxation",
+                    "cocktail" : "Cocktail",
+                    "concentration" : "Concentration",
+                    "eveillé" : "Awake",
+                    "inspiration" : "Inspiration",
+                    "motivation" : "Motivation"
+                },
+            "mémoriserConfig" : "Save the lighting configuration",
+            "popup" : "This lighting configuration will be used for automatic ignitions."
+        },
+    "pageLames" :
+        {
+            "M1" : "Rotating slats motor n°1",
+            "M2" : "Rotating slats motor n°2",
+            "sync" : "Automatic synchronization",
+            "saisonnier" :
+                {
+                    "modeSaisonnier" : "Seasonal mode",
+                    "manuel" : "Manual mode",
+                    "ete" : "Summer mode",
+                    "hiver" : "Winter mode"
+                }
+        },
+    "pageWifi" :
+        {
+            "detectionWifi" : "Detect wifi networks"
+        },
+    "pageGuide" :
+        {
+            "insctruction" : "Instructions",
+            "casIntemperie" :
+                {
+                    "title" : "In bad weather",
+                    "subtitle1" : "In case of snow :",
+                    "para1" : "Lorsque de la neige est à prévoir, veuillez mettre votre pergola en mode neige dans les paramètres, rubrique intempéries. Les lames s’orienteront à la verticale et se bloqueront (jusqu'a désactivation du mode neige). Ce dispositif permet d'éviter l’accumulation de la neige sur les lames de votre pergola, et ainsi les tordre sous l’effet du poids de la neige.",
+                    "subtitle2" : "In case of wind :",
+                    "para2" : "Lorsque du vent est à prévoir, veuillez mettre votre pergola en mode vent dans les paramètres, rubrique intempéries. Les lames se refermeront et se bloqueront (jusqu'a désactivation du mode vent). Ce dispositif permet d'éviter que les lames de votre pergola soient abimées ou déréglées."
+                },
+            "entretienPergola" :
+                {
+                    "title" : "Maintenance of the bioclimatic pergola",
+                    "para1" : "Nettoyer la structure en aluminium deux fois par an s’avère idéal. Par manque de temps, vous pouvez procéder uniquement à chaque printemps d’un bon nettoyage. Afin d’enlever les salissures, la poussière et les traces éventuelles de pollen, utilisez simplement de l’eau savonneuse avec une éponge non abrasive ou un chiffon doux. Rincez ensuite à l’eau claire et sécher votre pergola, à l’aide d’une lingette microfibre ou d’un chiffon.",
+                    "para2" : "Ne pas utiliser un jet à trop haute pression. Ne pas utiliser de diluants tels qu’Acétone ou Trichloréthylène, l’eau de Javel ainsi que les produits à base de poudre abrasive.",
+                    "para3" : "Vérifier régulièrement l’encombrement des chéneaux (feuilles mortes, brindilles…), surtout en période automnale et hivernale. Déboucher et nettoyer les trous d’évacuation des eaux pluviales en cas d’obstruction. (Minimum 2 fois par an)",
+                    "para4" : "Ne pas réaliser de travaux de soudure, meulage et tronçonnage métallique à proximité des structures (risque important de dégradation des profils).",
+                    "para5" : "Les optiques des spots et des appliques, ainsi que les bandeaux de leds peuvent être nettoyées à l’aide d’un linge ou d’une lingette légèrement humide.",
+                    "para6" : "Ne pas asperger de liquide directement sur les optiques de spots ou des appliques."
+                },
+            "manipElevationSolaire" :
+                {
+                    "title" : "Setting up the solar elevation",          
+                    "subtitle1" : "Définir la position du moteur dans votre pergola.",
+                    "para1" : "Etape 1: Positionnez-vous à l’extérieur de la pergola, les lames alignées devant vous.",
+                    "para2" : "Etape 2: Ouvrez vos lames. Si la rotation des lames s’effectuent dans le sens anti-horaire, alors le moteur se situe dans le poteau juste à votre gauche, sinon il se situe dans le fond de votre pergola, à droite.",
+                    "subtitle2" : "Définir l’orientation de votre pergola",
+                    "para3" : "Positionnez-vous sous votre pergola, les épaules parallèles au lames, le moteur à votre droite. La direction vers laquelle vous regardez, correspond à l’orientation de votre pergola. Si vous ne connaissez pas la direction que vous regardez, utiliser une boussole sur votre téléphone."
+                }
+        },
+    "pageParametre" :
+        {
+            "blocGeneraux" :
+                {
+                    "title" : "General settings",
+                    "date" : "Date",
+                    "heure" : "Hour",
+                    "langue" : "Language",
+                    "homing" : "Manual homing",
+                    "boutonHoming" : "Perform a homing",
+                    "geolocalisation" : "Geolocation",
+                    "positionnement" : "Positioning:",
+                    "boutonEnregistrer" : "Record",
+                    "lat" : "Latitude",
+                    "lon" : "Longitude",
+                    "n" : "North",
+                    "s" : "South",
+                    "e" : "East",
+                    "o" : "West",
+                    "orientation" : "Orientation",
+                    "nne" : "North-north-east",
+                    "ne" : "Northeast",
+                    "ene" : "East-northeast",
+                    "ese" : "East-south-east",
+                    "se" : "South-east",
+                    "sse" : "South-southeast",
+                    "sso" : "South-southwest",
+                    "so" : "South-west",
+                    "oso" : "West-southwest",
+                    "ono" : "West-north-west",
+                    "no" : "North-west",
+                    "nno" : "North-north-west"
+                },
+            "blocEclairage" :
+                {
+                    "title" : "Lighting",
+                    "allAuto" : "Automatic ignition on time",
+                    "heureDemarage" : "Start time",
+                    "heureExtinction" : "End time",
+                    "modifier" : "Edit",
+                    "appliquer" : "Apply", 
+                    "annuler" : "Cancel",
+                    "vitesseLed" : "LED dimmer speed",
+                    "instant" : "Instant",
+                    "seconde1" : "1 second",
+                    "seconde2" : "2 seconds",
+                    "seconde4" : "4 seconds"
+                },
+            "blocEnvironnement" :
+                {
+                    "title" : "Environment",
+                    "fermeturePluie" : "Closing in case of rain",
+                    "intemperies" : "Weather conditions",
+                    "desactive" : "Disabled",
+                    "blocageVent" : "Blocking in windy",
+                    "blocageNeige" : "Blocking in snow",
+                    "modeSaisonnier" : "Seasonal mode",
+                    "manuel" : "Manual mode",
+                    "ete" : "Summer mode",
+                    "hiver" : "Winter mode",
+                    "suiviSol" : "Période d'actualisation de suivi solaire",
+                    "min1" : "1 min",
+                    "min5" : "5 min",
+                    "min15" : "15 min",
+                    "min30" : "30 min",
+                    "min60" : "60 min",
+                    "fermetureNuit" : "Seuil de fermeture nuit (degré élévation solaire)"
+                },
+            "blocApparence" :
+                {
+                    "title" : "Appearance ",
+                    "themeSombre" : "Dark theme"
+                },
+            "blocMaintenance" :
+                {
+                    "title" : "Maintenance",
+                    "debug" : "Debug", 
+                    "reglageFab" : "Manufacturer settings"
+                },
+            "blocMaj" :
+                {
+                    "title" : "Software update",
+                    "choisirFichier" : "Choose a file",
+                    "pasDeFichier" : "No files selected",
+                    "installer" : "Install"
+                }
+        }
+}

@@ -27,7 +27,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/lamp.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Éclairage</div>
+                    <div id="navEclairage" class="nom_widget">Éclairage</div>
                 </a>
             </div>
         
@@ -36,7 +36,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/lames_prov.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Lames orientables</div>
+                    <div id="navLames" class="nom_widget">Lames orientables</div>
                 </a>
             </div>
         
@@ -45,7 +45,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/wifi.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Configuration wifi</div>
+                    <div id="navWifi" class="nom_widget">Configuration wifi</div>
                 </a>
             </div>
         
@@ -64,7 +64,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/book.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Guide d'utilisation</div>
+                    <div id="navGuide" class="nom_widget">Guide d'utilisation</div>
                 </a>
             </div>
         
@@ -73,7 +73,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/settings.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Paramètres</div>
+                    <div id="navParametres" class="nom_widget">Paramètres</div>
                 </a>
             </div>
         </div>
@@ -84,29 +84,29 @@
                 <div class="flex-right">
 
                     <div class="test">
-                        <h1>En cas d’intempéries</h1>
+                        <h1 id="titreIntemp">En cas d’intempéries</h1>
                         <hr>
-                        <h2>En cas de neige :</h2>
-                        <p>Lorsque de la neige est à prévoir, veuillez mettre votre pergola en <strong>mode neige</strong> dans les paramètres, rubrique intempéries.
+                        <h2 id="sousTitreIntemp1">En cas de neige :</h2>
+                        <p id="textIntemp1">Lorsque de la neige est à prévoir, veuillez mettre votre pergola en <strong>mode neige</strong> dans les paramètres, rubrique intempéries.
                             Les lames s’orienteront à la verticale et se bloqueront (jusqu'a désactivation du mode neige). Ce dispositif permet d'éviter l’accumulation de la neige sur les lames de votre pergola, et ainsi les
                             tordre sous l’effet du poids de la neige.
                         </p>
-                        <h2>En cas de vent :</h2>
-                        <p>Lorsque du vent est à prévoir, veuillez mettre votre pergola en <strong>mode vent</strong> dans les paramètres, rubrique intempéries.
+                        <h2 id="sousTitreIntemp2">En cas de vent :</h2>
+                        <p id="textIntemp2">Lorsque du vent est à prévoir, veuillez mettre votre pergola en <strong>mode vent</strong> dans les paramètres, rubrique intempéries.
                             Les lames se refermeront et se bloqueront (jusqu'a désactivation du mode vent). Ce dispositif permet d'éviter que les lames de votre pergola soient abimées ou déréglées.
                         </p>
                     </div>
 
                     <div class="test">
-                        <h1>Mise en place de l’élévation solaire</h1>
+                        <h1 id="titreElevSol">Mise en place de l’élévation solaire</h1>
                         <hr>
-                        <h2>Définir la position du moteur dans votre pergola.</h2>
-                        <p>Etape 1: Positionnez-vous à l’extérieur de la pergola, les lames alignées devant vous.</p>
-                        <p>Etape 2: Ouvrez vos lames.  Si la rotation des lames s’effectuent dans le sens anti-horaire,
+                        <h2 id="sousTitreElevSol1">Définir la position du moteur dans votre pergola.</h2>
+                        <p id="textElevSol1">Etape 1: Positionnez-vous à l’extérieur de la pergola, les lames alignées devant vous.</p>
+                        <p id="textElevSol2">Etape 2: Ouvrez vos lames.  Si la rotation des lames s’effectuent dans le sens anti-horaire,
                              alors le moteur se situe dans le poteau juste à votre gauche, sinon il se situe dans le fond de votre pergola, à droite.
                         </p>
-                        <h2>Définir l’orientation de votre pergola</h2>
-                        <p>Positionnez-vous sous votre pergola, les épaules parallèles au lames, le moteur à votre droite. La direction vers laquelle vous regardez,
+                        <h2 id="sousTitreElevSol2">Définir l’orientation de votre pergola</h2>
+                        <p id="textElevSol3">Positionnez-vous sous votre pergola, les épaules parallèles au lames, le moteur à votre droite. La direction vers laquelle vous regardez,
                             correspond à l’orientation de votre pergola. Si vous ne connaissez pas la direction que vous regardez, utiliser une boussole sur votre téléphone.
                         </p>
                     </div>
@@ -118,31 +118,31 @@
                 <div class="flex-left">
 
                     <div class="test">
-                        <h1>Entretien de la pergola bioclimatique</h1>
+                        <h1 id="titreEntretien">Entretien de la pergola bioclimatique</h1>
                         <hr>
-                        <p>
+                        <p id="textEntretien1">
                             Nettoyer la structure en aluminium deux fois par an s’avère idéal. Par manque de temps, vous pouvez procéder uniquement 
                             à chaque printemps d’un bon nettoyage. Afin d’enlever les salissures, la poussière et les traces éventuelles de pollen, 
                             utilisez simplement de l’eau savonneuse avec une éponge non abrasive ou un chiffon doux. Rincez ensuite à l’eau claire et 
                             sécher votre pergola, à l’aide d’une lingette microfibre ou d’un chiffon.
                         </p>
-                        <strong>
+                        <strong id="textEntretien2">
                            Ne pas utiliser un jet à trop haute pression. Ne pas utiliser de diluants tels qu’Acétone ou Trichloréthylène, 
                            l’eau de Javel ainsi que les produits à base de poudre abrasive.
                         </strong>
                         <p></p>
-                        <p>
+                        <p id="textEntretien3">
                             Vérifier régulièrement l’encombrement des chéneaux (feuilles mortes, brindilles…), surtout en période automnale et hivernale. 
                             Déboucher et nettoyer les trous d’évacuation des eaux pluviales en cas d’obstruction. (Minimum 2 fois par an)
                         </p>
-                        <strong>
+                        <strong id="textEntretien4">
                             Ne pas réaliser de travaux de soudure, meulage et tronçonnage métallique à <strong>proximité des structures</strong> (risque important de dégradation des profils). 
                         </strong>
                         <p></p>
-                        <p>
+                        <p id="textEntretien5">
                             Les optiques des spots et des appliques, ainsi que les bandeaux de leds peuvent être nettoyées à l’aide d’un linge ou d’une lingette légèrement humide.
                         </p>
-                        <strong>
+                        <strong id="textEntretien6">
                             Ne pas asperger de liquide directement sur les optiques de spots ou des appliques.
                         </strong>
                     </div>
@@ -157,7 +157,7 @@
                         <img class="menu_icon" src="../resources/icons/widgets_light/menu.png" alt="">
                     </div>
                     <div class="connexion">
-                        <p>Instructions</p>
+                        <p id="textInstructionAside">Instructions</p>
                     </div>
                     <div class="heure_nav">
                         <p>22:00</p>
@@ -173,6 +173,7 @@
 
         <!-- ============================================== scripts ============================================== -->
         <script src="../libs/jquery/jquery-3.5.1.js"></script>
+        <script src="../lang/lang.js"></script>
         <script src="../libs/toggle/dist/switch.js"></script>
         <script src="../scripts/script.js"></script>
         <script src="../scripts/theme.js"></script>

@@ -28,7 +28,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/lamp.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Éclairage</div>
+                    <div id="navEclairage" class="nom_widget">Éclairage</div>
                 </a>
             </div>
         
@@ -37,7 +37,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/lames_prov.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Lames orientables</div>
+                    <div id="navLames" class="nom_widget">Lames orientables</div>
                 </a>
             </div>
         
@@ -46,7 +46,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/wifi.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Configuration wifi</div>
+                    <div id="navWifi" class="nom_widget">Configuration wifi</div>
                 </a>
             </div>
         
@@ -65,7 +65,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/book.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Guide d'utilisation</div>
+                    <div id="navGuide" class="nom_widget">Guide d'utilisation</div>
                 </a>
             </div>
         
@@ -74,7 +74,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/settings.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Paramètres</div>
+                    <div id="navParametres" class="nom_widget">Paramètres</div>
                 </a>
             </div>
         </div>
@@ -85,7 +85,7 @@
                 <div class="flex-left">
                     <div class="test bloc_Mot1 bloc_mot">
                         <div class="contenant">
-                            <h1>Moteur lames orientables n°1</h1>
+                            <h1 id="titreM1">Moteur lames orientables n°1</h1>
                             <div class="zone-range-wrap wrap-lames-1 wrap-lames">
                                 <div class="range-wrap range-wrap-other">
                                     <input type="range" class="range" min="0" max="100">
@@ -104,11 +104,11 @@
                     </div>
                     <div class="test bloc_sync">
                         <div class="contenant contenant_saisonnier">
-                            <h1>Mode saisonnier</h1>
+                            <h1 id="textSaisonnier">Mode saisonnier</h1>
                             <div class=" list_of_buttons_saison">
-                                <h3 class="but button_saision_off" id="S1">Mode manuel</h3>
-                                <h3 class="but button_ete" id="S2">Mode été</h3>
-                                <h3 class="but button_hiver" id="S3">Mode hiver</h3>
+                                <h3 id="textSaisonnierManuel" class="but button_saision_off" id="S1">Mode manuel</h3>
+                                <h3 id="textSaisonnierEte" class="but button_ete" id="S2">Mode été</h3>
+                                <h3 id="textSaisonnierHiver" class="but button_hiver" id="S3">Mode hiver</h3>
                             </div>   
                         </div>
                     </div>
@@ -118,7 +118,7 @@
                 <div class="flex-right">
                     <div class="test bloc_Mot2 bloc_mot">
                         <div class="contenant">
-                            <h1>Moteur lames orientables n°2</h1>
+                            <h1 id="titreM2">Moteur lames orientables n°2</h1>
                             <div class="zone-range-wrap wrap-lames-2 wrap-lames">
                                 <div class="range-wrap range-wrap-other">
                                     <input type="range" class="range" min="0" max="100">
@@ -138,7 +138,7 @@
                     <div class="test bloc_sync">
                         <div class="contenant">
                             <div class="line-check">
-                                <h1>Synchronisation automatique</h1>
+                                <h1 id="titreSync">Synchronisation automatique</h1>
                                 <input type="checkbox" class="checkbox-switch" />
                             </div>
                         </div>
@@ -188,6 +188,7 @@
 
         <!-- ============================================== scripts ============================================== -->
         <script src="../libs/jquery/jquery-3.5.1.js"></script>
+        <script src="../lang/lang.js"></script>
         <script src="../libs/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="../libs/toggle/dist/switch.js"></script>
         <script src="../scripts/script.js"></script>

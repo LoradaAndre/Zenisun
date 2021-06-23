@@ -170,6 +170,19 @@ function getMotorValue(valMotor){
     return newVal[0]*100/newVal[1]
 }
 
+// =============================== LANGUE ===============================
+
+$(".drapFrance").click(function(){
+	localStorage.setItem("langue", "fr")
+});
+
+$(".drapAnglais").click(function(){
+	localStorage.setItem("langue", "en")
+});
+
+$(".drapSuede").click(function(){
+	localStorage.setItem("langue", "se")
+});
 
 // =============================== HOMING ===============================
 

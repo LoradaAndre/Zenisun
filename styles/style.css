@@ -59,12 +59,14 @@ main{
     display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
     justify-content: center;
 }
-.test, .bouton_sauvegarde_eclairage, .ambiance{
+.test, .bouton_sauvegarde_eclairage{
     margin: 5px;
     margin-bottom: 10px;
     border-radius: 3px;
     padding: 10px;
-    
+}
+
+.test, .bouton_sauvegarde_eclairage, .ambiance h3{
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.10);
 }
 
@@ -76,10 +78,17 @@ main{
 } */
 
 .ambiance{
-    cursor: pointer;
     text-align: center;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.ambiance h3{
+    cursor: pointer;
+    border-radius: 3px;
+    margin-right: 5px;
+    margin-left: 5px;;
+    padding: 10px;
 }
 
 .bouton_sauvegarde_eclairage{

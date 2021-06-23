@@ -411,3 +411,87 @@ function saveLightMemory(){
 	}).fail(function() {
 	});
 }
+
+$(".but-calme").click(function(){
+    // tranquilité => rgb(0,107,255) - BB à 25 (10%)$
+    applyClickAmbiance($(this))
+    applicationAmbiance(0,107,255, 25)
+});
+
+$(".but-confort").click(function(){
+    // confort => rgb(252, 196, 47) - BB à 50 (20%)
+    applyClickAmbiance($(this))
+    applicationAmbiance(255, 110, 0, 50)
+});
+
+$(".but-serenite").click(function(){
+    // serenite => rgb(243, 222, 155) - BB à 76 (30%)
+    applyClickAmbiance($(this))
+    applicationAmbiance(243, 222, 155, 76) //123, 255, 72
+});
+
+$(".but-detente").click(function(){
+    // detente => rgb(87, 210, 95) - BB à 102 (40%)
+    applyClickAmbiance($(this))
+    applicationAmbiance(190, 255, 155, 102)
+});
+
+$(".but-cockail").click(function(){
+    // vibrante => rgb(208, 215, 221) - BB à 126 (50%)
+    applyClickAmbiance($(this))
+    applicationAmbiance(172, 215, 0, 0)
+});
+
+$(".but-concentration").click(function(){
+    // concentration => rgb(200, 208, 217) - - BB à 190 (75%)
+    applyClickAmbiance($(this))
+    applicationAmbiance(140, 116, 249, 190)
+});
+
+$(".but-eveille").click(function(){
+    // eveille => rgb(224, 229, 235) - - BB à 204 (80%)
+    applyClickAmbiance($(this))
+    applicationAmbiance(255, 255, 255,204)
+});
+
+$(".but-inspiration").click(function(){
+    // inspiration => rgb(85, 11, 255) - BB à 76 (30%)
+    applyClickAmbiance($(this))
+    applicationAmbiance(85, 11, 255, 76)
+});
+
+$(".but-motivation").click(function(){
+    // motivation => rgb(255, 62, 0) - BB à 126 (50%)
+    applyClickAmbiance($(this))
+    applicationAmbiance(255, 126, 0, 126)
+});
+
+
+
+function applicationAmbiance(R, G, B, BB){
+
+    //application du RGB
+    changeValueEclairage(16, 255);
+    changeValueEclairage(32, 255);
+
+    //application du BB
+    changeValueEclairage(64, BB) // 1/6ème
+    changeValueEclairage(128, BB) // 1/6ème
+
+    //application du RGB
+    changeValueEclairage(256, R);
+    changeValueEclairage(512, G);
+    changeValueEclairage(1024, B);
+
+    //activation des bandeaux rgb
+    changeValueEclairage(2048, 255);
+}
+
+function applyClickAmbiance(event){
+    if(localStorage.getItem("modeSombre") == "true"){
+        $(".amb").css("background","-webkit-gradient(linear, right top, left bottom, from(rgba(67, 79, 95, 0.7)), to(rgba(64, 68, 95, 0.7)))")
+    }else{
+        $(".amb").css("background","-webkit-gradient(linear, right top, left bottom, from(rgba(118, 146, 181, 0.7)), to(rgba(128, 144, 193, 0.7)))")
+    }
+    $(event).css("background","#52808B")
+}

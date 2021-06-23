@@ -30,7 +30,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/lamp.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Éclairage</div>
+                    <div id="navEclairage" class="nom_widget">Éclairage</div>
                 </a>
             </div>
         
@@ -39,7 +39,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/lames_prov.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Lames orientables</div>
+                    <div id="navLames" class="nom_widget">Lames orientables</div>
                 </a>
             </div>
         
@@ -48,7 +48,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/wifi.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Configuration wifi</div>
+                    <div id="navWifi" class="nom_widget">Configuration wifi</div>
                 </a>
             </div>
         
@@ -67,7 +67,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/book.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Guide d'utilisation</div>
+                    <div id="navGuide" class="nom_widget">Guide d'utilisation</div>
                 </a>
             </div>
         
@@ -76,7 +76,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/settings.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Paramètres</div>
+                    <div id="navParametres" class="nom_widget">Paramètres</div>
                 </a>
             </div>
         </div>
@@ -88,32 +88,41 @@
                 <div class="flex-left">
                     <!-- ============== BLOC paramètres généraux ==============-->
                     <div class="parametres_generaux test">
-                        <h1>Paramètres généraux</h1>
+                        <h1 id="titreWidgetPara">Paramètres généraux</h1>
                         <div class="hr"></div>
                         <div class="contenant">
                             <!-- ============== date ==============-->
                             <div class="datePara">
-                                <h2>Date</h2>
+                                <h2 id="titreDate">Date</h2>
                                 <h3>01/03/2021</h3>
                             </div>
                             <!-- ============== heure ==============-->
                             <div class="heurePara">
-                                <h2>Heure</h2>
+                                <h2 id="titreHeure">Heure</h2>
                                 <h3>13:28:32</h3>
                             </div>
+                            <!-- ============== langue ==============-->
+                            <div class="langue">
+                                <h2 id="titreLangue">Langues</h2>
+                                <div class="drapeauLangue">
+                                    <img class="drapFrance" src="../resources/icons/drapeau/drapeauFrance.png" alt="" width="30px" height="auto">
+                                    <img class="drapAnglais" src="../resources/icons/drapeau/drapeauAnglais.png" alt=""  width="30px" height="auto">
+                                    <img class="drapSuede" src="../resources/icons/drapeau/drapeauSuede.png" alt=""  width="30px" height="auto">
+                                </div>
+                            </div>
                             <!-- ============== homming ==============-->
-                            <h2>Homing manuel</h2>
-                            <h3 class="bouton bouton_homing">Effectuer un homing</h3>
+                            <h2 id="titreHoming">Homing manuel</h2>
+                            <h3 id="textHoming" class="bouton bouton_homing">Effectuer un homing</h3>
                             <!-- ============== geolocalisation ==============-->
-                            <h2>Géolocalisation</h2>
+                            <h2 id="titreGeolocalisation">Géolocalisation</h2>
                             <div class="geo_final">
-                                <h3 class="affichage_geo">Positionnement:</h3>
-                                <h3 class="bouton bouton_geo">Enregistrer</h3>
+                                <h3 id="textPositionnement"class="affichage_geo">Positionnement:</h3>
+                                <h3 id="textEnregistrer"class="bouton bouton_geo">Enregistrer</h3>
                             </div>
                             <div>
                                 <div class="geo_item geo_item_lat">
                                     <div class="form-group">
-                                        <h3 class="form-control-static">Latitude</h3>
+                                        <h3 id="textLattitude" class="form-control-static">Latitude</h3>
                                     </div>
                                     <div class="">
                                         <input class="form-control" type="number" value="0" id="example-number-input"  min="0" max="180" step=".01">
@@ -125,7 +134,7 @@
                                 </div>
                                 <div class="geo_item geo_item_long">
                                     <div class="form-group">
-                                        <h3 class="form-control-static">Longitude</h3>
+                                        <h3 id="textLongitude" class="form-control-static">Longitude</h3>
                                     </div>
                                     <div class="">
                                         <input class="form-control" type="number" value="0" id="example-number-input" min="0" max="90" step=".01">
@@ -137,25 +146,25 @@
                                 </div>
                             </div>
                             <!-- ============== orientation ==============-->
-                            <h2>Orientation</h2>
+                            <h2 id="titreOrientation">Orientation</h2>
                             <div class="form-group">
                                 <select class="form-control" id="liste_orientation">
-                                    <option value="0">Nord</option>
-                                    <option value="22">Nord-nord-est</option>
-                                    <option value="45">Nord-est</option>
-                                    <option value="67">Est-nord-est</option>
-                                    <option value="90">Est</option>
-                                    <option value="112">Est-sud-est</option>
-                                    <option value="135">Sud-est</option>
-                                    <option value="157">Sud-sud-est</option>
-                                    <option value="180">Sud</option>
-                                    <option value="202">Sud-sud-ouest</option>
-                                    <option value="225">Sud-ouest</option>
-                                    <option value="247">Ouest-sud-ouest</option>
-                                    <option value="270">Ouest</option>
-                                    <option value="292">Ouest-nord-Ouest</option>
-                                    <option value="315">Nord-ouest</option>
-                                    <option value="337">Nord-nord-ouest</option>
+                                    <option id="N" value="0">Nord</option>
+                                    <option id="NNE" value="22">Nord-nord-est</option>
+                                    <option id="NE" value="45">Nord-est</option>
+                                    <option id="ENE" value="67">Est-nord-est</option>
+                                    <option id="E" value="90">Est</option>
+                                    <option id="ESE" value="112">Est-sud-est</option>
+                                    <option id="SE" value="135">Sud-est</option>
+                                    <option id="SSE" value="157">Sud-sud-est</option>
+                                    <option id="S" value="180">Sud</option>
+                                    <option id="SSO" value="202">Sud-sud-ouest</option>
+                                    <option id="SO" value="225">Sud-ouest</option>
+                                    <option id="OSO" value="247">Ouest-sud-ouest</option>
+                                    <option id="O" value="270">Ouest</option>
+                                    <option id="ONO" value="292">Ouest-nord-Ouest</option>
+                                    <option id="N0" value="315">Nord-ouest</option>
+                                    <option id="NNO" value="337">Nord-nord-ouest</option>
                                 </select>
                             </div>
                         </div>
@@ -163,44 +172,44 @@
 
                     <!-- ============== BLOC éclairage ==============-->
                     <div class="eclairage test">
-                        <h1>Eclairage</h1>
+                        <h1 id="titreWidgetEclairage">Eclairage</h1>
                         <div class="hr"></div>
                         <div class="contenant">
                             <!-- ============== allumage auto horaire ==============-->
                             <div class="line-check line-allumage-auto">
-                                <h2>Allumage automatique sur horaire</h2>
+                                <h2 id="textAllumAuto">Allumage automatique sur horaire</h2>
                                 <input type="checkbox" class="checkbox-switch allumageAuto-check" />
                             </div>
                             <!-- ============== optn: allumage auto horaire ==============-->
                             <div class="selection_horaire_auto">
                                 <!-- ============== heure allumage ==============-->
                                 <div class="heure_allum">
-                                    <div><h2>Heure démarrage</h2></div>
+                                    <div><h2 id="heureDebut">Heure démarrage</h2></div>
                                     <div class="h-grid h_allumage">
                                         <div class="form-group row">
                                             <h3 class="affichage_heure_allumage" style="margin:auto"></h3>
                                             <input class="form-contenantrol" type="time" value="13:45:00" id="light_on_hour">
                                         </div>
-                                        <div class="bouton btn-h-allumage"><h3>Appliquer</h3></div>
-                                        <div class="bouton btn-h-allumage-modifier"><h3>Modifier</h3></div>
+                                        <div class="bouton btn-h-allumage"><h3 id="textAppliquer">Appliquer</h3></div>
+                                        <div class="bouton btn-h-allumage-modifier"><h3 id="textModifier">Modifier</h3></div>
                                     </div>
                                 </div>
                                 <!-- ============== heure extinction ==============-->
                                 <div class="heure_extin">
-                                    <div><h2>Heure extinction</h2></div>
+                                    <div><h2 id="heureFin">Heure extinction</h2></div>
                                     <div class="h-grid h_extinction">
                                         <div class="form-group row">
                                             <h3 class="affichage_heure_extinction" style="margin:auto"></h3>
                                             <input class="form-contenantrol" type="time" value="13:45:00" id="light_off_hour">
                                         </div>
-                                        <div class="bouton btn-h-extinction"><h3>Appliquer</h3></div>
-                                        <div class="bouton btn-h-extinction-modifier"><h3>Modifier</h3></div>
+                                        <div class="bouton btn-h-extinction"><h3 id="textAppliquer">Appliquer</h3></div>
+                                        <div class="bouton btn-h-extinction-modifier"><h3 id="textModifier">Modifier</h3></div>
                                     </div>
                                 </div>
                             </div>
                             <!-- ============== vitesse gradateur led ==============-->
                             <div class="">
-                                <h2>Vitesse gradateur LED</h2>
+                                <h2 id="titreVitesseLed">Vitesse gradateur LED</h2>
                                 <div class="list_of_buttons_grad_LED list_of_buttons">
                                     <h3 id="L1" value="0">Instantané</h3>
                                     <h3 id="L2" value="1">1 seconde</h3>
@@ -212,12 +221,12 @@
                     </div>
                     <!-- ============== Maintenance ==============-->
                     <div class="parametre_specifique test">
-                        <h1>Maintenance</h1>
+                        <h1 id="titreWidgetMaintenance">Maintenance</h1>
                         <div class="hr"></div>
                         <div class="contenant">
                             <div class="boutons_spe">
-                                <a href="debug.html" ><h3 class="bouton_debug bouton">Debug</h3></a>
-                                <h3 class="bouton_setup bouton" data-bs-target="#exampleModalCenter" data-bs-toggle="modal">Réglages fabricant</h3>
+                                <a href="debug.html" ><h3 id="textDebug" class="bouton_debug bouton">Debug</h3></a>
+                                <h3 class="bouton_setup bouton" id="textRegFab" data-bs-target="#exampleModalCenter" data-bs-toggle="modal">Réglages fabricant</h3>
                             </div>
                             
                         </div>
@@ -228,19 +237,19 @@
                 <div class="flex-right">
                     <!-- ============== BLOC Environnement ==============-->
                     <div class="parametres_generaux test">
-                        <h1>Environnement</h1>
+                        <h1 id="titreWidgetEnvironnement">Environnement</h1>
                         <div class="hr"></div>
                         <div class="contenant">
                             <!-- ============== fermeture pluie ==============-->
                             <div class="bloc">
                                 <div class="line-check line-fermeture-pluie">
-                                    <h2>Fermeture en cas de pluie</h2>
+                                    <h2 id="titreFermPluie">Fermeture en cas de pluie</h2>
                                     <input type="checkbox" class="checkbox-switch fermeturePluie-check" />
                                 </div>
                             </div>
                             <!-- ============== intempéries ==============-->
                             <div class="bloc">
-                                <h2>Intempéries</h2>
+                                <h2 id="titreIntemperie">Intempéries</h2>
                                 <div class=" list_of_buttons_intemperies">
                                     <h3 class="but button_intemp_off" id="I1">Désactivé</h3>
                                     <h3 class="but button_vent" id="I2">Blocage vent</h3>
@@ -249,7 +258,7 @@
                             </div>
                             <!-- ============== mode saisonier ==============-->
                             <div class="bloc">
-                                <h2>Mode saisonnier</h2>
+                                <h2 id="titreSaisonnier">Mode saisonnier</h2>
                                 <div class=" list_of_buttons_saison">
                                     <h3 class="but button_saision_off" id="S1">Mode manuel</h3>
                                     <h3 class="but button_ete" id="S2">Mode été</h3>
@@ -260,7 +269,7 @@
                             <div class="saison_detail">
                                 <!-- ============== actualisation suivi solaire ==============-->
                                 <div class="bloc">
-                                    <h2>Période d'actualisation de suivi solaire</h2>
+                                    <h2 id="titreSuiviSolaire">Période d'actualisation de suivi solaire</h2>
                                     <div class="list_of_buttons_suivi_sol list_of_buttons">
                                         <h3 id="B1" value="1">1 min</h3>
                                         <h3 id="B2" value="5">5 min</h3>
@@ -271,7 +280,7 @@
                                 </div>
                                 <!-- ============== seuil de fermeture nuit ==============-->
                                 <div class="bloc">
-                                    <h2>Seuil de fermeture nuit (degré élévation solaire)</h2>
+                                    <h2 id="titreFermetureNuit">Seuil de fermeture nuit (degré élévation solaire)</h2>
                                     <div class="zone-range-wrap-settings zone-range-wrap  zone-wrap-elevation-sol">
                                         <h3 style="margin: auto">0°</h3>
                                         <div class="range-wrap range-wrap-settings wrap-elevation_sol">
@@ -287,23 +296,23 @@
                     </div>
                     <!-- ============== BLOC Apparence ==============-->
                     <div class="apparence test">
-                        <h1>Apparence</h1>
+                        <h1 id="titreWidgetApparence">Apparence</h1>
                         <div class="hr"></div>
                         <div class="contenant">
                             <div class="line-check line-check-theme">
-                                <h2>Thème sombre</h2>
+                                <h2 id="titreTheme">Thème sombre</h2>
                                 <input type="checkbox" class="checkbox-switch theme-check" />
                             </div>
                         </div>
                     </div>
                     <!-- ============== BLOC Maj Logicielle ==============-->
                     <div class="maj test">
-                        <h1>Mise à jour logiciel</h1>
+                        <h1 id="titreWidgetMAJ">Mise à jour logiciel</h1>
                         <div class="hr"></div>
                         <div class="contenant">
                             <div class="majbar">
                                 <div class="upload_input"><input type="file" name="i" id="firmware_file" size="40" data-wrapper-class="ui-btn-inline" value=""></div>
-                                <h3 class="bouton install-button">Installer</h3>
+                                <h3 id="textInstaller" class="bouton install-button">Installer</h3>
                             </div>
                             <div class="upload_information"></div>
                         </div>
@@ -339,12 +348,12 @@
                   <div class="modal-body">
                       <h5 class="modal-title" id="exampleModalLabel">Accès administrateur</h5>
                       <div class="form-group">
-                          <label for="exampleInputPassword1">Entrez le mot de passe</label>
+                          <label for="exampleInputPassword1" id="textEntrerMDP">Entrez le mot de passe</label>
                           <input type="password" width="100%" class="form-control pass" id="exampleInputPassword1">
                       </div>
                       <div class="group_overlay_button">
                           <div class="overlay_button b_first">Connexion</div>
-                          <div class="overlay_button b_second" data-bs-dismiss="modal">Annuler</div>
+                          <div class="overlay_button b_second" id="textAnnuler" data-bs-dismiss="modal">Annuler</div>
                       </div>
                   </div>
               </div>
@@ -353,6 +362,7 @@
         
         <!-- ============================================== scripts ============================================== -->
         <script src="../libs/jquery/jquery-3.5.1.js"></script>
+        <script src="../lang/lang.js"></script>
         <script src="../libs/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="../libs/toggle/dist/switch.js"></script>
         <script src="../libs/rangeslider/js/rSlider.min.js"></script>

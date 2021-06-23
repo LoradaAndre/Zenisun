@@ -30,7 +30,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/lamp.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Éclairage</div>
+                    <div id="navEclairage" class="nom_widget">Éclairage</div>
                 </a>
             </div>
 
@@ -39,7 +39,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/lames_prov.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Lames orientables</div>
+                    <div id="navLames" class="nom_widget">Lames orientables</div>
                 </a>
             </div>
 
@@ -48,7 +48,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/wifi.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Configuration wifi</div>
+                    <div id="navWifi" class="nom_widget">Configuration wifi</div>
                 </a>
             </div>
 
@@ -67,7 +67,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/book.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Guide d'utilisation</div>
+                    <div id="navGuide" class="nom_widget">Guide d'utilisation</div>
                 </a>
             </div>
 
@@ -76,7 +76,7 @@
                     <div class="icon_navbar">
                         <img src="../resources/icons/widgets_light/settings.png" alt="image de test">
                     </div>
-                    <div class="nom_widget">Paramètres</div>
+                    <div id="navParametres" class="nom_widget">Paramètres</div>
                 </a>
             </div>
         </div>
@@ -89,7 +89,7 @@
                     <div class="test bloc_BB1">
                         <div class="contenant">
                             <div class="line-check">
-                                <h1>Bandeau blanc n°1</h1>
+                                <h1 id="titreBB1">Bandeau blanc n°1</h1>
                                 <input type="checkbox" class="checkbox-switch BB1-check" />
                             </div>
                             <div class="zone-range-wrap  wrap-BB-1 wrap-bandeau">
@@ -106,7 +106,7 @@
                      <div class="test bloc_BB2">
                         <div class="contenant">
                             <div class="line-check">
-                                <h1>Bandeau blanc n°2</h1>
+                                <h1 id="titreBB2">Bandeau blanc n°2</h1>
                                 <input type="checkbox" class="checkbox-switch BB2-check" />
                             </div>
                             <div class="zone-range-wrap wrap-BB-2 wrap-bandeau">
@@ -123,7 +123,7 @@
                     <div class="test bloc_RGB1">
                         <div class="contenant">
                             <div class="line-check">
-                                <h1>Bandeau RVB n°1</h1>
+                                <h1 id="titreRGB1">Bandeau RVB n°1</h1>
                                 <input type="checkbox" class="checkbox-switch RGB1-check" />
                             </div>
                             <div class="zone-range-wrap wrap-RGB-1 wrap-bandeau">
@@ -140,7 +140,7 @@
                     <div class="test bloc_RGB2">
                         <div class="contenant">
                             <div class="line-check">
-                                <h1>Bandeau RVB n°2</h1>
+                                <h1 id="titreRGB2">Bandeau RVB n°2</h1>
                                 <input type="checkbox" class="checkbox-switch RGB2-check" />
                             </div>
                             <div class="zone-range-wrap wrap-RGB-2 wrap-bandeau">
@@ -160,7 +160,7 @@
                      <div class="test allumage_lumiere">
                         <div class="contenant">
                              <div class="line-check">
-                                 <h1>Allumage des lumières</h1>
+                                 <h1 id="allumageAll">Allumage des lumières</h1>
                                  <input type="checkbox" class="checkbox-switch allLight-check" />
                              </div>
                         </div>
@@ -168,32 +168,32 @@
 
                     <!-- ================ BLOC Colorisation ================ -->
                     <div class="test bloc_Colorisation">
-                        <h1>Colorisation</h1>
+                        <h1 id="titreColorisation">Colorisation</h1>
                         <div class="hr"></div>
                         <div class="contenant">
 
                             <!-- ================ BLOC curseurs RGB  ================ -->
                             <div class="boutons_colorisation list_of_buttons">
-                                <h3 id=R1>Réglages RVB</h3>
-                                <h3 id=R2>Roue chromatique</h3>
+                                <h3 id="R1">Réglages RVB</h3>
+                                <h3 id="R2">Roue chromatique</h3>
                             </div>
                             <div class="reglages_rvb">
                                 <div class="zone-range-wrap R zone-range-wrap-settings">
-                                    <p>Rouge</p>
+                                    <p id="textColoRed">Rouge</p>
                                     <div class="range-wrap range-wrap-settings">
                                         <input type="range" class="range" min="0" max="255">
                                         <output class="bubble"></output>
                                     </div>
                                 </div>
                                 <div class="zone-range-wrap G zone-range-wrap-settings">
-                                    <p>Vert</p>
+                                    <p id="textColoGreen">Vert</p>
                                     <div class="range-wrap range-wrap-settings">
                                         <input type="range" class="range" min="0" max="255">
                                         <output class="bubble"></output>
                                     </div>
                                 </div>
                                 <div class="zone-range-wrap B zone-range-wrap-settings">
-                                    <p>Bleu</p>
+                                    <p id="textColoBlue">Bleu</p>
                                     <div class="range-wrap range-wrap-settings">
                                         <input type="range" class="range" min="0" max="255">
                                         <output class="bubble"></output>
@@ -214,13 +214,21 @@
                         </div>
                     </div>
 
-                    <!-- <div class="ambiance">
-                        <h3></h3>
-                    </div> -->
+                    <div class="ambiance">
+                        <h3 id="amb1" class="amb but-calme">Calme</h3>
+                        <h3 id="amb2" class="amb but-confort">Confort</h3>
+                        <h3 id="amb3" class="amb but-serenite">Sérénité</h3>
+                        <h3 id="amb4" class="amb but-detente">Détente</h3>
+                        <h3 id="amb5" class="amb but-cockail">Cockail</h3>
+                        <h3 id="amb6" class="amb but-concentration">Concentration</h3>
+                        <h3 id="amb7" class="amb but-eveille">Éveillé</h3>
+                        <h3 id="amb8" class="amb but-inspiration">Inspiration</h3>
+                        <h3 id="amb9" class="amb but-motivation">Motivation</h3>
+                    </div>
 
                     <!-- ================ BLOC sauvegarde éclairage ================ -->
                     <div class="bouton_sauvegarde_eclairage">
-                        <h1>Mémoriser le configuration d'éclairage</h1>
+                        <h1 id="textMemoConfigEclairage">Mémoriser le configuration d'éclairage</h1>
                     </div>
 
                 </div>
@@ -249,6 +257,7 @@
 
         <!-- ============================================== scripts ============================================== -->
         <script src="../libs/jquery/jquery-3.5.1.js"></script>
+        <script src="../lang/lang.js"></script>
         <script src="../libs/toggle/dist/switch.js"></script>
         <script src="../libs/farbtastic/farbtastic.js"></script>
         <script src="../scripts/script.js"></script>
