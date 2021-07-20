@@ -1,6 +1,6 @@
 <?php
 
-$ZNS_IP = "192.168.0.110";	// Adresse IP de l'automate
+$ZNS_IP = "192.168.0.17";	// Adresse IP de l'automate
 
 function AddLog($txt)
 {

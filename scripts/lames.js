@@ -41,7 +41,7 @@ function lectureCarte(){
         url: "../cgi/zns.cgi?cmd=d&p=ios",
         context: document.body
       }).done(function(data) {
-            isConnected(true, data)
+            // isConnected(true, data)
             // valueMotor0 = parseInt(getMotorValue(data, 24));
             valueMotor0 = parseInt(getMotorValue(getElementCarte(data, "Mot0")));
             // valueMaxMotor0 = parseInt(getMotorMaxValue(data, 24));
@@ -53,11 +53,12 @@ function lectureCarte(){
 
             // monitoring_user_config = parseInt(data.all[30].textContent);
             monitoring_user_config = parseInt(getElementCarte(data, "user"));
+            console.log(getElementCarte(data, "user"))
 			console.log(monitoring_user_config)
             updateSaisonnier();
 
       }).fail(function() {
-            isConnected(false, data)
+            // isConnected(false, data)
       });	
 
 
@@ -322,9 +323,9 @@ function deplacementLames(moteur, valeur){
         url: '../cgi/zns.cgi?cmd=m&m=' + moteur + '&p=' + valeur,
         context: document.body
         }).done(function(data) {
-            isConnected(true, data)
+            // isConnected(true, data)
         }).fail(function() {
-            isConnected(false, data)
+            // isConnected(false, data)
         });
 }
 
@@ -412,9 +413,9 @@ function set_user_config( new_config ){
 		  url: command,	
 		  context: document.body
 		}).done(function(data){
-			isConnected(true, data)
+			// isConnected(true, data)
 		}).fail(function(){
-			isConnected(false, data)
+			// isConnected(false, data)
 		});
 	}
 }

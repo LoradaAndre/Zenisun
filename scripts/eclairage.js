@@ -17,6 +17,8 @@ let BColor;
 let init = false;
 let oneTime = false;
 
+let hwcfg;
+
 let goSansAttente = true;
 
 let bb1_switch;
@@ -38,7 +40,7 @@ function lectureCarte(){
         url: "../cgi/zns.cgi?cmd=d&p=ios",
         context: document.body
       }).done(function(data) {
-            isConnected(true,data);
+            // isConnected(true,data);
             //RGB1
             // RGBIntensite1 = getIntensite(data, 12); //12: <GPO 4> dans la collection data.all
             // RGBWatt1 = getWatt(data, 12);
@@ -70,7 +72,7 @@ function lectureCarte(){
             getSavedMemoryLight(data)
 
       }).fail(function() {
-            isConnected(false, data)
+            // isConnected(false, data)
     });	
 
     $.ajax({
@@ -294,12 +296,12 @@ function changeValueEclairage(ruban, valeur){
         url: '../cgi/zns.cgi?cmd=l&o='+ ruban +'&p=' + valeur,
         context: document.body
       }).done(function(data) {
-          isConnected(true,data);
+        //   isConnected(true,data);
           setTimeout(function(){
             goSansAttente = true;
           })
       }).fail(function() {
-            isConnected(false, data)
+            // isConnected(false, data)
       });
 }
 

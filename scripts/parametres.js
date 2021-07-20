@@ -76,7 +76,7 @@ function lectureCarte(){
 			// mot = parseInt(getMotorValue(data,24))
 			mot = parseInt(getMotorValue(getElementCarte(data, "Mot0")))
 
-			isConnected(true, data)
+			// isConnected(true, data)
 
 			//configuration utilsateur
 			// monitoring_user_config = parseInt(data.all[30].textContent);
@@ -97,14 +97,14 @@ function lectureCarte(){
 
 
       }).fail(function() {
-			isConnected(false, data)
+			// isConnected(false, data)
     });	
 
 	$.ajax({
         url: '../cgi/zns.cgi?cmd=c',
         context: document.body
       }).done(function(data){
-			isConnected(true, data)
+			// isConnected(true, data)
 		  	//heure allumage
 			// heure_allumage = parseInt(data.all[13].textContent);
 			heure_allumage = parseInt(getElementCarte(data, "ligt_on_h"))
@@ -149,7 +149,7 @@ function lectureCarte(){
 			// $("#liste_orientation").val(data.all[4].textContent)
 			$("#liste_orientation").val(getElementCarte(data, "orient"))
       }).fail(function() {
-			isConnected(false, data) 
+			// isConnected(false, data) 
     });
 
 }
@@ -199,9 +199,9 @@ function homming(mot_id){
 	  url: command,	
 	  context: document.body
 	}).done(function(data){
-		isConnected(true, data)
+		// isConnected(true, data)
 	}).fail(function(){
-		isConnected(false, data)
+		// isConnected(false, data)
 	});
 }
 
@@ -317,15 +317,15 @@ $.ajax({
   url: command_long,	
   context: document.body
 	}).done(function(data) {
-		isConnected(true, data)
+		// isConnected(true, data)
 		var command_lat = '../cgi/zns.cgi?cmd=u&p=12&v=' + pergola_latitude;
 		$.ajax({
 		url: command_lat,	
 		context: document.body
 		}).done(function(data){
-			isConnected(true, data)
+			// isConnected(true, data)
 		}).fail(function(){
-			isConnected(false, data)
+			// isConnected(false, data)
 	});
 });
 }
@@ -344,9 +344,9 @@ function applyOrientationPergola(valeur){
 	  url: command,	
 	  context: document.body
 	}).done(function(data) {
-		isConnected(true, data)
+		// isConnected(true, data)
 	}).fail(function(){
-		isConnected(false, data)
+		// isConnected(false, data)
 	});
 }
 // =============================== ALLUMAGE AUTO SUR HORAIRE ===============================
@@ -454,9 +454,9 @@ function apply_ligt_off_h(){
 	  url: command,	
 	  context: document.body
 	}).done( function(data) {
-		isConnected(true, data)
+		// isConnected(true, data)
 	}).fail(function(){
-		isConnected(false, data)
+		// isConnected(false, data)
 	});
 }
 
@@ -470,9 +470,9 @@ function apply_ligt_on_h(){
 	  url: command,	
 	  context: document.body
 	}).done(function(data) {
-		isConnected(true, data)
+		// isConnected(true, data)
 	}).fail(function(){
-		isConnected(false, data)
+		// isConnected(false, data)
 	});
 }
 // =============================== VITESSE GRADATEUR LED ===============================
@@ -497,9 +497,9 @@ function applyGradateurLed(idButton){
 		  url: command,	
 		  context: document.body
 		}).done(function(data){
-			isConnected(true, data)
+			// isConnected(true, data)
 		}).fail(function(){
-			isConnected(false, data)
+			// isConnected(false, data)
 		});
 	});
 }
@@ -620,9 +620,9 @@ function changeSeuilFermNuit(value){
 	  url: command,	
 	  context: document.body
 	}).done(function(data){
-		isConnected(true, data)
+		// isConnected(true, data)
 	}).fail( function(){
-		isConnected(false, data)
+		// isConnected(false, data)
 	});
 }
 
@@ -646,9 +646,9 @@ function applyPeriodSuiviSol(idButton){
 		  url: command,	
 		  context: document.body
 		}).done(function(data) {
-			isConnected(true, data)
+			// isConnected(true, data)
 		}).fail(function() {
-			isConnected(false, data)
+			// isConnected(false, data)
 		});
 	});
 }
@@ -691,9 +691,9 @@ function set_user_config( new_config ){
 		  url: command,	
 		  context: document.body
 		}).done(function(data){
-			isConnected(true, data)
+			// isConnected(true, data)
 		}).fail(function(){
-			isConnected(false, data)
+			// isConnected(false, data)
 		});
 	}
 }
@@ -704,9 +704,9 @@ function deplacementLamesAngle(moteur, angle){
         url: '../cgi/zns.cgi?cmd=m&m=' + moteur + '&a=' + angle,
         context: document.body
       }).done(function(data) {
-			isConnected(true, data)
+			// isConnected(true, data)
       }).fail(function() {
-			isConnected(false, data)
+			// isConnected(false, data)
       });
 }
 
@@ -716,9 +716,9 @@ function deplacementLames(moteur, valeur){
         url: '../cgi/zns.cgi?cmd=m&m=' + moteur + '&p=' + valeur,
         context: document.body
       }).done(function(data) {
-			isConnected(true, data)
+			// isConnected(true, data)
       }).fail(function() {
-			isConnected(false, data)
+			// isConnected(false, data)
       });
 }
 

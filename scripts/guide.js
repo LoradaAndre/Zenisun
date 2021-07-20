@@ -7,8 +7,8 @@ function lectureCarte(){
         url: "../cgi/zns.cgi?cmd=d&p=ios",
         context: document.body
       }).done(function(data) {
-            isConnected(true,data);
+            // isConnected(true,data);
       }).fail(function() {
-            isConnected(false, data)          
+            // isConnected(false, data)          
       });	
 }

@@ -1,4 +1,8 @@
 let resultatJson;
+let number_config;
+// let valueMotor1;
+// let capteurPluie;
+let elevation_sol;
 
 let page;
 let langueSauvegarde;
@@ -6,18 +10,38 @@ let langueSauvegarde;
 console.log(langueSauvegarde)
 console.log(localStorage.getItem("langue") == null)
 
-if(localStorage.getItem("langue") == null){
-    localStorage.setItem("langue", "fr");  
-    langueSauvegarde = localStorage.getItem("langue");
-}else{
-    langueSauvegarde = localStorage.getItem("langue");
-}
 
-chargerLangue(langueSauvegarde);
+
 
 setInterval(function(){
-    langueSauvegarde = localStorage.getItem("langue");
-    chargerLangue(langueSauvegarde);
+
+    $.ajax({
+        url: "../cgi/zns.cgi?cmd=d&p=ios",
+        context: document.body
+      }).done(function(data) {
+
+        isConnected(true, data)
+        number_config = parseInt(getElementCarte(data, "user"));
+        // valueMotor1 = getMotorValue(getElementCarte(data, "Mot0"));
+        capteurPluie = parseInt(getElementCarte(data, "gpi4"));
+        elevation_sol = parseInt(getElementCarte(data, "s_elev"));
+
+      }).fail(function() {
+         isConnected(false, data)
+    });	
+
+    if(localStorage.getItem("langue") == null || localStorage.getItem("langue") == "undefined"){
+        localStorage.setItem("langue", "fr");  
+        langueSauvegarde = localStorage.getItem("langue");
+        console.log(langueSauvegarde)
+        chargerLangue(langueSauvegarde);
+    
+    }else{
+        langueSauvegarde = localStorage.getItem("langue");
+        console.log(langueSauvegarde)
+        chargerLangue(langueSauvegarde);
+    
+    }
 },1500);
 
 function chargerLangue(lang){
@@ -26,24 +50,28 @@ function chargerLangue(lang){
     page = page.split("/");
     page = page[page.length-1];
 
-    // setInterval(function(){
         if(page == "index.htm"){
             $.getJSON("lang/" + lang + "_lang.json", function(res){
-                resultatJson = res;
+                resultatJson = res
+                console.log("==== la if====")
+                console.log(resultatJson)
             });
         }else{
             $.getJSON("../lang/" + lang + "_lang.json", function(res){
                 resultatJson = res;
+                console.log("====la else====")
+                console.log(resultatJson)
             });
         }
     
         console.log(page)
 
         if(page != "index.htm"){
-            // applicationGeneral(resultatJson["general"]);
+            applicationGeneral(resultatJson["general"]);
         }
     
         if(page == "index.htm"){
+            console.log(resultatJson["pageAccueil"])
             applicationAccueil(resultatJson["pageAccueil"]);
         }else if(page == "eclairage.html"){
             applicationEclairage(resultatJson["pageEclairage"]);
@@ -57,14 +85,29 @@ function chargerLangue(lang){
         }else if(page == "parametres.html"){
             applicationParamètre(resultatJson["pageParametre"]);
         }
-    // }, 1500);
 
+}
+
+// function updateTextMeteo(userConfig){
+    
+// }
+
+//Vérification de connexion
+function isConnected(value, data){
+    if((value == false) || (data == null)){
+      $(".connexion p").text(resultatJson["general"]["connexionOff"]);
+      $(".connexion_icon").attr("src","../resources/icons/leds/disconnected.png");
+    }else{
+      $(".connexion p").text(resultatJson["general"]["connexionOn"]);
+      $(".connexion_icon").attr("src","../resources/icons/leds/connected.png")
+  
+    }
 }
 
 function applicationGeneral(res){
     $("#navEclairage").text(res["navigation"]["eclairageTitle"]);
     $("#navLames").text(res["navigation"]["lamesTitle"]);
-    $("#navWifi").text(res["navigationidgets"]["ConfigWifiTitle"]);
+    $("#navWifi").text(res["navigation"]["ConfigWifiTitle"]);
     $("#navGuide").text(res["navigation"]["GuideTitle"]);
     $("#navParametres").text(res["navigation"]["ParaTitle"]);
 }
@@ -83,6 +126,53 @@ function applicationAccueil(res){
     $("#webContact").text(res["popupContact"]["web"]);
     $("#adresseContact").text(res["popupContact"]["adress"]);
     $("#versionContact").text(res["popupContact"]["version"]);
+
+    //==================== TEXTE METEO ============================
+
+     //Blocage vent / neige (même numéro)
+     if(number_config&8){
+        //Blogage vent
+        if(valueMotor1 == 0){
+            $(".meteo .type_temps p").text(res["meteo"]["vent"])
+        }
+        //Blocage neige
+        else{
+            $(".meteo .type_temps p").text(res["meteo"]["neige"])
+        }
+    }
+    //Mode pluie 
+    else if(capteurPluie < 6000){
+        $(".meteo .type_temps p").text(res["meteo"]["pluie"])
+
+    }
+    //Mode été
+    else if(number_config&2){
+        //Mode hiver
+        if(number_config&4){ 
+            $(".meteo .type_temps p").text(res["meteo"]["modeHiver"])
+        }else{
+            $(".meteo .type_temps p").text(res["meteo"]["modeEte"])
+        }
+    }
+    //Mode nuit
+    else if(elevation_sol <= 0){
+        $(".meteo .type_temps p").text(res["meteo"]["nuit"])
+    }
+    //Aube - crépuscule
+    else if(elevation_sol > 0 && elevation_sol <= 15){
+        let date = new Date()
+        let getHours = date.getHours();
+        if(getHours < 12){
+            $(".meteo .type_temps p").text(res["meteo"]["leveeSoleil"])
+        
+        }else{
+            $(".meteo .type_temps p").text(res["meteo"]["coucherSoleil"])
+        }
+    }
+    //Aucun paramètres de défini
+    else{
+        $(".meteo .type_temps p").text(res["meteo"]["defaultMeteo"])
+    }
     
 }
 function applicationEclairage(res){
@@ -258,4 +348,8 @@ function applicationParamètre(res){
     //==================== MAJ ===================
     $("#titreWidgetMAJ").text(res["blocMaj"]["title"]);
     $("#textInstaller").text(res["blocMaj"]["installer"]);
+}
+
+function getElementCarte(data, value){
+    return $(data).find(value).text();
 }
