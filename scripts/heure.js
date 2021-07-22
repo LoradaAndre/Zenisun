@@ -1,21 +1,21 @@
 /* ========================== date/ heure ========================== */
 
-let joursLettres = ["Dimanche", "Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
-let moisLettres = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Décembre"];
+// let joursLettres = ["Dimanche", "Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
+// let moisLettres = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Décembre"];
 
-let date = new Date()
+// let date = new Date()
 let jour = date.getDate();
 let mois = date.getMonth() + 1;
 let annee = date.getFullYear();
 
-$(".time .jour").html(joursLettres[date.getDay()] + " " + date.getDate() + " " + moisLettres[date.getMonth()]  );
+// $(".time .jour").html(joursLettres[date.getDay()] + " " + date.getDate() + " " + moisLettres[date.getMonth()]  );
 
-if(mois < 10){
-  mois = "0" + mois;
-}
+// if(mois < 10){
+//   mois = "0" + mois;
+// }
 
-//Affichage de la date
-$(".datePara h3").html("<p>" + jour + "/" + mois + "/"+ annee +  "</p>");
+// //Affichage de la date
+// $(".datePara h3").html("<p>" + jour + "/" + mois + "/"+ annee +  "</p>");
 
 function refresh(){
   let t = 1000; // rafraîchissement en millisecondes

@@ -289,7 +289,7 @@ function affichageGeolocalisation(){
 	}
 
 	//Affichage de la position 
-	document.querySelector(".geo_final .affichage_geo").textContent = "Positionnement: " + neLat + lat + ", " + neLong + long ;
+	// document.querySelector(".geo_final .affichage_geo").textContent = "Positionnement: " + neLat + lat + ", " + neLong + long ;
 
 }
 
@@ -364,45 +364,45 @@ function allumage_auto_horaire(){
     });
 }
 
-//En cas de clic sur le bouton Modifier/Annuler => heure allumage
-$(".btn-h-allumage-modifier").click(function(){
-	//Si c'est modifier
-	if($(this).children().text() == "Modifier"){
-		getHourAllumage = false;
-		$(".btn-h-allumage").show();
-		$(".btn-h-allumage-modifier h3").text("Annuler")
-		$(".affichage_heure_allumage").hide();
-		$(".h_allumage input").show()
-	//Si c'est annuler
-	}else if($(this).children().text() == "Annuler"){
-		getHourAllumage = true;
-		$(".btn-h-allumage").hide();
-		$(".btn-h-allumage-modifier h3").text("Modifier")
-		$(".affichage_heure_allumage").show();
-		$(".h_allumage input").hide()
-	}
+// //En cas de clic sur le bouton Modifier/Annuler => heure allumage
+// $(".btn-h-allumage-modifier").click(function(){
+// 	//Si c'est modifier
+// 	if($(this).children().text() == "Modifier"){
+// 		getHourAllumage = false;
+// 		$(".btn-h-allumage").show();
+// 		$(".btn-h-allumage-modifier h3").text("Annuler")
+// 		$(".affichage_heure_allumage").hide();
+// 		$(".h_allumage input").show()
+// 	//Si c'est annuler
+// 	}else if($(this).children().text() == "Annuler"){
+// 		getHourAllumage = true;
+// 		$(".btn-h-allumage").hide();
+// 		$(".btn-h-allumage-modifier h3").text("Modifier")
+// 		$(".affichage_heure_allumage").show();
+// 		$(".h_allumage input").hide()
+// 	}
 	
-})
+// })
 
-//En cas de clic sur le bouton Modifier/Annuler => heure extinction
-$(".btn-h-extinction-modifier").click(function(){
-	//Si c'est modifier
-	if($(this).children().text() == "Modifier"){
-		getHourExtinction = false;
-		$(".btn-h-extinction").show();
-		$(".btn-h-extinction-modifier h3").text("Annuler")
-		$(".affichage_heure_extinction").hide();
-		$(".h_extinction input").show()
+// //En cas de clic sur le bouton Modifier/Annuler => heure extinction
+// $(".btn-h-extinction-modifier").click(function(){
+// 	//Si c'est modifier
+// 	if($(this).children().text() == "Modifier"){
+// 		getHourExtinction = false;
+// 		$(".btn-h-extinction").show();
+// 		$(".btn-h-extinction-modifier h3").text("Annuler")
+// 		$(".affichage_heure_extinction").hide();
+// 		$(".h_extinction input").show()
 
-	//Si c'est annuler
-	}else if($(this).children().text() == "Annuler"){
-		getHourExtinction = true;
-		$(".btn-h-extinction").hide();
-		$(".btn-h-extinction-modifier h3").text("Modifier")
-		$(".affichage_heure_extinction").show();
-		$(".h_extinction input").hide()
-	}
-})
+// 	//Si c'est annuler
+// 	}else if($(this).children().text() == "Annuler"){
+// 		getHourExtinction = true;
+// 		$(".btn-h-extinction").hide();
+// 		$(".btn-h-extinction-modifier h3").text("Modifier")
+// 		$(".affichage_heure_extinction").show();
+// 		$(".h_extinction input").hide()
+// 	}
+// })
 
 //Converti l'heure en local (format XX:XX) en GMT
 function localHourToGMTHour(str){
@@ -816,102 +816,102 @@ $(".b_first").click(function(){
 
 // =============================== FIRMWARE ===============================
 
-$(".install-button").click(function(){
-	usr_firmware_upload();
-})
+// $(".install-button").click(function(){
+// 	usr_firmware_upload();
+// })
 
-function getXMLHttpRequest() 
-{
-var xhr = null;
-	if (window.XMLHttpRequest || window.ActiveXObject) 
-	{
-		if (window.ActiveXObject) 
-		{
-			try 
-			{
-				xhr = new ActiveXObject("Msxml2.XMLHTTP");
-			} catch(e) 
-			{
-				xhr = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-		} 
-		else 
-		{
-			xhr = new XMLHttpRequest(); 
-		}
-	} 
-	else 
-	{
-		alert("ERROR : XMLHttpRequestunavailable!");
-		return null;
-	}
-	return xhr;
-}
+// function getXMLHttpRequest() 
+// {
+// var xhr = null;
+// 	if (window.XMLHttpRequest || window.ActiveXObject) 
+// 	{
+// 		if (window.ActiveXObject) 
+// 		{
+// 			try 
+// 			{
+// 				xhr = new ActiveXObject("Msxml2.XMLHTTP");
+// 			} catch(e) 
+// 			{
+// 				xhr = new ActiveXObject("Microsoft.XMLHTTP");
+// 			}
+// 		} 
+// 		else 
+// 		{
+// 			xhr = new XMLHttpRequest(); 
+// 		}
+// 	} 
+// 	else 
+// 	{
+// 		alert("ERROR : XMLHttpRequestunavailable!");
+// 		return null;
+// 	}
+// 	return xhr;
+// }
 
-function usr_firmware_upload() 
-{
-	var fd = new FormData();
-	fd.append("i", document.getElementById('firmware_file').files[0]);
-	var xhr = new getXMLHttpRequest();
-	xhr.upload.addEventListener("progress", firmware_uploadProgress, false);
-	xhr.addEventListener("load", firmware_uploadComplete_usr, false);
-	xhr.addEventListener("error", firmware_uploadFailed, false);
-	xhr.addEventListener("abort", firmware_uploadCanceled, false);
-//	xhr.open('POST', '/upload');
-	xhr.open('POST', '../firmware');
-	$(".upload_information").html('<h2 id="progress_num">Veuillez patienter...</h2>');
-	xhr.send(fd);
-}
-
-
-function firmware_uploadProgress(evt) {
-	if (evt.lengthComputable) {
-		var percentComplete = Math.round(evt.loaded * 100 / evt.total);
-		document.getElementById('progress_num').innerHTML = 'Téléchargement du firmware ... ' + percentComplete.toString() + '%';
-		document.getElementById('progress_bar').value = percentComplete;
-		$('#progress_bar').hide();
-	}
-	else {
-		document.getElementById('progress_num').innerHTML = 'unknow';
-	}
-}
-
-function firmware_uploadComplete_usr(evt)
-{
-	/* This event is raised when the server send back a response */
-//            alert(evt.target.responseText);
-//	alert('upload completed');
-	$('.upload_information').html('<h2>Patientez, l\'installation démarre...</h2>');
-	$('.upload_information').html('<h2>La wifi de votre pergola va redémarrer, pensez à vous reconnecter</h2>');
-	firmware_wait_restart_usr();
-//	window.location.reload();
-}
+// function usr_firmware_upload() 
+// {
+// 	var fd = new FormData();
+// 	fd.append("i", document.getElementById('firmware_file').files[0]);
+// 	var xhr = new getXMLHttpRequest();
+// 	xhr.upload.addEventListener("progress", firmware_uploadProgress, false);
+// 	xhr.addEventListener("load", firmware_uploadComplete_usr, false);
+// 	xhr.addEventListener("error", firmware_uploadFailed, false);
+// 	xhr.addEventListener("abort", firmware_uploadCanceled, false);
+// //	xhr.open('POST', '/upload');
+// 	xhr.open('POST', '../firmware');
+// 	$(".upload_information").html('<h2 id="progress_num">Veuillez patienter...</h2>');
+// 	xhr.send(fd);
+// }
 
 
-function firmware_uploadFailed(evt) {
-	alert("Une erreur est survenue durant l'installation du firmware");
-}
+// function firmware_uploadProgress(evt) {
+// 	if (evt.lengthComputable) {
+// 		var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+// 		document.getElementById('progress_num').innerHTML = 'Téléchargement du firmware ... ' + percentComplete.toString() + '%';
+// 		document.getElementById('progress_bar').value = percentComplete;
+// 		$('#progress_bar').hide();
+// 	}
+// 	else {
+// 		document.getElementById('progress_num').innerHTML = 'unknow';
+// 	}
+// }
 
-function firmware_uploadCanceled(evt) {
-	alert("Le chargement à été annulé par l'utilisateur ou la connexion wifi à été coupée");
-}
+// function firmware_uploadComplete_usr(evt)
+// {
+// 	/* This event is raised when the server send back a response */
+// //            alert(evt.target.responseText);
+// //	alert('upload completed');
+// 	$('.upload_information').html('<h2>Patientez, l\'installation démarre...</h2>');
+// 	$('.upload_information').html('<h2>La wifi de votre pergola va redémarrer, pensez à vous reconnecter</h2>');
+// 	firmware_wait_restart_usr();
+// //	window.location.reload();
+// }
+
+
+// function firmware_uploadFailed(evt) {
+// 	alert("Une erreur est survenue durant l'installation du firmware");
+// }
+
+// function firmware_uploadCanceled(evt) {
+// 	alert("Le chargement à été annulé par l'utilisateur ou la connexion wifi à été coupée");
+// }
 		
 
 
-function firmware_wait_restart_usr()
-{
-	$.ajax({
-		url: '../cgi/version.cgi',	// ask for firmware version
-		context: document.body
-	})
-	.done( function(data) { 	
-			$('.upload_information').html('<h2>Firmware ' + data + ' now running<br/>Please wait while reloading...</h2>' );
-			setTimeout("window.location.reload();", 5000);
-			})
-	.fail(  function( jqXHR, textStatus, errorThrown )  {
-//			$('#page_manuf').html('<h1>' + textStatus + '</h1>' );
-			$('.upload_information').find( "h2" ).append( "." );
-			setTimeout("firmware_wait_restart();", 5000);
-	});
+// function firmware_wait_restart_usr()
+// {
+// 	$.ajax({
+// 		url: '../cgi/version.cgi',	// ask for firmware version
+// 		context: document.body
+// 	})
+// 	.done( function(data) { 	
+// 			$('.upload_information').html('<h2>Firmware ' + data + ' now running<br/>Please wait while reloading...</h2>' );
+// 			setTimeout("window.location.reload();", 5000);
+// 			})
+// 	.fail(  function( jqXHR, textStatus, errorThrown )  {
+// //			$('#page_manuf').html('<h1>' + textStatus + '</h1>' );
+// 			$('.upload_information').find( "h2" ).append( "." );
+// 			setTimeout("firmware_wait_restart();", 5000);
+// 	});
 	
-}
+// }

@@ -10,7 +10,8 @@ let langueSauvegarde;
 console.log(langueSauvegarde)
 console.log(localStorage.getItem("langue") == null)
 
-
+let date = new Date()
+let getHours = date.getHours();
 
 
 setInterval(function(){
@@ -160,8 +161,6 @@ function applicationAccueil(res){
     }
     //Aube - crépuscule
     else if(elevation_sol > 0 && elevation_sol <= 15){
-        let date = new Date()
-        let getHours = date.getHours();
         if(getHours < 12){
             $(".meteo .type_temps p").text(res["meteo"]["leveeSoleil"])
         
@@ -173,6 +172,16 @@ function applicationAccueil(res){
     else{
         $(".meteo .type_temps p").text(res["meteo"]["defaultMeteo"])
     }
+
+    //==================== TEXTE DATE ============================
+
+    let a = "" + date.getDay() + "";
+    let b = "" + date.getMonth() + "";
+    console.log(a)
+    console.log(typeof a)
+    console.log(b)
+    console.log(typeof b)
+    $(".time .jour").html(res["dateMeteo"]["joursLettres"][a] + " " + date.getDate() + " " + res["dateMeteo"]["moisLettres"][b]);
     
 }
 function applicationEclairage(res){
@@ -225,7 +234,14 @@ function applicationLames(res){
 }
 
 function applicationWifi(res){
-    $("#textDetectionWifi").text(res["detectionWifi"]); 
+    $("#textDetectionWifi").text(res["detectionWifi"]);
+    $("#exampleModalLabel").text(res["modal"]["connexionWifiTitle"]);
+    $("#inputPasswordText").text(res["modal"]["selectionMdp"]);   
+    $("#connexionText").text(res["modal"]["connexion"]); 
+    $("#annulerText").text(res["modal"]["annuler"]);   
+
+
+
 }
 
 function applicationGuide(res){
@@ -279,6 +295,9 @@ function applicationParamètre(res){
     $("#O1_1").text(res["blocGeneraux"]["e"]);
     $("#O1_2").text(res["blocGeneraux"]["o"]);
 
+    //Affichage de la position 
+	document.querySelector(".geo_final .affichage_geo").textContent = res["blocGeneraux"]["positionnement"] + neLat + lat + ", " + neLong + long ;
+
     $("#titreOrientation").text(res["blocGeneraux"]["orientation"]);
     $("#N").text(res["blocGeneraux"]["n"]);
     $("#NNE").text(res["blocGeneraux"]["nne"]);
@@ -303,14 +322,61 @@ function applicationParamètre(res){
     $("#textAllumAuto").text(res["blocEclairage"]["allAuto"]);
     $("#heureDebut").text(res["blocEclairage"]["heureDemarage"]);
     $("#heureFin").text(res["blocEclairage"]["heureExtinction"]);
-    $("#textModifier").text(res["blocEclairage"]["modifier"]); 
-    $("#textAppliquer").text(res["blocEclairage"]["appliquer"]);
+    if(getHourAllumage){
+        $(".btn-h-allumage-modifier h3").text(res["blocEclairage"]["modifier"]); 
+    }
+    if(getHourExtinction){
+        $(".btn-h-extinction-modifier h3").text(res["blocEclairage"]["modifier"]); 
+    }
+    
+    $(".btn-h-extinction h3").text(res["blocEclairage"]["appliquer"]);
+    $(".btn-h-allumage h3").text(res["blocEclairage"]["appliquer"]);
 
     $("#titreVitesseLed").text(res["blocEclairage"]["vitesseLed"]);
     $("#L1").text(res["blocEclairage"]["instant"]);
     $("#L2").text(res["blocEclairage"]["seconde1"]);
     $("#L3").text(res["blocEclairage"]["seconde2"]);
     $("#L4").text(res["blocEclairage"]["seconde4"]);
+
+    //En cas de clic sur le bouton Modifier/Annuler => heure allumage
+$(".btn-h-allumage-modifier").click(function(){
+	//Si c'est modifier
+	if($(this).children().text() == res["blocEclairage"]["modifier"]){
+		getHourAllumage = false;
+		$(".btn-h-allumage").show();
+		$(".btn-h-allumage-modifier h3").text(res["blocEclairage"]["annuler"])
+		$(".affichage_heure_allumage").hide();
+		$(".h_allumage input").show()
+	//Si c'est annuler
+	}else if($(this).children().text() == res["blocEclairage"]["annuler"]){
+		getHourAllumage = true;
+		$(".btn-h-allumage").hide();
+		$(".btn-h-allumage-modifier h3").text(res["blocEclairage"]["modifier"])
+		$(".affichage_heure_allumage").show();
+		$(".h_allumage input").hide()
+	}
+	
+})
+
+    //En cas de clic sur le bouton Modifier/Annuler => heure extinction
+    $(".btn-h-extinction-modifier").click(function(){
+        //Si c'est modifier
+        if($(this).children().text() == res["blocEclairage"]["modifier"]){
+            getHourExtinction = false;
+            $(".btn-h-extinction").show();
+            $(".btn-h-extinction-modifier h3").text(res["blocEclairage"]["annuler"])
+            $(".affichage_heure_extinction").hide();
+            $(".h_extinction input").show()
+
+        //Si c'est annuler
+        }else if($(this).children().text() == res["blocEclairage"]["annuler"]){
+            getHourExtinction = true;
+            $(".btn-h-extinction").hide();
+            $(".btn-h-extinction-modifier h3").text(res["blocEclairage"]["modifier"])
+            $(".affichage_heure_extinction").show();
+            $(".h_extinction input").hide()
+        }
+    })
 
     //==================== ENVIRONNEMENT ===================
     $("#titreWidgetEnvironnement").text(res["blocEnvironnement"]["title"]);
@@ -348,8 +414,112 @@ function applicationParamètre(res){
     //==================== MAJ ===================
     $("#titreWidgetMAJ").text(res["blocMaj"]["title"]);
     $("#textInstaller").text(res["blocMaj"]["installer"]);
+
+    // =============================== FIRMWARE ===============================
+
+$(".install-button").click(function(){
+	usr_firmware_upload(res);
+})
+    
+}
+
+function getXMLHttpRequest() 
+{
+var xhr = null;
+	if (window.XMLHttpRequest || window.ActiveXObject) 
+	{
+		if (window.ActiveXObject) 
+		{
+			try 
+			{
+				xhr = new ActiveXObject("Msxml2.XMLHTTP");
+			} catch(e) 
+			{
+				xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+		} 
+		else 
+		{
+			xhr = new XMLHttpRequest(); 
+		}
+	} 
+	else 
+	{
+		alert("ERROR : XMLHttpRequestunavailable!");
+		return null;
+	}
+	return xhr;
+}
+
+function usr_firmware_upload(res) 
+{
+	var fd = new FormData();
+	fd.append("i", document.getElementById('firmware_file').files[0]);
+	var xhr = new getXMLHttpRequest();
+	xhr.upload.addEventListener("progress", firmware_uploadProgress, false);
+	xhr.addEventListener("load", firmware_uploadComplete_usr, false);
+	xhr.addEventListener("error", firmware_uploadFailed, false);
+	xhr.addEventListener("abort", firmware_uploadCanceled, false);
+//	xhr.open('POST', '/upload');
+	xhr.open('POST', '../firmware');
+	$(".upload_information").html('<h2 id="progress_num">' + res["firmware"]["attenteFirmware"] + '</h2>');
+	xhr.send(fd);
+}
+
+
+function firmware_uploadProgress(evt) {
+	if (evt.lengthComputable) {
+		var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+		document.getElementById('progress_num').innerHTML = resultatJson["pageParametre"]["firmware"]["telechargementFirmware"] + percentComplete.toString() + '%';
+		document.getElementById('progress_bar').value = percentComplete;
+		$('#progress_bar').hide();
+	}
+	else {
+		document.getElementById('progress_num').innerHTML = 'unknow';
+	}
+}
+
+function firmware_uploadComplete_usr(evt)
+{
+	/* This event is raised when the server send back a response */
+//            alert(evt.target.responseText);
+//	alert('upload completed');
+	$('.upload_information').html('<h2>' + resultatJson["pageParametre"]["firmware"]["uploadStep1"] + '</h2>');
+	$('.upload_information').html('<h2>' + resultatJson["pageParametre"]["firmware"]["uploadStep2"] + '</h2>');
+	firmware_wait_restart_usr();
+//	window.location.reload();
+}
+
+
+function firmware_uploadFailed(evt) {
+	alert(resultatJson["pageParametre"]["firmware"]["failFirmware"]);
+}
+
+function firmware_uploadCanceled(evt) {
+	alert(resultatJson["pageParametre"]["firmware"]["cancelFirmware"]);
+}
+		
+
+
+function firmware_wait_restart_usr()
+{
+	$.ajax({
+		url: '../cgi/version.cgi',	// ask for firmware version
+		context: document.body
+	})
+	.done( function(data) { 	
+			$('.upload_information').html('<h2>Firmware ' + data + ' now running<br/>Please wait while reloading...</h2>' );
+			setTimeout("window.location.reload();", 5000);
+			})
+	.fail(  function( jqXHR, textStatus, errorThrown )  {
+//			$('#page_manuf').html('<h1>' + textStatus + '</h1>' );
+			$('.upload_information').find( "h2" ).append( "." );
+			setTimeout("firmware_wait_restart();", 5000);
+	});
+	
 }
 
 function getElementCarte(data, value){
     return $(data).find(value).text();
 }
+

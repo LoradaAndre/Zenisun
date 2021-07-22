@@ -38,9 +38,30 @@
                     "modeEte" : "Mode été",
                     "modeHiver" : "Mode hiver"
                 },
-            "dateMeteo" : {
-                    "joursLettres" : ["Dimanche", "Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"],
-                    "moisLettres" : ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Décembre"]
+                "dateMeteo" : {
+                    "joursLettres" : {
+                        "0" : "Dimanche",
+                        "1" : "Lundi",
+                        "2" : "Mardi",
+                        "3" : "Mercredi",
+                        "4" : "Jeudi",
+                        "5" : "Vendredi",
+                        "6" : "Samedi"
+                    },
+                    "moisLettres" : {
+                        "0" : "Janvier",
+                        "1" : "Fevrier",
+                        "2" : "Mars",
+                        "3" : "Avril",
+                        "4" : "Mai",
+                        "5" : "Juin",
+                        "6" : "Juillet",
+                        "7" : "Août",
+                        "8" : "Septemnbre",
+                        "9" : "Octobre",
+                        "10" : "Novembre",
+                        "11" : "Decembre"
+                    }
                 },
             "popupContact" :
                 {
@@ -98,7 +119,13 @@
         },
     "pageWifi" :
         {
-            "detectionWifi" : "Détecter les réseaux wifi"
+            "detectionWifi" : "Détecter les réseaux wifi",
+            "modal" : {
+                "connexionWifiTitle" : "Connexion au réseau ",
+                "selectionMdp" : "Entrez la clé de sécurité réseau",
+                "connexion" : "Connexion",
+                "annuler" : "Annuler"
+            }
         },
     "pageGuide" :
         {
@@ -142,7 +169,7 @@
                     "homing" : "Homing manuel",
                     "boutonHoming" : "Effectuer un homing",
                     "geolocalisation" : "Géolocalisation",
-                    "positionnement" : "Positionnement:",
+                    "positionnement" : "Positionnement: ",
                     "boutonEnregistrer" : "Enregistrer",
                     "lat" : "Latitude",
                     "lon" : "Longitude",
@@ -218,6 +245,20 @@
                     "choisirFichier" : "Choisir un fichier",
                     "pasDeFichier" : "Aucun fichier choisi",
                     "installer" : "Installer"
-                }
+                },
+            "firmware" : {
+                "attenteFirmware" : "Veuillez patienter...",
+                "telechargementFirmware" : "Téléchargement du firmware ... ",
+                "uploadStep1" : "Patientez, l'installation démarre...",
+                "uploadStep2" : "La wifi de votre pergola va redémarrer, pensez à vous reconnecter",
+                "failFirmware" : "Une erreur est survenue durant l'installation du firmware",
+                "cancelFirmware" : "Le chargement à été annulé par l'utilisateur ou la connexion wifi à été coupée"
+            },
+            "modal" : {
+                "exampleModalLabel" : "Accès administrateur",
+                "textEntrerMDP" : "Entrez le mot de passe",
+                "textConnexion" : "Connexion",
+                "textAnnuler" : "Annuler"
+            }
         }
 }
