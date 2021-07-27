@@ -143,6 +143,11 @@ h1{
     background-size: cover;
 }
 
+.connexion_widget{
+    background-image: url(../resources/background/widgets/fond_connexion.jpg);
+    background-size: cover;
+}
+
 .meteo_widget{
     background-image: url(../resources/background/widget_meteo/beau.jpg);
     background-size: cover;
