@@ -36,8 +36,11 @@ function getElementCarte(data, value){
 
 //Lecture de la carte, récupération des infos pour l'éclairage
 function lectureCarte(){
+
+    IPAdress = localStorage.getItem("IP");
+
     $.ajax({
-        url: "../cgi/zns.cgi?cmd=d&p=ios",
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=d&p=ios",
         context: document.body
       }).done(function(data) {
             // isConnected(true,data);
@@ -76,7 +79,7 @@ function lectureCarte(){
     });	
 
     $.ajax({
-        url: '../cgi/zns.cgi?cmd=c',
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=c",
         context: document.body
       }).done(function(data){
              //hwcfg
@@ -293,7 +296,7 @@ function refreshBarre(classRange, input, inputSpe){
 //Requète qui change l'intensité d'un ruban
 function changeValueEclairage(ruban, valeur){ 
     $.ajax({
-        url: '../cgi/zns.cgi?cmd=l&o='+ ruban +'&p=' + valeur,
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=l&o="+ ruban +"&p=" + valeur,
         context: document.body
       }).done(function(data) {
         //   isConnected(true,data);
@@ -403,8 +406,11 @@ $(".bouton_sauvegarde_eclairage").click(function(){
 
 //Requete sauvegarde de la configuration d'éclairage
 function saveLightMemory(){
+
+    IPAdress = localStorage.getItem("IP");
+
     console.log("rentré")
-	let command = '../cgi/zns.cgi?cmd=u&p=8&v=1';
+	let command = "http://"+ IPAdress +"/zns.cgi?cmd=u&p=8&v=1";
 	$.ajax({
 	  url: command,	
 	  context: document.body

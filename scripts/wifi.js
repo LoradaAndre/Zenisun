@@ -4,8 +4,11 @@ let reseau;
 let connected = false;
 
 function scanWifi(){ 
+
+    IPAdress = localStorage.getItem("IP");
+    
     $.ajax({
-        url: '../cgi/zns.cgi?cmd=s&p=s',
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=s&p=s",
         context: document.body
       }).done(function(data) {
             isConnected(true, data)
@@ -16,8 +19,11 @@ function scanWifi(){
 }
 
 function getResultWifi(){ 
+
+    IPAdress = localStorage.getItem("IP");
+
     $.ajax({
-        url: '../cgi/zns.cgi?cmd=s&p=g',
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=s&p=g",
         context: document.body
       }).done(function(data) {
             isConnected(true, data)
@@ -243,6 +249,9 @@ $(".bouton_detection").click(function(){
 });
 
 function switch_network(idElement){
+
+    IPAdress = localStorage.getItem("IP");
+    
     console.log(reseau[idElement].querySelector("sec").textContent)
     let sec = reseau[idElement].querySelector("sec").textContent
     let password = $("input").val()
@@ -250,7 +259,7 @@ function switch_network(idElement){
     let type = reseau[idElement].querySelector("type").textContent
     console.log("sec: " + sec + " pass: " + password + " name: " + name + " type: " + type )
 	
-	$.post( "../cgi/zns_post.cgi" , { sec:sec, key:password, id:name, type:type })
+	$.post( "http://"+ IPAdress +"/zns_post.cgi" , { sec:sec, key:password, id:name, type:type })
     .done( 
         function( data ) {
         alert( "Connectez-vous au wifi " + name + " pour continuer à avoir accès à l'application." );	

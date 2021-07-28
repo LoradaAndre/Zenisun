@@ -56,6 +56,9 @@ $(document).ready(function(){
 	defaultOrientationPergola();
 
     setInterval(function(){ 
+
+		IPAdress = localStorage.getItem("IP");
+
         lectureCarte();
         updateOutputRange();
 		affichageGeolocalisation();
@@ -70,7 +73,7 @@ function getElementCarte(data, value){
 //Lecture de la carte, récupération des infos pour les paramètres
 function lectureCarte(){
     $.ajax({
-        url: "../cgi/zns.cgi?cmd=d&p=ios",
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=d&p=ios",
         context: document.body
       }).done(function(data){
 			// mot = parseInt(getMotorValue(data,24))
@@ -101,7 +104,7 @@ function lectureCarte(){
     });	
 
 	$.ajax({
-        url: '../cgi/zns.cgi?cmd=c',
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=c",
         context: document.body
       }).done(function(data){
 			// isConnected(true, data)
@@ -194,7 +197,7 @@ function getMotorHomeSet(valHomeSet){
 
 //Permet d'effectuer un homing des moteurs
 function homming(mot_id){
-	var command = '../cgi/zns.cgi?cmd=m&m=' + mot_id + '&p=-10000';
+	var command = "http://"+ IPAdress +"/zns.cgi?cmd=m&m=" + mot_id + "&p=-10000";
 	$.ajax({
 	  url: command,	
 	  context: document.body
@@ -312,13 +315,13 @@ if(neLat == "-"){
 }
 
 //On applique la géolocalisation de la pergola
-var command_long = '../cgi/zns.cgi?cmd=u&p=11&v=' + pergola_longitude;
+var command_long = "http://"+ IPAdress +"/zns.cgi?cmd=u&p=11&v=" + pergola_longitude;
 $.ajax({
   url: command_long,	
   context: document.body
 	}).done(function(data) {
 		// isConnected(true, data)
-		var command_lat = '../cgi/zns.cgi?cmd=u&p=12&v=' + pergola_latitude;
+		var command_lat = "http://"+ IPAdress +"/zns.cgi?cmd=u&p=12&v=" + pergola_latitude;
 		$.ajax({
 		url: command_lat,	
 		context: document.body
@@ -339,7 +342,7 @@ function defaultOrientationPergola(){
 //Requête d'orientation de la pergola (paramètres généraux)
 function applyOrientationPergola(valeur){
 	pergola_orient = parseInt(valeur);
-	var command = '../cgi/zns.cgi?cmd=u&p=10&v=' + pergola_orient;
+	var command = "http://"+ IPAdress +"/zns.cgi?cmd=u&p=10&v=" + pergola_orient;
 	$.ajax({
 	  url: command,	
 	  context: document.body
@@ -449,7 +452,7 @@ function apply_ligt_off_h(){
 
 	heure_allumage = $('#light_off_hour').val()
 
-	var command = '../cgi/zns.cgi?cmd=u&p=6&v=' + localHourToGMTHour(heure_allumage);
+	var command = "http://"+ IPAdress +"/zns.cgi?cmd=u&p=6&v=" + localHourToGMTHour(heure_allumage);
 	$.ajax({
 	  url: command,	
 	  context: document.body
@@ -465,7 +468,7 @@ function apply_ligt_on_h(){
 
 	heure_extinction = $('#light_on_hour').val()
 
-	var command = '../cgi/zns.cgi?cmd=u&p=5&v=' + localHourToGMTHour(heure_extinction);
+	var command = "http://"+ IPAdress +"/zns.cgi?cmd=u&p=5&v=" + localHourToGMTHour(heure_extinction);
 	$.ajax({
 	  url: command,	
 	  context: document.body
@@ -492,7 +495,7 @@ function applyGradateurLed(idButton){
 
 		light_opt = $(idButton).attr("value");
 
-		var command = '../cgi/zns.cgi?cmd=u&p=9&v=' + light_opt;
+		var command = "http://"+ IPAdress +"/zns.cgi?cmd=u&p=9&v=" + light_opt;
 		$.ajax({
 		  url: command,	
 		  context: document.body
@@ -615,7 +618,7 @@ function refreshBarre(classRange, input, inputSpe){
 //Requête de changement du seil de fermeture nuit (Environnement)
 function changeSeuilFermNuit(value){
 	var h = parseInt(value);
-	var command = '../cgi/zns.cgi?cmd=u&p=7&v=' + h;
+	var command = "http://"+ IPAdress +"/zns.cgi?cmd=u&p=7&v=" + h;
 	$.ajax({
 	  url: command,	
 	  context: document.body
@@ -640,7 +643,7 @@ function clickActSuiviSol(){
 function applyPeriodSuiviSol(idButton){
 	$(idButton).click(function(){
 		sun_upd_per = $(idButton).attr("value");
-		var command = '../cgi/zns.cgi?cmd=u&p=4&v=' + sun_upd_per;
+		var command = "http://"+ IPAdress +"/zns.cgi?cmd=u&p=4&v=" + sun_upd_per;
 
 		$.ajax({
 		  url: command,	
@@ -686,7 +689,7 @@ function set_user_config( new_config ){
 	new_config &= 65535;	// bound to 16 bits
 	if ( monitoring_user_config != new_config ){
 		monitoring_user_config = new_config;	// anticipate to answer.
-		var command = '../cgi/zns.cgi?cmd=u&p=3&v=' + new_config;
+		var command = "http://"+ IPAdress +"/zns.cgi?cmd=u&p=3&v=" + new_config;
 		$.ajax({
 		  url: command,	
 		  context: document.body
@@ -701,7 +704,7 @@ function set_user_config( new_config ){
 //Requête de déplacement de lame à un certain angle (pour les modes avec les lames)
 function deplacementLamesAngle(moteur, angle){ 
     $.ajax({
-        url: '../cgi/zns.cgi?cmd=m&m=' + moteur + '&a=' + angle,
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=m&m=" + moteur + '&a=' + angle,
         context: document.body
       }).done(function(data) {
 			// isConnected(true, data)
@@ -713,7 +716,7 @@ function deplacementLamesAngle(moteur, angle){
 //Requête de déplacement de lame (pour les modes avec les lames)
 function deplacementLames(moteur, valeur){ 
     $.ajax({
-        url: '../cgi/zns.cgi?cmd=m&m=' + moteur + '&p=' + valeur,
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=m&m=" + moteur + "&p=" + valeur,
         context: document.body
       }).done(function(data) {
 			// isConnected(true, data)

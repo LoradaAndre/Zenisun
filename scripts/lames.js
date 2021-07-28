@@ -37,8 +37,11 @@ function getElementCarte(data, value){
 }
 
 function lectureCarte(){
+
+    IPAdress = localStorage.getItem("IP");
+    
     $.ajax({
-        url: "../cgi/zns.cgi?cmd=d&p=ios",
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=d&p=ios",
         context: document.body
       }).done(function(data) {
             // isConnected(true, data)
@@ -63,7 +66,7 @@ function lectureCarte(){
 
 
       $.ajax({
-        url: '../cgi/zns.cgi?cmd=c',
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=c",
         context: document.body
       }).done(function(data){
              //hwcfg
@@ -318,9 +321,12 @@ function resetOther(element){
 
 //Requête de déplacement de lame
 function deplacementLames(moteur, valeur){ 
+
+    IPAdress = localStorage.getItem("IP")
+
     console.log(monitoring_user_config)
     $.ajax({
-        url: '../cgi/zns.cgi?cmd=m&m=' + moteur + '&p=' + valeur,
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=m&m=" + moteur + "&p=" + valeur,
         context: document.body
         }).done(function(data) {
             // isConnected(true, data)
@@ -405,10 +411,13 @@ $(".button_saision_off").click(function(){
 });
 
 function set_user_config( new_config ){
+
+    IPAdress = localStorage.getItem("IP");
+
 	new_config &= 65535;	// bound to 16 bits
 	if ( monitoring_user_config != new_config ){
 		monitoring_user_config = new_config;	// anticipate to answer.
-		var command = '../cgi/zns.cgi?cmd=u&p=3&v=' + new_config;
+		var command = "http://"+ IPAdress +"/zns.cgi?cmd=u&p=3&v=" + new_config;
 		$.ajax({
 		  url: command,	
 		  context: document.body

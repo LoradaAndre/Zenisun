@@ -15,6 +15,7 @@ $(document).ready(function(){
     afficheUn(".para1")
 
     setInterval(function(){ 
+        let IPAdress = localStorage.getItem("IP");
         lectureC();
         
     }, 1000);
@@ -151,7 +152,7 @@ function getElementCarte(data, value){
 //Lecture de la carte, récupération des infos pour les paramètres
 function lectureC(){
     $.ajax({
-        url: "../cgi/zns.cgi?cmd=d&p=ios",
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=d&p=ios",
         context: document.body
       }).done(function(data){
 
@@ -217,7 +218,7 @@ function lectureC(){
     });	
 
 	$.ajax({
-        url: '../cgi/zns.cgi?cmd=c',
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=c",
         context: document.body
       }).done(function(data){
 			// console.log(data.all)
@@ -332,7 +333,7 @@ $(".validate_spe").click(function(){
     }
 
     $.ajax({
-        url: '../cgi/zns.cgi?cmd=f&p=49&v=' + mask,	
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=f&p=49&v=" + mask,	
         context: document.body
       }).done(function(){
       }).fail( function(){
@@ -378,7 +379,7 @@ $(".save").click(function(){
 
 function save_manuf_config(){
 	var password = prompt("Please enter password", "xxxx");
-	var command = '../cgi/zns.cgi?cmd=f&p=1234&v=' + password;
+	var command = "http://"+ IPAdress +"/zns.cgi?cmd=f&p=1234&v=" + password;
 	$.ajax({
 	  url: command,	
 	  context: document.body
@@ -392,7 +393,7 @@ $(".charge").click(function(){
 });
 
 function reset_manuf_config(){
-	var command = '../cgi/zns.cgi?cmd=f&p=1235&v=7913';
+	var command = "http://"+ IPAdress +"/zns.cgi?cmd=f&p=1235&v=7913";
 	$.ajax({
 	  url: command,	
 	  context: document.body
@@ -409,7 +410,7 @@ $(".doHoming").click(function(){
 
 //Permet d'effectuer un homing des moteurs
 function homming(mot_id){
-	var command = '../cgi/zns.cgi?cmd=m&m=' + mot_id + '&p=-10000';
+	var command = "http://"+ IPAdress +"/zns.cgi?cmd=m&m=" + mot_id + "&p=-10000";
 	$.ajax({
 	  url: command,	
 	  context: document.body
@@ -431,7 +432,7 @@ $(".validate_set_motor").click(function(){
 // move motor to count position [0..max_count]
 function manu_manuf_motor(valueToInsert, idToInsert){
 
-    var command = '../cgi/zns.cgi?cmd=m&m=' + idToInsert + '&p=' + valueToInsert;
+    var command = "http://"+ IPAdress +"/zns.cgi?cmd=m&m='"+ idToInsert + "&p=" + valueToInsert;
     $.ajax({
         url: command,	
         context: document.body
@@ -450,7 +451,7 @@ $(".validate_set_shader").click(function(){
 // move shader to angle position [0..angle_max]
 function manu_manuf_motor_a(valueToInsert, idToInsert){
 
-    var command = '../cgi/zns.cgi?cmd=m&m=' + idToInsert + '&a=' + valueToInsert;
+    var command = "http://"+ IPAdress +"/zns.cgi?cmd=m&m=" + idToInsert + "&a=" + valueToInsert;
     $.ajax({
         url: command,	
         context: document.body
@@ -468,7 +469,7 @@ $(".validate_set_led").click(function(){
 
 function manu_manuf_led(valueToInsert, idToInsert){
 
-	var command = '../cgi/zns.cgi?cmd=l&o=' + idToInsert + '&p=' + valueToInsert;
+	var command = "http://"+ IPAdress +"/zns.cgi?cmd=l&o=" + idToInsert + "&p=" + valueToInsert;
 	$.ajax({
 	  url: command,	
 	  context: document.body
@@ -492,7 +493,7 @@ function applyConfig(categorie, valueToInsert, idToInsert){
 // send a board  setting to pergola : note setting is not automatically saved, call save_board_config() to do that
 function apply_board_config(valueToInsert, idToInsert){
 
-    var command = '../cgi/zns.cgi?cmd=b&p=' + idToInsert + '&v=' + valueToInsert;
+    var command = "http://"+ IPAdress +"/zns.cgi?cmd=b&p=" + idToInsert + "&v=" + valueToInsert;
     $.ajax({
         url: command,	
         context: document.body
@@ -509,7 +510,7 @@ function apply_manuf_config(valueToInsert, idToInsert){
         valueToInsert = parseInt(valueToInsert) + 500;	// automatically add the 50°C offset to user entry
     }
         
-    var command = '../cgi/zns.cgi?cmd=f&p=' + idToInsert + '&v=' + valueToInsert;
+    var command = "http://"+ IPAdress +"/zns.cgi?cmd=f&p=" + idToInsert + "&v=" + valueToInsert;
     $.ajax({
         url: command,	
         context: document.body

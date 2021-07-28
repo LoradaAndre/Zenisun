@@ -13,11 +13,22 @@ let hwcfg;
 
 let fr_lang;
 
+// let IPAdress;
+
 function getElementCarte(data, value){
     return $(data).find(value).text();
 }
 
 $(document).ready(function (){
+
+    if(localStorage.getItem("IP") == null || localStorage.getItem("IP") == "undefined"){
+        localStorage.setItem("IP", "192.168.0.110");  
+        IPAdress = localStorage.getItem("IP");
+        console.log(IPAdress);
+    
+    }else{
+        IPAdress = localStorage.getItem("IP");
+    }
 
     $(".canvas-mot").hide();
     $(".canvas-light").hide();
@@ -50,8 +61,11 @@ $(document).ready(function (){
 
 //Lecture des données de la carte électronque
 function lectureCarte(){
+
+    IPAdress = localStorage.getItem("IP");
+
     $.ajax({
-        url: "cgi/zns.cgi?cmd=d&p=ios",
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=d&p=ios",
         context: document.body
       }).done(function(data) {
           console.log("==========test============")
@@ -89,7 +103,7 @@ function lectureCarte(){
     });	
 
     $.ajax({
-        url: 'cgi/zns.cgi?cmd=c',
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=c",
         context: document.body
       }).done(function(data){
           //Config utilisateur
@@ -231,11 +245,12 @@ function meteo(number_config, elevation_sol){
 
 //Synchronisation de la date de l'automate à celle de Date (Js)
 function sync_date(){
+    IPAdress = localStorage.getItem("IP");
 	let now_date = new Date();
 	let date_sec =  now_date.getTime();
 	date_sec /= 1000;	// to seconds for use in pergola
 	// set user setttings : zns.cgi?cmd=u&p=<n>&v=<value>
-	var command = 'cgi/zns.cgi?cmd=u&p=0&v=' + date_sec;
+	var command = "http://"+ IPAdress +"/zns.cgi?cmd=u&p=0&v=" + date_sec;
 	$.ajax({
 	  url: command,	
 	  context: document.body

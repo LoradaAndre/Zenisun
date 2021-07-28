@@ -13,11 +13,14 @@ console.log(localStorage.getItem("langue") == null)
 let date = new Date()
 let getHours = date.getHours();
 
+let IPAdress;
 
 setInterval(function(){
 
+    IPAdress = localStorage.getItem("IP");
+
     $.ajax({
-        url: "../cgi/zns.cgi?cmd=d&p=ios",
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=d&p=ios",
         context: document.body
       }).done(function(data) {
 
@@ -504,7 +507,7 @@ function firmware_uploadCanceled(evt) {
 function firmware_wait_restart_usr()
 {
 	$.ajax({
-		url: '../cgi/version.cgi',	// ask for firmware version
+		url: "http://"+ IPAdress +"/version.cgi",	// ask for firmware version
 		context: document.body
 	})
 	.done( function(data) { 	

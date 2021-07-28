@@ -23,14 +23,19 @@ let pergOrient;
 let pergLong;
 let pergLat;
 
+let IPAdress;
+
 function getElementCarte(data, value){
     return $(data).find(value).text();
 }
 
 //Lecture de la carte, récupération des infos pour les paramètres
 function lectureCarte(){
+
+    IPAdress = localStorage.getItem("IP");
+
     $.ajax({
-        url: "../cgi/zns.cgi?cmd=d&p=ios",
+        url: "http://"+ IPAdress +"/zns.cgi?zns.cgi?cmd=d&p=ios",
         context: document.body
       }).done(function(data){
 
@@ -84,7 +89,7 @@ function lectureCarte(){
     });	
 
 	$.ajax({
-        url: '../cgi/zns.cgi?cmd=c',
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=c",
         context: document.body
       }).done(function(data){
             // pergOrient = parseInt(data.all[4].textContent) //orient

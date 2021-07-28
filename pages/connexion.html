@@ -1,0 +1,146 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Zenisun</title>
+
+        <link rel="icon" href="../resources/images/zenisun_logo.png">
+        <link rel="stylesheet" href="../libs/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/connexion.css">
+        <link rel="stylesheet" href="../styles/navbar.css">
+        <link rel="stylesheet" href="../responsive/responsive.css">
+    </head>
+
+    <body>
+        <!-- ============================================== NavBar ============================================== -->
+        <div class="navigation_bar">
+
+            <div class="categorie categorie_spe">
+                <div class="icon_close">
+                    <img src="../resources/icons/widgets_light/close.png" alt="image de test">
+                </div>
+            </div>
+
+            <div class="categorie categorie_eclairage">
+                <a href="eclairage.html">
+                    <div class="icon_navbar">
+                        <img src="../resources/icons/widgets_light/lamp.png" alt="image de test">
+                    </div>
+                    <div id="navEclairage" class="nom_widget">Éclairage</div>
+                </a>
+            </div>
+        
+            <div class="categorie categorie_lames_orientables">
+                <a href="lames_orientabes.html">
+                    <div class="icon_navbar">
+                        <img src="../resources/icons/widgets_light/lames_prov.png" alt="image de test">
+                    </div>
+                    <div id="navLames" class="nom_widget">Lames orientables</div>
+                </a>
+            </div>
+        
+            <div class="categorie categorie_config_wifi icon_true">
+                <a href="config_wifi.html">
+                    <div class="icon_navbar">
+                        <img src="../resources/icons/widgets_light/wifi.png" alt="image de test">
+                    </div>
+                    <div id="navWifi" class="nom_widget">Configuration wifi</div>
+                </a>
+            </div>
+        
+            <!-- ======================== Mise à jour - Station météo ======================== -->
+            <!-- <div class="categorie categorie_station_meteo">
+                <a href="station_meteo.html">
+                    <div class="icon_navbar">
+                        <img src="../resources/icons/widgets_light/nuage.png" alt="image de test">
+                    </div>
+                    <div class="nom_widget">Station météo</div>
+                </a>
+            </div> -->
+        
+            <div class="categorie categorie_guide_utilisation">
+                <a href="guide_utilisation.html">
+                    <div class="icon_navbar">
+                        <img src="../resources/icons/widgets_light/book.png" alt="image de test">
+                    </div>
+                    <div id="navGuide" class="nom_widget">Guide d'utilisation</div>
+                </a>
+            </div>
+        
+            <div class="categorie categorie_parametres">
+                <a href="parametres.html">
+                    <div class="icon_navbar">
+                        <img src="../resources/icons/widgets_light/settings.png" alt="image de test">
+                    </div>
+                    <div id="navParametres" class="nom_widget">Paramètres</div>
+                </a>
+            </div>
+        </div>
+     
+        <main> <!-- ============================================== Contenant ============================================== -->
+            <div class="contenu-main">
+                <div class="flex-left">
+                    <div class="test">
+                        <h1>Saisissez l'adresse IP de l'automate</h1>
+                        <input class="form-control saisieIPAutomate" id="example-number-input" placeholder="par défaut: 192.168.0.110" value="">
+                        <div class="buttonValiderIP">Valider</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================== Aside ============================================== -->
+            <div class="left-main">
+                 <aside>
+                    <div class="menu">
+                        <img class="menu_icon" src="../resources/icons/widgets_light/menu.png" alt="">
+                    </div>
+                    <div class="connexion">
+                        <img class="aside_icon connexion_icon" src="../resources/icons/leds/wait.png" alt=""><p>connexion...</p>
+                    </div>
+                    <div class="heure_nav">
+                        <p>22:00</p>
+                    </div>
+                    <a class="coucou" href="../index.htm">
+                        <div class="home">
+                            <img class="aside_icon home_icon" src="../resources/icons/widgets_light/home.png" alt="">
+                        </div>
+                    </a>
+                </aside>
+            </div>
+        </main>
+      
+        <!-- ============================================== Modal ============================================== -->
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1" id="inputPasswordText"></label>
+                        <input type="password" width="100%" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="group_overlay_button">
+                        <div class="overlay_button b_first" data-bs-dismiss="modal" id="connexionText"></div>
+                        <div class="overlay_button b_second" data-bs-dismiss="modal" id="annulerText"></div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================== Scripts ============================================== -->
+
+        <script src="../libs/jquery/jquery-3.5.1.js"></script>
+        <script src="../lang/lang.js"></script>
+        <script src="../libs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="../libs/toggle/dist/switch.js"></script>
+        <script src="../scripts/theme.js" ></script>
+        <script src="../scripts/script.js"></script>
+        <script src="../scripts/heure.js"></script>
+        <script src="../scripts/connexion.js"></script>
+        <script src="../responsive/responsive.js"></script>
+    </body>
+</html>

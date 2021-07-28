@@ -1,0 +1,15 @@
+.saisieIPAutomate{
+    width: 80%;
+    text-align: center;
+    margin: auto;
+}
+
+.buttonValiderIP{
+    background-color: #52808B;
+    color: white;
+    border-radius: 3px;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+}
