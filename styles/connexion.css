@@ -12,4 +12,27 @@
     width: 80%;
     margin: auto;
     margin-top: 10px;
+    cursor: pointer;
+}
+
+.linksHelp{
+    display: flex;
+    justify-content: center;
+}
+.linkHelp, .linkStopHelp{
+    color: #52808B;
+    text-decoration: underline;
+    text-align: center;
+    margin: 20px;
+    cursor: pointer;
+}
+
+strong{
+    font-style: italic;
+    font-weight: 300;
+}
+
+a{
+    color: #52808B;
+    text-decoration: underline;
 }

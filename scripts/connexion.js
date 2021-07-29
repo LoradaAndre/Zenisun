@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+    $(".linkStopHelp").hide();
+    $(".textHelp").hide();
+
     $(".saisieIPAutomate").val(localStorage.getItem("IP"));
 
     $(".buttonValiderIP").click(function(){
@@ -11,13 +14,21 @@ $(document).ready(function(){
             alert("Votre adresse IP n'est pas valable");
         }
         else{
-            console.log(IPAdress + " -> est ok");
             localStorage.setItem("IP", $(".saisieIPAutomate").val());  
+            alert("La nouvelle IP est désormais " + localStorage.getItem("IP"));
         }
     
     });
 
-  
+    $(".linkHelp").click(function(){
+        $(".linkStopHelp").show();
+        $(".textHelp").show();
+    });
+
+    $(".linkStopHelp").click(function(){
+        $(this).hide();
+        $(".textHelp").hide();
+    });
     
   
   
