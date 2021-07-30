@@ -7,7 +7,8 @@
                     "lamesTitle" : "Lames orientables",
                     "ConfigWifiTitle" : "Configuration wifi",
                     "GuideTitle" : "Guide d'utilisation",
-                    "ParaTitle" : "Paramètres"
+                    "ParaTitle" : "Paramètres",
+                    "ConnexionTitle" : "Connexion"
                 },
 
             "connexionOn" : "connecté",
@@ -22,7 +23,8 @@
                     "lamesTitle" : "Lames orientables",
                     "ConfigWifiTitle" : "Configuration wifi",
                     "GuideTitle" : "Guide d'utilisation",
-                    "ParaTitle" : "Paramètres"
+                    "ParaTitle" : "Paramètres",
+                    "ConnexionTitle" : "Connexion"
                 },
             "meteo" : 
                 {

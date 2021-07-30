@@ -142,9 +142,9 @@ aside{
 }
 
 .connexion_icon{
-    margin-block-end: 1em;
-    width: 25px;
-    margin: 3%;
+    width: 20px;
+    height: 20px;
+    margin: auto;
 }
 
 .home_icon{

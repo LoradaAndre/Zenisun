@@ -164,8 +164,12 @@ a{
 }
 
 .connexion_icon{
-    float: left;
+    /* float: left; */
     width: 20px;
+    height: 20px;
+    margin: auto;
+    /* margin: 3%; */
+    /* margin-block-end: 1em; */
 }
 
 /* ========================== ASIDE ========================== */
@@ -179,13 +183,6 @@ aside{
     /* background-color: #7093AE; */
     /* position: fixed; */
     border-radius: 3px;
-}
-
-.connexion_icon{
-    margin-block-end: 1em;
-    /* float: left; */
-    width: 25px;
-    margin: 3%;
 }
 
 .info_icon{

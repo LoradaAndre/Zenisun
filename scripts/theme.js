@@ -105,6 +105,7 @@ function themeSombre(){
     $(".parametres_widget img").attr('src', "resources/icons/widgets_dark/settingsSombre.png");
     $(".guide_utilisation_widget img").attr('src', "resources/icons/widgets_dark/bookSombre.png");
     $(".station_meteo_widget img").attr('src', "resources/icons/widgets_dark");
+    $(".connexion_widget img").attr('src', "resources/icons/widgets_dark/connexionSombre.png");
 }
 
 function getThemeEnregistre(){

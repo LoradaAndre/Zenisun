@@ -183,9 +183,9 @@ $(".drapAnglais").click(function(){
 	localStorage.setItem("langue", "en")
 });
 
-$(".drapSuede").click(function(){
-	localStorage.setItem("langue", "se")
-});
+// $(".drapSuede").click(function(){
+// 	localStorage.setItem("langue", "se")
+// });
 
 // =============================== HOMING ===============================
 

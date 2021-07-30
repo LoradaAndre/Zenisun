@@ -7,7 +7,8 @@
                     "lamesTitle" : "Rotating slats",
                     "ConfigWifiTitle" : "Wifi configuration",
                     "GuideTitle" : "Using manual",
-                    "ParaTitle" : "Settings"
+                    "ParaTitle" : "Settings",
+                    "ConnexionTitle" : "Connection"
                 },
 
             "connexionOn" : "connected",
@@ -22,7 +23,8 @@
                     "lamesTitle" : "Rotating slats",
                     "ConfigWifiTitle" : "Wifi configuration",
                     "GuideTitle" : "Using manual",
-                    "ParaTitle" : "Settings"
+                    "ParaTitle" : "Settings",
+                    "ConnexionTitle" : "Connection"
                 },
             "meteo" : 
                 {

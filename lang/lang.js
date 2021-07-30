@@ -15,24 +15,26 @@ let getHours = date.getHours();
 
 let IPAdress;
 
+// defaultConnexion();
+
+// function defaultConnexion(){
+//     page = location.href;
+//     page = page.split("/");
+//     page = page[page.length-1];
+    
+//     if(page != "guide_utilisation.html"){
+//         $(".connexion p").text(resultatJson["general"]["connexionOff"]);
+//     }
+// }
+
+// langRequest();
+
+
 setInterval(function(){
 
-    IPAdress = localStorage.getItem("IP");
-
-    $.ajax({
-        url: "http://"+ IPAdress +"/zns.cgi?cmd=d&p=ios",
-        context: document.body
-      }).done(function(data) {
-
-        isConnected(true, data)
-        number_config = parseInt(getElementCarte(data, "user"));
-        // valueMotor1 = getMotorValue(getElementCarte(data, "Mot0"));
-        capteurPluie = parseInt(getElementCarte(data, "gpi4"));
-        elevation_sol = parseInt(getElementCarte(data, "s_elev"));
-
-      }).fail(function() {
-         isConnected(false, data)
-    });	
+    page = location.href;
+    page = page.split("/");
+    page = page[page.length-1];
 
     if(localStorage.getItem("langue") == null || localStorage.getItem("langue") == "undefined"){
         localStorage.setItem("langue", "fr");  
@@ -46,25 +48,54 @@ setInterval(function(){
         chargerLangue(langueSauvegarde);
     
     }
+    
+    IPAdress = localStorage.getItem("IP");
+
+    $.ajax({
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=d&p=ios",
+        context: document.body
+      }).done(function(data) {
+
+        isConnected(true, data)
+        number_config = parseInt(getElementCarte(data, "user"));
+        // valueMotor1 = getMotorValue(getElementCarte(data, "Mot0"));
+        capteurPluie = parseInt(getElementCarte(data, "gpi4"));
+        elevation_sol = parseInt(getElementCarte(data, "s_elev"));
+
+    })
+      .fail(function() {
+        $(".connexion p").text(resultatJson["general"]["connexionOff"]);
+        if(page == "index.htm"){
+            $(".connexion_icon").attr("src","resources/icons/leds/disconnected.png")
+        }else{
+            $(".connexion_icon").attr("src","../resources/icons/leds/disconnected.png")
+        }
+        //  isConnected(false, data
+    });	
+
 },1500);
 
 function chargerLangue(lang){
-
-    page = location.href;
-    page = page.split("/");
-    page = page[page.length-1];
 
         if(page == "index.htm"){
             $.getJSON("lang/" + lang + "_lang.json", function(res){
                 resultatJson = res
                 console.log("==== la if====")
                 console.log(resultatJson)
+            })
+            .fail(function(){
+                $(".connexion p").text(resultatJson["general"]["connexionOff"]);
+                $(".connexion_icon").attr("src","resources/icons/leds/disconnected.png")
             });
         }else{
             $.getJSON("../lang/" + lang + "_lang.json", function(res){
                 resultatJson = res;
                 console.log("====la else====")
                 console.log(resultatJson)
+            })
+            .fail(function(){
+                $(".connexion p").text(resultatJson["general"]["connexionOff"]);
+                $(".connexion_icon").attr("src","../resources/icons/leds/disconnected.png")
             });
         }
     
@@ -89,7 +120,6 @@ function chargerLangue(lang){
         }else if(page == "parametres.html"){
             applicationParamètre(resultatJson["pageParametre"]);
         }
-
 }
 
 // function updateTextMeteo(userConfig){
@@ -98,14 +128,44 @@ function chargerLangue(lang){
 
 //Vérification de connexion
 function isConnected(value, data){
-    if((value == false) || (data == null)){
-      $(".connexion p").text(resultatJson["general"]["connexionOff"]);
-      $(".connexion_icon").attr("src","../resources/icons/leds/disconnected.png");
+
+    if(value == false){
+        if(page == "index.htm"){
+            $(".connexion p").text(resultatJson["general"]["connexionOff"]);
+            $(".connexion_icon").attr("src","resources/icons/leds/disconnected.png")
+        }else{
+            $(".connexion p").text(resultatJson["general"]["connexionOn"]);
+            $(".connexion_icon").attr("src","../resources/icons/leds/disconnected.png")
+        }
     }else{
-      $(".connexion p").text(resultatJson["general"]["connexionOn"]);
-      $(".connexion_icon").attr("src","../resources/icons/leds/connected.png")
-  
+        if(page == "index.htm"){
+            $(".connexion p").text(resultatJson["general"]["connexionOn"]);
+            $(".connexion_icon").attr("src","resources/icons/leds/connected.png")
+        }else{
+            $(".connexion p").text(resultatJson["general"]["connexionOn"]);
+            $(".connexion_icon").attr("src","../resources/icons/leds/connected.png")
+        }
     }
+
+    // if(page == "index.htm" && (value == false)){
+    //         $(".connexion p").text(resultatJson["general"]["connexionOff"]);
+    //         $(".connexion_icon").attr("src","resources/icons/leds/disconnected.png");
+    //     //   }else{
+    //     //     $(".connexion p").text(resultatJson["general"]["connexionOn"]);
+    //     //     $(".connexion_icon").attr("src","resources/icons/leds/connected.png")
+    //     //   }
+    // }else if(page != "index.htm" && (value == false)){
+    //     $(".connexion p").text(resultatJson["general"]["connexionOn"]);
+    //     $(".connexion_icon").attr("src","../resources/icons/leds/connected.png")
+    // }else{
+    //     if((value == false) || (data == null)  || (data == "undefined")){
+    //         $(".connexion p").text(resultatJson["general"]["connexionOff"]);
+    //         $(".connexion_icon").attr("src","../resources/icons/leds/disconnected.png");
+    //       }else{
+    //         $(".connexion p").text(resultatJson["general"]["connexionOn"]);
+    //         $(".connexion_icon").attr("src","../resources/icons/leds/connected.png")
+    // }
+ 
 }
 
 function applicationGeneral(res){
@@ -122,6 +182,7 @@ function applicationAccueil(res){
     $("#titreWidgetWifi").text(res["widgets"]["ConfigWifiTitle"]);
     $("#titreWidgetGuide").text(res["widgets"]["GuideTitle"]);
     $("#titreWidgetParametres").text(res["widgets"]["ParaTitle"]);
+    $("#titreWidgetConnexion").text(res["widgets"]["ConnexionTitle"]);
 
     //==================== POPUP INFOS CONTACTS =================== 
     $("#exampleModalLabel").text(res["popupContact"]["titre"]);
