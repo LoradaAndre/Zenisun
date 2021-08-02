@@ -48,7 +48,7 @@ setInterval(function(){
         chargerLangue(langueSauvegarde);
     
     }
-    
+
     IPAdress = localStorage.getItem("IP");
 
     $.ajax({
@@ -67,8 +67,12 @@ setInterval(function(){
         $(".connexion p").text(resultatJson["general"]["connexionOff"]);
         if(page == "index.htm"){
             $(".connexion_icon").attr("src","resources/icons/leds/disconnected.png")
+            $(".alertCo").show()
         }else{
             $(".connexion_icon").attr("src","../resources/icons/leds/disconnected.png")
+            if(page == "connexion.html"){
+                $(".alertCo").show()
+            }
         }
         //  isConnected(false, data
     });	
@@ -86,6 +90,7 @@ function chargerLangue(lang){
             .fail(function(){
                 $(".connexion p").text(resultatJson["general"]["connexionOff"]);
                 $(".connexion_icon").attr("src","resources/icons/leds/disconnected.png")
+                $(".alertCo").show()
             });
         }else{
             $.getJSON("../lang/" + lang + "_lang.json", function(res){
@@ -96,6 +101,7 @@ function chargerLangue(lang){
             .fail(function(){
                 $(".connexion p").text(resultatJson["general"]["connexionOff"]);
                 $(".connexion_icon").attr("src","../resources/icons/leds/disconnected.png")
+                $(".alertCo").show()
             });
         }
     
@@ -133,17 +139,25 @@ function isConnected(value, data){
         if(page == "index.htm"){
             $(".connexion p").text(resultatJson["general"]["connexionOff"]);
             $(".connexion_icon").attr("src","resources/icons/leds/disconnected.png")
+            $(".alertCo").show()
         }else{
-            $(".connexion p").text(resultatJson["general"]["connexionOn"]);
+            $(".connexion p").text(resultatJson["general"]["connexionOff"]);
             $(".connexion_icon").attr("src","../resources/icons/leds/disconnected.png")
+            if(page == "connexion.html"){
+                $(".alertCo").show()
+            }
         }
     }else{
         if(page == "index.htm"){
             $(".connexion p").text(resultatJson["general"]["connexionOn"]);
             $(".connexion_icon").attr("src","resources/icons/leds/connected.png")
+            $(".alertCo").hide()
         }else{
             $(".connexion p").text(resultatJson["general"]["connexionOn"]);
             $(".connexion_icon").attr("src","../resources/icons/leds/connected.png")
+            if(page == "connexion.html"){
+                $(".alertCo").hide()
+            }
         }
     }
 
