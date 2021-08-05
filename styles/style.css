@@ -521,3 +521,16 @@ height: min-content;
     color: black;
     cursor: pointer;
 }
+
+a{
+    color: 52808B;
+}
+
+.blocNotice{
+    text-align: center;
+}
+
+.blocNotice img{
+    width: 20px;
+    height: auto;
+}

@@ -81,7 +81,7 @@
             "BB2" : "White strip n°2",
             "RGB1" : "RGB strip n°1",
             "RGB2" : "RGB strip n°2",
-            "allLumieres" : "Switching on the lights",
+            "allLumieres" : "All strips",
             "colorisationWidget" :
                 {
                     "titre" : "Colorisation",

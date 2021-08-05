@@ -1,17 +1,19 @@
 $(document).ready(function(){
-    lectureCarte();
 });
 
-function lectureCarte(){
+let uri = '/www/file/notice.pdf'
 
-      let IPAdress = localStorage.getItem("IP");
+$(".lienNotice").click(function(){
 
-      $.ajax({
-            url: "http://"+ IPAdress +"/zns.cgi?cmd=d&p=ios",
-            context: document.body
-      }).done(function(data) {
-            // isConnected(true,data);
-      }).fail(function() {
-            // isConnected(false, data)          
-      });	
-      }
+      window.resolveLocalFileSystemURL(cordova.file.applicationDirectory +  uri, function(fileEntry) {
+
+            window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dirEntry) {
+        
+                fileEntry.copyTo(dirEntry, 'notice.pdf', function(newFileEntry) {
+        
+                    cordova.plugins.fileOpener2.open(newFileEntry.nativeURL,'application/pdf');
+                });
+            });
+        });
+
+})

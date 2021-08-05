@@ -81,7 +81,7 @@
             "BB2" : "Bandeau blanc n°2",
             "RGB1" : "Bandeau RVB n°1",
             "RGB2" : "Bandeau RVB n°2",
-            "allLumieres" : "Allumage des lumières",
+            "allLumieres" : "Tous les bandeaux",
             "colorisationWidget" :
                 {
                     "titre" : "Colorisation",
