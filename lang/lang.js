@@ -185,7 +185,8 @@ function isConnected(value, data){
 function applicationGeneral(res){
     $("#navEclairage").text(res["navigation"]["eclairageTitle"]);
     $("#navLames").text(res["navigation"]["lamesTitle"]);
-    $("#navWifi").text(res["navigation"]["ConfigWifiTitle"]);
+    $("#navConnexion").text(res["navigation"]["ConnexionTitle"]);
+    // $("#navWifi").text(res["navigation"]["ConfigWifiTitle"]);
     $("#navGuide").text(res["navigation"]["GuideTitle"]);
     $("#navParametres").text(res["navigation"]["ParaTitle"]);
 }
