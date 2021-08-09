@@ -294,3 +294,8 @@ function affichageCircle(hwcfg){
         $(".canvas-light2").show();
     }
 }
+
+$(".automate_widget").click(function(){
+    let ipSaved = localStorage.getItem("IP");  
+    window.location.href= "http://" + ipSaved+ "/";
+});

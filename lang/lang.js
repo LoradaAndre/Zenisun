@@ -202,6 +202,7 @@ function applicationAccueil(res){
     $("#titreWidgetGuide").text(res["widgets"]["GuideTitle"]);
     $("#titreWidgetParametres").text(res["widgets"]["ParaTitle"]);
     $("#titreWidgetConnexion").text(res["widgets"]["ConnexionTitle"]);
+    $("#titreWidgetAutomate").text(res["widgets"]["AutomateTitle"]);
 
     //==================== POPUP INFOS CONTACTS =================== 
     $("#exampleModalLabel").text(res["popupContact"]["titre"]);

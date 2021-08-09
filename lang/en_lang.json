@@ -25,7 +25,8 @@
                     "ConfigWifiTitle" : "Wifi configuration",
                     "GuideTitle" : "Using manual",
                     "ParaTitle" : "Settings",
-                    "ConnexionTitle" : "Connection"
+                    "ConnexionTitle" : "Connection",
+                    "AutomateTitle" : "Access to the PLC"
                 },
             "meteo" : 
                 {

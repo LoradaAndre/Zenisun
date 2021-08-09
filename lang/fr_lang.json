@@ -26,7 +26,8 @@
                     "ConfigWifiTitle" : "Configuration wifi",
                     "GuideTitle" : "Guide d'utilisation",
                     "ParaTitle" : "Paramètres",
-                    "ConnexionTitle" : "Connexion"
+                    "ConnexionTitle" : "Connexion",
+                    "AutomateTitle" : "Accès à l'automate"
                 },
             "meteo" : 
                 {

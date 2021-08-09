@@ -153,6 +153,10 @@ h1{
     background-size: cover;
 }
 
+.automate_widget{
+    background-image: url(../resources/background/widgets/fond_automate.jpg);
+    background-size: cover;
+}
 
 /* ========================== AUTRE ========================== */
 a{
