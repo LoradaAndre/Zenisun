@@ -17,6 +17,8 @@
         },
     "pageAccueil" :
         {
+            "alerte" : "Pensez a vous connecter au wifi correspondant",
+
             "widgets" : 
                 {
                     "eclairageTitle" : "Éclairage",
@@ -72,7 +74,7 @@
                     "tel" : "Tel: +33 (0)4 28 04 42 08",
                     "web" : "Site web: www.zenisun.fr",
                     "adress" : "Adresse: 10 Rue de l'Industrie, 42240 Unieux",
-                    "version" : "Logiciel version V1.20A"
+                    "version" : "Logiciel version V1.0"
                 }
         },
     "pageEclairage" :
@@ -117,7 +119,11 @@
                     "manuel" : "Mode manuel",
                     "ete" : "Mode été",
                     "hiver" : "Mode hiver"
-                }
+                },
+            "modal" : {
+                "desactIntemp" : "Désactivez le mode intempéries (vent ou hiver) pour avoir accès à cette page.",
+                "actManuel" : "Activez le mode manuel pour avoir accès à ces paramètres"
+            }
         },
     "pageWifi" :
         {
@@ -138,7 +144,7 @@
                     "subtitle1" : "En cas de neige :",
                     "para1" : "Lorsque de la neige est à prévoir, veuillez mettre votre pergola en mode neige dans les paramètres, rubrique intempéries. Les lames s’orienteront à la verticale et se bloqueront (jusqu'a désactivation du mode neige). Ce dispositif permet d'éviter l’accumulation de la neige sur les lames de votre pergola, et ainsi les tordre sous l’effet du poids de la neige.",
                     "subtitle2" : "En cas de vent :",
-                    "para2" : "Lorsque du vent est à prévoir, veuillez mettre votre pergola en mode vent dans les paramètres, rubrique intempéries. Les lames se refermeront et se bloqueront (jusqu'a désactivation du mode vent). Ce dispositif permet d'éviter que les lames de votre pergola soient abimées ou déréglées."
+                    "para2" : "Lorsque du vent est à prévoir, veuillez mettre votre pergola en mode vent dans les paramètres, rubrique intempéries. Les lames se refermeront et se bloqueront (jusqu'à désactivation du mode vent). Ce dispositif permet d'éviter que les lames de votre pergola soient abimées ou déréglées."
                 },
             "entretienPergola" :
                 {
@@ -262,5 +268,21 @@
                 "textConnexion" : "Connexion",
                 "textAnnuler" : "Annuler"
             }
+        },
+        "pageConnexion" : {
+            "alerte" : "Pensez a vous connecter au wifi correspondant",
+            
+            "saisirIP" : "Saisissez l'adresse IP de votre pergola",
+            "valider" : "Valider",
+            "aide" : "Aide?",
+            "fermer" : "Fermer",
+            "explicationIP1" : "Par défaut, l'adresse IP de votre pergola est 192.168.0.110.",
+            "explicationIP2" : "Dans le cas où votre pergola est connectée en infrastructure (sur votre box), l'adresse IP sera différente. Pour connaître l'adresse IP, il vous suffit d'utiliser l'application Fing, disponible sur",
+            "entre2" : "et sur",
+            "explicationIP3" : "Connecter ensuite votre téléphone au Wifi de votre box. Sur l’application Fing, cliquer sur le bouton Rechercher des appareils.",
+            "strong1:" : "Rechercher des appareils.",
+            "explicationIP4" : "Vous obtiendrez une liste des différents appareils connectés à votre réseau. Rechercher parmi la liste la mention",
+            "strong2:" : "Microship Technology.",
+            "explicationIP5" : "Saisissez la nouvelle adresse IP dans la zone de saisie ci-dessus."
         }
 }

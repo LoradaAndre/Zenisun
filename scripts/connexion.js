@@ -11,11 +11,11 @@ $(document).ready(function(){
         let regexIP = /^(([1-9]?[0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([1-9]?[0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$/
     
         if(!regexIP.exec(IPAdress)){
-            alert("Votre adresse IP n'est pas valable");
+            alert("Invalide");
         }
         else{
             localStorage.setItem("IP", $(".saisieIPAutomate").val());  
-            alert("La nouvelle IP est désormais " + localStorage.getItem("IP"));
+            // alert("La nouvelle IP est désormais " + localStorage.getItem("IP"));
         }
     
     });

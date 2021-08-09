@@ -4,7 +4,7 @@
             "navigation" :
                 {
                     "eclairageTitle" : "Lighting",
-                    "lamesTitle" : "Rotating slats",
+                    "lamesTitle" : "Louver",
                     "ConfigWifiTitle" : "Wifi configuration",
                     "GuideTitle" : "Using manual",
                     "ParaTitle" : "Settings",
@@ -17,10 +17,11 @@
         },
     "pageAccueil" :
         {
+            "alerte" : "Remember to connect to the corresponding wifi",
             "widgets" : 
                 {
                     "eclairageTitle" : "Lighting",
-                    "lamesTitle" : "Rotating slats",
+                    "lamesTitle" : "Louver",
                     "ConfigWifiTitle" : "Wifi configuration",
                     "GuideTitle" : "Using manual",
                     "ParaTitle" : "Settings",
@@ -72,7 +73,7 @@
                     "tel" : "Phone: +33 (0)4 28 04 42 08",
                     "web" : "Website: www.zenisun.fr",
                     "adress" : "Adress: 10 Rue de l'Industrie, 42240 Unieux",
-                    "version" : "Software version V1.20A"
+                    "version" : "Software version V1.0"
                 }
         },
     "pageEclairage" :
@@ -117,7 +118,11 @@
                     "manuel" : "Manual mode",
                     "ete" : "Summer mode",
                     "hiver" : "Winter mode"
-                }
+                },
+            "modal" : {
+                "desactIntemp" : "Disable bad weather mode (wind or winter) to access this page.",
+                "actManuel" : "Activate manual mode to have access to these parameters"
+            }
         },
     "pageWifi" :
         {
@@ -136,28 +141,28 @@
                 {
                     "title" : "In bad weather",
                     "subtitle1" : "In case of snow :",
-                    "para1" : "Lorsque de la neige est à prévoir, veuillez mettre votre pergola en mode neige dans les paramètres, rubrique intempéries. Les lames s’orienteront à la verticale et se bloqueront (jusqu'a désactivation du mode neige). Ce dispositif permet d'éviter l’accumulation de la neige sur les lames de votre pergola, et ainsi les tordre sous l’effet du poids de la neige.",
+                    "para1" : "When snow is expected, please set your pergola to snow mode in the weather section of the settings. The blades will orient themselves vertically and will lock (until snow mode is deactivated). This device prevents the accumulation of snow on the slats of your pergola, thus twisting them under the influence of the weight of the snow.",
                     "subtitle2" : "In case of wind :",
-                    "para2" : "Lorsque du vent est à prévoir, veuillez mettre votre pergola en mode vent dans les paramètres, rubrique intempéries. Les lames se refermeront et se bloqueront (jusqu'a désactivation du mode vent). Ce dispositif permet d'éviter que les lames de votre pergola soient abimées ou déréglées."
+                    "para2" : "When wind is expected, please set your pergola to wind mode in the Weather section of the settings. The blades will close and lock (until wind mode is deactivated). This device prevents the blades of your pergola from being broken or out of control."
                 },
             "entretienPergola" :
                 {
                     "title" : "Maintenance of the bioclimatic pergola",
-                    "para1" : "Nettoyer la structure en aluminium deux fois par an s’avère idéal. Par manque de temps, vous pouvez procéder uniquement à chaque printemps d’un bon nettoyage. Afin d’enlever les salissures, la poussière et les traces éventuelles de pollen, utilisez simplement de l’eau savonneuse avec une éponge non abrasive ou un chiffon doux. Rincez ensuite à l’eau claire et sécher votre pergola, à l’aide d’une lingette microfibre ou d’un chiffon.",
-                    "para2" : "Ne pas utiliser un jet à trop haute pression. Ne pas utiliser de diluants tels qu’Acétone ou Trichloréthylène, l’eau de Javel ainsi que les produits à base de poudre abrasive.",
-                    "para3" : "Vérifier régulièrement l’encombrement des chéneaux (feuilles mortes, brindilles…), surtout en période automnale et hivernale. Déboucher et nettoyer les trous d’évacuation des eaux pluviales en cas d’obstruction. (Minimum 2 fois par an)",
-                    "para4" : "Ne pas réaliser de travaux de soudure, meulage et tronçonnage métallique à proximité des structures (risque important de dégradation des profils).",
-                    "para5" : "Les optiques des spots et des appliques, ainsi que les bandeaux de leds peuvent être nettoyées à l’aide d’un linge ou d’une lingette légèrement humide.",
-                    "para6" : "Ne pas asperger de liquide directement sur les optiques de spots ou des appliques."
+                    "para1" : "Wash the aluminum structure twice a year is ideal. Due to lack of time, you can only carry out a proper cleaning each spring. To remove dirt, dust and possible traces of pollen, simply use soapy water with a non-abrasive sponge or soft cloth. Then rinse with the clear water and dry your pergola, using a microfiber cloth or basic cloth.",
+                    "para2" : "Do not use a jet that is too high a pressure. Do not use diluents such as Acetone or Trichloroethylene, bleach as well as abrasive powder products.",
+                    "para3" : "Regularly check the obstruction of the gutters (dead leaves, twigs, etc.), especially in the fall and winter. Unclog and clean the rainwater drainage holes in the event of an obstruction. (Minimum twice a year)",
+                    "para4" : "Do not perform metal welding, grinding and cutting work in the vicinity of structures (special risk of profile degradation).",
+                    "para5" : "Optics spotlights and lights, as well as LED strips, can be cleaned with a slightly damp cloth or cloth.",
+                    "para6" : "Do not spray liquid directly on spot optics or lights."
                 },
             "manipElevationSolaire" :
                 {
                     "title" : "Setting up the solar elevation",          
-                    "subtitle1" : "Définir la position du moteur dans votre pergola.",
-                    "para1" : "Etape 1: Positionnez-vous à l’extérieur de la pergola, les lames alignées devant vous.",
-                    "para2" : "Etape 2: Ouvrez vos lames. Si la rotation des lames s’effectuent dans le sens anti-horaire, alors le moteur se situe dans le poteau juste à votre gauche, sinon il se situe dans le fond de votre pergola, à droite.",
-                    "subtitle2" : "Définir l’orientation de votre pergola",
-                    "para3" : "Positionnez-vous sous votre pergola, les épaules parallèles au lames, le moteur à votre droite. La direction vers laquelle vous regardez, correspond à l’orientation de votre pergola. Si vous ne connaissez pas la direction que vous regardez, utiliser une boussole sur votre téléphone."
+                    "subtitle1" : "Define the position of the engine in your pergola.",
+                    "para1" : "Step 1: Position yourself outside the pergola, the blades lined up in front of you.",
+                    "para2" : "Step 2: Open your blades. If the rotation of the blades is done counterc timewise, then the engine is located in the pole just to your left, otherwise it is in the bottom of your pergola, on the right.",
+                    "subtitle2" : "Define the orientation of your pergola",
+                    "para3" : "Position yourself under your pergola, shoulders parallel to the blades, the engine to your right. The direction you are looking at, corresponds to the orientation of your pergola. If you don't know the direction you're looking at, use a compass on your phone."
                 }
         },
     "pageParametre" :
@@ -262,5 +267,21 @@
                 "textConnexion" : "Connection",
                 "textAnnuler" : "Cancel"
             }
+        },
+        "pageConnexion" : {
+            "alerte" : "Remember to connect to the corresponding wifi",
+
+            "saisirIP" : "Enter the IP address of your pergola",
+            "valider" : "Validate",
+            "aide" : "Help?",
+            "fermer" : "Close",
+            "explicationIP1" : "By default, the IP address of your pergola is 192. 168. 0. 110.",
+            "explicationIP2" : "If your pergola is connected in infrastructure (on your box), the IP address will be different. To find out the IP address, simply use the Fing app, available on",
+            "entre2" : "and",
+            "explicationIP3" : "Then connect your phone to Wifi from your box. On the Fing application, click on the button",
+            "strong1:" : "Search devices.",
+            "explicationIP4" : "You will get a list of the different devices connected to your network. Search through the list the statement",
+            "strong2:" : "Microship Technology.",
+            "explicationIP5" : "Enter the new IP address in the input area above."
         }
 }

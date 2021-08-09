@@ -121,10 +121,11 @@ function chargerLangue(lang){
         }else if(page == "config_wifi.html"){
             applicationWifi(resultatJson["pageWifi"]);
         }else if(page == "guide_utilisation.html"){
-            $("#textInstructionAside").text(applicationGeneral(resultatJson["pageGuide"]["insctruction"]));
             applicationGuide(resultatJson["pageGuide"]);
         }else if(page == "parametres.html"){
             applicationParamètre(resultatJson["pageParametre"]);
+        }else if(page == "connexion.html"){
+            applicationConnexion(resultatJson["pageConnexion"]);
         }
 }
 
@@ -191,6 +192,9 @@ function applicationGeneral(res){
     $("#navParametres").text(res["navigation"]["ParaTitle"]);
 }
 function applicationAccueil(res){
+
+    $("#alerte").text(res["alerte"]);
+
     //========================== WIDGETS ======================== 
     $("#titreWidgetEclairage").text(res["widgets"]["eclairageTitle"]);
     $("#titreWidgetLames").text(res["widgets"]["lamesTitle"]);
@@ -310,6 +314,11 @@ function applicationLames(res){
 
     //==================== SYNC LAMES ===================
     $("#titreSync").text(res["sync"]); 
+
+    //==================== MODALS ===================
+    $("#exampleModalLabel1").text(res["modal"]["desactIntemp"]); 
+    $("#exampleModalLabel2").text(res["modal"]["actManuel"]); 
+
 }
 
 function applicationWifi(res){
@@ -349,7 +358,7 @@ function applicationGuide(res){
     $("#textElevSol3").text(res["manipElevationSolaire"]["para3"]);
 
     //==================== INSTRUCTIONS ===================
-    $("#amb9").text(res["insctruction"]);
+    $("#textInstructionAside").text(res["insctruction"]);
 }
 
 function applicationParamètre(res){
@@ -596,6 +605,24 @@ function firmware_wait_restart_usr()
 			setTimeout("firmware_wait_restart();", 5000);
 	});
 	
+}
+
+function applicationConnexion(res){
+
+    $("#alerte").text(res["alerte"]);
+
+    $(".textSaisieIP").text(res["saisirIP"]);
+    $(".buttonValiderIP").text(res["valider"]);
+    $(".linkHelp").text(res["aide"]);
+    $(".linkStopHelp").text(res["fermer"]);
+    $("#para1").text(res["explicationIP1"]);
+    $("#debut_para2").text(res["explicationIP2"]);
+    $("#entre2").text(res["entre2"]);
+    $("#para3").text(res["explicationIP3"]);
+    $("#strong1").text(res["strong1"]);
+    $("#para4").text(res["explicationIP4"]);
+    $("#strong2").text(res["strong2"]);
+    $("#para5").text(res["explicationIP5"]);    
 }
 
 function getElementCarte(data, value){

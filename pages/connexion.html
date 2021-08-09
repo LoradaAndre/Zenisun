@@ -94,9 +94,9 @@
         <main> <!-- ============================================== Contenant ============================================== -->
             <div class="contenu-main">
                 <div class="flex-left">
-                    <p class="alertCo" style="font-weight: bold; background-color: #E11717; text-align: center; width: 97%; margin: auto; border-radius: 3px; color: white; margin-bottom: 5px;">Pensez a vous connecter au wifi correspondant</p>
+                    <p class="alertCo" id="alerte" style="font-weight: bold; background-color: #E11717; text-align: center; width: 97%; margin: auto; border-radius: 3px; color: white; margin-bottom: 5px;">Pensez a vous connecter au wifi correspondant</p>
                     <div class="test">
-                        <h1>Saisissez l'adresse IP de l'automate</h1>
+                        <h1 class="textSaisieIP">Saisissez l'adresse IP de l'automate</h1>
                         <input class="form-control saisieIPAutomate" id="example-number-input" placeholder="par défaut: 192.168.0.110" value="">
                         <div class="buttonValiderIP">Valider</div>
                         <div class="linksHelp">
@@ -104,15 +104,15 @@
                             <p class="linkStopHelp">Fermer</p>
                         </div>
                         <div class="textHelp">
-                            <p>Par défaut, l'adresse IP de votre pergola est 192.168.0.110.</p>
-                            <p>Dans le cas où votre pergola est connectée en infrastructure (sur votre box), l'adresse IP sera différente. 
-                                Pour connaître l'adresse IP, il vous suffit d'utiliser l'application Fing, disponible sur <a href="https://play.google.com/store/apps/details?id=com.overlook.android.fing">Android</a> et sur  <a href="https://apps.apple.com/us/app/fing-network-scanner/id430921107">IOS</a>.
+                            <p id="para1">Par défaut, l'adresse IP de votre pergola est 192.168.0.110.</p>
+                            <p id="para2"><span id="debut_para2"> Dans le cas où votre pergola est connectée en infrastructure (sur votre box), l'adresse IP sera différente. 
+                                Pour connaître l'adresse IP, il vous suffit d'utiliser l'application Fing, disponible sur</span> <a href="https://play.google.com/store/apps/details?id=com.overlook.android.fing">Android</a> <span id="entre2">et sur</span> <a href="https://apps.apple.com/us/app/fing-network-scanner/id430921107">IOS</a>.
                             </p>
-                            <p>Connecter ensuite votre téléphone au Wifi de votre box.
-                                Sur l’application Fing, cliquer sur le bouton <strong>Rechercher des appareils</strong>.
+                            <p id="para3">Connecter ensuite votre téléphone au Wifi de votre box.
+                                Sur l’application Fing, cliquer sur le bouton <strong id="strong1">Rechercher des appareils</strong>.
                             </p>
-                            <p>Vous obtiendrez une liste des différents appareils connectés à votre réseau. Rechercher parmi la liste la mention <strong>Microship Technology</strong>. </p>
-                            <p>Saisissez la nouvelle adresse IP dans la zone de saisie ci-dessus.</p>
+                            <p id="para4">Vous obtiendrez une liste des différents appareils connectés à votre réseau. Rechercher parmi la liste la mention <strong id="strong2">Microship Technology</strong>. </p>
+                            <p id="para5">Saisissez la nouvelle adresse IP dans la zone de saisie ci-dessus.</p>
                         </div>
                     </div>
                 </div>
