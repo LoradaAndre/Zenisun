@@ -178,6 +178,7 @@
                     "boutonHoming" : "Perform a homing",
                     "geolocalisation" : "Geolocation",
                     "positionnement" : "Positioning: ",
+                    "positionnementConnexionMessage" : "Log in to access geolocation data",
                     "boutonEnregistrer" : "Save",
                     "lat" : "Latitude",
                     "lon" : "Longitude",

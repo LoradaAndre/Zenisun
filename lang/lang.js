@@ -7,13 +7,28 @@ let elevation_sol;
 let page;
 let langueSauvegarde;
 
+let connexion;
+
+let long;
+let lat;
+
+let neLong = "";
+let neLat  = "";
+
+
 console.log(langueSauvegarde)
 console.log(localStorage.getItem("langue") == null)
 
 let date = new Date()
 let getHours = date.getHours();
 
+let getHourAllumage = true;
+let getHourExtinction = true;
+
 let IPAdress;
+
+
+let interupt = false;
 
 // defaultConnexion();
 
@@ -32,21 +47,27 @@ let IPAdress;
 
 setInterval(function(){
 
-    page = location.href;
-    page = page.split("/");
-    page = page[page.length-1];
+    $("#liste_orientation").click(function(){
+        interupt = true;
+    })
 
-    if(localStorage.getItem("langue") == null || localStorage.getItem("langue") == "undefined"){
-        localStorage.setItem("langue", "fr");  
-        langueSauvegarde = localStorage.getItem("langue");
-        console.log(langueSauvegarde)
-        chargerLangue(langueSauvegarde);
-    
-    }else{
-        langueSauvegarde = localStorage.getItem("langue");
-        console.log(langueSauvegarde)
-        chargerLangue(langueSauvegarde);
-    
+    if(interupt == false){
+        page = location.href;
+        page = page.split("/");
+        page = page[page.length-1];
+
+        if(localStorage.getItem("langue") == null || localStorage.getItem("langue") == "undefined"){
+            localStorage.setItem("langue", "fr");  
+            langueSauvegarde = localStorage.getItem("langue");
+            console.log(langueSauvegarde)
+            chargerLangue(langueSauvegarde);
+        
+        }else{
+            langueSauvegarde = localStorage.getItem("langue");
+            console.log(langueSauvegarde)
+            chargerLangue(langueSauvegarde);
+        
+        }
     }
 
     IPAdress = localStorage.getItem("IP");
@@ -135,7 +156,7 @@ function chargerLangue(lang){
 
 //Vérification de connexion
 function isConnected(value, data){
-
+    connexion = value;
     if(value == false){
         if(page == "index.htm"){
             $(".connexion p").text(resultatJson["general"]["connexionOff"]);
@@ -374,7 +395,7 @@ function applicationParamètre(res){
     $("#textHoming").text(res["blocGeneraux"]["boutonHoming"]);
 
     $("#titreGeolocalisation").text(res["blocGeneraux"]["geolocalisation"]);
-    $("#textPositionnement").text(res["blocGeneraux"]["positionnement"]);
+    // $("#textPositionnement").text(res["blocGeneraux"]["positionnement"]);
     $("#textEnregistrer").text(res["blocGeneraux"]["boutonEnregistrer"]);
 
     $("#textLattitude").text(res["blocGeneraux"]["lat"]);
@@ -384,9 +405,13 @@ function applicationParamètre(res){
     $("#O1_1").text(res["blocGeneraux"]["e"]);
     $("#O1_2").text(res["blocGeneraux"]["o"]);
 
-    //Affichage de la position 
-	document.querySelector(".geo_final .affichage_geo").textContent = res["blocGeneraux"]["positionnement"] + neLat + lat + ", " + neLong + long ;
-
+    //Affichage de la position
+    if(connexion == true){
+        document.querySelector(".geo_final .affichage_geo").textContent = res["blocGeneraux"]["positionnement"] + neLat + lat + ", " + neLong + long ;
+    }else{
+        document.querySelector(".geo_final .affichage_geo").textContent = res["blocGeneraux"]["positionnementConnexionMessage"];
+    }
+	
     $("#titreOrientation").text(res["blocGeneraux"]["orientation"]);
     $("#N").text(res["blocGeneraux"]["n"]);
     $("#NNE").text(res["blocGeneraux"]["nne"]);

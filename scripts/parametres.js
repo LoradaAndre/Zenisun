@@ -13,19 +13,22 @@ let home_set = [];
 let longSaved;
 let latSaved;
 
-let long;
-let lat;
+// let long;
+// let lat;
 
-let neLong;
-let neLat;
+// let neLong;
+// let neLat;
+
+// let interupt = false;
 
 let onceIntemp = false;
 
 let mot;
 let once = false;
+let clickSurOrient = false;
 
-let getHourAllumage = true;
-let getHourExtinction = true;
+// let getHourAllumage = true;
+// let getHourExtinction = true;
 
 let capteurPluie;
 
@@ -61,7 +64,6 @@ $(document).ready(function(){
 
         lectureCarte();
         updateOutputRange();
-		affichageGeolocalisation();
 		updateButtons();
     }, 1000);
 });
@@ -79,10 +81,6 @@ function lectureCarte(){
 			// mot = parseInt(getMotorValue(data,24))
 			mot = parseInt(getMotorValue(getElementCarte(data, "Mot0")))
 
-			// isConnected(true, data)
-
-			//configuration utilsateur
-			// monitoring_user_config = parseInt(data.all[30].textContent);
 			monitoring_user_config = parseInt(getElementCarte(data, "user"));
 
 			if(onceIntemp == false && monitoring_user_config != "undefined"){
@@ -90,12 +88,10 @@ function lectureCarte(){
 			}
 			
 			//actualisation suivi solaire
-			// actSuiviSol = parseInt(data.all[33].textContent);
 			actSuiviSol = parseInt(getElementCarte(data , "sun_delay"));
 			$(".list_of_buttons_suivi_sol h3[value="+ actSuiviSol +"]").attr("check", "true")
 
 			//Capteur pluie
-			// capteurPluie = parseInt(data.all[6].textContent)
 			capteurPluie = parseInt(getElementCarte(data, "gpi4"))
 
 
@@ -114,14 +110,14 @@ function lectureCarte(){
 			if(getHourAllumage){
 				$(".affichage_heure_allumage").text(GMTHourTolocalHour(heure_allumage))
 				document.querySelector(".h_allumage input").value = GMTHourTolocalHour(heure_allumage);
-			}	
+			}
 			//heure extinction
 			// heure_extinction = parseInt(data.all[14].textContent);
 			heure_extinction = parseInt(getElementCarte(data, "ligt_off_h"))
 			if(getHourExtinction){
 				$(".affichage_heure_extinction").text(GMTHourTolocalHour(heure_extinction))
 				document.querySelector(".h_extinction input").value = GMTHourTolocalHour(heure_extinction);
-			}	
+			}
 		
 			//seuil de fermeture nuit
 			// sun_elev_close = parseInt(data.all[15].textContent);
@@ -142,6 +138,8 @@ function lectureCarte(){
 			// latSaved =  parseInt(data.all[7].textContent)/100.0;
 			latSaved =  parseInt(getElementCarte(data, "lat"))/100.0
 
+			affichageGeolocalisation();
+
 			//Position des moteurs
 			// home_set[0] = parseInt(getMotorHomeSet(data, 2))
 			home_set[0] = parseInt(getElementCarte(data, "Mot0"))
@@ -150,6 +148,7 @@ function lectureCarte(){
 
 			//Affichage de la valeur de l'orientation sur le dropdown
 			// $("#liste_orientation").val(data.all[4].textContent)
+			// +++++++++++++++
 			$("#liste_orientation").val(getElementCarte(data, "orient"))
       }).fail(function() {
 			// isConnected(false, data) 
@@ -265,11 +264,12 @@ function affichageGeolocalisation(){
 
 	//Associe par défaut les valeurs de long/latt en fonction de ce qui est enregistré dans la carte
 	if(once == false && $(".geo_item_long input").val() != "undefined" && $(".geo_item_lat input").val()){
-		$(".geo_item_long input").val(Math.abs(longSaved));
-		$(".geo_item_lat input").val(Math.abs(latSaved));
-
+		
 		long = Math.abs(longSaved);
 		lat = Math.abs(latSaved);
+		
+		$(".geo_item_long input").val(Math.abs(long));
+		$(".geo_item_lat input").val(Math.abs(lat));
 
 		once = true;
 	}
@@ -336,10 +336,11 @@ $.ajax({
 
 function defaultOrientationPergola(){
 	$("#liste_orientation").change(function(){
+		interupt = false;
 		applyOrientationPergola($(this).val())
 	});
 }
-//Requête d'orientation de la pergola (paramètres généraux)
+// Requête d'orientation de la pergola (paramètres généraux)
 function applyOrientationPergola(valeur){
 	pergola_orient = parseInt(valeur);
 	var command = "http://"+ IPAdress +"/zns.cgi?cmd=u&p=10&v=" + pergola_orient;
@@ -366,46 +367,6 @@ function allumage_auto_horaire(){
 		}
     });
 }
-
-// //En cas de clic sur le bouton Modifier/Annuler => heure allumage
-// $(".btn-h-allumage-modifier").click(function(){
-// 	//Si c'est modifier
-// 	if($(this).children().text() == "Modifier"){
-// 		getHourAllumage = false;
-// 		$(".btn-h-allumage").show();
-// 		$(".btn-h-allumage-modifier h3").text("Annuler")
-// 		$(".affichage_heure_allumage").hide();
-// 		$(".h_allumage input").show()
-// 	//Si c'est annuler
-// 	}else if($(this).children().text() == "Annuler"){
-// 		getHourAllumage = true;
-// 		$(".btn-h-allumage").hide();
-// 		$(".btn-h-allumage-modifier h3").text("Modifier")
-// 		$(".affichage_heure_allumage").show();
-// 		$(".h_allumage input").hide()
-// 	}
-	
-// })
-
-// //En cas de clic sur le bouton Modifier/Annuler => heure extinction
-// $(".btn-h-extinction-modifier").click(function(){
-// 	//Si c'est modifier
-// 	if($(this).children().text() == "Modifier"){
-// 		getHourExtinction = false;
-// 		$(".btn-h-extinction").show();
-// 		$(".btn-h-extinction-modifier h3").text("Annuler")
-// 		$(".affichage_heure_extinction").hide();
-// 		$(".h_extinction input").show()
-
-// 	//Si c'est annuler
-// 	}else if($(this).children().text() == "Annuler"){
-// 		getHourExtinction = true;
-// 		$(".btn-h-extinction").hide();
-// 		$(".btn-h-extinction-modifier h3").text("Modifier")
-// 		$(".affichage_heure_extinction").show();
-// 		$(".h_extinction input").hide()
-// 	}
-// })
 
 //Converti l'heure en local (format XX:XX) en GMT
 function localHourToGMTHour(str){

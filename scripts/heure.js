@@ -10,12 +10,15 @@ let annee = date.getFullYear();
 
 // $(".time .jour").html(joursLettres[date.getDay()] + " " + date.getDate() + " " + moisLettres[date.getMonth()]  );
 
-// if(mois < 10){
-//   mois = "0" + mois;
-// }
+if(mois < 10){
+  mois = "0" + mois;
+}
+if(jour < 10){
+  jour = "0" + jour;
+}
 
-// //Affichage de la date
-// $(".datePara h3").html("<p>" + jour + "/" + mois + "/"+ annee +  "</p>");
+//Affichage de la date
+$(".datePara h3").html("<p>" + jour + "/" + mois + "/"+ annee +  "</p>");
 
 function refresh(){
   let t = 1000; // rafraîchissement en millisecondes
