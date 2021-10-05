@@ -18,7 +18,7 @@
     "pageAccueil" :
         {
             "alerte" : "Remember to connect to the corresponding wifi",
-            "widgets" : 
+            "widgets" :
                 {
                     "eclairageTitle" : "Lighting",
                     "lamesTitle" : "Louver",
@@ -26,9 +26,10 @@
                     "GuideTitle" : "Using manual",
                     "ParaTitle" : "Settings",
                     "ConnexionTitle" : "Connection",
-                    "AutomateTitle" : "Access to the PLC"
+                    "AutomateTitle" : "Access to the PLC",
+                    "SetupTitle" : "Setup"
                 },
-            "meteo" : 
+            "meteo" :
                 {
                     "defaultMeteo" : "Clear weather",
                     "leveeSoleil" : "Dawn",
@@ -74,7 +75,7 @@
                     "tel" : "Phone: +33 (0)4 28 04 42 08",
                     "web" : "Website: www.zenisun.fr",
                     "adress" : "Adress: 10 Rue de l'Industrie, 42240 Unieux",
-                    "version" : "Software version V1.0"
+                    "version" : "Software version 1.0.1"
                 }
         },
     "pageEclairage" :
@@ -158,7 +159,7 @@
                 },
             "manipElevationSolaire" :
                 {
-                    "title" : "Setting up the solar elevation",          
+                    "title" : "Setting up the solar elevation",
                     "subtitle1" : "Define the position of the engine in your pergola.",
                     "para1" : "Step 1: Position yourself outside the pergola, the blades lined up in front of you.",
                     "para2" : "Step 2: Open your blades. If the rotation of the blades is done counterc timewise, then the engine is located in the pole just to your left, otherwise it is in the bottom of your pergola, on the right.",
@@ -207,7 +208,7 @@
                     "heureDemarage" : "Start time",
                     "heureExtinction" : "End time",
                     "modifier" : "Edit",
-                    "appliquer" : "Apply", 
+                    "appliquer" : "Apply",
                     "annuler" : "Cancel",
                     "vitesseLed" : "LED dimmer speed",
                     "instant" : "Instant",
@@ -245,7 +246,7 @@
             "blocMaintenance" :
                 {
                     "title" : "Maintenance",
-                    "debug" : "Debug", 
+                    "debug" : "Debug",
                     "reglageFab" : "Manufacturer settings"
                 },
             "blocMaj" :

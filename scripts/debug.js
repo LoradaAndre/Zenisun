@@ -15,6 +15,9 @@ let gpColorPWM = [0,0,0]
 let mot = [0,0]
 let maxMot = [0,0]
 
+let flagMot = [0,0]
+let textFlagMot = ["",""]
+
 let sunElev;
 let sunAsimut;
 let sunShader;
@@ -35,7 +38,7 @@ function lectureCarte(){
     IPAdress = localStorage.getItem("IP");
 
     $.ajax({
-        url: "http://"+ IPAdress +"/zns.cgi?zns.cgi?cmd=d&p=ios",
+        url: "http://"+ IPAdress +"/zns.cgi?cmd=d&p=ios",
         context: document.body
       }).done(function(data){
 
@@ -50,7 +53,7 @@ function lectureCarte(){
                 // gpi[i] = parseInt(data.all[(i+2)].textContent)/1000
                 gpi[i] = parseInt(getElementCarte(data, "gpi"+i))
             }
-            
+
             for(let i = 0; i < 8; i++){
                 //GPO
                 // gpO[i] = parseInt(getValue(data,(i+8),1))/1000
@@ -59,7 +62,7 @@ function lectureCarte(){
                 // gpPWM[i] = parseInt(getValue(data,(i+8),0))
                 gpPWM[i] = parseInt(getValue(getElementCarte(data, "gpo" + i),0))
             }
-            
+
             for(let i = 8; i < 11; i++){
                 //RGB
                 // gpColor[i] = parseInt(getValue(data,(i+16),0))
@@ -69,13 +72,16 @@ function lectureCarte(){
                 gpColorPWM[i] = parseInt(getValue(getElementCarte(data, "gpo" + i),1))
             }
 
+            textFlagMot = ["",""]
             for(let i = 0; i < 2; i++){
                 //mot
                 // mot[i] = parseInt(getValue(data,(i+24),0))
-                mot[i] = parseInt(getValue(getElementCarte(data, "Mot0"),0))
+                mot[i] = parseInt(getValue(getElementCarte(data, "Mot" + i),0))
                 //maxMot
                 // maxMot[i] = parseInt(getValue(data,(i+24),1))
-                maxMot[i] = parseInt(getValue(getElementCarte(data, "Mot0"),1))
+                maxMot[i] = parseInt(getValue(getElementCarte(data, "Mot" + i),1))
+                flagMot[i] = parseInt(getValue(getElementCarte(data, "Mot" + i),2))
+                applyFlagMot(flagMot, i)
             }
 
             // sunElev = parseInt(data.all[27].textContent) //s_elev
@@ -86,7 +92,7 @@ function lectureCarte(){
             sunShader = parseInt(getElementCarte(data, "s_prj"));
 
       }).fail(function() {
-    });	
+    });
 
 	$.ajax({
         url: "http://"+ IPAdress +"/zns.cgi?cmd=c",
@@ -98,7 +104,7 @@ function lectureCarte(){
             pergLong = parseInt(getElementCarte(data, "lon"))
             // pergLat = parseInt(data.all[7].textContent)/100 //lat
             pergLat = parseInt(getElementCarte(data, "lat"))
-			
+
       }).fail(function() {
     });
 }
@@ -130,7 +136,7 @@ function affichageInfos(){
     $(bloc1).append("<hr>")
     $(bloc1).append("<li>Board temp= <span>" + boardTemp + "°C</span></li>")
     $(bloc1).append("<li>MOS temp= <span>" + MosTemp + "°C</span></li>")
-    
+
     $(bloc2).append("<h4>GPI</h4>")
     $(bloc2).append("<hr>")
     for(let i = 0; i < 6; i++){
@@ -149,7 +155,7 @@ function affichageInfos(){
     $(bloc4).append("<h4>Other</h4>")
     $(bloc4).append("<hr>")
     for(let i = 0; i < 2; i++){
-        $(bloc4).append("<li>Moteur #" + i + "= <span>" + mot[i] + "</span> / <span>" + maxMot[i] + " count</span></li>")
+        $(bloc4).append("<li>Moteur #" + i + "= <span>" + mot[i] + "</span> / <span>" + maxMot[i] + " count " + textFlagMot[i]+ "</span></li>")
     }
 
     $(bloc4).append("<hr>")
@@ -160,8 +166,8 @@ function affichageInfos(){
     $(bloc4).append("<li>Sun elevation= <span>" + sunElev + "°</span></li>")
     $(bloc4).append("<li>Sun azimut= <span>" + sunAsimut + "°</span></li>")
     $(bloc4).append("<li>Sun projection on shaders= <span>" + sunShader + "°</span></li>")
-    
-    //CSS de la génération 
+
+    //CSS de la génération
     $("span").css("color","white")
     $("h4").css({
         "font-size": "medium",
@@ -183,14 +189,14 @@ function affichageInfos(){
                 "display ": "grid",
                 "grid-template-columns": "1fr"
             });
-    
+
             $("h4").css("margin-top","15px")
         }else{
             $("ul").css({
                 "display ": "grid",
                 "grid-template-columns": "1fr 1fr"
             });
-        }   
+        }
     }
     else{
         $("ul").css({
@@ -201,12 +207,27 @@ function affichageInfos(){
 
 }
 
+function applyFlagMot(flagMot, id){
+    console.log(flagMot+ "->" +id)
+    if ( flagMot[id] & 1 )
+        textFlagMot[id] += ' [HOME_SET]';
+    if ( flagMot[id] & 2 )
+        textFlagMot[id] += ' [CURRENT_STOP]';
+    if ( flagMot[id] & 4 )
+        textFlagMot[id] += ' [RAIN_FLAG]';
+    if ( flagMot[id] & 16 )
+        textFlagMot[id] += ' [PID_UNLOCK_ERR]';
+    if ( flagMot[id] & 32 )
+        textFlagMot[id] += ' [TIMEOUT_ERR]';
+
+    console.log( textFlagMot+ "==>" +textFlagMot[id]+ "->" +id)
+}
+
 
 $(document).ready(function(){
     //Actualisation des informations, refresh
-    setInterval(function(){ 
+    setInterval(function(){
         lectureCarte()
         affichageInfos()
     }, 1000);
 });
-

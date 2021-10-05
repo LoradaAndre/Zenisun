@@ -32,7 +32,8 @@ let colorParametreTitleS = "#9AC865"; //#9AC865
 let colorGuideTitreS = "#858FC8"; //#858FC8
 let colorStationMeteoTitleS = "#85C8C4"; //#85C8C4
 let colorConnexionTitleS = "#13A4F5" //#13A4F5
-let colorAutomateTitleS = "#E76E1F" //#E76E1F
+let colorAutomateTitleS = "#d07c4a" //#d07c4a
+let colorSetupTitleS = "#b85b5fff" //#b85b5fff
 
 
 $(document).ready(function(){
@@ -93,6 +94,7 @@ function themeSombre(){
     $(".station_meteo_widget").css('color', colorStationMeteoTitleS);
     $(".connexion_widget").css('color', colorConnexionTitleS);
     $(".automate_widget").css('color', colorAutomateTitleS);
+    $(".setup_widget").css('color', colorSetupTitleS);
 
     $(".eclairage_widget").css('background-image', "url(resources/background/widgets/fond_eclairage_sombre.jpg)");
     $(".lames-orientable_widget").css('background-image', "url(resources/background/widgets/fond_lames_orientables_sombre.jpg)");
@@ -102,7 +104,7 @@ function themeSombre(){
     $(".station_meteo_widget").css('background-image', "url(resources/background/widgets/fond_station_meteo_sombre.jpg)");
     $(".connexion_widget").css('background-image', "url(resources/background/widgets/fond_connexion_sombre.jpg)");
     $(".automate_widget").css('background-image', "url(resources/background/widgets/fond_automate_sombre.jpg)");
-
+    $(".setup_widget").css('background-image', "url(resources/background/widgets/fond_setup_sombre.jpg)");
    
     $(".wifi_widget img").attr('src', "resources/icons/widgets_dark/wifiSombre.png");
     $(".parametres_widget img").attr('src', "resources/icons/widgets_dark/settingsSombre.png");
@@ -110,6 +112,7 @@ function themeSombre(){
     $(".station_meteo_widget img").attr('src', "resources/icons/widgets_dark");
     $(".connexion_widget img").attr('src', "resources/icons/widgets_dark/connexionSombre.png");
     $(".automate_widget img").attr('src', "resources/icons/widgets_dark/automateSombre.png");
+    $(".setup_widget img").attr('src', "resources/icons/widgets_dark/setupSombre.png");
 }
 
 function getThemeEnregistre(){

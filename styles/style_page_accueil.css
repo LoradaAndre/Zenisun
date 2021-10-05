@@ -158,6 +158,11 @@ h1{
     background-size: cover;
 }
 
+.setup_widget{
+    background-image: url(../resources/background/widgets/fond_setup.jpg);
+    background-size: cover;
+}
+
 /* ========================== AUTRE ========================== */
 a{
     text-decoration: none;
@@ -238,3 +243,49 @@ aside p {
     display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ 
     display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
 }
+
+
+/* ==================== MODAL ============== */
+
+.modal-title{
+    margin: 20px;
+}
+.modal-body{
+    text-align: center;
+}
+.overlay_button{
+    color: white;
+    background-color: #52808B;
+    margin: 5px; 
+    margin-top: 20px;
+    padding: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.group_overlay_button{
+    justify-content: center;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */ 
+    display: -ms-flexbox; /* TWEENER - IE 10 */ 
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ 
+    display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
+}
+
+.b_second{
+    background-color: #84afb9; 
+}
+
+.image{
+    width: 50%;
+}
+input{
+    font-size: 0.75em !important;
+    line-height: normal;
+    font-family: roboto !important;
+}
+
+button, select, optgroup, textarea{
+    font-size: 0.8em !important;
+}
+

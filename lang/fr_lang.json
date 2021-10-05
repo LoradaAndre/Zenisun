@@ -19,7 +19,7 @@
         {
             "alerte" : "Pensez a vous connecter au wifi correspondant",
 
-            "widgets" : 
+            "widgets" :
                 {
                     "eclairageTitle" : "Éclairage",
                     "lamesTitle" : "Lames orientables",
@@ -27,9 +27,10 @@
                     "GuideTitle" : "Guide d'utilisation",
                     "ParaTitle" : "Paramètres",
                     "ConnexionTitle" : "Connexion",
-                    "AutomateTitle" : "Accès à l'automate"
+                    "AutomateTitle" : "Accès à l'automate",
+                    "SetupTitle" : "Configuration Système"
                 },
-            "meteo" : 
+            "meteo" :
                 {
                     "defaultMeteo" : "Temps clair",
                     "leveeSoleil" : "Aube",
@@ -75,7 +76,7 @@
                     "tel" : "Tel: +33 (0)4 28 04 42 08",
                     "web" : "Site web: www.zenisun.fr",
                     "adress" : "Adresse: 10 Rue de l'Industrie, 42240 Unieux",
-                    "version" : "Logiciel version V1.0"
+                    "version" : "Logiciel version 1.0.1"
                 }
         },
     "pageEclairage" :
@@ -159,7 +160,7 @@
                 },
             "manipElevationSolaire" :
                 {
-                    "title" : "Mise en place de l’élévation solaire",          
+                    "title" : "Mise en place de l’élévation solaire",
                     "subtitle1" : "Définir la position du moteur dans votre pergola.",
                     "para1" : "Etape 1: Positionnez-vous à l’extérieur de la pergola, les lames alignées devant vous.",
                     "para2" : "Etape 2: Ouvrez vos lames. Si la rotation des lames s’effectuent dans le sens anti-horaire, alors le moteur se situe dans le poteau juste à votre gauche, sinon il se situe dans le fond de votre pergola, à droite.",
@@ -208,7 +209,7 @@
                     "heureDemarage" : "Heure démarrage",
                     "heureExtinction" : "Heure extinction",
                     "modifier" : "Modifier",
-                    "appliquer" : "Appliquer", 
+                    "appliquer" : "Appliquer",
                     "annuler" : "Annuler",
                     "vitesseLed" : "Vitesse gradateur LED",
                     "instant" : "Instantané",
@@ -246,7 +247,7 @@
             "blocMaintenance" :
                 {
                     "title" : "Maintenance",
-                    "debug" : "Debug", 
+                    "debug" : "Debug",
                     "reglageFab" : "Réglages fabricant"
                 },
             "blocMaj" :
@@ -273,7 +274,7 @@
         },
         "pageConnexion" : {
             "alerte" : "Pensez a vous connecter au wifi correspondant",
-            
+
             "saisirIP" : "Saisissez l'adresse IP de votre pergola",
             "valider" : "Valider",
             "aide" : "Aide?",

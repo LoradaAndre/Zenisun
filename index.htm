@@ -136,6 +136,7 @@
                     </div>
                 </a>
 
+                 <!-- ============================================== Widget automate ============================================== -->
                 <a>
                     <div class="automate_widget widget">
                         <div class="icon">
@@ -146,30 +147,45 @@
                         <h1 id="titreWidgetAutomate"></h1>
                     </div>
                 </a>
-                    
-                    
-                
-                <!-- ======================== futur widhet météo ======================== -->
-                <!-- <a href="pages/station_meteo.html">
-                    <div class="station_meteo_widget widget">
+                 <!-- ============================================== Widget setup ============================================== -->
+                 <a class="setup">
+                    <div class="setup_widget widget" data-bs-target="#exampleModalCenter" data-bs-toggle="modal">
                         <div class="icon">
                             <div id="score" class="flex-container">
-                                <img src="resources/icons/widgets_light/lamp.png" alt="image de test">
+                                <img src="resources/icons/widgets_light/setup.png" alt="image de test">
                             </div>
                         </div>
-                        <h1>Station météo</h1>
+                        <h1 id="titreWidgetSetup"></h1>
                     </div>
-                </a> -->
+                </a>
             </div>
+        </div>
 
+        <!-- =================================== MODAL setup ================================= -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                  <div class="modal-body mb-setup">
+                      <h5 class="modal-title mt-setup" id="exampleModalLabel1">Accès administrateur</h5>
+                      <div class="form-group">
+                          <label for="exampleInputPassword1" id="textEntrerMDP">Entrez le mot de passe</label>
+                          <input type="password" width="100%" class="form-control pass" id="exampleInputPassword1">
+                      </div>
+                      <div class="group_overlay_button">
+                          <div class="overlay_button b_first_accueil" id="textConnexion">Connexion</div>
+                          <div class="overlay_button b_second" id="textAnnuler" data-bs-dismiss="modal">Annuler</div>
+                      </div>
+                  </div>
+              </div>
+            </div>
         </div>
         
         <!-- ============================================== Modal à propos ============================================== -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
             <div class="modal-dialog test">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Contactez Zenisun</h5>
+                        <h5 class="modal-title" id="exampleModalLabel2">Contactez Zenisun</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">

@@ -224,6 +224,7 @@ function applicationAccueil(res){
     $("#titreWidgetParametres").text(res["widgets"]["ParaTitle"]);
     $("#titreWidgetConnexion").text(res["widgets"]["ConnexionTitle"]);
     $("#titreWidgetAutomate").text(res["widgets"]["AutomateTitle"]);
+    $("#titreWidgetSetup").text(res["widgets"]["SetupTitle"]);
 
     //==================== POPUP INFOS CONTACTS =================== 
     $("#exampleModalLabel").text(res["popupContact"]["titre"]);

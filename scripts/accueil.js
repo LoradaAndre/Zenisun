@@ -259,6 +259,25 @@ function sync_date(){
 	});
 }
 
+// ================================ MAINTENANCE ================================
+
+$(".b_first").click(function(){
+	// console.log("oui t'as cliqué")
+	// console.log($(".modal-body input").val())
+	// console.log(typeof $(".modal-body input").val())
+	if($(".modal-body input").val() == "4682"){
+		window.location.href = "setup.html"
+	}
+});
+$(".b_first_accueil").click(function(){
+	// console.log("oui t'as cliqué")
+	// console.log($(".modal-body input").val())
+	// console.log(typeof $(".modal-body input").val())
+	if($(".modal-body input").val() == "4682"){
+		window.location.href = "pages/setup.html"
+	}
+});
+
 //Affichages des circles selon la config utilisateur
 function affichageCircle(hwcfg){
     console.log(hwcfg)
