@@ -247,10 +247,10 @@ aside p {
 
 /* ==================== MODAL ============== */
 
-.modal-title{
+.mt-setup{
     margin: 20px;
 }
-.modal-body{
+.mb-setup{
     text-align: center;
 }
 .overlay_button{
