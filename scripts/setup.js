@@ -432,7 +432,7 @@ $(".validate_set_motor").click(function(){
 // move motor to count position [0..max_count]
 function manu_manuf_motor(valueToInsert, idToInsert){
 
-    var command = "http://"+ IPAdress +"/zns.cgi?cmd=m&m='"+ idToInsert + "&p=" + valueToInsert;
+    var command = "http://"+ IPAdress +"/zns.cgi?cmd=m&m="+ idToInsert + "&p=" + valueToInsert;
     $.ajax({
         url: command,	
         context: document.body
