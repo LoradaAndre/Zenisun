@@ -227,7 +227,7 @@ function applicationAccueil(res){
     $("#titreWidgetSetup").text(res["widgets"]["SetupTitle"]);
 
     //==================== POPUP INFOS CONTACTS =================== 
-    $("#exampleModalLabel").text(res["popupContact"]["titre"]);
+    $("#exampleModalLabel2").text(res["popupContact"]["titre"]);
     $("#mailContact").text(res["popupContact"]["mail"]);
     $("#telContact").text(res["popupContact"]["tel"]);
     $("#webContact").text(res["popupContact"]["web"]);
